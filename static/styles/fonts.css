@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'Advent Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/Advent_Pro/AdventPro-Regular.ttf') format('truetype');
+ }
+
+ @font-face {
+     font-family: 'Exo';
+     font-style: normal;
+     font-weight: normal;
+     src: url('../fonts/Exo/Exo-Regular.ttf') format('truetype')
+ }
+
+ @font-face {
+    font-family: 'Exo';
+    font-style: normal;
+    font-weight: lighter;
+    src: url('../fonts/Exo/Exo-Thin.ttf') format('truetype')
+}
+
+@font-face {
+    font-family: 'Exo';
+    font-style: normal;
+    font-weight: bold;
+    src: url('../fonts/Exo/Exo-Bold.ttf') format('truetype')
+}

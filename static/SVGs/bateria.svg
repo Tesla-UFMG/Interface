@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:cc="http://web.resource.org/cc/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" baseProfile="full" width="500px" height="400px"
+    viewBox="0 0 500 400" preserveAspectRatio="xMidYMid meet" id="svg_document" style="zoom: 1;">
+    <!-- Created with macSVG - https://macsvg.org/ - https://github.com/dsward2/macsvg/ -->
+    <title id="svg_document_title">Untitled.svg</title>
+    <defs id="svg_document_defs">
+        <style id="Advent Pro_Google_Webfont_import">
+            @import url(https://fonts.googleapis.com/css?family=Advent+Pro);
+        </style>
+        <style id="M PLUS 1p_Google_Webfont_import">
+            @import url(https://fonts.googleapis.com/css?family=M+PLUS+1p);
+        </style>
+        <style id="Marvel_Google_Webfont_import">
+            @import url(https://fonts.googleapis.com/css?family=Marvel);
+        </style>
+        <style id="Nanum Gothic_Google_Webfont_import">
+            @import url(https://fonts.googleapis.com/css?family=Nanum+Gothic);
+        </style>
+        <style id="Nixie One_Google_Webfont_import">
+            @import url(https://fonts.googleapis.com/css?family=Nixie+One);
+        </style>
+        <style id="Orbitron_Google_Webfont_import">
+            @import url(https://fonts.googleapis.com/css?family=Orbitron);
+        </style>
+        <style id="Poiret One_Google_Webfont_import">
+            @import url(https://fonts.googleapis.com/css?family=Poiret+One);
+        </style>
+        <style id="Poppins_Google_Webfont_import">
+            @import url(https://fonts.googleapis.com/css?family=Poppins);
+        </style>
+        <style id="Quicksand_Google_Webfont_import">
+            @import url(https://fonts.googleapis.com/css?family=Quicksand);
+        </style>
+        <style id="Rajdhani_Google_Webfont_import">
+            @import url(https://fonts.googleapis.com/css?family=Rajdhani);
+        </style>
+        <style id="Raleway_Google_Webfont_import">
+            @import url(https://fonts.googleapis.com/css?family=Raleway);
+        </style>
+        <style id="Raleway Dots_Google_Webfont_import">
+            @import url(https://fonts.googleapis.com/css?family=Raleway+Dots);
+        </style>
+        <style id="Rationale_Google_Webfont_import">
+            @import url(https://fonts.googleapis.com/css?family=Rationale);
+        </style>
+        <style id="Thasadith_Google_Webfont_import">
+            @import url(https://fonts.googleapis.com/css?family=Thasadith);
+        </style>
+        <style id="Wire One_Google_Webfont_import">
+            @import url(https://fonts.googleapis.com/css?family=Wire+One);
+        </style>
+        <style id="Bungee Hairline_Google_Webfont_import">
+            @import url(https://fonts.googleapis.com/css?family=Bungee+Hairline);
+        </style>
+        <style id="Exo_Google_Webfont_import">
+            @import url(https://fonts.googleapis.com/css?family=Exo);
+        </style>
+        <style id="Gruppo_Google_Webfont_import">
+            @import url(https://fonts.googleapis.com/css?family=Gruppo);
+        </style>
+        <style id="Exo_Google_Webfont_import">
+            @import url(https://fonts.googleapis.com/css?family=Exo);
+        </style>
+        <style id="Exo_Google_Webfont_import">
+            @import url(https://fonts.googleapis.com/css?family=Exo);
+        </style>
+    </defs>
+    <g id="main_group">
+        <rect x="4px" height="400px" y="1px" id="background_rect" width="500px" fill="#000000" visibility="hidden"></rect>
+        <g id="g1" transform=""><text stroke="none" style="outline-style: none;" id="text2" stroke-width="1px" x="250px"
+                font-weight="bolder" text-rendering="geometricPrecision" font-family="Exo" fill="whitesmoke" font-size="20px"
+                y="320px" transform="" text-anchor="start">TEMPO RESTANTE</text><text stroke="none" style="outline-style: none;"
+                id="text3" stroke-width="1px" x="253px" text-rendering="geometricPrecision" font-family="Exo" fill="whitesmoke"
+                font-size="16px" y="344px" transform="" text-anchor="start">1h 30m</text></g>
+        <path stroke="whitesmoke" stroke-width="20" id="path1" d="M20,40 l0,200 a20,20 0 0 0 20,20 l370,0 a20,20 0 0 0 20,-20 l0,-50 a10,10 0 0 1 10,-10 l30,0 a10,10 0 0 0 10,-10 l0,-60 a10,10 0 0 0 -10,-10 l-30,0 a10,10 0 0 1 -10,-10 l0,-50 a20,20 0 0 0 -20,-20 l-370,0 a20,20 0 0 0 -20,20 "
+            fill="none" stroke-linecap="butt" transform="" stroke-linejoin="miter"></path><text id="sample_text_element"
+            style="outline-style:none;" xml:space="preserve" x="251px" text-rendering="geometricPrecision" font-family="Helvetica"
+            y="200px" fill="black" font-size="30px" transform="" text-anchor="middle">Sample Text Element</text>
+    </g>
+    <rect stroke="#000000" x="420px" height="100px" y="90px" id="rect1" stroke-width="0px" width="50px" fill="whitesmoke"
+        transform=""></rect>
+    <rect stroke="#000000" x="40px" height="200px" y="40px" id="rect2" stroke-width="3px" width="370px" fill="#008017"
+        transform=""></rect><text stroke="none" style="font-weight:lighter; outline-style: none;" id="text1"
+        stroke-width="1px" x="229px" font-weight="bolder" text-rendering="geometricPrecision" font-family="Exo" fill="whitesmoke"
+        font-size="80px" y="356px" transform="" text-anchor="end" font-stretch="normal">100%
+    </text>
+</svg>

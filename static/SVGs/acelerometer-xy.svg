@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://web.resource.org/cc/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" height="500px" style="zoom: 1;" cursor="default"
+    id="svg_document" width="700px" baseProfile="full" version="1.1" preserveAspectRatio="xMidYMid meet"
+    viewBox="0 0 700 500">
+    <!-- Created with macSVG - https://macsvg.org/ - https://github.com/dsward2/macsvg/ -->
+    <title id="svg_document_title">Untitled.svg</title>
+    <defs id="svg_document_defs">
+        <style id="Exo_Google_Webfont_import">
+            @import url(https://fonts.googleapis.com/css?family=Exo);
+        </style>
+    </defs>
+    <g id="main_group">
+        <g id="seta" transform="rotate(0 245 245)">
+            <rect stroke="none" height="80px" x="345px" y="250px" id="seta-cabo" stroke-width="3px" width="10px"
+                fill="green" transform=""></rect>
+            <polygon points="330,330 370,330 350,356 " stroke="none" id="polygon1" stroke-width="3px" fill="green"
+                transform=""></polygon>
+        </g>
+        <g id="g1" transform="">
+            <ellipse stroke="none" cx="350px" transform="" id="ellipse1" stroke-width="3px" cy="250px" fill="black"
+                rx="170px" ry="70px"></ellipse>
+            <image x="187px" height="147px" y="169px" id="image1"
+                xlink:href="file:///Users/renanmoreira/Documents/UFMG/Tesla/interface/Janela%20de%20Dados%202019/static/images/carro-lado-iconized.png"
+                xlink:role="file:///Users/renanmoreira/Documents/UFMG/Tesla/interface/Janela%20de%20Dados%202019/static/images/carro-lado-iconized.png"
+                width="328px" preserveAspectRatio="xMidYMid meet" transform=""></image>
+        </g><text stroke="none" style="outline-style:none;" id="text1" stroke-width="1px" x="380px"
+            text-rendering="geometricPrecision" font-family="Exo" fill="whitesmoke" font-size="20px" y="308px"
+            transform="" text-anchor="end">2.0 G</text>
+    </g>
+</svg>

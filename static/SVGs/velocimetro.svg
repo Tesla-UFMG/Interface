@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:cc="http://web.resource.org/cc/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" cursor="crosshair" style="zoom: 1;" height="500px" id="svg_document"
+    width="500px" baseProfile="full" version="1.1" preserveAspectRatio="xMidYMid meet" viewBox="0 0 100 100">
+    <!-- Created with macSVG - https://macsvg.org/ - https://github.com/dsward2/macsvg/ -->
+    <title id="svg_document_title">Untitled.svg</title>
+    <defs id="svg_document_defs">
+        <!-- <style id="Advent Pro_Google_Webfont_import">
+            @import url(https://fonts.googleapis.com/css?family=Advent+Pro);
+        </style>
+        <style id="Advent Pro_Google_Webfont_import">
+            @import url(https://fonts.googleapis.com/css?family=Advent+Pro);
+        </style>
+        <style id="Advent Pro_Google_Webfont_import">
+            @import url(https://fonts.googleapis.com/css?family=Advent+Pro);
+        </style> -->
+        <linearGradient x2="0%" id="linearGradient1" x1="0%" y2="0%" y1="100%">
+            <stop id="stop1" offset="0%" stop-color="#5a5a5c"></stop>
+            <stop id="stop2" offset="100%" stop-color="#00d927"></stop>
+        </linearGradient>
+    </defs>
+    <circle stroke="#000000" id="path-cover" stroke-width="0px" cy="50px" fill="url(#radialGradient1)" r="43px" cx="50px"
+        transform="" visibility="visible"></circle>
+    <circle stroke="#5b5b5c" visibility="visible" id="circle2" stroke-width="3" cy="50px" fill="none" r="44" cx="50px"
+        transform=""></circle>
+    <path stroke="#00d927" id="speed-path" stroke-width="3" d="M50,94 A44,44 0 0 1 50,6 " fill="none" stroke-linecap="butt"
+        stroke-linejoin="miter" transform=""></path>
+    <g id="speed-marker-texts" style="text-shadow:0px 1px 1px #6b6b6b;" transform=""><text stroke="none" style="outline-style: none;"
+            id="text14" stroke-width="1px" x="82.400002px" text-rendering="geometricPrecision" font-family="Advent Pro"
+            y="51.199997px" fill="white" font-size="4px" transform="" text-anchor="middle">120</text><text stroke="none"
+            style="outline-style: none;" id="text13" stroke-width="1px" x="80.799995px" text-rendering="geometricPrecision"
+            font-family="Advent Pro" y="39.999996px" fill="white" font-size="4px" transform="" text-anchor="middle">110</text><text
+            stroke="none" style="outline-style: none;" id="text9" stroke-width="1px" x="74.599998px" text-rendering="geometricPrecision"
+            font-family="Advent Pro" y="29.799994px" fill="white" font-size="4px" transform="" text-anchor="middle">100</text><text
+            stroke="none" style="outline-style: none;" id="text10" stroke-width="1px" x="63.799995px" text-rendering="geometricPrecision"
+            font-family="Advent Pro" y="21.399998px" fill="white" font-size="4px" transform="" text-anchor="middle">90</text><text
+            stroke="none" style="outline-style: none;" id="text8" stroke-width="1px" x="50px" text-rendering="geometricPrecision"
+            font-family="Advent Pro" y="20.000002px" fill="white" font-size="4px" transform="" text-anchor="middle">80</text><text
+            stroke="none" style="outline-style: none;" id="text7" stroke-width="1px" x="37.200001px" text-rendering="geometricPrecision"
+            font-family="Advent Pro" y="22.000006px" fill="white" font-size="4px" transform="" text-anchor="middle">70</text><text
+            stroke="none" style="outline-style: none;" id="text6" stroke-width="1px" x="27.800001px" text-rendering="geometricPrecision"
+            font-family="Advent Pro" y="28.4px" fill="white" font-size="4px" transform="" text-anchor="middle">60</text><text
+            stroke="none" style="outline-style: none;" id="text5" stroke-width="1px" x="20.800001px" text-rendering="geometricPrecision"
+            font-family="Advent Pro" y="39.199997px" fill="white" font-size="4px" transform="" text-anchor="middle">50</text><text
+            stroke="none" style="outline-style: none;" id="text4" stroke-width="1px" x="17.800001px" text-rendering="geometricPrecision"
+            font-family="Advent Pro" y="51.399994px" fill="white" font-size="4px" transform="" text-anchor="middle">40</text><text
+            stroke="none" style="outline-style: none;" id="text3" stroke-width="1px" x="20.600002px" text-rendering="geometricPrecision"
+            font-family="Advent Pro" y="64.799988px" fill="white" font-size="4px" transform="" text-anchor="middle">30</text><text
+            stroke="none" style="outline-style: none;" id="text1" stroke-width="1px" x="27.400002px" text-rendering="geometricPrecision"
+            font-family="Advent Pro" fill="white" font-size="4px" y="75px" transform="" text-anchor="middle">20</text><text
+            stroke="none" style="outline-style: none;" id="text2" stroke-width="1px" x="37.400002px" text-rendering="geometricPrecision"
+            font-family="Advent Pro" y="81.399994px" fill="white" font-size="4px" transform="" text-anchor="middle">10</text><text
+            stroke="none" style="outline-style: none; color: #ffffff;" stroke-width="1px" x="50px" text-rendering="geometricPrecision"
+            font-family="Advent Pro" fill="white" font-size="4px" y="84px" transform="" text-anchor="middle" id="text11">0</text></g>
+    <g transform="" id="circle-pointers">
+        <circle stroke="#008017" id="circle1" stroke-width="1px" cy="50" fill="none" r="40" cx="50" transform=""></circle>
+        <rect stroke="none" x="49.25px" height="9.7px" y="85.8px" stroke-width="3px" id="rect15" width="1.485px" fill="#008017"
+            transform=""></rect>
+        <rect stroke="none" x="49.25px" height="4px" y="10px" id="rect1" stroke-width="3px" width="1.5px" fill="#008017"
+            transform=""></rect>
+        <rect stroke="none" x="49.680721px" height="4px" y="51.816059px" stroke-width="3px" id="rect14" width="1.5px"
+            fill="#008017" transform="translate(36.95 -15.3) rotate(67.5 50.75 52)"></rect>
+        <rect stroke="none" x="51.04525px" height="4px" y="50.432957px" stroke-width="3px" id="rect13" width="1.5px"
+            fill="#008017" transform="translate(-36.95 -15.3) rotate(-67.5 50.75 52)"></rect>
+        <rect stroke="none" x="49.465641px" height="4px" y="50.126812px" stroke-width="3px" id="rect12" width="1.5px"
+            fill="#008017" transform="translate(-15.3 -36.95) rotate(-22.5 50 50)"></rect>
+        <rect stroke="none" x="50px" height="4px" y="50px" stroke-width="3px" id="rect10" width="1.5px" fill="#008017"
+            transform="translate(15.30 -36.95) rotate(22.5 50.75 52)"></rect>
+        <rect stroke="none" x="51.319698px" height="4px" y="53.618149px" stroke-width="3px" id="rect9" width="1.5px"
+            fill="#008017" transform="translate(-15.30 36.95) rotate(202.5 50.75 52)"></rect>
+        <rect stroke="none" x="48.250771px" height="4px" y="47.965252px" stroke-width="3px" id="rect8" width="1.5px"
+            fill="#008017" transform="translate(-36.95 15.3) rotate(67.25 50.75 52)"></rect>
+        <rect stroke="none" x="50px" height="4px" y="50px" stroke-width="3px" id="rect7" width="1.5px" fill="#008017"
+            transform="translate(27.88 -27.28) rotate(45 50.75 52)"></rect>
+        <rect stroke="none" x="-2.262738px" height="4px" y="41.898335px" stroke-width="3px" id="rect2" width="1.5px"
+            fill="#008017" transform="rotate(135 15.174976 38.524326)"></rect>
+        <rect stroke="none" x="48.585793px" height="4px" y="47.17157px" stroke-width="3px" id="rect5" width="1.5px"
+            fill="#008017" transform="translate(-28.28 28.28) rotate(45 50.75 52)"></rect>
+        <rect stroke="none" x="59.850006px" height="4px" y="36.599998px" stroke-width="3px" width="1.5px" id="rect4"
+            fill="#008017" transform="rotate(90 68.800003 57.999996)"></rect>
+        <rect stroke="none" x="49.25px" height="4px" y="86px" stroke-width="3px" id="rect3" width="1.5px" fill="#008017"
+            transform="rotate(90 50 50)"></rect>
+    </g>
+    <rect stroke="#000000" x="49.6px" height="46px" y="50px" id="speed-pointer" stroke-width="0px" width="0.8px" fill="#ffffff"
+        transform="rotate(0 50 50)"></rect>
+    <g id="speed-wrapper" transform="">
+        <circle stroke="#000000" id="circle3" stroke-width="0px" cy="50px" fill="#1e1e1e" r="23.6px" cx="50px"
+            transform=""></circle>
+        <g id="speed-text" transform=""><text stroke="none" style="outline-style:none; text-shadow: 0px 1px 1px #6b6b6b;"
+                id="speed-text-decimal" stroke-width="1px" x="56.600002px" text-rendering="geometricPrecision"
+                font-family="Advent Pro" fill="white" font-size="7px" y="53.199997px" transform="" text-anchor="start">00</text><text
+                stroke="none" style="outline-style:none; text-shadow: 0px 1px 1px #6b6b6b;" id="text17" stroke-width="1px"
+                x="50.000004px" text-rendering="geometricPrecision" font-family="Advent Pro" y="64.199997px" fill="white"
+                font-size="7px" transform="" text-anchor="middle">Km/h</text><text stroke="none" style="outline-style: none; text-shadow: 0px 1px 1px #6b6b6b;"
+                id="speed-text-integer" stroke-width="1px" x="56.199997px" text-rendering="geometricPrecision"
+                font-family="Advent Pro" fill="white" font-size="20px" y="53.599995px" transform="" text-anchor="end">00.</text></g>
+    </g>
+    <g id="main_group"></g>
+</svg>

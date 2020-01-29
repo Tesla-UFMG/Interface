@@ -1,0 +1,4 @@
+/dev/tty.Bluetooth-Incoming-Port
+/dev/tty.usbmodem142012
+/dev/tty.usbmodem141012
+/dev/tty.JBLCharge3-SPPDev

@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://web.resource.org/cc/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" baseProfile="full" width="1240px"
+    height="1080px" viewBox="0 0 1240 1080" preserveAspectRatio="xMidYMid meet" id="svg_document" style="zoom: 0.5;">
+    <!-- Created with macSVG - https://macsvg.org/ - https://github.com/dsward2/macsvg/ -->
+    <title id="svg_document_title">Untitled.svg</title>
+    <defs id="svg_document_defs">
+        <style id="Exo_Google_Webfont_import">
+            @import url(https://fonts.googleapis.com/css?family=Exo);
+        </style>
+    </defs>
+    <g id="main_group">
+        <rect id="background_rect" fill="black" x="0px" y="0px" width="1240px" height="1080px" visibility="hidden">
+        </rect>
+        <image x="0px" height="1080px" y="0px" id="image1"
+            xlink:href="file:///Users/renanmoreira/Documents/UFMG/Tesla/interface/Janela%20de%20Dados%202019/static/images/carro-lowerresolution.png"
+            xlink:role="file:///Users/renanmoreira/Documents/UFMG/Tesla/interface/Janela%20de%20Dados%202019/static/images/carro-lowerresolution.png"
+            width="1240px" d="" preserveAspectRatio="xMidYMid meet" transform="" visibility="hidden"></image>
+    </g>
+    <g transform="" id="IMD-INFO">
+        <path stroke="darkgreen" stroke-width="2px" id="path12"
+            d="M694,834 l100,0 a10,10 90 0 0 10,-10 l0,-250 a10,10 90 0 1 10,-10 l100,0 " fill="none" transform="">
+        </path>
+        <path stroke="darkgreen" stroke-width="6" id="path11"
+            d="M893,398 l0,350 a10,10 90 0 0 10,10 l300,0 a10,10 90 0 0 10,-10 l0,-350 a10,10 90 0 0 -10,-10 l-300,0 a10,10 90 0 0 -10,10 "
+            fill="black" stroke-linecap="butt" transform="" stroke-linejoin="miter"></path>
+        <g id="IMD" transform="">
+            <g transform="" id="TORQUE-IMD">
+                <image x="918px" height="70px" y="502px" id="image13"
+                    xlink:href="file:///Users/renanmoreira/Documents/UFMG/Tesla/interface/Janela%20de%20Dados%202019/static/SVGs/gears.svg"
+                    xlink:role="file:///Users/renanmoreira/Documents/UFMG/Tesla/interface/Janela%20de%20Dados%202019/static/SVGs/gears.svg"
+                    width="70px" preserveAspectRatio="xMidYMid meet" transform=""></image><text stroke="none"
+                    style="outline-style:none;" id="text45" stroke-width="1px" x="1080px"
+                    text-rendering="geometricPrecision" y="568px" font-family="Exo" fill="whitesmoke" font-size="25px"
+                    transform="" text-anchor="end">0</text><text stroke="none" style="outline-style:none;" id="text46"
+                    stroke-width="1px" x="1088px" text-rendering="geometricPrecision" y="568px" font-family="Exo"
+                    fill="whitesmoke" font-size="25px" transform="" text-anchor="start">%</text><text stroke="none"
+                    style="outline-style:none;" id="text47" stroke-width="1px" x="995px" font-weight="bold"
+                    text-rendering="geometricPrecision" font-family="Exo" fill="whitesmoke" font-size="30px" y="535px"
+                    transform="" text-anchor="start">TORQUE</text>
+            </g>
+            <g transform="" id="IMD-TITLE"><text stroke="none" style="outline-style: none;" id="text54"
+                    stroke-width="1px" x="908px" font-weight="bold" text-rendering="geometricPrecision"
+                    font-family="Exo" fill="whitesmoke" font-size="33px" y="436px" transform=""
+                    text-anchor="start">INVERSOR/MOTOR</text><text stroke="none" style="outline-style: none;"
+                    id="text55" stroke-width="1px" x="1200px" font-weight="bold" text-rendering="geometricPrecision"
+                    font-family="Exo" fill="whitesmoke" font-size="33px" y="474px" transform=""
+                    text-anchor="end">DIREITO</text></g>
+            <g transform="" id="T1-IMD">
+                <image x="1138px" height="70px" y="584px" id="image14"
+                    xlink:href="file:///Users/renanmoreira/Documents/UFMG/Tesla/interface/Janela%20de%20Dados%202019/static/SVGs/termometer.svg"
+                    xlink:role="file:///Users/renanmoreira/Documents/UFMG/Tesla/interface/Janela%20de%20Dados%202019/static/SVGs/termometer.svg"
+                    width="70px" preserveAspectRatio="xMidYMid meet" transform=""></image><text stroke="none"
+                    style="outline-style:none;" id="text48" stroke-width="1px" x="971px"
+                    text-rendering="geometricPrecision" y="647px" font-family="Exo" fill="whitesmoke" font-size="25px"
+                    transform="" text-anchor="end">0</text><text stroke="none" style="outline-style:none;" id="text49"
+                    stroke-width="1px" x="977px" text-rendering="geometricPrecision" y="647px" font-family="Exo"
+                    fill="whitesmoke" font-size="25px" transform="" text-anchor="start">ºC</text><text stroke="none"
+                    style="outline-style:none;" id="text50" stroke-width="1px" x="904px" font-weight="bold"
+                    text-rendering="geometricPrecision" font-family="Exo" fill="whitesmoke" font-size="30px" y="614px"
+                    transform="" text-anchor="start">TEMPERATURA 1</text>
+            </g>
+            <g transform="" id="T2-IMD">
+                <image x="900px" height="70px" y="676px" id="image15"
+                    xlink:href="file:///Users/renanmoreira/Documents/UFMG/Tesla/interface/Janela%20de%20Dados%202019/static/SVGs/termometer.svg"
+                    xlink:role="file:///Users/renanmoreira/Documents/UFMG/Tesla/interface/Janela%20de%20Dados%202019/static/SVGs/termometer.svg"
+                    width="70px" preserveAspectRatio="xMidYMid meet" transform=""></image><text stroke="none"
+                    style="outline-style:none;" id="text51" stroke-width="1px" x="1143px"
+                    text-rendering="geometricPrecision" y="740px" font-family="Exo" fill="whitesmoke" font-size="25px"
+                    transform="" text-anchor="end">0</text><text stroke="none" style="outline-style:none;" id="text52"
+                    stroke-width="1px" x="1175px" text-rendering="geometricPrecision" y="740px" font-family="Exo"
+                    fill="whitesmoke" font-size="25px" transform="" text-anchor="end">ºC</text><text stroke="none"
+                    style="outline-style:none;" id="text53" stroke-width="1px" x="955px" font-weight="bold"
+                    text-rendering="geometricPrecision" font-family="Exo" fill="whitesmoke" font-size="30px" y="704px"
+                    transform="" text-anchor="start">TEMPERATURA 2</text>
+            </g>
+            <line stroke="#858787" y1="491px" stroke-width="3px" x1="906px" id="line7" y2="491px" x2="1201px"
+                transform="" visibility="visible"></line>
+        </g>
+        <circle stroke="whitesmoke" cx="694px" visibility="visible" stroke-width="3px" id="circle3" cy="833px"
+            fill="darkgreen" r="21px" transform=""></circle>
+    </g>
+    <g transform="" id="IME-INFO">
+        <path stroke="darkgreen" transform="" stroke-width="6" id="path8"
+            d="M23,400 l0,350 a10,10 90 0 0 10,10 l300,0 a10,10 90 0 0 10,-10 l0,-350 a10,10 90 0 0 -10,-10 l-300,0 a10,10 90 0 0 -10,10 "
+            fill="black" stroke-linecap="butt" stroke-linejoin="miter"></path>
+        <g id="IME" transform="">
+            <g transform="" id="TORQUE-IME"><text stroke="none" style="outline-style:none;" id="text42"
+                    stroke-width="1px" x="208px" text-rendering="geometricPrecision" y="566px" font-family="Exo"
+                    fill="whitesmoke" font-size="25px" transform="" text-anchor="end">0</text><text stroke="none"
+                    style="outline-style:none;" id="text43" stroke-width="1px" x="216px"
+                    text-rendering="geometricPrecision" y="566px" font-family="Exo" fill="whitesmoke" font-size="25px"
+                    transform="" text-anchor="start">%</text><text stroke="none" style="outline-style:none;" id="text44"
+                    stroke-width="1px" x="123px" font-weight="bold" text-rendering="geometricPrecision"
+                    font-family="Exo" fill="whitesmoke" font-size="30px" y="533px" transform=""
+                    text-anchor="start">TORQUE</text>
+                <image x="42px" height="70" y="504px" id="image10"
+                    xlink:href="file:///Users/renanmoreira/Documents/UFMG/Tesla/interface/Janela%20de%20Dados%202019/static/SVGs/gears.svg"
+                    xlink:role="file:///Users/renanmoreira/Documents/UFMG/Tesla/interface/Janela%20de%20Dados%202019/static/SVGs/gears.svg"
+                    width="70" preserveAspectRatio="xMidYMid meet" transform=""></image>
+            </g>
+            <g transform="" id="T1-IME"><text stroke="none" style="outline-style:none;" id="text39" stroke-width="1px"
+                    x="99px" text-rendering="geometricPrecision" y="645px" font-family="Exo" fill="whitesmoke"
+                    font-size="25px" transform="" text-anchor="end">0</text><text stroke="none"
+                    style="outline-style:none;" id="text40" stroke-width="1px" x="105px"
+                    text-rendering="geometricPrecision" y="645px" font-family="Exo" fill="whitesmoke" font-size="25px"
+                    transform="" text-anchor="start">ºC</text><text stroke="none" style="outline-style:none;"
+                    id="text41" stroke-width="1px" x="32px" font-weight="bold" text-rendering="geometricPrecision"
+                    font-family="Exo" fill="whitesmoke" font-size="30px" y="612px" transform=""
+                    text-anchor="start">TEMPERATURA 1</text>
+                <image x="268px" height="70px" y="585px" id="image11"
+                    xlink:href="file:///Users/renanmoreira/Documents/UFMG/Tesla/interface/Janela%20de%20Dados%202019/static/SVGs/termometer.svg"
+                    xlink:role="file:///Users/renanmoreira/Documents/UFMG/Tesla/interface/Janela%20de%20Dados%202019/static/SVGs/termometer.svg"
+                    width="70px" preserveAspectRatio="xMidYMid meet" transform=""></image>
+            </g>
+            <g transform="" id="T2-IME"><text stroke="none" style="outline-style:none;" id="text36" stroke-width="1px"
+                    x="271px" text-rendering="geometricPrecision" y="738px" font-family="Exo" fill="whitesmoke"
+                    font-size="25px" transform="" text-anchor="end">0</text><text stroke="none"
+                    style="outline-style:none;" id="text37" stroke-width="1px" x="303px"
+                    text-rendering="geometricPrecision" y="738px" font-family="Exo" fill="whitesmoke" font-size="25px"
+                    transform="" text-anchor="end">ºC</text><text stroke="none" style="outline-style:none;" id="text38"
+                    stroke-width="1px" x="83px" font-weight="bold" text-rendering="geometricPrecision" font-family="Exo"
+                    fill="whitesmoke" font-size="30px" y="702px" transform="" text-anchor="start">TEMPERATURA 2</text>
+                <image x="26px" height="70px" y="675px" id="image12"
+                    xlink:href="file:///Users/renanmoreira/Documents/UFMG/Tesla/interface/Janela%20de%20Dados%202019/static/SVGs/termometer.svg"
+                    xlink:role="file:///Users/renanmoreira/Documents/UFMG/Tesla/interface/Janela%20de%20Dados%202019/static/SVGs/termometer.svg"
+                    width="70px" preserveAspectRatio="xMidYMid meet" transform=""></image>
+            </g>
+            <line stroke="#858787" y1="489px" stroke-width="3px" x1="34px" id="line6" y2="489px" x2="329px" transform=""
+                visibility="visible"></line>
+            <g transform="" id="IME-TITLE"><text stroke="none" style="outline-style: none;" id="text33"
+                    stroke-width="1px" x="36px" font-weight="bold" text-rendering="geometricPrecision" font-family="Exo"
+                    fill="whitesmoke" font-size="33px" y="434px" transform=""
+                    text-anchor="start">INVERSOR/MOTOR</text><text stroke="none" style="outline-style: none;"
+                    id="text34" stroke-width="1px" x="34px" font-weight="bold" text-rendering="geometricPrecision"
+                    font-family="Exo" fill="whitesmoke" font-size="33px" y="472px" transform=""
+                    text-anchor="start">ESQUERDO</text></g>
+        </g>
+        <circle stroke="whitesmoke" cx="526px" stroke-width="3px" id="circle2" cy="833px" fill="darkgreen" r="21px"
+            transform=""></circle>
+        <path stroke="darkgreen" id="path10" stroke-width="2px"
+            d="M524,834 l-80,0 a10,10 90 0 1 -10,-10 l0,-250 a10,10 90 0 0 -10,-10 l-80,0 " fill="none" transform="">
+        </path>
+    </g>
+    <g transform="" id="roda-bl">
+        <polygon points="436.552521,892.983032 436.552521,1070.48291 441.552521,1063.98291 441.552521,898.483032"
+            stroke="none" stroke-width="3px" fill="black" transform="rotate(-1 440 984.75)" id="polygon4"></polygon>
+        <polygon points="379.061279,891.979614 379.061279,1069.479614 384.061279,1062.979614 384.061279,897.479614"
+            stroke="none" stroke-width="3px" id="polygon7" fill="black" transform="rotate(179 382.043732 981.738159)">
+        </polygon>
+        <rect stroke="none" x="387.5px" height="179.5px" y="893px" stroke-width="3px" width="46px" id="rect4"
+            fill="black" transform="rotate(-1 410.5 982.75)"></rect>
+    </g>
+    <g transform="" id="roda-fl">
+        <polygon points="380,340.5 380,518 385,511.5 385,346" stroke="none" stroke-width="3px" fill="black"
+            transform="rotate(180 383 427.25)" id="polygon8"></polygon>
+        <polygon points="437,337 437,514.5 442,508 442,342.5" stroke="none" stroke-width="3px" fill="black" transform=""
+            id="polygon3"></polygon>
+        <rect stroke="none" x="388px" height="179.5px" y="336.5px" id="rect1" stroke-width="3px" width="46px"
+            fill="black" transform=""></rect>
+    </g>
+    <g transform="" id="roda-fr">
+        <polygon points="846.5,336.5 846.5,514 851.5,507.5 851.5,342" stroke="none" stroke-width="3px" fill="black"
+            transform="" id="polygon5"></polygon>
+        <rect stroke="none" x="797.5px" height="179px" y="337px" stroke-width="3px" id="rect3" width="46px" fill="black"
+            transform=""></rect>
+        <polygon points="-29,339.5 -29,517 -24,510.5 -24,345" stroke="none" id="polygon1" stroke-width="3px"
+            fill="black" transform="rotate(180 383 427.25)"></polygon>
+    </g>
+    <g transform="" id="roda-br">
+        <polygon points="847,892 847,1069.5 852,1063 852,897.5" stroke="none" stroke-width="3px" id="polygon2"
+            fill="black" transform=""></polygon>
+        <polygon points="-29.5,-216 -29.5,-38.5 -24.5,-45 -24.5,-210.5" stroke="none" stroke-width="3px" id="polygon6"
+            fill="black" transform="rotate(180 383 427.25)"></polygon>
+        <rect stroke="none" x="798px" height="180.5px" y="891.5px" stroke-width="3px" id="rect2" width="46px"
+            fill="black" transform=""></rect>
+    </g>
+    <g transform="" id="PTE-INFO">
+        <path stroke="darkgreen" stroke-width="6" id="path9"
+            d="M25,808 l0,250 a10,10 90 0 0 10,10 l300,0 a10,10 90 0 0 10,-10 l0,-250 a10,10 90 0 0 -10,-10 l-300,0 a10,10 90 0 0 -10,10 "
+            fill="black" stroke-linecap="butt" transform="" stroke-linejoin="miter"></path>
+        <path stroke="darkgreen" stroke-width="2px" id="path6" d="M412,919 l0,-80 a10,10 90 0 0 -10,-10 l-60,0 "
+            fill="none" transform=""></path>
+        <circle stroke="#000000" transform="" stroke-width="0px" id="circle1" cy="915px" fill="darkgreen" r="11px"
+            cx="412px"></circle>
+        <g id="PTE" transform="">
+            <line stroke="#858787" y1="900px" stroke-width="3px" x1="37px" id="line4" y2="900px" x2="332px"
+                transform=""></line>
+            <g transform="" id="VEL-TE">
+                <image x="44px" height="70px" y="916px" id="image7"
+                    xlink:href="file:///Users/renanmoreira/Documents/UFMG/Tesla/interface/Janela%20de%20Dados%202019/static/SVGs/speedometer.svg"
+                    xlink:role="file:///Users/renanmoreira/Documents/UFMG/Tesla/interface/Janela%20de%20Dados%202019/static/SVGs/speedometer.svg"
+                    width="70px" preserveAspectRatio="xMidYMid meet" transform=""></image><text stroke="none"
+                    style="outline-style:none;" stroke-width="1px" x="231px" text-rendering="geometricPrecision"
+                    y="975px" font-family="Exo" fill="whitesmoke" font-size="25px" transform="" text-anchor="end"
+                    id="text25">0</text><text stroke="none" style="outline-style:none;" stroke-width="1px" x="271px"
+                    text-rendering="geometricPrecision" y="976px" font-family="Exo" fill="whitesmoke" font-size="25px"
+                    transform="" text-anchor="middle" id="text26">RPM</text><text stroke="none"
+                    style="outline-style:none;" id="text27" stroke-width="1px" x="210px" font-weight="bold"
+                    text-rendering="geometricPrecision" font-family="Exo" fill="whitesmoke" font-size="30px" y="945px"
+                    transform="" text-anchor="middle">VELOCIDADE</text>
+            </g>
+            <g transform="" id="PTE-TEXT"><text stroke="none" style="outline-style: none;" stroke-width="1px" x="39px"
+                    font-weight="bold" text-rendering="geometricPrecision" font-family="Exo" fill="whitesmoke"
+                    font-size="35px" y="882px" transform="" text-anchor="start" id="text28">ESQUERDO</text><text
+                    stroke="none" style="outline-style: none;" stroke-width="1px" x="39px" font-weight="bold"
+                    text-rendering="geometricPrecision" font-family="Exo" fill="whitesmoke" font-size="35px" y="842px"
+                    transform="" text-anchor="start" id="text29">PNEU TRASEIRO</text></g>
+            <g transform="" id="TEMP-TE"><text stroke="none" style="outline-style:none;" stroke-width="1px" x="266px"
+                    font-weight="bold" text-rendering="geometricPrecision" font-family="Exo" fill="whitesmoke"
+                    font-size="30px" y="1020px" transform="" text-anchor="end" id="text30">TEMPERATURA</text><text
+                    stroke="none" style="outline-style:none;" stroke-width="1px" x="101px"
+                    text-rendering="geometricPrecision" y="1051px" font-family="Exo" fill="whitesmoke" font-size="25px"
+                    transform="" text-anchor="end" id="text31">0</text><text stroke="none" style="outline-style:none;"
+                    stroke-width="1px" x="137px" text-rendering="geometricPrecision" y="1051px" font-family="Exo"
+                    fill="whitesmoke" font-size="25px" transform="" text-anchor="end" id="text32">ºC</text>
+                <image x="253px" height="70px" y="989px" id="image8"
+                    xlink:href="file:///Users/renanmoreira/Documents/UFMG/Tesla/interface/Janela%20de%20Dados%202019/static/SVGs/termometer.svg"
+                    xlink:role="file:///Users/renanmoreira/Documents/UFMG/Tesla/interface/Janela%20de%20Dados%202019/static/SVGs/termometer.svg"
+                    width="70px" preserveAspectRatio="xMidYMid meet" transform=""></image>
+            </g>
+        </g>
+    </g>
+    <g transform="" id="PDE-INFO">
+        <circle stroke="#000000" cx="412px" stroke-width="0px" id="circle4" cy="353px" fill="darkgreen" r="11px"
+            transform=""></circle>
+        <path stroke="darkgreen" id="path1" stroke-width="2px" d="M412,357 l0,-253 a10,10 90 0 0 -10,-10 l-60,0 "
+            fill="none" transform=""></path>
+        <path stroke="darkgreen" stroke-width="6" id="path4"
+            d="M21,88 l0,250 a10,10 90 0 0 10,10 l300,0 a10,10 90 0 0 10,-10 l0,-250 a10,10 90 0 0 -10,-10 l-300,0 a10,10 90 0 0 -10,10 "
+            fill="black" stroke-linecap="butt" transform="" stroke-linejoin="miter"></path>
+        <g id="PDE" transform="">
+            <g transform="" id="PDE-TEXT"><text stroke="none" style="outline-style: none;" id="text10"
+                    stroke-width="1px" x="36px" font-weight="bold" text-rendering="geometricPrecision" font-family="Exo"
+                    fill="whitesmoke" font-size="35px" y="162px" transform="" text-anchor="start">ESQUERDO</text><text
+                    stroke="none" style="outline-style: none;" id="text9" stroke-width="1px" x="180px"
+                    font-weight="bold" text-rendering="geometricPrecision" font-family="Exo" fill="whitesmoke"
+                    font-size="35px" y="122px" transform="" text-anchor="middle">PNEU DIANTEIRO</text></g>
+            <line stroke="#858787" y1="175px" stroke-width="3px" x1="32px" id="line2" y2="175px" x2="327px"
+                transform=""></line>
+            <g transform="" id="VEL-DE">
+                <image x="40px" height="70px" y="186px" id="image4"
+                    xlink:href="file:///Users/renanmoreira/Documents/UFMG/Tesla/interface/Janela%20de%20Dados%202019/static/SVGs/speedometer.svg"
+                    xlink:role="file:///Users/renanmoreira/Documents/UFMG/Tesla/interface/Janela%20de%20Dados%202019/static/SVGs/speedometer.svg"
+                    width="70px" preserveAspectRatio="xMidYMid meet" transform=""></image><text stroke="none"
+                    style="outline-style:none;" id="text12" stroke-width="1px" x="228px"
+                    text-rendering="geometricPrecision" y="251px" font-family="Exo" fill="whitesmoke" font-size="25px"
+                    transform="" text-anchor="end">0</text><text stroke="none" style="outline-style:none;" id="text13"
+                    stroke-width="1px" x="268px" text-rendering="geometricPrecision" y="252px" font-family="Exo"
+                    fill="whitesmoke" font-size="25px" transform="" text-anchor="middle">RPM</text><text stroke="none"
+                    style="outline-style:none;" id="text11" stroke-width="1px" x="207px" font-weight="bold"
+                    text-rendering="geometricPrecision" font-family="Exo" fill="whitesmoke" font-size="30px" y="221px"
+                    transform="" text-anchor="middle">VELOCIDADE</text>
+            </g>
+            <g transform="" id="TEMP-DE"><text stroke="none" style="outline-style:none;" id="text14" stroke-width="1px"
+                    x="263px" font-weight="bold" text-rendering="geometricPrecision" font-family="Exo" fill="whitesmoke"
+                    font-size="30px" y="296px" transform="" text-anchor="end">TEMPERATURA</text><text stroke="none"
+                    style="outline-style:none;" id="text15" stroke-width="1px" x="98px"
+                    text-rendering="geometricPrecision" y="327px" font-family="Exo" fill="whitesmoke" font-size="25px"
+                    transform="" text-anchor="end">0</text><text stroke="none" style="outline-style:none;" id="text16"
+                    stroke-width="1px" x="134px" text-rendering="geometricPrecision" y="327px" font-family="Exo"
+                    fill="whitesmoke" font-size="25px" transform="" text-anchor="end">ºC</text>
+                <image x="252px" height="70px" y="262px" id="image6"
+                    xlink:href="file:///Users/renanmoreira/Documents/UFMG/Tesla/interface/Janela%20de%20Dados%202019/static/SVGs/termometer.svg"
+                    xlink:role="file:///Users/renanmoreira/Documents/UFMG/Tesla/interface/Janela%20de%20Dados%202019/static/SVGs/termometer.svg"
+                    width="70px" preserveAspectRatio="xMidYMid meet" transform=""></image>
+            </g>
+        </g>
+    </g>
+    <g transform="" id="PDD-INFO">
+        <path stroke="darkgreen" stroke-width="2px" id="path5" d="M823,352 l0,-253 a10,10 90 0 1 10,-10 l60,0 "
+            fill="none" transform=""></path>
+        <path stroke="darkgreen" stroke-width="6" id="path3"
+            d="M894,88 l0,250 a10,10 90 0 0 10,10 l300,0 a10,10 90 0 0 10,-10 l0,-250 a10,10 90 0 0 -10,-10 l-300,0 a10,10 90 0 0 -10,10 "
+            fill="black" stroke-linecap="butt" transform="" stroke-linejoin="miter"></path>
+        <g id="PDD" transform="">
+            <g transform="" id="TEMP-PDD">
+                <image x="1124px" height="70" y="265px" id="image3"
+                    xlink:href="file:///Users/renanmoreira/Documents/UFMG/Tesla/interface/Janela%20de%20Dados%202019/static/SVGs/termometer.svg"
+                    xlink:role="file:///Users/renanmoreira/Documents/UFMG/Tesla/interface/Janela%20de%20Dados%202019/static/SVGs/termometer.svg"
+                    width="70" preserveAspectRatio="xMidYMid meet" transform=""></image><text stroke="none"
+                    style="outline-style:none;" id="text2" stroke-width="1px" x="1131px" font-weight="bold"
+                    text-rendering="geometricPrecision" font-family="Exo" fill="whitesmoke" font-size="30px" y="292px"
+                    transform="" text-anchor="end">TEMPERATURA</text><text stroke="none" style="outline-style:none;"
+                    id="text4" stroke-width="1px" x="966px" text-rendering="geometricPrecision" font-family="Exo"
+                    y="323px" fill="whitesmoke" font-size="25px" transform="" text-anchor="end">0</text><text
+                    stroke="none" style="outline-style:none;" id="text5" stroke-width="1px" x="1002px"
+                    text-rendering="geometricPrecision" y="323px" font-family="Exo" fill="whitesmoke" font-size="25px"
+                    transform="" text-anchor="end">ºC</text>
+            </g>
+            <g transform="" id="VEL-DD">
+                <image x="907px" height="70" y="185px" id="image2"
+                    xlink:href="file:///Users/renanmoreira/Documents/UFMG/Tesla/interface/Janela%20de%20Dados%202019/static/SVGs/speedometer.svg"
+                    xlink:role="file:///Users/renanmoreira/Documents/UFMG/Tesla/interface/Janela%20de%20Dados%202019/static/SVGs/speedometer.svg"
+                    width="70" preserveAspectRatio="xMidYMid meet" transform=""></image>
+                <line stroke="#858787" y1="175px" x1="908px" stroke-width="3px" y2="175px" x2="1203px" transform=""
+                    id="line3"></line><text stroke="none" style="outline-style:none;" id="text6" stroke-width="1px"
+                    x="1073px" font-weight="bold" text-rendering="geometricPrecision" font-family="Exo"
+                    fill="whitesmoke" font-size="30px" y="217px" transform=""
+                    text-anchor="middle">VELOCIDADE</text><text stroke="none" style="outline-style:none;" id="text7"
+                    stroke-width="1px" x="1098px" text-rendering="geometricPrecision" y="247px" font-family="Exo"
+                    fill="whitesmoke" font-size="25px" transform="" text-anchor="end">0</text><text stroke="none"
+                    style="outline-style:none;" id="text8" stroke-width="1px" x="1138px"
+                    text-rendering="geometricPrecision" y="248px" font-family="Exo" fill="whitesmoke" font-size="25px"
+                    transform="" text-anchor="middle">RPM</text>
+            </g>
+            <g transform="" id="PDD-TEXT"><text stroke="none" style="outline-style: none;" id="text1" stroke-width="1px"
+                    x="1050px" font-weight="bold" text-rendering="geometricPrecision" font-family="Exo"
+                    fill="whitesmoke" font-size="35px" y="122px" transform="" text-anchor="middle">PNEU
+                    DIANTEIRO</text><text stroke="none" style="outline-style: none;" id="text3" stroke-width="1px"
+                    x="1124px" font-weight="bold" text-rendering="geometricPrecision" font-family="Exo"
+                    fill="whitesmoke" font-size="35px" y="163px" transform="" text-anchor="middle">DIREITO</text></g>
+            <line stroke="#858787" y1="175px" id="line1" x1="908px" stroke-width="3px" y2="175px" x2="1203px"
+                transform=""></line>
+        </g>
+        <circle stroke="#000000" stroke-width="0px" cy="353px" id="circle5" fill="darkgreen" r="11px" cx="823px"
+            transform=""></circle>
+    </g>
+    <g transform="" id="PTD-INFO">
+        <path stroke="darkgreen" stroke-width="2px" id="path7" d="M824,907 l0,-80 a10,10 90 0 1 10,-10 l60,0 "
+            fill="none" transform=""></path>
+        <path stroke="darkgreen" stroke-linejoin="miter" stroke-width="6" id="path2"
+            d="M893,804 l0,250 a10,10 90 0 0 10,10 l300,0 a10,10 90 0 0 10,-10 l0,-250 a10,10 90 0 0 -10,-10 l-300,0 a10,10 90 0 0 -10,10 "
+            fill="black" stroke-linecap="butt" transform=""></path>
+        <circle stroke="#000000" cx="824px" stroke-width="0px" id="circle6" cy="911px" fill="darkgreen" r="11px"
+            transform=""></circle>
+        <g transform="" id="PTD">
+            <line stroke="#858787" y1="899px" stroke-width="3px" x1="907px" id="line5" y2="899px" x2="1202px"
+                transform=""></line>
+            <g transform="" id="VEL-TD">
+                <image x="914px" height="70px" y="912px" id="image5"
+                    xlink:href="file:///Users/renanmoreira/Documents/UFMG/Tesla/interface/Janela%20de%20Dados%202019/static/SVGs/speedometer.svg"
+                    xlink:role="file:///Users/renanmoreira/Documents/UFMG/Tesla/interface/Janela%20de%20Dados%202019/static/SVGs/speedometer.svg"
+                    width="70px" preserveAspectRatio="xMidYMid meet" transform=""></image><text stroke="none"
+                    style="outline-style:none;" id="text19" stroke-width="1px" x="1101px"
+                    text-rendering="geometricPrecision" y="974px" font-family="Exo" fill="whitesmoke" font-size="25px"
+                    transform="" text-anchor="end">0</text><text stroke="none" style="outline-style:none;" id="text20"
+                    stroke-width="1px" x="1141px" text-rendering="geometricPrecision" y="975px" font-family="Exo"
+                    fill="whitesmoke" font-size="25px" transform="" text-anchor="middle">RPM</text><text stroke="none"
+                    style="outline-style:none;" id="text21" stroke-width="1px" x="1080px" font-weight="bold"
+                    text-rendering="geometricPrecision" font-family="Exo" fill="whitesmoke" font-size="30px" y="944px"
+                    transform="" text-anchor="middle">VELOCIDADE</text>
+            </g>
+            <g id="PTD-TEXT" transform=""><text stroke="none" style="outline-style: none;" id="text17"
+                    stroke-width="1px" x="1180px" font-weight="bold" text-rendering="geometricPrecision"
+                    font-family="Exo" fill="whitesmoke" font-size="35px" y="881px" transform=""
+                    text-anchor="end">DIREITO</text><text stroke="none" style="outline-style: none;" id="text18"
+                    stroke-width="1px" x="909px" font-weight="bold" text-rendering="geometricPrecision"
+                    font-family="Exo" fill="whitesmoke" font-size="35px" y="841px" transform="" text-anchor="start">PNEU
+                    TRASEIRO</text></g>
+            <g transform="" id="TEMP-TD">
+                <image x="1122px" height="70px" y="988px" id="image9"
+                    xlink:href="file:///Users/renanmoreira/Documents/UFMG/Tesla/interface/Janela%20de%20Dados%202019/static/SVGs/termometer.svg"
+                    xlink:role="file:///Users/renanmoreira/Documents/UFMG/Tesla/interface/Janela%20de%20Dados%202019/static/SVGs/termometer.svg"
+                    width="70px" preserveAspectRatio="xMidYMid meet" transform=""></image><text stroke="none"
+                    style="outline-style:none;" id="text22" stroke-width="1px" x="1136px" font-weight="bold"
+                    text-rendering="geometricPrecision" font-family="Exo" fill="whitesmoke" font-size="30px" y="1019px"
+                    transform="" text-anchor="end">TEMPERATURA</text><text stroke="none" style="outline-style:none;"
+                    id="text23" stroke-width="1px" x="971px" text-rendering="geometricPrecision" y="1050px"
+                    font-family="Exo" fill="whitesmoke" font-size="25px" transform="" text-anchor="end">0</text><text
+                    stroke="none" style="outline-style:none;" id="text24" stroke-width="1px" x="1007px"
+                    text-rendering="geometricPrecision" y="1050px" font-family="Exo" fill="whitesmoke" font-size="25px"
+                    transform="" text-anchor="end">ºC</text>
+            </g>
+        </g>
+    </g>
+</svg>

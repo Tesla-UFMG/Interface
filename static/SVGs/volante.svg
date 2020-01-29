@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://web.resource.org/cc/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" cursor="default" style="zoom: 1;" height="350px"
+    id="svg_document" width="500px" baseProfile="full" version="1.1" preserveAspectRatio="xMidYMid meet"
+    viewBox="0 0 500 350">
+    <image x="218px" height="49.417px" y="141px" id="image1"
+        xlink:href="file:///Users/renanmoreira/Documents/UFMG/Tesla/interface/Janela%20de%20Dados%202019/static/images/logo-fundo-branco.png"
+        xlink:role="file:///Users/renanmoreira/Documents/UFMG/Tesla/interface/Janela%20de%20Dados%202019/static/images/logo-fundo-branco.png"
+        width="69px" preserveAspectRatio="xMidYMid meet" transform=""></image>
+    <!-- Created with macSVG - https://macsvg.org/ - https://github.com/dsward2/macsvg/ -->
+    <title id="svg_document_title">Untitled.svg</title>
+    <defs id="svg_document_defs"></defs>
+    <g id="main_group"></g>
+    <g transform="" id="st-wheel">
+        <path stroke="whitesmoke" id="path1" stroke-width="3px"
+            d="M100,100 l0,120 s0,45 80,45 l140,0 s80,0 80,-45 l0,-120 s0,-30 -80,-30 l-140,0 s-80,0 -80,30  z "
+            fill="whitesmoke" transform=""></path>
+        <path stroke="whitesmoke" stroke-linejoin="miter" stroke-width="5" id="path2"
+            d="M180,90 l-50,10 c-20,10 -20,30 0,40 l50,0 a10,10 90 0 0 10,-10 l0,-30 c0,-5 0,-10 -10,-10  z "
+            fill="black" stroke-linecap="butt" transform=""></path>
+        <path stroke="whitesmoke" visibility="visible" id="path3" stroke-width="5"
+            d="M320,90 l50,10 c20,10 20,30 0,40 l-50,0 a10,10 90 0 1 -10,-10 l0,-30 c0,-5 0,-10 10,-10  z " fill="black"
+            stroke-linecap="butt" transform="" stroke-linejoin="miter"></path>
+        <path stroke="whitesmoke" stroke-width="5" id="path4"
+            d="M365,169 a10,10 90 0 1 10,10 l0,40 c0,15 -35,29 -50,30 a10,10 90 0 1 -10,-10 l0,-30 s0,-40 45,-40  z "
+            fill="black" stroke-linecap="butt" transform="" stroke-linejoin="miter"></path>
+        <path stroke="whitesmoke" stroke-width="5" id="path5"
+            d="M135,170 a10,10 90 0 0 -10,10 l0,40 c0,15 35,29 50,30 a10,10 90 0 0 10,-10 l0,-30 s0,-40 -45,-40  z "
+            fill="black" stroke-linecap="butt" transform="" stroke-linejoin="miter"></path>
+        <g id="g1" transform="">
+            <circle stroke="none" stroke-width="3px" id="circle2" cy="135px" fill="black" r="4px" transform=""
+                cx="269px"></circle>
+            <circle stroke="none" stroke-width="3px" id="circle3" cy="197px" fill="black" r="4px" transform=""
+                cx="230px"></circle>
+            <circle stroke="none" stroke-width="3px" id="circle4" cy="197px" fill="black" r="4px" transform=""
+                cx="269px"></circle>
+            <circle stroke="none" stroke-width="3px" id="circle5" cy="135px" fill="black" r="4px" transform=""
+                cx="230px"></circle>
+            <circle stroke="none" transform="" stroke-width="3px" id="circle1" cy="166px" fill="black" r="4px"
+                cx="286px"></circle>
+            <circle stroke="none" transform="" stroke-width="3px" id="circle6" cy="167px" fill="black" r="4px"
+                cx="213px"></circle>
+        </g>
+    </g>
+</svg>
