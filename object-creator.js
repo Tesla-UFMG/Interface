@@ -42,6 +42,8 @@ class ObjectCreator {
             if (packPart < 3) {
                 for (let i = 0; i < 4; i++) {
                     this.packs[packIndex].cells[packPart*4+i] = data[i];
+                    let fieldId = this.mapId(id, i);
+                    this.insertData(fieldId, data[i]);
                 }
             } else if (packPart < 4) {
                 this.packs[packIndex].temperatures = data;
