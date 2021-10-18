@@ -1,4 +1,3 @@
-
 //PARA REGISTRAR UM NOVO DADO:
 //primeiramente, em TypeFields, adicione mais uma linha, incrementando o índice em 1 e o nome do dado em camelCase
 //depois, adicione mais uma linha em availableField, com o index sendo o mesmo índice do TypeFields.
@@ -17,15 +16,9 @@ if (typeof require.extensions !== 'undefined')
         module.exports = fs.readFileSync(filename, 'utf8');
     }
 
-
-
 const configFileName = 'config.properties';
 let pr = require('../config.properties');
-
-
-
 let file = typeof pr == 'object' ? pr.default : pr;
-
 // let file = properties;
 if (!isOnClient) {
     if (file === '') {
@@ -48,7 +41,6 @@ portName =
 # [string] [default = ignore-ports.txt] Nome do arquivo de texto, na pasta raiz, contendo nome de portas para serem ignoradas na identificação automática de porta, separados por linha.
 ignorePortsFile = ignore-ports.txt
 
-
 # NOTIFICAÇÕES
 
 # [bool] [default = true] Ativar ou desativar notificações
@@ -57,7 +49,6 @@ shouldNotify = true
 percentageLimitTolerance = 10
 # [number] [default = 30000] Tempo de timeout em milissegundos para a notificação ser reacionada caso a condição não mude
 notificationExpirationTimeout = 30000
-
 
 # DATALOG
 
@@ -70,7 +61,6 @@ datalogTimeout = 30000
 # [bool] [default = false] Incluir timestamp (quantidade de milissegundos desde 1/1/1970 00:00) como primeiro item de cada linha
 includeTimestamp = false
 
-
 # PLOTAGEM EM TEMPO REAL
 
 # BANCO DE DADOS LOCAL
@@ -82,7 +72,6 @@ cleanUpTimeout = 1000
 #PLOTAGEM
 # [number] [default = 1] Quantidade desejada de pontos por segundo para serem exibidos no gráfico. VALORES ALTOS PODEM COMPROMETER A INTEGRIDADE DO SERVIDOR E DA REDE.
 pointsPerSecond = 1
-
         `;
         const path = require('path');
         const correctedPath = path.join(__dirname, '..', configFileName);
@@ -91,7 +80,6 @@ pointsPerSecond = 1
         file = configTemplate;
     }
 }
-
 
 const config = file.split('\n')
     .filter(value => !value.startsWith('#') && !(value.trim() === ''))
@@ -115,22 +103,15 @@ const config = file.split('\n')
 const percentageLimitTolerance = config.percentageLimitTolerance;
 const notificationExpirationTimeout = config.notificationExpirationTimeout;
 const shouldNotify = config.shouldNotify;
-
 const datalogFilePath = config.datalogFilePath;
 const shouldWrite = config.shouldWrite;
 const datalogTimeout = config.datalogTimeout;
 const includeTimestamp = config.includeTimestamp;
-
-
 const persistanceTimeout = config.persistanceTimeout;
 const cleanUpTimeout = config.cleanUpTimeout;
-
 const pointsPerSecond = config.pointsPerSecond;
-
-
 const portName = config.portName;
 const ignorePortsFile = config.ignorePortsFile;
-
 const OperationsType = {
     BYTES: 0,
     STRING: 1,
@@ -149,23 +130,152 @@ for (i = 0; i < config.xbeeSourceAddress.length; i+=2) {
 }
 const xbeeSourceAddress = xbeeSourceAddressArray;
 
-
 let fields = {
-    airStatus: {index: 0, name: "airStatus", id: 0, pos: 0},
-    stoppedTime: {index: 1, name: "stoppedTime", id: 0x100, pos: 0},
-    current0: {index: 2, name: "current0", id: 51, pos:0},
-    current1: {index: 3, name: "current1", id: 51, pos:1},
-    current2: {index: 4, name: "current2", id: 51, pos:2},
-    current3: {index: 5, name: "current3", id: 51, pos:3},
-    glvVoltage: {index: 6, name: "glvVoltage", id: 52, pos: 0},
-    chargePercent: {index: 7, name: "chargePercent", id: 52, pos: 1},
-    operationMode: {index: 8, name: "operationMode", id: 52, pos: 2},
-    errorFlag: {index: 9, name: "errorFlag", id: 52, pos: 3},
-    mediaCurrent: {index: 10, name: "mediaCurrent", id: 53, pos: 0},
-    totalVoltage: {index: 11, name: "totalVoltage", id: 53, pos: 1},
-    mediaTemperature: {index: 12, name: "mediaTemperature", id: 53, pos: 2},
-    maxTemperature: {index: 13, name: "maxTemperature", id: 53, pos: 3},
-    minVoltage: {index: 14, name: "minVoltage", id: 54, pos: 0},
+    /*baterias geral*/
+
+    airStatus: {index: 0, name: "airStatus", id: 51, pos: 3},
+    current0: {index: 2, name: "current0", id: 50, pos:0},
+    current1: {index: 3, name: "current1", id: 50, pos:1},
+    current2: {index: 4, name: "current2", id: 50, pos:2},
+    current3: {index: 5, name: "current3", id: 50, pos:3},
+    glvVoltage: {index: 6, name: "glvVoltage", id: 51, pos: 0},
+    chargePercent: {index: 7, name: "chargePercent", id: 51, pos: 1},
+    totalVoltage: {index: 11, name: "totalVoltage", id: 52, pos: 1},
+    maxTemperature: {index: 13, name: "maxTemperature", id: 52, pos: 3},
+    minVoltage: {index: 14, name: "minVoltage", id: 53, pos: 0},
+
+    /*pack 0*/
+
+    cell000: {index: 40, name: "cell000", id: 281, pos: 0},
+    cell001: {index: 41, name: "cell001", id: 281, pos: 1},
+    cell002: {index: 42, name: "cell002", id: 281, pos: 2},
+    cell003: {index: 43, name: "cell003", id: 281, pos: 3},
+    cell004: {index: 44, name: "cell004", id: 282, pos: 0},
+    cell005: {index: 45, name: "cell005", id: 282, pos: 1},
+    cell006: {index: 46, name: "cell006", id: 282, pos: 2},
+    cell007: {index: 47, name: "cell007", id: 282, pos: 3},
+    cell008: {index: 48, name: "cell008", id: 283, pos: 0},
+    cell009: {index: 49, name: "cell009", id: 283, pos: 1},
+    cell010: {index: 50, name: "cell010", id: 283, pos: 2},
+    cell011: {index: 51, name: "cell011", id: 283, pos: 3},
+    cell012: {index: 52, name: "cell012", id: 284, pos: 0},
+    temp001: {index: 53, name: "temp001", id: 284, pos: 1},
+    temp002: {index: 54, name: "temp002", id: 284, pos: 2},
+    temp003: {index: 55, name: "temp003", id: 284, pos: 3},
+    temp004: {index: 56, name: "temp004", id: 285, pos: 0},
+    temp005: {index: 57, name: "temp005", id: 285, pos: 1},
+
+    /*pack 1*/ 
+
+    cell100: {index: 58, name: "cell100", id: 276, pos: 0},
+    cell101: {index: 59, name: "cell101", id: 276, pos: 1},
+    cell102: {index: 60, name: "cell102", id: 276, pos: 2},
+    cell103: {index: 61, name: "cell103", id: 276, pos: 3},
+    cell104: {index: 62, name: "cell104", id: 277, pos: 0},
+    cell105: {index: 63, name: "cell105", id: 277, pos: 1},
+    cell106: {index: 64, name: "cell106", id: 277, pos: 2},
+    cell107: {index: 65, name: "cell107", id: 277, pos: 3},
+    cell108: {index: 66, name: "cell108", id: 278, pos: 0},
+    cell109: {index: 67, name: "cell109", id: 278, pos: 1},
+    cell110: {index: 68, name: "cell110", id: 278, pos: 2},
+    cell111: {index: 69, name: "cell111", id: 278, pos: 3},
+    cell112: {index: 70, name: "cell112", id: 279, pos: 0},
+    temp101: {index: 71, name: "temp101", id: 279, pos: 1},
+    temp102: {index: 72, name: "temp102", id: 279, pos: 2},
+    temp103: {index: 73, name: "temp103", id: 279, pos: 3},
+    temp104: {index: 74, name: "temp104", id: 280, pos: 0},
+    temp105: {index: 75, name: "temp105", id: 280, pos: 1},
+    
+    /*pack 2*/ 
+    
+    cell200: {index: 76, name: "cell200", id: 271, pos: 0},
+    cell201: {index: 77, name: "cell201", id: 271, pos: 1},
+    cell202: {index: 78, name: "cell202", id: 271, pos: 2},
+    cell203: {index: 79, name: "cell203", id: 271, pos: 3},
+    cell204: {index: 80, name: "cell204", id: 272, pos: 0},
+    cell205: {index: 81, name: "cell205", id: 272, pos: 1},
+    cell206: {index: 82, name: "cell206", id: 272, pos: 2},
+    cell207: {index: 83, name: "cell207", id: 272, pos: 3},
+    cell208: {index: 84, name: "cell208", id: 273, pos: 0},
+    cell209: {index: 85, name: "cell209", id: 273, pos: 1},
+    cell210: {index: 86, name: "cell210", id: 273, pos: 2},
+    cell211: {index: 87, name: "cell211", id: 273, pos: 3},
+    cell212: {index: 88, name: "cell212", id: 274, pos: 0},
+    temp201: {index: 89, name: "temp201", id: 274, pos: 1},
+    temp202: {index: 90, name: "temp202", id: 274, pos: 2},
+    temp203: {index: 91, name: "temp203", id: 274, pos: 3},
+    temp204: {index: 92, name: "temp204", id: 275, pos: 0},
+    temp205: {index: 93, name: "temp205", id: 275, pos: 1},
+    
+    /*pack 3*/ 
+    
+    cell300: {index: 94, name: "cell300", id: 266, pos: 0},
+    cell301: {index: 95, name: "cell301", id: 266, pos: 1},
+    cell302: {index: 96, name: "cell302", id: 266, pos: 2},
+    cell303: {index: 97, name: "cell303", id: 266, pos: 3},
+    cell304: {index: 98, name: "cell304", id: 267, pos: 0},
+    cell305: {index: 99, name: "cell305", id: 267, pos: 1},
+    cell306: {index: 100, name: "cell306", id: 267, pos: 2},
+    cell307: {index: 101, name: "cell307", id: 267, pos: 3},
+    cell308: {index: 102, name: "cell308", id: 268, pos: 0},
+    cell309: {index: 103, name: "cell309", id: 268, pos: 1},
+    cell310: {index: 104, name: "cell310", id: 268, pos: 2},
+    cell311: {index: 105, name: "cell311", id: 268, pos: 3},
+    cell312: {index: 106, name: "cell312", id: 269, pos: 0},
+    temp301: {index: 107, name: "temp301", id: 269, pos: 1},
+    temp302: {index: 108, name: "temp302", id: 269, pos: 2},
+    temp303: {index: 109, name: "temp303", id: 269, pos: 3},
+    temp304: {index: 110, name: "temp304", id: 270, pos: 0},
+    temp305: {index: 111, name: "temp305", id: 270, pos: 1},
+    
+    /*pack 4*/ 
+
+    cell400: {index: 112, name: "cell400", id: 256, pos: 0},
+    cell401: {index: 113, name: "cell401", id: 256, pos: 1},
+    cell402: {index: 114, name: "cell402", id: 256, pos: 2},
+    cell403: {index: 115, name: "cell403", id: 256, pos: 3},
+    cell404: {index: 116, name: "cell404", id: 257, pos: 0},
+    cell405: {index: 117, name: "cell405", id: 257, pos: 1},
+    cell406: {index: 118, name: "cell406", id: 257, pos: 2},
+    cell407: {index: 119, name: "cell407", id: 257, pos: 3},
+    cell408: {index: 120, name: "cell408", id: 258, pos: 0},
+    cell409: {index: 121, name: "cell409", id: 258, pos: 1},
+    cell410: {index: 122, name: "cell410", id: 258, pos: 2},
+    cell411: {index: 123, name: "cell411", id: 258, pos: 3},
+    cell412: {index: 124, name: "cell412", id: 259, pos: 0},
+    temp401: {index: 125, name: "temp401", id: 259, pos: 1},
+    temp402: {index: 126, name: "temp402", id: 259, pos: 2},
+    temp403: {index: 127, name: "temp403", id: 259, pos: 3},
+    temp404: {index: 128, name: "temp404", id: 260, pos: 0},
+    temp405: {index: 129, name: "temp405", id: 260, pos: 1},
+    
+    /*pack 5*/ 
+    
+    cell500: {index: 130, name: "cell500", id: 261, pos: 0},
+    cell501: {index: 131, name: "cell501", id: 261, pos: 1},
+    cell502: {index: 132, name: "cell502", id: 261, pos: 2},
+    cell503: {index: 133, name: "cell503", id: 261, pos: 3},
+    cell504: {index: 134, name: "cell504", id: 262, pos: 0},
+    cell505: {index: 135, name: "cell505", id: 262, pos: 1},
+    cell506: {index: 136, name: "cell506", id: 262, pos: 2},
+    cell507: {index: 137, name: "cell507", id: 262, pos: 3},
+    cell508: {index: 138, name: "cell508", id: 263, pos: 0},
+    cell509: {index: 139, name: "cell509", id: 263, pos: 1},
+    cell510: {index: 140, name: "cell510", id: 263, pos: 2},
+    cell511: {index: 141, name: "cell511", id: 263, pos: 3},
+    cell512: {index: 142, name: "cell512", id: 264, pos: 0},
+    temp501: {index: 143, name: "temp501", id: 264, pos: 1},
+    temp502: {index: 144, name: "temp502", id: 264, pos: 2},
+    temp503: {index: 145, name: "temp503", id: 264, pos: 3},
+    temp504: {index: 146, name: "temp504", id: 265, pos: 0},
+    temp505: {index: 147, name: "temp505", id: 265, pos: 1},
+
+
+    stoppedTime: {index: 1, name: "stoppedTime", id: 0x100, pos: 0}, 
+    operationMode: {index: 8, name: "operationMode", id: 1, pos: 0},
+    errorFlag: {index: 9, name: "errorFlag", id: 0x001, pos: 2},
+    mediaCurrent: {index: 10, name: "mediaCurrent", id: 53, pos: 0}, //não achei
+    mediaTemperature: {index: 12, name: "mediaTemperature", id: 53, pos: 2}, //não achei    
     speedFL: {index: 15, name: "speedFL", id: 105, pos: 3},
     speedFR: {index: 16, name: "speedFR", id: 105, pos: 2},
     speedBL: {index: 17, name: "speedBL", id: 105, pos: 1},
@@ -191,102 +301,6 @@ let fields = {
     currentEvent: {index: 37, name: "currentEvent", id: 100, pos: 0},
     started: {index: 38, name: "started", id: 100, pos: 1},
     finished: {index: 39, name: "finished", id: 100, pos: 2},
-    cell000: {index: 40, name: "cell000", id: 260, pos: 0},
-    cell001: {index: 41, name: "cell001", id: 260, pos: 1},
-    cell002: {index: 42, name: "cell002", id: 260, pos: 2},
-    cell003: {index: 43, name: "cell003", id: 260, pos: 3},
-    cell004: {index: 44, name: "cell004", id: 261, pos: 0},
-    cell005: {index: 45, name: "cell005", id: 261, pos: 1},
-    cell006: {index: 46, name: "cell006", id: 261, pos: 2},
-    cell007: {index: 47, name: "cell007", id: 261, pos: 3},
-    cell008: {index: 48, name: "cell008", id: 262, pos: 0},
-    cell009: {index: 49, name: "cell009", id: 262, pos: 1},
-    cell010: {index: 50, name: "cell010", id: 262, pos: 2},
-    cell011: {index: 51, name: "cell011", id: 262, pos: 3},
-    temp001: {index: 52, name: "temp001", id: 263, pos: 0},
-    temp002: {index: 53, name: "temp002", id: 263, pos: 1},
-    temp003: {index: 54, name: "temp003", id: 263, pos: 2},
-    temp004: {index: 55, name: "temp004", id: 263, pos: 3},
-    cell100: {index: 56, name: "cell100", id: 265, pos: 0},
-    cell101: {index: 57, name: "cell101", id: 265, pos: 1},
-    cell102: {index: 58, name: "cell102", id: 265, pos: 2},
-    cell103: {index: 59, name: "cell103", id: 265, pos: 3},
-    cell104: {index: 60, name: "cell104", id: 266, pos: 0},
-    cell105: {index: 61, name: "cell105", id: 266, pos: 1},
-    cell106: {index: 62, name: "cell106", id: 266, pos: 2},
-    cell107: {index: 63, name: "cell107", id: 266, pos: 3},
-    cell108: {index: 64, name: "cell108", id: 267, pos: 0},
-    cell109: {index: 65, name: "cell109", id: 267, pos: 1},
-    cell110: {index: 66, name: "cell110", id: 267, pos: 2},
-    cell111: {index: 67, name: "cell111", id: 267, pos: 3},
-    temp101: {index: 68, name: "temp101", id: 268, pos: 0},
-    temp102: {index: 69, name: "temp102", id: 268, pos: 1},
-    temp103: {index: 70, name: "temp103", id: 268, pos: 2},
-    temp104: {index: 71, name: "temp104", id: 268, pos: 3},
-    cell200: {index: 72, name: "cell200", id: 270, pos: 0},
-    cell201: {index: 73, name: "cell201", id: 270, pos: 1},
-    cell202: {index: 74, name: "cell202", id: 270, pos: 2},
-    cell203: {index: 75, name: "cell203", id: 270, pos: 3},
-    cell204: {index: 76, name: "cell204", id: 271, pos: 0},
-    cell205: {index: 77, name: "cell205", id: 271, pos: 1},
-    cell206: {index: 78, name: "cell206", id: 271, pos: 2},
-    cell207: {index: 79, name: "cell207", id: 271, pos: 3},
-    cell208: {index: 80, name: "cell208", id: 272, pos: 0},
-    cell209: {index: 81, name: "cell209", id: 272, pos: 1},
-    cell210: {index: 82, name: "cell210", id: 272, pos: 2},
-    cell211: {index: 83, name: "cell211", id: 272, pos: 3},
-    temp201: {index: 84, name: "temp201", id: 273, pos: 0},
-    temp202: {index: 85, name: "temp202", id: 273, pos: 1},
-    temp203: {index: 86, name: "temp203", id: 273, pos: 2},
-    temp204: {index: 87, name: "temp204", id: 273, pos: 3},
-    cell300: {index: 88, name: "cell300", id: 275, pos: 0},
-    cell301: {index: 89, name: "cell301", id: 275, pos: 1},
-    cell302: {index: 90, name: "cell302", id: 275, pos: 2},
-    cell303: {index: 91, name: "cell303", id: 275, pos: 3},
-    cell304: {index: 92, name: "cell304", id: 276, pos: 0},
-    cell305: {index: 93, name: "cell305", id: 276, pos: 1},
-    cell306: {index: 94, name: "cell306", id: 276, pos: 2},
-    cell307: {index: 95, name: "cell307", id: 276, pos: 3},
-    cell308: {index: 96, name: "cell308", id: 277, pos: 0},
-    cell309: {index: 97, name: "cell309", id: 277, pos: 1},
-    cell310: {index: 98, name: "cell310", id: 277, pos: 2},
-    cell311: {index: 99, name: "cell311", id: 277, pos: 3},
-    temp301: {index: 100, name: "temp301", id: 278, pos: 0},
-    temp302: {index: 101, name: "temp302", id: 278, pos: 1},
-    temp303: {index: 102, name: "temp303", id: 278, pos: 2},
-    temp304: {index: 103, name: "temp304", id: 278, pos: 3},
-    cell400: {index: 104, name: "cell400", id: 280, pos: 0},
-    cell401: {index: 105, name: "cell401", id: 280, pos: 1},
-    cell402: {index: 106, name: "cell402", id: 280, pos: 2},
-    cell403: {index: 107, name: "cell403", id: 280, pos: 3},
-    cell404: {index: 108, name: "cell404", id: 281, pos: 0},
-    cell405: {index: 109, name: "cell405", id: 281, pos: 1},
-    cell406: {index: 110, name: "cell406", id: 281, pos: 2},
-    cell407: {index: 111, name: "cell407", id: 281, pos: 3},
-    cell408: {index: 112, name: "cell408", id: 282, pos: 0},
-    cell409: {index: 113, name: "cell409", id: 282, pos: 1},
-    cell410: {index: 114, name: "cell410", id: 282, pos: 2},
-    cell411: {index: 115, name: "cell411", id: 282, pos: 3},
-    temp401: {index: 116, name: "temp401", id: 283, pos: 0},
-    temp402: {index: 117, name: "temp402", id: 283, pos: 1},
-    temp403: {index: 118, name: "temp403", id: 283, pos: 2},
-    temp404: {index: 119, name: "temp404", id: 283, pos: 3},
-    cell500: {index: 120, name: "cell500", id: 285, pos: 0},
-    cell501: {index: 121, name: "cell501", id: 285, pos: 1},
-    cell502: {index: 122, name: "cell502", id: 285, pos: 2},
-    cell503: {index: 123, name: "cell503", id: 285, pos: 3},
-    cell504: {index: 124, name: "cell504", id: 286, pos: 0},
-    cell505: {index: 125, name: "cell505", id: 286, pos: 1},
-    cell506: {index: 126, name: "cell506", id: 286, pos: 2},
-    cell507: {index: 127, name: "cell507", id: 286, pos: 3},
-    cell508: {index: 128, name: "cell508", id: 287, pos: 0},
-    cell509: {index: 129, name: "cell509", id: 287, pos: 1},
-    cell510: {index: 130, name: "cell510", id: 287, pos: 2},
-    cell511: {index: 131, name: "cell511", id: 287, pos: 3},
-    temp501: {index: 132, name: "temp501", id: 288, pos: 0},
-    temp502: {index: 133, name: "temp502", id: 288, pos: 1},
-    temp503: {index: 134, name: "temp503", id: 288, pos: 2},
-    temp504: {index: 135, name: "temp504", id: 288, pos: 3},
     tireTempFL: {index: 150, name: "tireTempFL", id: 0x700, pos: 0},
     tireTempFR: {index: 151, name: "tireTempFR", id: 0x700, pos: 1},
     tireTempBL: {index: 152, name: "tireTempBL", id: 0x700, pos: 2},
@@ -314,22 +328,17 @@ let fields = {
     selecaoBotao: {index: 172, name: "selecaoBotao", id: 104, pos: 3},
     ganhoTorque: {index: 173, name: "ganhoTorque", id: 106, pos: 0},
     extensometro22: {index: 174, name: "extensometro22", id: 173, pos: 0},
-
     extensometro13: {index: 175, name: "extensometro13", id: 178, pos: 0},
-
     extensometro23: {index: 176, name: "extensometro23", id: 178, pos: 2},
-
     simHodometer: {index: 177, name: "simHodometer", id: 901, pos: 0},
     simCharge: {index: 178, name: "simCharge", id: 901, pos: 1},
     pressaoTraseiro: {index: 179, name: "pressaoTraseiro", id: 200, pos: 0}
-
 }
-
 
 const nameFieldIdMap = Object.values(fields).reduce((last, field) => (last[field.name] = field.index, last), {})
 const fieldIdNameMap = Object.values(fields).reduce((last, field) => (last[field.index] = field.name, last), {})
 
-
+//para plotar no gráfico
 let availablePlotOptions = [
     {index: fields.current0.index, name: "Corrente 0", unidade: "A", formatFn: ((current) => (current > Math.pow(2, 15) ? (current-Math.pow(2, 16))/10: current/10))},
     {index: fields.current1.index, name: "Corrente 1", unidade: "A", formatFn: ((current) => (current > Math.pow(2, 15) ? (current-Math.pow(2, 16))/100: current)/100)},
@@ -385,8 +394,6 @@ let availablePlotOptions = [
     {index: fields.pressaoTraseiro.index, name: "Pressão na linha de freio traseira", unidade: "Pa", formatFn: ((a) => a)}
 ]
 
-
-
 const availablePlotIndexes = availablePlotOptions.map(option => option.index);
 
 let datalogOrder = [
@@ -420,7 +427,7 @@ let datalogOrder = [
     fields.maxTemperature.name,
     fields.motorCurrentRight.name,
     fields.motorCurrentLeft.name,
-    fields.temp001.name,
+    //fields.temp001.name,
     fields.temp002.name,
     fields.temp003.name,
     fields.temp004.name,
@@ -448,7 +455,6 @@ let datalogOrder = [
     fields.totalVoltage.name,
     fields.minVoltage.name,
     fields.pressaoTraseiro.name
-
 ]
 
 // let datalogOrder = [
@@ -458,10 +464,7 @@ let datalogOrder = [
 //     fields.current3.name,
 //     fields.motorCurrentRight.name,
 //     fields.motorCurrentLeft.name
- 
-
 // ]
-
 
 let fieldsLimits = [
     {name: fields.chargePercent.name, formattedName: "Porcentagem de Carga", min: 0, maxReference: 100},
@@ -486,11 +489,6 @@ fieldsLimits = fieldsLimits.reduce( (last, field) => {
         last[field.name].maxReference = field.maxReference;
     return last
 }, {});
-
-
-
-
-
 
 module.exports = {
     availablePlotOptions,
