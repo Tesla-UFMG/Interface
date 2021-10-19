@@ -271,7 +271,7 @@ class ObjectCreator {
         return temps;
     }
 
-    buildDatalog() {
+    /*buildDatalog() {
         let datalogStr = "";
         if (constants.datalog.includeTimestamp) {
             datalogStr += new Date().getTime() + '\t';
@@ -285,7 +285,7 @@ class ObjectCreator {
 
 
         return datalogStr;
-    }
+    }*/
     
     
     

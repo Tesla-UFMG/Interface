@@ -270,6 +270,7 @@ let fields = {
     temp504: {index: 146, name: "temp504", id: 265, pos: 0},
     temp505: {index: 147, name: "temp505", id: 265, pos: 1},
 
+    /*controle geral*/
 
     stoppedTime: {index: 1, name: "stoppedTime", id: 0x100, pos: 0}, 
     operationMode: {index: 8, name: "operationMode", id: 1, pos: 0},
@@ -427,7 +428,7 @@ let datalogOrder = [
     fields.maxTemperature.name,
     fields.motorCurrentRight.name,
     fields.motorCurrentLeft.name,
-    //fields.temp001.name,
+    fields.temp001.name,
     fields.temp002.name,
     fields.temp003.name,
     fields.temp004.name,
