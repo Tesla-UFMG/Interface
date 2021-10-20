@@ -446,9 +446,13 @@ var _interopRequireDefault = __webpack_require__(/*! @babel/runtime-corejs2/help
 
 var _values = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/core-js/object/values */ "./node_modules/@babel/runtime-corejs2/core-js/object/values.js"));
 
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js"));
+
 var _parseInt2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/core-js/parse-int */ "./node_modules/@babel/runtime-corejs2/core-js/parse-int.js"));
 
 var _keys = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/core-js/object/keys */ "./node_modules/@babel/runtime-corejs2/core-js/object/keys.js"));
+
+var _fields;
 
 //PARA REGISTRAR UM NOVO DADO:
 //primeiramente, em TypeFields, adicione mais uma linha, incrementando o índice em 1 e o nome do dado em camelCase
@@ -528,7 +532,7 @@ for (i = 0; i < config.xbeeSourceAddress.length; i += 2) {
 }
 
 var xbeeSourceAddress = xbeeSourceAddressArray;
-var fields = {
+var fields = (_fields = {
   /*baterias geral*/
   airStatus: {
     index: 0,
@@ -537,55 +541,55 @@ var fields = {
     pos: 3
   },
   current0: {
-    index: 2,
+    index: 1,
     name: "current0",
     id: 50,
     pos: 0
   },
   current1: {
-    index: 3,
+    index: 2,
     name: "current1",
     id: 50,
     pos: 1
   },
   current2: {
-    index: 4,
+    index: 3,
     name: "current2",
     id: 50,
     pos: 2
   },
   current3: {
-    index: 5,
+    index: 4,
     name: "current3",
     id: 50,
     pos: 3
   },
   glvVoltage: {
-    index: 6,
+    index: 5,
     name: "glvVoltage",
     id: 51,
     pos: 0
   },
   chargePercent: {
-    index: 7,
+    index: 6,
     name: "chargePercent",
     id: 51,
     pos: 1
   },
   totalVoltage: {
-    index: 11,
+    index: 7,
     name: "totalVoltage",
     id: 52,
     pos: 1
   },
   maxTemperature: {
-    index: 13,
+    index: 8,
     name: "maxTemperature",
     id: 52,
     pos: 3
   },
   minVoltage: {
-    index: 14,
+    index: 9,
     name: "minVoltage",
     id: 53,
     pos: 0
@@ -593,109 +597,109 @@ var fields = {
 
   /*pack 0*/
   cell000: {
-    index: 40,
+    index: 10,
     name: "cell000",
     id: 281,
     pos: 0
   },
   cell001: {
-    index: 41,
+    index: 11,
     name: "cell001",
     id: 281,
     pos: 1
   },
   cell002: {
-    index: 42,
+    index: 12,
     name: "cell002",
     id: 281,
     pos: 2
   },
   cell003: {
-    index: 43,
+    index: 13,
     name: "cell003",
     id: 281,
     pos: 3
   },
   cell004: {
-    index: 44,
+    index: 14,
     name: "cell004",
     id: 282,
     pos: 0
   },
   cell005: {
-    index: 45,
+    index: 15,
     name: "cell005",
     id: 282,
     pos: 1
   },
   cell006: {
-    index: 46,
+    index: 16,
     name: "cell006",
     id: 282,
     pos: 2
   },
   cell007: {
-    index: 47,
+    index: 17,
     name: "cell007",
     id: 282,
     pos: 3
   },
   cell008: {
-    index: 48,
+    index: 18,
     name: "cell008",
     id: 283,
     pos: 0
   },
   cell009: {
-    index: 49,
+    index: 19,
     name: "cell009",
     id: 283,
     pos: 1
   },
   cell010: {
-    index: 50,
+    index: 20,
     name: "cell010",
     id: 283,
     pos: 2
   },
   cell011: {
-    index: 51,
+    index: 21,
     name: "cell011",
     id: 283,
     pos: 3
   },
   cell012: {
-    index: 52,
+    index: 22,
     name: "cell012",
     id: 284,
     pos: 0
   },
   temp001: {
-    index: 53,
+    index: 23,
     name: "temp001",
     id: 284,
     pos: 1
   },
   temp002: {
-    index: 54,
+    index: 24,
     name: "temp002",
     id: 284,
     pos: 2
   },
   temp003: {
-    index: 55,
+    index: 25,
     name: "temp003",
     id: 284,
     pos: 3
   },
   temp004: {
-    index: 56,
+    index: 26,
     name: "temp004",
     id: 285,
     pos: 0
   },
   temp005: {
-    index: 57,
+    index: 27,
     name: "temp005",
     id: 285,
     pos: 1
@@ -703,109 +707,109 @@ var fields = {
 
   /*pack 1*/
   cell100: {
-    index: 58,
+    index: 28,
     name: "cell100",
     id: 276,
     pos: 0
   },
   cell101: {
-    index: 59,
+    index: 29,
     name: "cell101",
     id: 276,
     pos: 1
   },
   cell102: {
-    index: 60,
+    index: 30,
     name: "cell102",
     id: 276,
     pos: 2
   },
   cell103: {
-    index: 61,
+    index: 31,
     name: "cell103",
     id: 276,
     pos: 3
   },
   cell104: {
-    index: 62,
+    index: 32,
     name: "cell104",
     id: 277,
     pos: 0
   },
   cell105: {
-    index: 63,
+    index: 33,
     name: "cell105",
     id: 277,
     pos: 1
   },
   cell106: {
-    index: 64,
+    index: 34,
     name: "cell106",
     id: 277,
     pos: 2
   },
   cell107: {
-    index: 65,
+    index: 35,
     name: "cell107",
     id: 277,
     pos: 3
   },
   cell108: {
-    index: 66,
+    index: 36,
     name: "cell108",
     id: 278,
     pos: 0
   },
   cell109: {
-    index: 67,
+    index: 37,
     name: "cell109",
     id: 278,
     pos: 1
   },
   cell110: {
-    index: 68,
+    index: 38,
     name: "cell110",
     id: 278,
     pos: 2
   },
   cell111: {
-    index: 69,
+    index: 39,
     name: "cell111",
     id: 278,
     pos: 3
   },
   cell112: {
-    index: 70,
+    index: 40,
     name: "cell112",
     id: 279,
     pos: 0
   },
   temp101: {
-    index: 71,
+    index: 41,
     name: "temp101",
     id: 279,
     pos: 1
   },
   temp102: {
-    index: 72,
+    index: 42,
     name: "temp102",
     id: 279,
     pos: 2
   },
   temp103: {
-    index: 73,
+    index: 43,
     name: "temp103",
     id: 279,
     pos: 3
   },
   temp104: {
-    index: 74,
+    index: 44,
     name: "temp104",
     id: 280,
     pos: 0
   },
   temp105: {
-    index: 75,
+    index: 45,
     name: "temp105",
     id: 280,
     pos: 1
@@ -813,109 +817,109 @@ var fields = {
 
   /*pack 2*/
   cell200: {
-    index: 76,
+    index: 46,
     name: "cell200",
     id: 271,
     pos: 0
   },
   cell201: {
-    index: 77,
+    index: 47,
     name: "cell201",
     id: 271,
     pos: 1
   },
   cell202: {
-    index: 78,
+    index: 48,
     name: "cell202",
     id: 271,
     pos: 2
   },
   cell203: {
-    index: 79,
+    index: 49,
     name: "cell203",
     id: 271,
     pos: 3
   },
   cell204: {
-    index: 80,
+    index: 50,
     name: "cell204",
     id: 272,
     pos: 0
   },
   cell205: {
-    index: 81,
+    index: 51,
     name: "cell205",
     id: 272,
     pos: 1
   },
   cell206: {
-    index: 82,
+    index: 52,
     name: "cell206",
     id: 272,
     pos: 2
   },
   cell207: {
-    index: 83,
+    index: 53,
     name: "cell207",
     id: 272,
     pos: 3
   },
   cell208: {
-    index: 84,
+    index: 54,
     name: "cell208",
     id: 273,
     pos: 0
   },
   cell209: {
-    index: 85,
+    index: 55,
     name: "cell209",
     id: 273,
     pos: 1
   },
   cell210: {
-    index: 86,
+    index: 56,
     name: "cell210",
     id: 273,
     pos: 2
   },
   cell211: {
-    index: 87,
+    index: 57,
     name: "cell211",
     id: 273,
     pos: 3
   },
   cell212: {
-    index: 88,
+    index: 58,
     name: "cell212",
     id: 274,
     pos: 0
   },
   temp201: {
-    index: 89,
+    index: 59,
     name: "temp201",
     id: 274,
     pos: 1
   },
   temp202: {
-    index: 90,
+    index: 60,
     name: "temp202",
     id: 274,
     pos: 2
   },
   temp203: {
-    index: 91,
+    index: 61,
     name: "temp203",
     id: 274,
     pos: 3
   },
   temp204: {
-    index: 92,
+    index: 62,
     name: "temp204",
     id: 275,
     pos: 0
   },
   temp205: {
-    index: 93,
+    index: 63,
     name: "temp205",
     id: 275,
     pos: 1
@@ -923,109 +927,109 @@ var fields = {
 
   /*pack 3*/
   cell300: {
-    index: 94,
+    index: 64,
     name: "cell300",
     id: 266,
     pos: 0
   },
   cell301: {
-    index: 95,
+    index: 65,
     name: "cell301",
     id: 266,
     pos: 1
   },
   cell302: {
-    index: 96,
+    index: 66,
     name: "cell302",
     id: 266,
     pos: 2
   },
   cell303: {
-    index: 97,
+    index: 67,
     name: "cell303",
     id: 266,
     pos: 3
   },
   cell304: {
-    index: 98,
+    index: 68,
     name: "cell304",
     id: 267,
     pos: 0
   },
   cell305: {
-    index: 99,
+    index: 69,
     name: "cell305",
     id: 267,
     pos: 1
   },
   cell306: {
-    index: 100,
+    index: 70,
     name: "cell306",
     id: 267,
     pos: 2
   },
   cell307: {
-    index: 101,
+    index: 71,
     name: "cell307",
     id: 267,
     pos: 3
   },
   cell308: {
-    index: 102,
+    index: 72,
     name: "cell308",
     id: 268,
     pos: 0
   },
   cell309: {
-    index: 103,
+    index: 73,
     name: "cell309",
     id: 268,
     pos: 1
   },
   cell310: {
-    index: 104,
+    index: 74,
     name: "cell310",
     id: 268,
     pos: 2
   },
   cell311: {
-    index: 105,
+    index: 75,
     name: "cell311",
     id: 268,
     pos: 3
   },
   cell312: {
-    index: 106,
+    index: 76,
     name: "cell312",
     id: 269,
     pos: 0
   },
   temp301: {
-    index: 107,
+    index: 77,
     name: "temp301",
     id: 269,
     pos: 1
   },
   temp302: {
-    index: 108,
+    index: 78,
     name: "temp302",
     id: 269,
     pos: 2
   },
   temp303: {
-    index: 109,
+    index: 79,
     name: "temp303",
     id: 269,
     pos: 3
   },
   temp304: {
-    index: 110,
+    index: 80,
     name: "temp304",
     id: 270,
     pos: 0
   },
   temp305: {
-    index: 111,
+    index: 81,
     name: "temp305",
     id: 270,
     pos: 1
@@ -1033,109 +1037,109 @@ var fields = {
 
   /*pack 4*/
   cell400: {
-    index: 112,
+    index: 82,
     name: "cell400",
     id: 256,
     pos: 0
   },
   cell401: {
-    index: 113,
+    index: 83,
     name: "cell401",
     id: 256,
     pos: 1
   },
   cell402: {
-    index: 114,
+    index: 84,
     name: "cell402",
     id: 256,
     pos: 2
   },
   cell403: {
-    index: 115,
+    index: 85,
     name: "cell403",
     id: 256,
     pos: 3
   },
   cell404: {
-    index: 116,
+    index: 86,
     name: "cell404",
     id: 257,
     pos: 0
   },
   cell405: {
-    index: 117,
+    index: 87,
     name: "cell405",
     id: 257,
     pos: 1
   },
   cell406: {
-    index: 118,
+    index: 88,
     name: "cell406",
     id: 257,
     pos: 2
   },
   cell407: {
-    index: 119,
+    index: 89,
     name: "cell407",
     id: 257,
     pos: 3
   },
   cell408: {
-    index: 120,
+    index: 90,
     name: "cell408",
     id: 258,
     pos: 0
   },
   cell409: {
-    index: 121,
+    index: 91,
     name: "cell409",
     id: 258,
     pos: 1
   },
   cell410: {
-    index: 122,
+    index: 92,
     name: "cell410",
     id: 258,
     pos: 2
   },
   cell411: {
-    index: 123,
+    index: 93,
     name: "cell411",
     id: 258,
     pos: 3
   },
   cell412: {
-    index: 124,
+    index: 94,
     name: "cell412",
     id: 259,
     pos: 0
   },
   temp401: {
-    index: 125,
+    index: 95,
     name: "temp401",
     id: 259,
     pos: 1
   },
   temp402: {
-    index: 126,
+    index: 96,
     name: "temp402",
     id: 259,
     pos: 2
   },
   temp403: {
-    index: 127,
+    index: 97,
     name: "temp403",
     id: 259,
     pos: 3
   },
   temp404: {
-    index: 128,
+    index: 98,
     name: "temp404",
     id: 260,
     pos: 0
   },
   temp405: {
-    index: 129,
+    index: 99,
     name: "temp405",
     id: 260,
     pos: 1
@@ -1143,478 +1147,468 @@ var fields = {
 
   /*pack 5*/
   cell500: {
-    index: 130,
+    index: 100,
     name: "cell500",
     id: 261,
     pos: 0
   },
   cell501: {
-    index: 131,
+    index: 101,
     name: "cell501",
     id: 261,
     pos: 1
   },
   cell502: {
-    index: 132,
+    index: 102,
     name: "cell502",
     id: 261,
     pos: 2
   },
   cell503: {
-    index: 133,
+    index: 103,
     name: "cell503",
     id: 261,
     pos: 3
   },
   cell504: {
-    index: 134,
+    index: 104,
     name: "cell504",
     id: 262,
     pos: 0
   },
   cell505: {
-    index: 135,
+    index: 105,
     name: "cell505",
     id: 262,
     pos: 1
   },
   cell506: {
-    index: 136,
+    index: 106,
     name: "cell506",
     id: 262,
     pos: 2
   },
   cell507: {
-    index: 137,
+    index: 107,
     name: "cell507",
     id: 262,
     pos: 3
   },
   cell508: {
-    index: 138,
+    index: 108,
     name: "cell508",
     id: 263,
     pos: 0
   },
   cell509: {
-    index: 139,
+    index: 109,
     name: "cell509",
     id: 263,
     pos: 1
   },
   cell510: {
-    index: 140,
+    index: 110,
     name: "cell510",
     id: 263,
     pos: 2
   },
   cell511: {
-    index: 141,
+    index: 111,
     name: "cell511",
     id: 263,
     pos: 3
   },
   cell512: {
-    index: 142,
+    index: 112,
     name: "cell512",
     id: 264,
     pos: 0
   },
   temp501: {
-    index: 143,
+    index: 113,
     name: "temp501",
     id: 264,
     pos: 1
   },
   temp502: {
-    index: 144,
+    index: 114,
     name: "temp502",
     id: 264,
     pos: 2
   },
   temp503: {
-    index: 145,
+    index: 115,
     name: "temp503",
     id: 264,
     pos: 3
   },
   temp504: {
-    index: 146,
+    index: 116,
     name: "temp504",
     id: 265,
     pos: 0
   },
   temp505: {
-    index: 147,
+    index: 117,
     name: "temp505",
     id: 265,
     pos: 1
   },
-  stoppedTime: {
-    index: 1,
-    name: "stoppedTime",
-    id: 0x100,
-    pos: 0
-  },
+
+  /*controle geral*/
+  // todos os valores da tabela hash de controle estão aqui caso queira que se adicione coisas na janela
+  // temos que fazer um filtro desses dados no momento em que formos refatora-lá
   operationMode: {
-    index: 8,
+    index: 118,
     name: "operationMode",
     id: 1,
     pos: 0
   },
-  errorFlag: {
-    index: 9,
-    name: "errorFlag",
-    id: 0x001,
-    pos: 2
-  },
-  mediaCurrent: {
-    index: 10,
-    name: "mediaCurrent",
-    id: 53,
-    pos: 0
-  },
-  //não achei
-  mediaTemperature: {
-    index: 12,
-    name: "mediaTemperature",
-    id: 53,
-    pos: 2
-  },
-  //não achei    
-  speedFL: {
-    index: 15,
-    name: "speedFL",
-    id: 105,
-    pos: 3
-  },
-  speedFR: {
-    index: 16,
-    name: "speedFR",
-    id: 105,
-    pos: 2
-  },
-  speedBL: {
-    index: 17,
-    name: "speedBL",
-    id: 105,
+  statusDatalog: {
+    index: 119,
+    name: "statusDatalog",
+    id: 1,
     pos: 1
   },
-  speedBR: {
-    index: 18,
-    name: "speedBR",
-    id: 105,
-    pos: 0
-  },
-  motorTorqueRight: {
-    index: 19,
-    name: "motorTorqueRight",
-    id: 103,
-    pos: 0
-  },
-  motorTorqueLeft: {
-    index: 20,
-    name: "motorTorqueLeft",
-    id: 103,
-    pos: 1
-  },
-  torqueReferenceRight: {
-    index: 21,
-    name: "torqueReferenceRight",
-    id: 103,
+  erroECU: {
+    index: 120,
+    name: "erroECU",
+    id: 1,
     pos: 2
   },
-  torqueReferenceLeft: {
-    index: 22,
-    name: "torqueReferenceLeft",
-    id: 103,
+  statusCurrent: {
+    index: 121,
+    name: "statusCurrent",
+    id: 1,
     pos: 3
+  },
+  ECUTimer: {
+    index: 122,
+    name: "ECUTimer",
+    id: 101,
+    pos: 0
+  },
+  steeringWheel: {
+    index: 123,
+    name: "steeringWheel",
+    id: 101,
+    pos: 1
   },
   pedalAcelerador: {
-    index: 23,
+    index: 124,
     name: "pedalAcelerador",
     id: 101,
     pos: 2
   },
   pedalFreio: {
-    index: 24,
+    index: 125,
     name: "pedalFreio",
     id: 101,
     pos: 3
   },
-  // mediaSpeed: {index: 25, name: "mediaSpeed", id: 0x304, pos: 0},
-  // mediaTorque: {index: 26, name: "mediaTorque", id: 0x304, pos: 1},
-  steeringWheel: {
-    index: 27,
-    name: "steeringWheel",
-    id: 101,
-    pos: 1
-  },
-  ECUTimer: {
-    index: 28,
-    name: "ECUTimer",
-    id: 101,
+  selectedMode: {
+    index: 126,
+    name: "selectedMode",
+    id: 102,
     pos: 0
   },
-  energiaInversorRight: {
-    index: 29,
-    name: "energiaInversorRight",
-    id: 106,
+  motorTorqueRight: {
+    index: 127,
+    name: "motorTorqueRight",
+    id: 103,
     pos: 0
   },
-  energiaInversorLeft: {
-    index: 30,
-    name: "energiaInversorLeft",
-    id: 106,
+  motorTorqueLeft: {
+    index: 128,
+    name: "motorTorqueLeft",
+    id: 103,
     pos: 1
   },
-  motorCurrentRight: {
-    index: 31,
-    name: "motorCurrentRight",
-    id: 106,
+  torqueReferenceRight: {
+    index: 129,
+    name: "torqueReferenceRight",
+    id: 103,
     pos: 2
   },
-  motorCurrentLeft: {
-    index: 32,
-    name: "motorCurrentLeft",
-    id: 106,
+  torqueReferenceLeft: {
+    index: 130,
+    name: "torqueReferenceLeft",
+    id: 103,
     pos: 3
-  },
-  temperatureInversorR1: {
-    index: 33,
-    name: "temperatureInversorR1",
-    id: 107,
-    pos: 0
-  },
-  temperatureInversorR2: {
-    index: 34,
-    name: "temperatureInversorR2",
-    id: 107,
-    pos: 1
-  },
-  temperatureInversorL1: {
-    index: 35,
-    name: "temperatureInversorL1",
-    id: 107,
-    pos: 2
-  },
-  temperatureInversorL2: {
-    index: 36,
-    name: "temperatureInversorL2",
-    id: 107,
-    pos: 3
-  },
-  currentEvent: {
-    index: 37,
-    name: "currentEvent",
-    id: 100,
-    pos: 0
-  },
-  started: {
-    index: 38,
-    name: "started",
-    id: 100,
-    pos: 1
-  },
-  finished: {
-    index: 39,
-    name: "finished",
-    id: 100,
-    pos: 2
-  },
-  tireTempFL: {
-    index: 150,
-    name: "tireTempFL",
-    id: 0x700,
-    pos: 0
-  },
-  tireTempFR: {
-    index: 151,
-    name: "tireTempFR",
-    id: 0x700,
-    pos: 1
-  },
-  tireTempBL: {
-    index: 152,
-    name: "tireTempBL",
-    id: 0x700,
-    pos: 2
-  },
-  tireTempBR: {
-    index: 153,
-    name: "tireTempBR",
-    id: 0x700,
-    pos: 3
-  },
-  accelerometerX: {
-    index: 154,
-    name: "accelerometerX",
-    id: 161,
-    pos: 0
-  },
-  accelerometerY: {
-    index: 155,
-    name: "accelerometerY",
-    id: 161,
-    pos: 1
-  },
-  accelerometerZ: {
-    index: 156,
-    name: "accelerometerZ",
-    id: 161,
-    pos: 2
-  },
-  gyroscopeX: {
-    index: 157,
-    name: "gyroscopeX",
-    id: 0x702,
-    pos: 0
-  },
-  gyroscopeY: {
-    index: 158,
-    name: "gyroscopeY",
-    id: 0x702,
-    pos: 1
-  },
-  gyroscopeZ: {
-    index: 159,
-    name: "gyroscopeZ",
-    id: 0x702,
-    pos: 2
-  },
-  portConnected: {
-    index: 900,
-    name: "portConnected",
-    id: 900,
-    pos: 0
-  },
-  rssi: {
-    index: 901,
-    name: "rssi",
-    id: 901,
-    pos: 0
-  },
-  sensorPressaoDianteiro: {
-    index: 160,
-    name: "sensorPressaoDianteiro",
-    id: 170,
-    pos: 0
-  },
-  potenciometroBalancin: {
-    index: 161,
-    name: "potenciometroBalancin",
-    id: 170,
-    pos: 1
-  },
-  termoparFreioD: {
-    index: 162,
-    name: "termoparFreioD",
-    id: 170,
-    pos: 2
-  },
-  extensometro1: {
-    index: 163,
-    name: "extensometro1",
-    id: 171,
-    pos: 0
-  },
-  extensometro2: {
-    index: 164,
-    name: "extensometro2",
-    id: 171,
-    pos: 1
   },
   speedMotorRight: {
-    index: 165,
+    index: 131,
     name: "speedMotorRight",
     id: 104,
     pos: 0
   },
   speedMotorLeft: {
-    index: 166,
+    index: 132,
     name: "speedMotorLeft",
     id: 104,
     pos: 1
   },
-  selectedMode: {
-    index: 167,
-    name: "selectedMode",
-    id: 102,
-    pos: 0
-  },
-  interfaceFlag: {
-    index: 168,
-    name: "interfaceFlag",
-    id: 102,
-    pos: 1
-  },
-  hodometroParcial: {
-    index: 169,
-    name: "hodometroParcial",
-    id: 102,
-    pos: 2
-  },
-  hodometroTotal: {
-    index: 170,
-    name: "hodometroTotal",
-    id: 102,
-    pos: 3
-  },
   intensidadeFrenagem: {
-    index: 171,
+    index: 133,
     name: "intensidadeFrenagem",
     id: 104,
     pos: 2
   },
   selecaoBotao: {
-    index: 172,
+    index: 134,
     name: "selecaoBotao",
     id: 104,
     pos: 3
   },
+  speedFL: {
+    index: 135,
+    name: "speedFL",
+    id: 105,
+    pos: 3
+  },
+  speedFR: {
+    index: 136,
+    name: "speedFR",
+    id: 105,
+    pos: 2
+  },
+  speedBL: {
+    index: 137,
+    name: "speedBL",
+    id: 105,
+    pos: 1
+  },
+  speedBR: {
+    index: 138,
+    name: "speedBR",
+    id: 105,
+    pos: 0
+  },
   ganhoTorque: {
-    index: 173,
+    index: 139,
     name: "ganhoTorque",
     id: 106,
     pos: 0
   },
-  extensometro22: {
-    index: 174,
-    name: "extensometro22",
-    id: 173,
-    pos: 0
-  },
-  extensometro13: {
-    index: 175,
-    name: "extensometro13",
-    id: 178,
-    pos: 0
-  },
-  extensometro23: {
-    index: 176,
-    name: "extensometro23",
-    id: 178,
+  //não está sendo utilizado
+  motorCurrentRight: {
+    index: 140,
+    name: "motorCurrentRight",
+    id: 106,
     pos: 2
   },
-  simHodometer: {
-    index: 177,
-    name: "simHodometer",
-    id: 901,
+  motorCurrentLeft: {
+    index: 141,
+    name: "motorCurrentLeft",
+    id: 106,
+    pos: 3
+  },
+  temperatureInversorR1: {
+    index: 142,
+    name: "temperatureInversorR1",
+    id: 107,
     pos: 0
   },
-  simCharge: {
-    index: 178,
-    name: "simCharge",
-    id: 901,
+  temperatureInversorR2: {
+    index: 143,
+    name: "temperatureInversorR2",
+    id: 107,
     pos: 1
   },
-  pressaoTraseiro: {
-    index: 179,
-    name: "pressaoTraseiro",
-    id: 200,
+  temperatureInversorL1: {
+    index: 144,
+    name: "temperatureInversorL1",
+    id: 107,
+    pos: 2
+  },
+  temperatureInversorL2: {
+    index: 145,
+    name: "temperatureInversorL2",
+    id: 107,
+    pos: 3
+  },
+  modoCorrespondente: {
+    index: 146,
+    name: "modoCorrespondente",
+    id: 0x102,
     pos: 0
+  },
+  flagCorrespondente1: {
+    index: 147,
+    name: "flagCorrespondente1",
+    id: 0x102,
+    pos: 1
+  },
+  flagCorrespondente2: {
+    index: 148,
+    name: "flagCorrespondente2",
+    id: 0x102,
+    pos: 2
+  },
+  // parte da tabela que ainda tem que ser conferida pois a tabelha hash está incompleta
+  tireTempFL: {
+    index: 550,
+    name: "tireTempFL",
+    id: 0x700,
+    pos: 0
+  },
+  tireTempFR: {
+    index: 551,
+    name: "tireTempFR",
+    id: 0x700,
+    pos: 1
+  },
+  tireTempBL: {
+    index: 552,
+    name: "tireTempBL",
+    id: 0x700,
+    pos: 2
+  },
+  tireTempBR: {
+    index: 553,
+    name: "tireTempBR",
+    id: 0x700,
+    pos: 3
+  },
+  // mediaSpeed: {index: 25, name: "mediaSpeed", id: 0x304, pos: 0},
+  // mediaTorque: {index: 26, name: "mediaTorque", id: 0x304, pos: 1},
+  accelerometerX: {
+    index: 554,
+    name: "accelerometerX",
+    id: 161,
+    pos: 0
+  },
+  accelerometerY: {
+    index: 555,
+    name: "accelerometerY",
+    id: 161,
+    pos: 1
+  },
+  accelerometerZ: {
+    index: 556,
+    name: "accelerometerZ",
+    id: 161,
+    pos: 2
+  },
+  gyroscopeX: {
+    index: 557,
+    name: "gyroscopeX",
+    id: 0x702,
+    pos: 0
+  },
+  gyroscopeY: {
+    index: 558,
+    name: "gyroscopeY",
+    id: 0x702,
+    pos: 1
+  },
+  gyroscopeZ: {
+    index: 559,
+    name: "gyroscopeZ",
+    id: 0x702,
+    pos: 2
+  },
+  potenciometroBalancin: {
+    index: 561,
+    name: "potenciometroBalancin",
+    id: 170,
+    pos: 1
+  },
+  termoparFreioD: {
+    index: 562,
+    name: "termoparFreioD",
+    id: 170,
+    pos: 2
+  },
+  extensometro1: {
+    index: 563,
+    name: "extensometro1",
+    id: 171,
+    pos: 0
+  },
+  extensometro2: {
+    index: 564,
+    name: "extensometro2",
+    id: 171,
+    pos: 1
+  },
+  interfaceFlag: {
+    index: 568,
+    name: "interfaceFlag",
+    id: 102,
+    pos: 1
   }
-};
+}, (0, _defineProperty2.default)(_fields, "selecaoBotao", {
+  index: 572,
+  name: "selecaoBotao",
+  id: 104,
+  pos: 3
+}), (0, _defineProperty2.default)(_fields, "extensometro22", {
+  index: 574,
+  name: "extensometro22",
+  id: 173,
+  pos: 0
+}), (0, _defineProperty2.default)(_fields, "extensometro13", {
+  index: 575,
+  name: "extensometro13",
+  id: 178,
+  pos: 0
+}), (0, _defineProperty2.default)(_fields, "extensometro23", {
+  index: 576,
+  name: "extensometro23",
+  id: 178,
+  pos: 2
+}), (0, _defineProperty2.default)(_fields, "portConnected", {
+  index: 900,
+  name: "portConnected",
+  id: 900,
+  pos: 0
+}), (0, _defineProperty2.default)(_fields, "rssi", {
+  index: 901,
+  name: "rssi",
+  id: 901,
+  pos: 0
+}), (0, _defineProperty2.default)(_fields, "sensorPressaoDianteiro", {
+  index: 660,
+  name: "sensorPressaoDianteiro",
+  id: 170,
+  pos: 0
+}), (0, _defineProperty2.default)(_fields, "hodometroParcial", {
+  index: 669,
+  name: "hodometroParcial",
+  id: 102,
+  pos: 2
+}), (0, _defineProperty2.default)(_fields, "hodometroTotal", {
+  index: 670,
+  name: "hodometroTotal",
+  id: 102,
+  pos: 3
+}), (0, _defineProperty2.default)(_fields, "simHodometer", {
+  index: 677,
+  name: "simHodometer",
+  id: 901,
+  pos: 0
+}), (0, _defineProperty2.default)(_fields, "simCharge", {
+  index: 678,
+  name: "simCharge",
+  id: 901,
+  pos: 1
+}), (0, _defineProperty2.default)(_fields, "pressaoTraseiro", {
+  index: 679,
+  name: "pressaoTraseiro",
+  id: 200,
+  pos: 0
+}), (0, _defineProperty2.default)(_fields, "mediaCurrent", {
+  index: 600,
+  name: "mediaCurrent",
+  id: 53,
+  pos: 0
+}), (0, _defineProperty2.default)(_fields, "mediaTemperature", {
+  index: 602,
+  name: "mediaTemperature",
+  id: 53,
+  pos: 2
+}), _fields);
 var nameFieldIdMap = (0, _values.default)(fields).reduce(function (last, field) {
   return last[field.name] = field.index, last;
 }, {});
@@ -1757,21 +1751,9 @@ var availablePlotOptions = [{
   formatFn: function formatFn(a) {
     return a * 300 / 4095 - 164.1025;
   }
-}, {
-  index: fields.energiaInversorRight.index,
-  name: "Energia Inversor Direito",
-  unidade: "kWh",
-  formatFn: function formatFn(a) {
-    return a / 1000;
-  }
-}, {
-  index: fields.energiaInversorLeft.index,
-  name: "Energia Inversor Esquerdo",
-  unidade: "kWh",
-  formatFn: function formatFn(a) {
-    return a / 1000;
-  }
-}, {
+}, // {index: fields.energiaInversorRight.index, name: "Energia Inversor Direito", unidade: "kWh", formatFn: ((a) => a/1000)},
+// {index: fields.energiaInversorLeft.index, name: "Energia Inversor Esquerdo", unidade: "kWh", formatFn: ((a) => a/1000)},
+{
   index: fields.motorCurrentRight.index,
   name: "Corrente Motor Direito",
   unidade: "A",
@@ -1978,8 +1960,8 @@ var availablePlotOptions = [{
 var availablePlotIndexes = availablePlotOptions.map(function (option) {
   return option.index;
 });
-var datalogOrder = [fields.ECUTimer.name, fields.hodometroTotal.name, fields.glvVoltage.name, fields.speedFL.name, fields.speedFR.name, fields.speedMotorLeft.name, fields.speedMotorRight.name, fields.pedalAcelerador.name, fields.pedalFreio.name, fields.steeringWheel.name, fields.motorCurrentRight.name, fields.motorCurrentLeft.name, fields.accelerometerX.name, fields.accelerometerY.name, fields.accelerometerZ.name, fields.sensorPressaoDianteiro.name, fields.potenciometroBalancin.name, fields.termoparFreioD.name, fields.extensometro1.name, fields.extensometro2.name, fields.speedMotorRight.name, fields.speedMotorLeft.name, fields.current0.name, fields.current1.name, fields.current2.name, fields.current3.name, fields.mediaTemperature.name, fields.maxTemperature.name, fields.motorCurrentRight.name, fields.motorCurrentLeft.name, //fields.temp001.name,
-fields.temp002.name, fields.temp003.name, fields.temp004.name, fields.temp101.name, fields.temp102.name, fields.temp103.name, fields.temp104.name, fields.temp201.name, fields.temp202.name, fields.temp203.name, fields.temp204.name, fields.temp301.name, fields.temp302.name, fields.temp303.name, fields.temp304.name, fields.temp401.name, fields.temp402.name, fields.temp403.name, fields.temp404.name, fields.temp501.name, fields.temp502.name, fields.temp503.name, fields.temp504.name, fields.current3.name, fields.totalVoltage.name, fields.minVoltage.name, fields.pressaoTraseiro.name]; // let datalogOrder = [
+var datalogOrder = [fields.ECUTimer.name, //fields.hodometroTotal.name,
+fields.glvVoltage.name, fields.speedFL.name, fields.speedFR.name, fields.speedMotorLeft.name, fields.speedMotorRight.name, fields.pedalAcelerador.name, fields.pedalFreio.name, fields.steeringWheel.name, fields.motorCurrentRight.name, fields.motorCurrentLeft.name, fields.accelerometerX.name, fields.accelerometerY.name, fields.accelerometerZ.name, fields.sensorPressaoDianteiro.name, fields.potenciometroBalancin.name, fields.termoparFreioD.name, fields.extensometro1.name, fields.extensometro2.name, fields.speedMotorRight.name, fields.speedMotorLeft.name, fields.current0.name, fields.current1.name, fields.current2.name, fields.current3.name, fields.mediaTemperature.name, fields.maxTemperature.name, fields.motorCurrentRight.name, fields.motorCurrentLeft.name, fields.temp001.name, fields.temp002.name, fields.temp003.name, fields.temp004.name, fields.temp101.name, fields.temp102.name, fields.temp103.name, fields.temp104.name, fields.temp201.name, fields.temp202.name, fields.temp203.name, fields.temp204.name, fields.temp301.name, fields.temp302.name, fields.temp303.name, fields.temp304.name, fields.temp401.name, fields.temp402.name, fields.temp403.name, fields.temp404.name, fields.temp501.name, fields.temp502.name, fields.temp503.name, fields.temp504.name, fields.current3.name, fields.totalVoltage.name, fields.minVoltage.name, fields.pressaoTraseiro.name]; // let datalogOrder = [
 //     fields.current0.name,
 //     fields.current1.name,
 //     fields.current2.name,
