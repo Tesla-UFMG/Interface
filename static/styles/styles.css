@@ -399,8 +399,8 @@ body {
     text-align: center;
 }
 
-.pack-content .pack-value {
-    flex: 1 0 21%;
+.pack-content .pack-value  {
+    flex: 1 0 16%;
     transition: color 2s;
 }
 
@@ -420,7 +420,12 @@ body {
 
 .pack-content .pack-temperatures {
     border-top: 1px solid whitesmoke;
-    
+}
+
+.pack-content .pack-temperatures .pack-section-values{
+    display: flex;
+    flex-wrap: nowrap;
+    text-align: center;
 }
 
 .pack-content > * {

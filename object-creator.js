@@ -21,12 +21,12 @@ class ObjectCreator {
         this.offLimitFields = [];
 
         this.packs = [
-            {cells: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], temperatures: [0, 0, 0, 0]},
-            {cells: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], temperatures: [0, 0, 0, 0]},
-            {cells: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], temperatures: [0, 0, 0, 0]},
-            {cells: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], temperatures: [0, 0, 0, 0]},
-            {cells: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], temperatures: [0, 0, 0, 0]},
-            {cells: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], temperatures: [0, 0, 0, 0]}
+            {cells: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], temperatures: [0, 0, 0, 0, 0]},
+            {cells: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], temperatures: [0, 0, 0, 0, 0]},
+            {cells: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], temperatures: [0, 0, 0, 0, 0]},
+            {cells: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], temperatures: [0, 0, 0, 0, 0]},
+            {cells: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], temperatures: [0, 0, 0, 0, 0]},
+            {cells: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], temperatures: [0, 0, 0, 0, 0]}
         ]
     }
 
@@ -36,8 +36,8 @@ class ObjectCreator {
 
     async treatInfo(id, data) {
         if (this.isPackRelated(id)) {
-            let packIndex = parseInt((id-260)/5);
-            let packPart = (id-260)%5;
+            let packIndex = parseInt((id-260)/5); //identifica o indice da celula
+            let packPart = (id-260)%5; //identifida se é uma celula ou temperatura
 
             if (packPart < 3) {
                 for (let i = 0; i < 4; i++) {
@@ -107,7 +107,7 @@ class ObjectCreator {
     }
 
     isPackRelated(id) {
-        return id >= 260 && id <= 293;
+        return id >= 260 && id <= 289;
     }
 
     insertData(fieldId, value) {
