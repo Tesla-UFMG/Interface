@@ -1934,13 +1934,9 @@ var _interopRequireDefault = __webpack_require__(/*! @babel/runtime-corejs2/help
 
 var _values = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/core-js/object/values */ "./node_modules/@babel/runtime-corejs2/core-js/object/values.js"));
 
-var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js"));
-
 var _parseInt2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/core-js/parse-int */ "./node_modules/@babel/runtime-corejs2/core-js/parse-int.js"));
 
 var _keys = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/core-js/object/keys */ "./node_modules/@babel/runtime-corejs2/core-js/object/keys.js"));
-
-var _fields;
 
 //PARA REGISTRAR UM NOVO DADO:
 //primeiramente, em TypeFields, adicione mais uma linha, incrementando o índice em 1 e o nome do dado em camelCase
@@ -2020,7 +2016,7 @@ for (i = 0; i < config.xbeeSourceAddress.length; i += 2) {
 }
 
 var xbeeSourceAddress = xbeeSourceAddressArray;
-var fields = (_fields = {
+var fields = {
   /*baterias geral*/
   airStatus: {
     index: 0,
@@ -2746,194 +2742,230 @@ var fields = (_fields = {
   /*controle geral*/
   // todos os valores da tabela hash de controle estão aqui caso queira que se adicione coisas na janela
   // temos que fazer um filtro desses dados no momento em que formos refatora-lá
-  operationMode: {
-    index: 118,
-    name: "operationMode",
-    id: 1,
-    pos: 0
-  },
-  statusDatalog: {
-    index: 119,
-    name: "statusDatalog",
-    id: 1,
-    pos: 1
-  },
-  erroECU: {
-    index: 120,
-    name: "erroECU",
-    id: 1,
-    pos: 2
-  },
-  statusCurrent: {
-    index: 121,
-    name: "statusCurrent",
-    id: 1,
-    pos: 3
-  },
-  ECUTimer: {
-    index: 122,
-    name: "ECUTimer",
-    id: 101,
-    pos: 0
-  },
   steeringWheel: {
-    index: 123,
+    index: 118,
     name: "steeringWheel",
     id: 101,
     pos: 1
   },
   pedalAcelerador: {
-    index: 124,
+    index: 119,
     name: "pedalAcelerador",
     id: 101,
     pos: 2
   },
   pedalFreio: {
-    index: 125,
+    index: 120,
     name: "pedalFreio",
     id: 101,
     pos: 3
   },
   selectedMode: {
-    index: 126,
+    index: 121,
     name: "selectedMode",
     id: 102,
     pos: 0
   },
+  frenagemRegenerativa: {
+    index: 122,
+    name: "frenagemRegenerativa",
+    id: 102,
+    pos: 1
+  },
+  hodometroParcial: {
+    index: 123,
+    name: "hodometroParcial",
+    id: 102,
+    pos: 2
+  },
+  hodometroTotal: {
+    index: 124,
+    name: "hodometroTotal",
+    id: 102,
+    pos: 3
+  },
   motorTorqueRight: {
-    index: 127,
+    index: 125,
     name: "motorTorqueRight",
     id: 103,
     pos: 0
   },
   motorTorqueLeft: {
-    index: 128,
+    index: 126,
     name: "motorTorqueLeft",
     id: 103,
     pos: 1
   },
   torqueReferenceRight: {
-    index: 129,
+    index: 127,
     name: "torqueReferenceRight",
     id: 103,
     pos: 2
   },
   torqueReferenceLeft: {
-    index: 130,
+    index: 128,
     name: "torqueReferenceLeft",
     id: 103,
     pos: 3
   },
   speedMotorRight: {
-    index: 131,
+    index: 129,
     name: "speedMotorRight",
     id: 104,
     pos: 0
   },
   speedMotorLeft: {
-    index: 132,
+    index: 130,
     name: "speedMotorLeft",
     id: 104,
     pos: 1
   },
-  intensidadeFrenagem: {
-    index: 133,
-    name: "intensidadeFrenagem",
+  ECU_control_Event_1: {
+    index: 131,
+    name: "ECU_control_Event_1",
     id: 104,
     pos: 2
   },
-  selecaoBotao: {
-    index: 134,
-    name: "selecaoBotao",
+  ECU_control_Event_2: {
+    index: 132,
+    name: "ECU_control_Event_2",
     id: 104,
     pos: 3
   },
   speedFL: {
-    index: 135,
+    index: 133,
     name: "speedFL",
     id: 105,
     pos: 3
   },
   speedFR: {
-    index: 136,
+    index: 134,
     name: "speedFR",
     id: 105,
     pos: 2
   },
   speedBL: {
-    index: 137,
+    index: 135,
     name: "speedBL",
     id: 105,
     pos: 1
   },
   speedBR: {
-    index: 138,
+    index: 136,
     name: "speedBR",
     id: 105,
     pos: 0
   },
   ganhoTorque: {
-    index: 139,
+    index: 137,
     name: "ganhoTorque",
     id: 106,
     pos: 0
   },
   //não está sendo utilizado
   motorCurrentRight: {
-    index: 140,
+    index: 138,
     name: "motorCurrentRight",
     id: 106,
     pos: 2
   },
   motorCurrentLeft: {
-    index: 141,
+    index: 139,
     name: "motorCurrentLeft",
     id: 106,
     pos: 3
   },
   temperatureInversorR1: {
-    index: 142,
+    index: 140,
     name: "temperatureInversorR1",
     id: 107,
     pos: 0
   },
   temperatureInversorR2: {
-    index: 143,
+    index: 141,
     name: "temperatureInversorR2",
     id: 107,
     pos: 1
   },
   temperatureInversorL1: {
-    index: 144,
+    index: 142,
     name: "temperatureInversorL1",
     id: 107,
     pos: 2
   },
   temperatureInversorL2: {
-    index: 145,
+    index: 143,
     name: "temperatureInversorL2",
     id: 107,
     pos: 3
   },
-  modoCorrespondente: {
+  accelerometerX: {
+    index: 144,
+    name: "accelerometerX",
+    id: 108,
+    pos: 0
+  },
+  accelerometerY: {
+    index: 145,
+    name: "accelerometerY",
+    id: 108,
+    pos: 1
+  },
+  accelerometerZ: {
     index: 146,
+    name: "accelerometerZ",
+    id: 108,
+    pos: 2
+  },
+  Erro_1: {
+    index: 147,
+    name: "Erro_1",
+    id: 108,
+    pos: 3
+  },
+  gyroscopeX: {
+    index: 148,
+    name: "gyroscopeX",
+    id: 109,
+    pos: 0
+  },
+  gyroscopeY: {
+    index: 149,
+    name: "gyroscopeY",
+    id: 109,
+    pos: 1
+  },
+  gyroscopeZ: {
+    index: 150,
+    name: "gyroscopeZ",
+    id: 109,
+    pos: 2
+  },
+  Erro_2: {
+    index: 151,
+    name: "Erro_2",
+    id: 109,
+    pos: 3
+  },
+  //atualizar essa parte
+  modoCorrespondente: {
+    index: 546,
     name: "modoCorrespondente",
     id: 0x102,
     pos: 0
   },
   flagCorrespondente1: {
-    index: 147,
+    index: 547,
     name: "flagCorrespondente1",
     id: 0x102,
     pos: 1
   },
   flagCorrespondente2: {
-    index: 148,
+    index: 548,
     name: "flagCorrespondente2",
     id: 0x102,
     pos: 2
   },
-  // parte da tabela que ainda tem que ser conferida pois a tabelha hash está incompleta
   tireTempFL: {
     index: 550,
     name: "tireTempFL",
@@ -2960,42 +2992,6 @@ var fields = (_fields = {
   },
   // mediaSpeed: {index: 25, name: "mediaSpeed", id: 0x304, pos: 0},
   // mediaTorque: {index: 26, name: "mediaTorque", id: 0x304, pos: 1},
-  accelerometerX: {
-    index: 554,
-    name: "accelerometerX",
-    id: 161,
-    pos: 0
-  },
-  accelerometerY: {
-    index: 555,
-    name: "accelerometerY",
-    id: 161,
-    pos: 1
-  },
-  accelerometerZ: {
-    index: 556,
-    name: "accelerometerZ",
-    id: 161,
-    pos: 2
-  },
-  gyroscopeX: {
-    index: 557,
-    name: "gyroscopeX",
-    id: 0x702,
-    pos: 0
-  },
-  gyroscopeY: {
-    index: 558,
-    name: "gyroscopeY",
-    id: 0x702,
-    pos: 1
-  },
-  gyroscopeZ: {
-    index: 559,
-    name: "gyroscopeZ",
-    id: 0x702,
-    pos: 2
-  },
   potenciometroBalancin: {
     index: 561,
     name: "potenciometroBalancin",
@@ -3025,78 +3021,82 @@ var fields = (_fields = {
     name: "interfaceFlag",
     id: 102,
     pos: 1
-  }
-}, (0, _defineProperty2.default)(_fields, "selecaoBotao", {
-  index: 572,
-  name: "selecaoBotao",
-  id: 104,
-  pos: 3
-}), (0, _defineProperty2.default)(_fields, "extensometro22", {
-  index: 574,
-  name: "extensometro22",
-  id: 173,
-  pos: 0
-}), (0, _defineProperty2.default)(_fields, "extensometro13", {
-  index: 575,
-  name: "extensometro13",
-  id: 178,
-  pos: 0
-}), (0, _defineProperty2.default)(_fields, "extensometro23", {
-  index: 576,
-  name: "extensometro23",
-  id: 178,
-  pos: 2
-}), (0, _defineProperty2.default)(_fields, "portConnected", {
-  index: 900,
-  name: "portConnected",
-  id: 900,
-  pos: 0
-}), (0, _defineProperty2.default)(_fields, "rssi", {
-  index: 901,
-  name: "rssi",
-  id: 901,
-  pos: 0
-}), (0, _defineProperty2.default)(_fields, "sensorPressaoDianteiro", {
-  index: 660,
-  name: "sensorPressaoDianteiro",
-  id: 170,
-  pos: 0
-}), (0, _defineProperty2.default)(_fields, "hodometroParcial", {
-  index: 669,
-  name: "hodometroParcial",
-  id: 102,
-  pos: 2
-}), (0, _defineProperty2.default)(_fields, "hodometroTotal", {
-  index: 670,
-  name: "hodometroTotal",
-  id: 102,
-  pos: 3
-}), (0, _defineProperty2.default)(_fields, "simHodometer", {
-  index: 677,
-  name: "simHodometer",
-  id: 901,
-  pos: 0
-}), (0, _defineProperty2.default)(_fields, "simCharge", {
-  index: 678,
-  name: "simCharge",
-  id: 901,
-  pos: 1
-}), (0, _defineProperty2.default)(_fields, "pressaoTraseiro", {
-  index: 679,
-  name: "pressaoTraseiro",
-  id: 200,
-  pos: 0
-}), (0, _defineProperty2.default)(_fields, "mediaCurrent", {
-  index: 600,
-  name: "mediaCurrent",
-  id: 53,
-  pos: 0
-}), (0, _defineProperty2.default)(_fields, "mediaTemperature", {
-  index: 602,
-  name: "mediaTemperature",
-  id: 53,
-  pos: 2
-}), _fields);
+  },
+  selecaoBotao: {
+    index: 572,
+    name: "selecaoBotao",
+    id: 104,
+    pos: 3
+  },
+  extensometro22: {
+    index: 574,
+    name: "extensometro22",
+    id: 173,
+    pos: 0
+  },
+  extensometro13: {
+    index: 575,
+    name: "extensometro13",
+    id: 178,
+    pos: 0
+  },
+  extensometro23: {
+    index: 576,
+    name: "extensometro23",
+    id: 178,
+    pos: 2
+  },
+  portConnected: {
+    index: 900,
+    name: "portConnected",
+    id: 900,
+    pos: 0
+  },
+  rssi: {
+    index: 901,
+    name: "rssi",
+    id: 901,
+    pos: 0
+  },
+  sensorPressaoDianteiro: {
+    index: 660,
+    name: "sensorPressaoDianteiro",
+    id: 170,
+    pos: 0
+  },
+  simHodometer: {
+    index: 677,
+    name: "simHodometer",
+    id: 901,
+    pos: 0
+  },
+  simCharge: {
+    index: 678,
+    name: "simCharge",
+    id: 901,
+    pos: 1
+  },
+  pressaoTraseiro: {
+    index: 679,
+    name: "pressaoTraseiro",
+    id: 200,
+    pos: 0
+  },
+  mediaCurrent: {
+    index: 600,
+    name: "mediaCurrent",
+    id: 53,
+    pos: 0
+  },
+  //não achei
+  mediaTemperature: {
+    index: 602,
+    name: "mediaTemperature",
+    id: 53,
+    pos: 2
+  } //não achei  
+
+};
 var nameFieldIdMap = (0, _values.default)(fields).reduce(function (last, field) {
   return last[field.name] = field.index, last;
 }, {});
@@ -3448,7 +3448,8 @@ var availablePlotOptions = [{
 var availablePlotIndexes = availablePlotOptions.map(function (option) {
   return option.index;
 });
-var datalogOrder = [fields.ECUTimer.name, //fields.hodometroTotal.name,
+var datalogOrder = [//fields.ECUTimer.name,
+//fields.hodometroTotal.name,
 fields.glvVoltage.name, fields.speedFL.name, fields.speedFR.name, fields.speedMotorLeft.name, fields.speedMotorRight.name, fields.pedalAcelerador.name, fields.pedalFreio.name, fields.steeringWheel.name, fields.motorCurrentRight.name, fields.motorCurrentLeft.name, fields.accelerometerX.name, fields.accelerometerY.name, fields.accelerometerZ.name, fields.sensorPressaoDianteiro.name, fields.potenciometroBalancin.name, fields.termoparFreioD.name, fields.extensometro1.name, fields.extensometro2.name, fields.speedMotorRight.name, fields.speedMotorLeft.name, fields.current0.name, fields.current1.name, fields.current2.name, fields.current3.name, fields.mediaTemperature.name, fields.maxTemperature.name, fields.motorCurrentRight.name, fields.motorCurrentLeft.name, fields.temp001.name, fields.temp002.name, fields.temp003.name, fields.temp004.name, fields.temp101.name, fields.temp102.name, fields.temp103.name, fields.temp104.name, fields.temp201.name, fields.temp202.name, fields.temp203.name, fields.temp204.name, fields.temp301.name, fields.temp302.name, fields.temp303.name, fields.temp304.name, fields.temp401.name, fields.temp402.name, fields.temp403.name, fields.temp404.name, fields.temp501.name, fields.temp502.name, fields.temp503.name, fields.temp504.name, fields.current3.name, fields.totalVoltage.name, fields.minVoltage.name, fields.pressaoTraseiro.name]; // let datalogOrder = [
 //     fields.current0.name,
 //     fields.current1.name,
@@ -16998,7 +16999,7 @@ function Pedal(props) {
 
 /***/ }),
 
-/***/ 5:
+/***/ 6:
 /*!****************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fcontrole&absolutePagePath=C%3A%5CUsers%5Cbreno%5CTesla%5CDAQ_Tesla%5CTelemetria%5CInterface%5Cpages%5Ccontrole.js ***!
   \****************************************************************************************************************************************************************/
@@ -17021,5 +17022,5 @@ module.exports = dll_bddb6eed8fbd46b918fd;
 
 /***/ })
 
-},[[5,"static/runtime/webpack.js"]]]);
+},[[6,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=controle.js.map

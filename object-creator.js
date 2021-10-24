@@ -63,10 +63,10 @@ class ObjectCreator {
             */
         } else {
             //calculo do hodometro
-            // if (id == cFields.speedFL.index) {
-            //     this.hodometroHandler.addSpeed(data[cFields.speedFL.pos])
-            //     this.insertData()
-            // }
+            if (id == cFields.speedFL.index) {
+                this.hodometroHandler.addSpeed(data[cFields.speedFL.pos])
+                this.insertData()
+            }
 
             //calculo da carga
             if (id == cFields.current0.id) {
@@ -271,7 +271,7 @@ class ObjectCreator {
         return temps;
     }
 
-    buildDatalog() {
+    /*buildDatalog() {
         let datalogStr = "";
         if (constants.datalog.includeTimestamp) {
             datalogStr += new Date().getTime() + '\t';
@@ -285,7 +285,7 @@ class ObjectCreator {
 
 
         return datalogStr;
-    }
+    }*/
     
     
     
