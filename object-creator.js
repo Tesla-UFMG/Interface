@@ -36,15 +36,27 @@ class ObjectCreator {
 
     async treatInfo(id, data) {
         if (this.isPackRelated(id)) {
-            let packIndex = parseInt((id-260)/5); //identifica o indice da celula
-            let packPart = (id-260)%5; //identifida se é uma celula ou temperatura
+            // let packIndex = parseInt((id-260)/5); //identifica o indice da celula
+            // let packPart = (id-260)%5; //identifida se é uma celula ou temperatura
 
-            if (packPart < 3) {
+            // if (packPart < 3) {
+            //     for (let i = 0; i < 4; i++) {
+            //         this.packs[packIndex].cells[packPart*4+i] = data[i];
+            //     }
+            // } else if (packPart < 4) {
+            //     this.packs[packIndex].temperatures = data;
+
+            //     for(var i = 0; i < data.length; i++) {
+            //         let fieldId = this.mapId(id, i);
+            //         this.insertData(fieldId, data[i]);
+            //     }
+            // } 
+            if (this.isPosition() == false) {
                 for (let i = 0; i < 4; i++) {
-                    this.packs[packIndex].cells[packPart*4+i] = data[i];
+                    this.packs[this.isPack()].cells[this.isPack()*4+i] = data[i];
                 }
-            } else if (packPart < 4) {
-                this.packs[packIndex].temperatures = data;
+            } else if (this.isPosition() == true) {
+                this.packs[this.isPack()].temperatures = data;
 
                 for(var i = 0; i < data.length; i++) {
                     let fieldId = this.mapId(id, i);
@@ -63,10 +75,10 @@ class ObjectCreator {
             */
         } else {
             //calculo do hodometro
-            // if (id == cFields.speedFL.index) {
-            //     this.hodometroHandler.addSpeed(data[cFields.speedFL.pos])
-            //     this.insertData()
-            // }
+            if (id == cFields.speedFL.index) {
+                this.hodometroHandler.addSpeed(data[cFields.speedFL.pos])
+                this.insertData()
+            }
 
             //calculo da carga
             if (id == cFields.current0.id) {
@@ -107,7 +119,26 @@ class ObjectCreator {
     }
 
     isPackRelated(id) {
-        return id >= 260 && id <= 289;
+        return id >= 256 && id <= 285;
+    }
+
+    isPack(id){
+             if(id == 281 || id == 282 || id == 283 || id == 284 || id == 285) return 0;
+        else if(id == 276 || id == 277 || id == 278 || id == 279 || id == 280) return 1;
+        else if(id == 271 || id == 272 || id == 273 || id == 274 || id == 275) return 2;
+        else if(id == 266 || id == 267 || id == 268 || id == 269 || id == 270) return 3;
+        else if(id == 256 || id == 257 || id == 258 || id == 259 || id == 260) return 4;
+        else if(id == 261 || id == 262 || id == 263 || id == 264 || id == 265) return 5;
+    }
+
+    isPosition(id, pos){
+             if((id == 284 && pos > 0) || id == 285) return true;
+        else if((id == 279 && pos > 0) || id == 280) return true;
+        else if((id == 274 && pos > 0) || id == 275) return true;
+        else if((id == 269 && pos > 0) || id == 270) return true;
+        else if((id == 259 && pos > 0) || id == 260) return true;
+        else if((id == 264 && pos > 0) || id == 265) return true;
+        else return false;
     }
 
     insertData(fieldId, value) {
@@ -271,7 +302,7 @@ class ObjectCreator {
         return temps;
     }
 
-    /*buildDatalog() {
+    buildDatalog() {
         let datalogStr = "";
         if (constants.datalog.includeTimestamp) {
             datalogStr += new Date().getTime() + '\t';
@@ -285,7 +316,7 @@ class ObjectCreator {
 
 
         return datalogStr;
-    }*/
+    }
     
     
     
