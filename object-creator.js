@@ -51,17 +51,23 @@ class ObjectCreator {
             //         this.insertData(fieldId, data[i]);
             //     }
             // } 
+
             if (this.isPosition() == false) {
                 for (let i = 0; i < 4; i++) {
-                    this.packs[this.isPack()].cells[this.isPack()*4+i] = data[i];
+                    //segundo if é para a conferencia se no mesmo id não começam os dados de temperatura
+                    //para alguns ids a partir da word 1 os dados são de temperatura
+                    if (this.isPosition() == false) this.packs[this.isPack()].cells[i] = data[i];
+                    else break;
                 }
             } else if (this.isPosition() == true) {
-                this.packs[this.isPack()].temperatures = data;
-
-                for(var i = 0; i < data.length; i++) {
-                    let fieldId = this.mapId(id, i);
-                    this.insertData(fieldId, data[i]);
+                for(let i = 0; i < 4; i++){
+                    this.packs[this.isPack()].temperatures[i-1] = data[i];
                 }
+                
+                // for(var i = 0; i < data.length; i++) {
+                //     let fieldId = this.mapId(id, i);
+                //     this.insertData(fieldId, data[i]);
+                // }
             } 
 
         } else if (this.isExtensometroRelated(id)) {
@@ -273,6 +279,7 @@ class ObjectCreator {
         return Object.assign(obj, this.buildCommonInfo());
     }
 
+    //ver se essas funções fazem sentido com essa lógica
     retrievePackCells(pack) {
         let num = 0x600 + 0x010*pack;
         let quanCells = 12;
