@@ -7,6 +7,8 @@ import CarOverlay from '../components/carro-overlay.js'
 import Volante from '../components/volante.js'
 import AcelerometroXY from '../components/acelerometro-xy.js'
 import AcelerometroYZ from '../components/acelerometro-yz.js'
+import ECU from '../components/ecu.js'
+import BrakeBias from '../components/brake-bias.js'
 
 import {DelayContext} from '../components/contexts.js'
 
@@ -95,6 +97,15 @@ class Controle extends DataFetcher {
                             </div>
                         </div>
                     </div>
+                    <div className='row'>
+                        <div className='col-6 mt-3'>
+                            <ECU value={1}></ECU>
+                        </div>
+                        <div className='col-6 mt-3'>
+                            <BrakeBias value={1/1}></BrakeBias>
+                        </div>
+                    </div>
+                    
                 </DelayProvider>
             </div>
         )
