@@ -1,4 +1,4 @@
-const SerialPort = require('serialport');
+const {SerialPort} = require('serialport');
 const fs = require('fs');
 
 const constants = require('./components/constants.js');
