@@ -1,4 +1,4 @@
-const {SerialPort} = require('serialport');
+const { SerialPort } = require('serialport');
 const fs = require('fs');
 
 const constants = require('./components/constants.js');
@@ -43,7 +43,14 @@ class SerialHandler {
                 console.log('Erro lendo arquivo '+constants.port.ignorePortsFile+': '+e);
             }
             await sleep(1000);
+            
             const ports = await SerialPort.list();
+
+            SerialPort.list().then(function(ports){
+                ports.forEach(function(port){
+                  console.log("Port: ", port);
+                })
+              });
     
             if (ports.length == 0)
                 continue;
