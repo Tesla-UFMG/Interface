@@ -1,4 +1,4 @@
-const { SerialPort } = require('serialport');
+const {SerialPort} = require('serialport');
 const fs = require('fs');
 
 const constants = require('./components/constants.js');
@@ -43,28 +43,20 @@ class SerialHandler {
                 console.log('Erro lendo arquivo '+constants.port.ignorePortsFile+': '+e);
             }
             await sleep(1000);
-            
             const ports = await SerialPort.list();
-
-            SerialPort.list().then(function(ports){
-                ports.forEach(function(port){
-                  console.log("Port: ", port);
-                })
-              });
     
+
             if (ports.length == 0)
                 continue;
             
             for(let i = 0; i<ports.length; i++) {
                 if (typeof targetPort !== 'undefined' && targetPort !== ""){
-                    if (ports[i].comName !== targetPort)
+                    if (ports[i].path !== targetPort)
                         continue;
                 }
-                if (ignorePorts.includes(ports[i].comName))
+                if (ignorePorts.includes(ports[i].path))
                     continue;
-                
-                console.log("Tentando porta: "+ports[i].comName);
-                this.ttl_port = new SerialPort(ports[i].comName, { baudRate: 115200, autoOpen: false })
+                this.ttl_port = new SerialPort({path: ports[i].path, baudRate: 115200, autoOpen: false })
                 let opened = false;
                 let error;
                 //abre e fecha a porta para garantir que ela é capaz de ser aberta

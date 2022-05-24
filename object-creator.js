@@ -129,6 +129,7 @@ class ObjectCreator {
         var obj;
         switch(page) {
             case "geral":
+                
                 obj = this.buildGeralInfo();
                 break;
 
@@ -168,6 +169,8 @@ class ObjectCreator {
         const accelX = this.retrieveLastData(cFields.accelerometerX.index)
         const accelY = this.retrieveLastData(cFields.accelerometerY.index)
         const accelZ = this.retrieveLastData(cFields.accelerometerZ.index)
+
+        console.log("valor do volante: " + this.retrieveLastData(cFields.steeringWheel.index))
 
         return {
             control: {
