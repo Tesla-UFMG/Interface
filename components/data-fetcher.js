@@ -32,7 +32,9 @@ class DataFetcher extends Component {
             .then(res => {
               if (res.data) {
                 // debugger;
+                console.log("Informação não tratada: " + res.data)
                 const treatedData = this.treatData(res.data);
+                console.log("Informação tratada: " + treatedData)
                 this.setState({
                   data: treatedData
                 });
