@@ -7,7 +7,6 @@ const frameHandler = require('./components/frame-handler.js')
 class ApiModeParser extends Transform {
     constructor(options = {}) {
         super(options)
-  
         // if (options.delimiter === undefined) {
         //     throw new TypeError('"delimiter" is not a bufferable object')
         // }
@@ -35,7 +34,6 @@ class ApiModeParser extends Transform {
         }
 
         if (this.processingMessage) {
-            
             while(true) {
                 if (position == null)
                     break;

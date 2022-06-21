@@ -49,8 +49,13 @@ class DatabaseHandler {
 
     insertLastData(fieldId, value) {
         var d = this.lastData.findOne({"field": fieldId});
-        d.value = value;
-        this.lastData.update(d);
+        console.log(fieldId)
+        if(value){
+            d.value = value;    
+            this.lastData.update(d);
+        }
+        
+        
     }
 
     insertLastDataNoFieldId(id, pos, value) {

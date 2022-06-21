@@ -111,7 +111,7 @@ class SerialHandler {
         let parser;
           
         switch (constants.port.operationType) {
-            case constants.port.OperationsType.API_BYTES:
+            case constants.port.OperationsType.API_BYTES: 
             case constants.port.OperationsType.API_STRING:
                 parser = new ApiModeParser();
                 break;
@@ -119,6 +119,7 @@ class SerialHandler {
                 parser = new Delimiter({delimiter: '\n'});
                 break;
         }
+        
         this.ttl_port.pipe(parser);
         parser.on('data', this.parseData)
         
@@ -132,7 +133,6 @@ class SerialHandler {
         let newData = [];
         let id;
         let datalogSafe = true;
-
         switch (constants.port.operationType) {
             case constants.port.OperationsType.BYTES:
                 id = (data[1] << 8) + data[0];
