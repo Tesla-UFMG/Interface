@@ -211,7 +211,8 @@ class ObjectCreator {
                     x: (accelX > Math.pow(2, 15) ? (accelX-Math.pow(2, 16)): accelX),
                     y: (accelY > Math.pow(2, 15) ? (accelY-Math.pow(2, 16)): accelY),
                     z: (accelZ > Math.pow(2, 15) ? (accelZ-Math.pow(2, 16)): accelZ)
-                }
+                },
+                ecuFlag: this.retrieveLastData(cFields.ecuFlag.index),
             }
         }
     }
