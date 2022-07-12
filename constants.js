@@ -228,68 +228,56 @@ let fields = {
     temp304: {index: 110, name: "temp304", id: 270, pos: 0},
     temp305: {index: 111, name: "temp305", id: 270, pos: 1},
     
-    /*pack 4*/ 
 
-    cell400: {index: 112, name: "cell400", id: 256, pos: 0},
-    cell401: {index: 113, name: "cell401", id: 256, pos: 1},
-    cell402: {index: 114, name: "cell402", id: 256, pos: 2},
-    cell403: {index: 115, name: "cell403", id: 256, pos: 3},
-    cell404: {index: 116, name: "cell404", id: 257, pos: 0},
-    cell405: {index: 117, name: "cell405", id: 257, pos: 1},
-    cell406: {index: 118, name: "cell406", id: 257, pos: 2},
-    cell407: {index: 119, name: "cell407", id: 257, pos: 3},
-    cell408: {index: 120, name: "cell408", id: 258, pos: 0},
-    cell409: {index: 121, name: "cell409", id: 258, pos: 1},
-    cell410: {index: 122, name: "cell410", id: 258, pos: 2},
-    cell411: {index: 123, name: "cell411", id: 258, pos: 3},
-    cell412: {index: 124, name: "cell412", id: 259, pos: 0},
-    temp401: {index: 125, name: "temp401", id: 259, pos: 1},
-    temp402: {index: 126, name: "temp402", id: 259, pos: 2},
-    temp403: {index: 127, name: "temp403", id: 259, pos: 3},
-    temp404: {index: 128, name: "temp404", id: 260, pos: 0},
-    temp405: {index: 129, name: "temp405", id: 260, pos: 1},
-    
-    /*pack 5*/ 
-    
-    cell500: {index: 130, name: "cell500", id: 261, pos: 0},
-    cell501: {index: 131, name: "cell501", id: 261, pos: 1},
-    cell502: {index: 132, name: "cell502", id: 261, pos: 2},
-    cell503: {index: 133, name: "cell503", id: 261, pos: 3},
-    cell504: {index: 134, name: "cell504", id: 262, pos: 0},
-    cell505: {index: 135, name: "cell505", id: 262, pos: 1},
-    cell506: {index: 136, name: "cell506", id: 262, pos: 2},
-    cell507: {index: 137, name: "cell507", id: 262, pos: 3},
-    cell508: {index: 138, name: "cell508", id: 263, pos: 0},
-    cell509: {index: 139, name: "cell509", id: 263, pos: 1},
-    cell510: {index: 140, name: "cell510", id: 263, pos: 2},
-    cell511: {index: 141, name: "cell511", id: 263, pos: 3},
-    cell512: {index: 142, name: "cell512", id: 264, pos: 0},
-    temp501: {index: 143, name: "temp501", id: 264, pos: 1},
-    temp502: {index: 144, name: "temp502", id: 264, pos: 2},
-    temp503: {index: 145, name: "temp503", id: 264, pos: 3},
-    temp504: {index: 146, name: "temp504", id: 265, pos: 0},
-    temp505: {index: 147, name: "temp505", id: 265, pos: 1},
 
     /*controle geral*/
+
+    steeringWheel: {index: 27, name: "steeringWheel", id: 101, pos: 1},
+    pedalAcelerador: {index: 23, name: "pedalAcelerador", id: 101, pos: 2},
+    pedalFreio: {index: 24, name: "pedalFreio", id: 101, pos: 3},
+
+    selectedMode: {index: 167, name: "selectedMode", id: 102, pos: 0},
+    hodometroParcial: {index: 169, name: "hodometroParcial", id: 102, pos: 2},
+    hodometroTotal: {index: 170, name: "hodometroTotal", id: 102, pos: 3},
+
+    ecuFlag: {index: 180, name: "ecuFlag", id: 103, pos: 0},
+    torqueReferenceRight: {index: 21, name: "torqueReferenceRight", id: 103, pos: 2},
+    torqueReferenceLeft: {index: 22, name: "torqueReferenceLeft", id: 103, pos: 3},
+
+    speedFL: {index: 15, name: "speedFL", id: 104, pos: 0},
+    speedFR: {index: 16, name: "speedFR", id: 104, pos: 1},
+    speedBL: {index: 17, name: "speedBL", id: 104, pos: 2},
+    speedBR: {index: 18, name: "speedBR", id: 104, pos: 3},
+
+
+    speedMotorLeft: {index: 166, name: "speedMotorLeft", id: 110, pos: 0},
+    motorTorqueLeft: {index: 20, name: "motorTorqueLeft", id: 110, pos: 1},
+
+
+    speedMotorRight: {index: 165, name: "speedMotorRight", id: 120, pos: 0},
+    motorTorqueRight: {index: 19, name: "motorTorqueRight", id: 120, pos: 1},
+    
+
+    accelerometerX: {index: 154, name: "accelerometerX", id: 130, pos: 0},
+    accelerometerY: {index: 155, name: "accelerometerY", id: 130, pos: 1},
+    accelerometerZ: {index: 156, name: "accelerometerZ", id: 130, pos: 2},
+    gyroscopeX: {index: 157, name: "gyroscopeX", id: 131, pos: 0},
+    gyroscopeY: {index: 158, name: "gyroscopeY", id: 131, pos: 1},
+    gyroscopeZ: {index: 159, name: "gyroscopeZ", id: 131, pos: 2},
+
+
 
     stoppedTime: {index: 1, name: "stoppedTime", id: 0x100, pos: 0}, 
     operationMode: {index: 8, name: "operationMode", id: 1, pos: 0},
     errorFlag: {index: 9, name: "errorFlag", id: 0x001, pos: 2},
     mediaCurrent: {index: 10, name: "mediaCurrent", id: 53, pos: 0}, //não achei
     mediaTemperature: {index: 12, name: "mediaTemperature", id: 53, pos: 2}, //não achei    
-    speedFL: {index: 15, name: "speedFL", id: 105, pos: 0},
-    speedFR: {index: 16, name: "speedFR", id: 105, pos: 1},
-    speedBL: {index: 17, name: "speedBL", id: 105, pos: 2},
-    speedBR: {index: 18, name: "speedBR", id: 105, pos: 3},
-    motorTorqueRight: {index: 19, name: "motorTorqueRight", id: 103, pos: 0},
-    motorTorqueLeft: {index: 20, name: "motorTorqueLeft", id: 103, pos: 1},
-    torqueReferenceRight: {index: 21, name: "torqueReferenceRight", id: 103, pos: 2},
-    torqueReferenceLeft: {index: 22, name: "torqueReferenceLeft", id: 103, pos: 3},
-    pedalAcelerador: {index: 23, name: "pedalAcelerador", id: 101, pos: 2},
-    pedalFreio: {index: 24, name: "pedalFreio", id: 101, pos: 3},
+      
+    
+    
     // mediaSpeed: {index: 25, name: "mediaSpeed", id: 0x304, pos: 0},
     // mediaTorque: {index: 26, name: "mediaTorque", id: 0x304, pos: 1},
-    steeringWheel: {index: 27, name: "steeringWheel", id: 101, pos: 1},
+    
     ECUTimer: {index: 28, name: "ECUTimer", id: 101, pos: 0},
     energiaInversorRight: {index: 29, name: "energiaInversorRight", id: 106, pos: 0},
     energiaInversorLeft: {index: 30, name: "energiaInversorLeft", id: 106, pos: 1},
@@ -306,12 +294,6 @@ let fields = {
     tireTempFR: {index: 151, name: "tireTempFR", id: 0x700, pos: 1},
     tireTempBL: {index: 152, name: "tireTempBL", id: 0x700, pos: 2},
     tireTempBR: {index: 153, name: "tireTempBR", id: 0x700, pos: 3},
-    accelerometerX: {index: 154, name: "accelerometerX", id: 161, pos: 0},
-    accelerometerY: {index: 155, name: "accelerometerY", id: 161, pos: 1},
-    accelerometerZ: {index: 156, name: "accelerometerZ", id: 161, pos: 2},
-    gyroscopeX: {index: 157, name: "gyroscopeX", id: 0x702, pos: 0},
-    gyroscopeY: {index: 158, name: "gyroscopeY", id: 0x702, pos: 1},
-    gyroscopeZ: {index: 159, name: "gyroscopeZ", id: 0x702, pos: 2},
     portConnected: {index: 900, name: "portConnected", id: 900, pos: 0},
     rssi: {index: 901, name: "rssi", id: 901, pos: 0},
     sensorPressaoDianteiro: {index: 160, name: "sensorPressaoDianteiro", id: 170, pos: 0},
@@ -319,22 +301,16 @@ let fields = {
     termoparFreioD: {index: 162, name: "termoparFreioD", id: 170, pos: 2},
     extensometro1: {index: 163, name: "extensometro1", id: 171, pos: 0},
     extensometro2: {index: 164, name: "extensometro2", id: 171, pos: 1},
-    speedMotorRight: {index: 165, name: "speedMotorRight", id: 104, pos: 0},
-    speedMotorLeft: {index: 166, name: "speedMotorLeft", id: 104, pos: 1},
-    selectedMode: {index: 167, name: "selectedMode", id: 102, pos: 0},
     interfaceFlag: {index: 168, name: "interfaceFlag", id: 102, pos: 1},
-    hodometroParcial: {index: 169, name: "hodometroParcial", id: 102, pos: 2},
-    hodometroTotal: {index: 170, name: "hodometroTotal", id: 102, pos: 3},
-    intensidadeFrenagem: {index: 171, name: "intensidadeFrenagem", id: 104, pos: 2},
-    selecaoBotao: {index: 172, name: "selecaoBotao", id: 104, pos: 3},
+    intensidadeFrenagem: {index: 171, name: "intensidadeFrenagem", id: 108, pos: 2},
+    selecaoBotao: {index: 172, name: "selecaoBotao", id: 108, pos: 3},
     ganhoTorque: {index: 173, name: "ganhoTorque", id: 106, pos: 0},
     extensometro22: {index: 174, name: "extensometro22", id: 173, pos: 0},
     extensometro13: {index: 175, name: "extensometro13", id: 178, pos: 0},
     extensometro23: {index: 176, name: "extensometro23", id: 178, pos: 2},
     simHodometer: {index: 177, name: "simHodometer", id: 901, pos: 0},
     simCharge: {index: 178, name: "simCharge", id: 901, pos: 1},
-    pressaoTraseiro: {index: 179, name: "pressaoTraseiro", id: 200, pos: 0},
-    ecuFlag: {index: 180, name: "ecuFlag", id: 291, pos: 3}
+    pressaoTraseiro: {index: 179, name: "pressaoTraseiro", id: 200, pos: 0}
 }
 
 const nameFieldIdMap = Object.values(fields).reduce((last, field) => (last[field.name] = field.index, last), {})
@@ -390,8 +366,6 @@ let availablePlotOptions = [
     {index: fields.temp203.index, name: "Temperatura 203", unidade: "ºC", formatFn: ((a) => a)},
     {index: fields.temp301.index, name: "Temperatura 301", unidade: "ºC", formatFn: ((a) => a)},
     {index: fields.temp303.index, name: "Temperatura 303", unidade: "ºC", formatFn: ((a) => a)},
-    {index: fields.temp401.index, name: "Temperatura 401", unidade: "ºC", formatFn: ((a) => a)},
-    {index: fields.temp403.index, name: "Temperatura 403", unidade: "ºC", formatFn: ((a) => a)},
     {index: fields.simCharge.index, name: "Descarga recente", unidade: "C", formatFn: ((a) => a)},
     {index: fields.pressaoTraseiro.index, name: "Pressão na linha de freio traseira", unidade: "Pa", formatFn: ((a) => a)}
 ]
@@ -445,14 +419,6 @@ let datalogOrder = [
     fields.temp302.name,
     fields.temp303.name,
     fields.temp304.name,
-    fields.temp401.name,
-    fields.temp402.name,
-    fields.temp403.name,
-    fields.temp404.name,
-    fields.temp501.name,
-    fields.temp502.name,
-    fields.temp503.name,
-    fields.temp504.name,
     fields.current3.name,
     fields.totalVoltage.name,
     fields.minVoltage.name,
