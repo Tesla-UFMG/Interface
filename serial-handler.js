@@ -1,4 +1,4 @@
-const SerialPort = require('serialport');
+const {SerialPort} = require('serialport');
 const fs = require('fs');
 
 const constants = require('./components/constants.js');
@@ -45,19 +45,18 @@ class SerialHandler {
             await sleep(1000);
             const ports = await SerialPort.list();
     
+
             if (ports.length == 0)
                 continue;
             
             for(let i = 0; i<ports.length; i++) {
                 if (typeof targetPort !== 'undefined' && targetPort !== ""){
-                    if (ports[i].comName !== targetPort)
+                    if (ports[i].path !== targetPort)
                         continue;
                 }
-                if (ignorePorts.includes(ports[i].comName))
+                if (ignorePorts.includes(ports[i].path))
                     continue;
-                
-                console.log("Tentando porta: "+ports[i].comName);
-                this.ttl_port = new SerialPort(ports[i].comName, { baudRate: 115200, autoOpen: false })
+                this.ttl_port = new SerialPort({path: ports[i].path, baudRate: 115200, autoOpen: false })
                 let opened = false;
                 let error;
                 //abre e fecha a porta para garantir que ela é capaz de ser aberta
@@ -112,7 +111,7 @@ class SerialHandler {
         let parser;
           
         switch (constants.port.operationType) {
-            case constants.port.OperationsType.API_BYTES:
+            case constants.port.OperationsType.API_BYTES: 
             case constants.port.OperationsType.API_STRING:
                 parser = new ApiModeParser();
                 break;
@@ -120,6 +119,7 @@ class SerialHandler {
                 parser = new Delimiter({delimiter: '\n'});
                 break;
         }
+        
         this.ttl_port.pipe(parser);
         parser.on('data', this.parseData)
         
@@ -133,7 +133,6 @@ class SerialHandler {
         let newData = [];
         let id;
         let datalogSafe = true;
-
         switch (constants.port.operationType) {
             case constants.port.OperationsType.BYTES:
                 id = (data[1] << 8) + data[0];
@@ -284,6 +283,11 @@ class SerialHandler {
     writeDatalog() {
         
         if (constants.datalog.shouldWrite && this.allowDatalog) {
+
+            if (!fs.existsSync(constants.datalog.filepath)){
+                fs.mkdirSync(constants.datalog.filepath);
+            }
+
             const options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'};
             const now = new Date();
             let fileDestination;

@@ -21,12 +21,10 @@ class ObjectCreator {
         this.offLimitFields = [];
 
         this.packs = [
-            {cells: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], temperatures: [0, 0, 0, 0]},
-            {cells: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], temperatures: [0, 0, 0, 0]},
-            {cells: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], temperatures: [0, 0, 0, 0]},
-            {cells: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], temperatures: [0, 0, 0, 0]},
-            {cells: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], temperatures: [0, 0, 0, 0]},
-            {cells: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], temperatures: [0, 0, 0, 0]}
+            {cells: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], temperatures: [0, 0, 0, 0, 0]},
+            {cells: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], temperatures: [0, 0, 0, 0, 0]},
+            {cells: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], temperatures: [0, 0, 0, 0, 0]},
+            {cells: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], temperatures: [0, 0, 0, 0, 0]}
         ]
     }
 
@@ -36,21 +34,41 @@ class ObjectCreator {
 
     async treatInfo(id, data) {
         if (this.isPackRelated(id)) {
-            let packIndex = parseInt((id-260)/5);
-            let packPart = (id-260)%5;
+            let packIndex = parseInt((id-256)/5)
+            let packPart = parseInt((id-256)%5)
+            switch(packPart){
+                case 0: 
+                    for(var j = 0; j < 4; j ++){
+                        this.packs[packIndex].cells[j] = data[j];
+                    }
+                    break
 
-            if (packPart < 3) {
-                for (let i = 0; i < 4; i++) {
-                    this.packs[packIndex].cells[packPart*4+i] = data[i];
-                }
-            } else if (packPart < 4) {
-                this.packs[packIndex].temperatures = data;
+                case 1:
+                    for(var j = 0; j < 4; j ++){
+                        this.packs[packIndex].cells[j + 4] = data[j];
+                    }
+                    break
 
-                for(var i = 0; i < data.length; i++) {
-                    let fieldId = this.mapId(id, i);
-                    this.insertData(fieldId, data[i]);
-                }
-            } 
+                case 2:
+                    for(var j = 0; j < 4; j ++){
+                        this.packs[packIndex].cells[j + 8] = data[j];
+                    }
+                    break
+
+                case 3:
+                    console.log("case 3" + data)
+                    for(var j = 0; j < 4; j ++){
+                        this.packs[packIndex].temperatures[j] = data[j];
+                    }    
+                    break;
+
+                case 4: 
+                    
+                this.packs[packIndex].temperatures[5] = data[0];
+                    break;
+                default: break;
+            }
+
 
         } else if (this.isExtensometroRelated(id)) {
             /*
@@ -107,7 +125,8 @@ class ObjectCreator {
     }
 
     isPackRelated(id) {
-        return id >= 260 && id <= 293;
+        console.log(id)
+        return id >= 256 && id <= 275;
     }
 
     insertData(fieldId, value) {
@@ -129,6 +148,7 @@ class ObjectCreator {
         var obj;
         switch(page) {
             case "geral":
+                
                 obj = this.buildGeralInfo();
                 break;
 
@@ -169,6 +189,7 @@ class ObjectCreator {
         const accelY = this.retrieveLastData(cFields.accelerometerY.index)
         const accelZ = this.retrieveLastData(cFields.accelerometerZ.index)
 
+
         return {
             control: {
                 engine: {
@@ -208,7 +229,8 @@ class ObjectCreator {
                     x: (accelX > Math.pow(2, 15) ? (accelX-Math.pow(2, 16)): accelX),
                     y: (accelY > Math.pow(2, 15) ? (accelY-Math.pow(2, 16)): accelY),
                     z: (accelZ > Math.pow(2, 15) ? (accelZ-Math.pow(2, 16)): accelZ)
-                }
+                },
+                ecuFlag: this.retrieveLastData(cFields.ecuFlag.index),
             }
         }
     }
