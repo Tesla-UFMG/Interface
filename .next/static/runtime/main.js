@@ -8060,7 +8060,7 @@ function connect(options) {
       error.name = err.name;
       error.stack = err.stack; // __NEXT_DIST_DIR is provided by webpack
 
-      source_map_support_1.rewriteStacktrace(error, "/Users/renanmoreira/Documents/UFMG/Tesla/2019/interface/Janela de Dados 2019/.next");
+      source_map_support_1.rewriteStacktrace(error, "C:\\Users\\caiol\\Desktop\\TESLA\\Janelas\\Janela de Dados\\Interface\\.next");
       return error;
     }
   };
@@ -9164,7 +9164,7 @@ function () {
 
                       case 2:
                         return _context3.abrupt("return", new _promise.default(function (resolve) {
-                          ws = new WebSocket("".concat(wsProtocol, "://").concat(hostname, ":").concat(49770).concat("/"));
+                          ws = new WebSocket("".concat(wsProtocol, "://").concat(hostname, ":").concat(54667).concat("/"));
 
                           ws.onopen = function () {
                             return resolve();
@@ -15783,23 +15783,23 @@ module.exports = __webpack_require__(/*! ./dist/client/router */ "./node_modules
 
 /***/ "./node_modules/object-assign/index.js":
 /*!***************************************************************************************************!*\
-  !*** delegated ./node_modules/object-assign/index.js from dll-reference dll_228480eb734ad466119d ***!
+  !*** delegated ./node_modules/object-assign/index.js from dll-reference dll_7b9265c061e07b49bd43 ***!
   \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_228480eb734ad466119d */ "dll-reference dll_228480eb734ad466119d"))("./node_modules/object-assign/index.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_7b9265c061e07b49bd43 */ "dll-reference dll_7b9265c061e07b49bd43"))("./node_modules/object-assign/index.js");
 
 /***/ }),
 
 /***/ "./node_modules/prop-types/checkPropTypes.js":
 /*!*********************************************************************************************************!*\
-  !*** delegated ./node_modules/prop-types/checkPropTypes.js from dll-reference dll_228480eb734ad466119d ***!
+  !*** delegated ./node_modules/prop-types/checkPropTypes.js from dll-reference dll_7b9265c061e07b49bd43 ***!
   \*********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_228480eb734ad466119d */ "dll-reference dll_228480eb734ad466119d"))("./node_modules/prop-types/checkPropTypes.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_7b9265c061e07b49bd43 */ "dll-reference dll_7b9265c061e07b49bd43"))("./node_modules/prop-types/checkPropTypes.js");
 
 /***/ }),
 
@@ -16407,12 +16407,12 @@ if (true) {
 
 /***/ "./node_modules/prop-types/lib/ReactPropTypesSecret.js":
 /*!*******************************************************************************************************************!*\
-  !*** delegated ./node_modules/prop-types/lib/ReactPropTypesSecret.js from dll-reference dll_228480eb734ad466119d ***!
+  !*** delegated ./node_modules/prop-types/lib/ReactPropTypesSecret.js from dll-reference dll_7b9265c061e07b49bd43 ***!
   \*******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_228480eb734ad466119d */ "dll-reference dll_228480eb734ad466119d"))("./node_modules/prop-types/lib/ReactPropTypesSecret.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_7b9265c061e07b49bd43 */ "dll-reference dll_7b9265c061e07b49bd43"))("./node_modules/prop-types/lib/ReactPropTypesSecret.js");
 
 /***/ }),
 
@@ -17158,12 +17158,12 @@ exports.encode = exports.stringify = __webpack_require__(/*! ./encode */ "./node
 
 /***/ "./node_modules/react-dom/index.js":
 /*!***********************************************************************************************!*\
-  !*** delegated ./node_modules/react-dom/index.js from dll-reference dll_228480eb734ad466119d ***!
+  !*** delegated ./node_modules/react-dom/index.js from dll-reference dll_7b9265c061e07b49bd43 ***!
   \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_228480eb734ad466119d */ "dll-reference dll_228480eb734ad466119d"))("./node_modules/react-dom/index.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_7b9265c061e07b49bd43 */ "dll-reference dll_7b9265c061e07b49bd43"))("./node_modules/react-dom/index.js");
 
 /***/ }),
 
@@ -17405,12 +17405,12 @@ if (false) {} else {
 
 /***/ "./node_modules/react/index.js":
 /*!*******************************************************************************************!*\
-  !*** delegated ./node_modules/react/index.js from dll-reference dll_228480eb734ad466119d ***!
+  !*** delegated ./node_modules/react/index.js from dll-reference dll_7b9265c061e07b49bd43 ***!
   \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_228480eb734ad466119d */ "dll-reference dll_228480eb734ad466119d"))("./node_modules/react/index.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_7b9265c061e07b49bd43 */ "dll-reference dll_7b9265c061e07b49bd43"))("./node_modules/react/index.js");
 
 /***/ }),
 
@@ -18280,19 +18280,19 @@ module.exports = {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/renanmoreira/Documents/UFMG/Tesla/2019/interface/Janela de Dados 2019/node_modules/next/dist/client/next-dev */"./node_modules/next/dist/client/next-dev.js");
+module.exports = __webpack_require__(/*! C:\Users\caiol\Desktop\TESLA\Janelas\Janela de Dados\Interface\node_modules\next\dist\client\next-dev */"./node_modules/next/dist/client/next-dev.js");
 
 
 /***/ }),
 
-/***/ "dll-reference dll_228480eb734ad466119d":
+/***/ "dll-reference dll_7b9265c061e07b49bd43":
 /*!*******************************************!*\
-  !*** external "dll_228480eb734ad466119d" ***!
+  !*** external "dll_7b9265c061e07b49bd43" ***!
   \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = dll_228480eb734ad466119d;
+module.exports = dll_7b9265c061e07b49bd43;
 
 /***/ })
 

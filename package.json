@@ -4,7 +4,7 @@
   "description": "Janela de Dados 2019 - Fórmula Tesla UFMG",
   "main": "index.js",
   "scripts": {
-    "dev": "node server.js",
+    "dev": "node --openssl-legacy-provider server.js",
     "build": "next build",
     "start": "NODE_ENV=production node server.js"
   },
