@@ -4,6 +4,8 @@ import Velocimetro from '../components/velocimetro.js'
 import Bateria from '../components/bateria.js'
 import BMSInformation from '../components/bms-information.js'
 import DataFetcher from '../components/data-fetcher.js'
+import ECU from "../components/ecu.js";
+import BrakeBias from "../components/brake-bias.js";
 
 import '../static/styles/styles.css'
 
@@ -49,6 +51,17 @@ class Index extends DataFetcher {
             </div>
           </DelayProvider>
           
+          <div className="row mt-1 mb-1">
+                <div className="col-6 mt-3">
+                  <ECU
+                    value={((this.state.data || {}).control || {}).ecuFlag || 0}
+                  ></ECU>
+                </div>
+                <div className="col-6 mt-3">
+                  <BrakeBias value={50}></BrakeBias>
+                </div>
+              </div>
+
         </div>
     )
   }

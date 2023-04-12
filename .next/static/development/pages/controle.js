@@ -15810,17 +15810,7 @@ function (_DataFetcher) {
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_components_acelerometro_yz_js__WEBPACK_IMPORTED_MODULE_11__["default"], {
         z: (((this.state.data || {}).control || {}).accelerometer || {}).z / 1000,
         y: (((this.state.data || {}).control || {}).accelerometer || {}).y / 1000
-      })))))))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        className: "row mt-1 mb-1"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        className: "col-6 mt-3"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_components_ecu_js__WEBPACK_IMPORTED_MODULE_12__["default"], {
-        value: ((this.state.data || {}).control || {}).ecuFlag || 0
-      })), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        className: "col-6 mt-3"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_components_brake_bias_js__WEBPACK_IMPORTED_MODULE_13__["default"], {
-        value: 50
-      })))))));
+      }))))))))))));
     }
   }]);
 
@@ -15851,7 +15841,7 @@ function Pedal(props) {
 
 /***/ }),
 
-/***/ 6:
+/***/ 9:
 /*!*******************************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fcontrole&absolutePagePath=C%3A%5CUsers%5Cluiza%5COneDrive%5CDocumentos%5CTesla%5CJanelaDeDados%5CInterface%5Cpages%5Ccontrole.js ***!
   \*******************************************************************************************************************************************************************************/
@@ -15874,5 +15864,5 @@ module.exports = dll_7b9265c061e07b49bd43;
 
 /***/ })
 
-},[[6,"static/runtime/webpack.js"]]]));;
+},[[9,"static/runtime/webpack.js"]]]));;
 //# sourceMappingURL=controle.js.map

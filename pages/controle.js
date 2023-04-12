@@ -142,7 +142,7 @@ class Controle extends DataFetcher {
                   </div>
                 </div>
               </div>
-              <div className="row mt-1 mb-1">
+              {/* <div className="row mt-1 mb-1">
                 <div className="col-6 mt-3">
                   <ECU
                     value={((this.state.data || {}).control || {}).ecuFlag || 0}
@@ -151,7 +151,7 @@ class Controle extends DataFetcher {
                 <div className="col-6 mt-3">
                   <BrakeBias value={50}></BrakeBias>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </DelayProvider>

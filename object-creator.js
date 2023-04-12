@@ -24,9 +24,9 @@ class ObjectCreator {
             {cells: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], temperatures: [0, 0, 0, 0]},
             {cells: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], temperatures: [0, 0, 0, 0]},
             {cells: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], temperatures: [0, 0, 0, 0]},
-            {cells: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], temperatures: [0, 0, 0, 0]},
-            {cells: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], temperatures: [0, 0, 0, 0]},
             {cells: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], temperatures: [0, 0, 0, 0]}
+           //{cells: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], temperatures: [0, 0, 0, 0]},
+           // {cells: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], temperatures: [0, 0, 0, 0]}
         ]
     }
 

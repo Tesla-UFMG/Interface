@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 7);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -5199,17 +5199,7 @@ function (_DataFetcher) {
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_components_acelerometro_yz_js__WEBPACK_IMPORTED_MODULE_11__["default"], {
         z: (((this.state.data || {}).control || {}).accelerometer || {}).z / 1000,
         y: (((this.state.data || {}).control || {}).accelerometer || {}).y / 1000
-      })))))))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        className: "row mt-1 mb-1"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        className: "col-6 mt-3"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_components_ecu_js__WEBPACK_IMPORTED_MODULE_12__["default"], {
-        value: ((this.state.data || {}).control || {}).ecuFlag || 0
-      })), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        className: "col-6 mt-3"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_components_brake_bias_js__WEBPACK_IMPORTED_MODULE_13__["default"], {
-        value: 50
-      })))))));
+      }))))))))))));
     }
   }]);
 
@@ -5240,7 +5230,7 @@ function Pedal(props) {
 
 /***/ }),
 
-/***/ 4:
+/***/ 7:
 /*!*********************************!*\
   !*** multi ./pages/controle.js ***!
   \*********************************/
