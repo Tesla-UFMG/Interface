@@ -19348,7 +19348,7 @@ function (_DataFetcher) {
 
 /***/ }),
 
-/***/ 5:
+/***/ 6:
 /*!********************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=C%3A%5CUsers%5Cluiza%5COneDrive%5CDocumentos%5CTesla%5CJanelaDeDados%5CInterface%5Cpages%5Cindex.js ***!
   \********************************************************************************************************************************************************************/
@@ -19371,5 +19371,5 @@ module.exports = dll_7b9265c061e07b49bd43;
 
 /***/ })
 
-},[[5,"static/runtime/webpack.js","styles"]]]));;
+},[[6,"static/runtime/webpack.js","styles"]]]));;
 //# sourceMappingURL=index.js.map

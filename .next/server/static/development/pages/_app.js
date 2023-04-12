@@ -2907,7 +2907,12 @@ function (_App) {
       }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("img", {
         ref: this.issuesIconComponent,
         src: "../static/SVGs/ok.svg"
-      })))), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("script", {
+      })))), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
+        class: "alert alert-danger",
+        role: "alert"
+      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
+        className: "menu-button" + (this.props.router.asPath == "/controle" ? " selected" : "")
+      })), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("script", {
         src: "nprogress.js"
       }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("link", {
         rel: "stylesheet",

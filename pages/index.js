@@ -27,7 +27,10 @@ class Index extends DataFetcher {
   render() {
     // debugger;
     return(
+      
+
         <div className="container-fluid">
+          
           <DelayProvider value={this.delay}>
             <div className="row d-flex align-items-center index-section" >
               <div className="col-lg-4 col-12 mt-2 mb-2">
@@ -50,12 +53,14 @@ class Index extends DataFetcher {
               </div>
             </div>
           </DelayProvider>
-          
           <div className="row mt-1 mb-1">
                 <div className="col-6 mt-3">
                   <ECU
                     value={((this.state.data || {}).control || {}).ecuFlag || 0}
-                  ></ECU>
+                  >
+                    
+                  </ECU>
+                  
                 </div>
                 <div className="col-6 mt-3">
                   <BrakeBias value={50}></BrakeBias>

@@ -150,7 +150,7 @@ class MyApp extends App {
                   <span className="menu-text">CONTROLE</span>
                 </div>
               </Link>
-
+              
               
               <Link href="/packs">
                 <div className={"menu-button"+(this.props.router.asPath == "/packs" ? " selected" : "") }>
@@ -188,9 +188,12 @@ class MyApp extends App {
 
             </div>
 
-
         </div>
-
+        <div class="alert alert-danger" role="alert">
+        <div className={"menu-button"+(this.props.router.asPath == "/controle" ? " selected" : "" )}>
+        </div>
+</div>
+        
         <script src='nprogress.js'></script>
         <link rel='stylesheet' href='nprogress.css'/>
 
