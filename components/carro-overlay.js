@@ -58,13 +58,13 @@ class CarOverlay extends Component {
                                 transform="" textAnchor="start">TORQUE</text>
                         </g>
                         <g transform="" id="IMD-TITLE"><text stroke="none" id="text54"
-                                strokeWidth="1px" x="908px" fontWeight="bold" textRendering="geometricPrecision"
-                                fontFamily="Exo" fill="whitesmoke" fontSize="33px" y="436px" transform=""
+                                strokeWidth="1px" x="897px" fontWeight="bold" textRendering="geometricPrecision"
+                                fontFamily="Exo" fill="whitesmoke" fontSize="38px" y="436px" transform=""
                                 textAnchor="start">INVERSOR/MOTOR</text><text stroke="none"
                                 id="text55" strokeWidth="1px" x="1200px" fontWeight="bold" textRendering="geometricPrecision"
-                                fontFamily="Exo" fill="whitesmoke" fontSize="33px" y="474px" transform=""
+                                fontFamily="Exo" fill="whitesmoke" fontSize="38px" y="474px" transform=""
                                 textAnchor="end">DIREITO</text></g>
-                        <g transform="" id="T1-IMD">
+                        {/* <g transform="" id="T1-IMD">
                             <image x="1138px" height="70px" y="584px" id="image14"
                                 xlinkHref="/static/SVGs/termometer.svg"
                                 xlinkRole="/static/SVGs/termometer.svg"
@@ -85,9 +85,9 @@ class CarOverlay extends Component {
                                 fill="whitesmoke" fontSize="25px" transform="" textAnchor="start">ºC</text><text stroke="none"
                                     id="text50" strokeWidth="1px" x="904px" fontWeight="bold"
                                 textRendering="geometricPrecision" fontFamily="Exo" fill="whitesmoke" fontSize="30px" y="614px"
-                                transform="" textAnchor="start">TEMPERATURA 1</text>
-                        </g>
-                        <g transform="" id="T2-IMD">
+                                transform="" textAnchor="start">OI</text>
+                        </g> */}
+                        {/* <g transform="" id="T2-IMD">
                             <image x="900px" height="70px" y="676px" id="image15"
                                 xlinkHref="/static/SVGs/termometer.svg"
                                 xlinkRole="/static/SVGs/termometer.svg"
@@ -109,7 +109,7 @@ class CarOverlay extends Component {
                                     id="text53" strokeWidth="1px" x="955px" fontWeight="bold"
                                 textRendering="geometricPrecision" fontFamily="Exo" fill="whitesmoke" fontSize="30px" y="704px"
                                 transform="" textAnchor="start">TEMPERATURA 2</text>
-                        </g>
+                        </g> */}
                         <line stroke="#858787" y1="491px" strokeWidth="3px" x1="906px" id="line7" y2="491px" x2="1201px"
                             transform="" visibility="visible"></line>
                     </g>
@@ -144,7 +144,7 @@ class CarOverlay extends Component {
                                 xlinkRole="/static/SVGs/gears.svg"
                                 width="70" preserveAspectRatio="xMidYMid meet" transform=""></image>
                         </g>
-                        <g transform="" id="T1-IME">
+                        {/* <g transform="" id="T1-IME">
                                 <CountUpWrapper end={((this.props.inverters || {}).temperature || {}).left1/10 || 0}
                                                 decimals={0}>
                                     {
@@ -166,8 +166,8 @@ class CarOverlay extends Component {
                                 xlinkHref="/static/SVGs/termometer.svg"
                                 xlinkRole="/static/SVGs/termometer.svg"
                                 width="70px" preserveAspectRatio="xMidYMid meet" transform=""></image>
-                        </g>
-                        <g transform="" id="T2-IME">
+                        </g> */}
+                        {/* <g transform="" id="T2-IME">
                                 <CountUpWrapper end={((this.props.inverters || {}).temperature || {}).left2/10 || 0}
                                                 decimals={0}>
                                     {
@@ -188,15 +188,15 @@ class CarOverlay extends Component {
                                 xlinkHref="/static/SVGs/termometer.svg"
                                 xlinkRole="/static/SVGs/termometer.svg"
                                 width="70px" preserveAspectRatio="xMidYMid meet" transform=""></image>
-                        </g>
+                        </g> */}
                         <line stroke="#858787" y1="489px" strokeWidth="3px" x1="34px" id="line6" y2="489px" x2="329px" transform=""
                             visibility="visible"></line>
                         <g transform="" id="IME-TITLE"><text stroke="none" id="text33"
-                                strokeWidth="1px" x="36px" fontWeight="bold" textRendering="geometricPrecision" fontFamily="Exo"
-                                fill="whitesmoke" fontSize="33px" y="434px" transform=""
+                                strokeWidth="1px" x="25px" fontWeight="bold" textRendering="geometricPrecision" fontFamily="Exo"
+                                fill="whitesmoke" fontSize="38px" y="434px" transform=""
                                 textAnchor="start">INVERSOR/MOTOR</text><text stroke="none" 
-                                id="text34" strokeWidth="1px" x="34px" fontWeight="bold" textRendering="geometricPrecision"
-                                fontFamily="Exo" fill="whitesmoke" fontSize="33px" y="472px" transform=""
+                                id="text34" strokeWidth="1px" x="25px" fontWeight="bold" textRendering="geometricPrecision"
+                                fontFamily="Exo" fill="whitesmoke" fontSize="38px" y="472px" transform=""
                                 textAnchor="start">ESQUERDO</text></g>
                     </g>
                     <circle stroke="whitesmoke" cx="526px" strokeWidth="3px" id="circle2" cy="833px" fill="darkgreen" r="21px"
@@ -274,11 +274,11 @@ class CarOverlay extends Component {
                         </g>
                         <g transform="" id="PTE-TEXT"><text stroke="none" strokeWidth="1px" x="39px"
                                 fontWeight="bold" textRendering="geometricPrecision" fontFamily="Exo" fill="whitesmoke"
-                                fontSize="35px" y="882px" transform="" textAnchor="start" id="text28">ESQUERDO</text><text
+                                fontSize="40px" y="882px" transform="" textAnchor="start" id="text28">ESQUERDO</text><text
                                 stroke="none" strokeWidth="1px" x="39px" fontWeight="bold"
-                                textRendering="geometricPrecision" fontFamily="Exo" fill="whitesmoke" fontSize="35px" y="842px"
+                                textRendering="geometricPrecision" fontFamily="Exo" fill="whitesmoke" fontSize="40px" y="842px"
                                 transform="" textAnchor="start" id="text29">PNEU TRASEIRO</text></g>
-                        <g transform="" id="TEMP-TE"><text stroke="none"  strokeWidth="1px" x="266px"
+                        {/* <g transform="" id="TEMP-TE"><text stroke="none"  strokeWidth="1px" x="266px"
                                 fontWeight="bold" textRendering="geometricPrecision" fontFamily="Exo" fill="whitesmoke"
                                 fontSize="30px" y="1020px" transform="" textAnchor="end" id="text30">TEMPERATURA</text>
                                 <CountUpWrapper end={((this.props.tires || {}).temperature || {}).backLeft/100 || 0}
@@ -299,7 +299,7 @@ class CarOverlay extends Component {
                                 xlinkHref="/static/SVGs/termometer.svg"
                                 xlinkRole="/static/SVGs/termometer.svg"
                                 width="70px" preserveAspectRatio="xMidYMid meet" transform=""></image>
-                        </g>
+                        </g> */}
                     </g>
                 </g>
                 <g transform="" id="PDE-INFO">
@@ -316,7 +316,7 @@ class CarOverlay extends Component {
                                 fill="whitesmoke" fontSize="35px" y="162px" transform="" textAnchor="start">ESQUERDO</text><text
                                 stroke="none" id="text9" strokeWidth="1px" x="180px"
                                 fontWeight="bold" textRendering="geometricPrecision" fontFamily="Exo" fill="whitesmoke"
-                                fontSize="35px" y="122px" transform="" textAnchor="middle">PNEU DIANTEIRO</text></g>
+                                fontSize="40px" y="122px" transform="" textAnchor="middle">PNEU DIANTEIRO</text></g>
                         <line stroke="#858787" y1="175px" strokeWidth="3px" x1="32px" id="line2" y2="175px" x2="327px"
                             transform=""></line>
                         <g transform="" id="VEL-DE">
@@ -342,7 +342,7 @@ class CarOverlay extends Component {
                                 textRendering="geometricPrecision" fontFamily="Exo" fill="whitesmoke" fontSize="30px" y="221px"
                                 transform="" textAnchor="middle">VELOCIDADE</text>
                         </g>
-                        <g transform="" id="TEMP-DE"><text stroke="none"  id="text14" strokeWidth="1px"
+                        {/* <g transform="" id="TEMP-DE"><text stroke="none"  id="text14" strokeWidth="1px"
                                 x="263px" fontWeight="bold" textRendering="geometricPrecision" fontFamily="Exo" fill="whitesmoke"
                                 fontSize="30px" y="296px" transform="" textAnchor="end">TEMPERATURA</text>
                                 <CountUpWrapper end={((this.props.tires || {}).temperature || {}).frontLeft/100 || 0}
@@ -363,7 +363,7 @@ class CarOverlay extends Component {
                                 xlinkHref="/static/SVGs/termometer.svg"
                                 xlinkRole="/static/SVGs/termometer.svg"
                                 width="70px" preserveAspectRatio="xMidYMid meet" transform=""></image>
-                        </g>
+                        </g> */}
                     </g>
                 </g>
                 <g transform="" id="PDD-INFO">
@@ -373,7 +373,7 @@ class CarOverlay extends Component {
                         d="M894,88 l0,250 a10,10 90 0 0 10,10 l300,0 a10,10 90 0 0 10,-10 l0,-250 a10,10 90 0 0 -10,-10 l-300,0 a10,10 90 0 0 -10,10 "
                         fill="black" strokeLinecap="butt" transform="" strokeLinejoin="miter"></path>
                     <g id="PDD" transform="">
-                        <g transform="" id="TEMP-PDD">
+                        {/* <g transform="" id="TEMP-PDD">
                             <image x="1124px" height="70" y="265px" id="image3"
                                 xlinkHref="/static/SVGs/termometer.svg"
                                 xlinkRole="/static/SVGs/termometer.svg"
@@ -395,7 +395,7 @@ class CarOverlay extends Component {
                                 stroke="none"  id="text5" strokeWidth="1px" x="1002px" className="carro-overlay-value"
                                 textRendering="geometricPrecision" y="323px" fontFamily="Exo" fill="whitesmoke" fontSize="25px"
                                 transform="" textAnchor="end">ºC</text>
-                        </g>
+                        </g> */}
                         <g transform="" id="VEL-DD">
                             <image x="907px" height="70" y="185px" id="image2"
                                 xlinkHref="/static/SVGs/speedometer.svg"
@@ -423,10 +423,10 @@ class CarOverlay extends Component {
                         </g>
                         <g transform="" id="PDD-TEXT"><text stroke="none" id="text1" strokeWidth="1px"
                                 x="1050px" fontWeight="bold" textRendering="geometricPrecision" fontFamily="Exo"
-                                fill="whitesmoke" fontSize="35px" y="122px" transform="" textAnchor="middle">PNEU
+                                fill="whitesmoke" fontSize="40px" y="122px" transform="" textAnchor="middle">PNEU
                                 DIANTEIRO</text><text stroke="none" id="text3" strokeWidth="1px"
                                 x="1124px" fontWeight="bold" textRendering="geometricPrecision" fontFamily="Exo"
-                                fill="whitesmoke" fontSize="35px" y="163px" transform="" textAnchor="middle">DIREITO</text></g>
+                                fill="whitesmoke" fontSize="40px" y="163px" transform="" textAnchor="middle">DIREITO</text></g>
                         <line stroke="#858787" y1="175px" id="line1" x1="908px" strokeWidth="3px" y2="175px" x2="1203px"
                             transform=""></line>
                     </g>
@@ -469,12 +469,12 @@ class CarOverlay extends Component {
                         </g>
                         <g id="PTD-TEXT" transform=""><text stroke="none" id="text17"
                                 strokeWidth="1px" x="1180px" fontWeight="bold" textRendering="geometricPrecision"
-                                fontFamily="Exo" fill="whitesmoke" fontSize="35px" y="881px" transform=""
+                                fontFamily="Exo" fill="whitesmoke" fontSize="40px" y="881px" transform=""
                                 textAnchor="end">DIREITO</text><text stroke="none" id="text18"
                                 strokeWidth="1px" x="909px" fontWeight="bold" textRendering="geometricPrecision"
-                                fontFamily="Exo" fill="whitesmoke" fontSize="35px" y="841px" transform="" textAnchor="start">PNEU
+                                fontFamily="Exo" fill="whitesmoke" fontSize="40px" y="841px" transform="" textAnchor="start">PNEU
                                 TRASEIRO</text></g>
-                        <g transform="" id="TEMP-TD">
+                        {/* <g transform="" id="TEMP-TD">
                             <image x="1122px" height="70px" y="988px" id="image9"
                                 xlinkHref="/static/SVGs/termometer.svg"
                                 xlinkRole="/static/SVGs/termometer.svg"
@@ -496,8 +496,8 @@ class CarOverlay extends Component {
                                 stroke="none"  id="text24" strokeWidth="1px" x="1007px"
                                 textRendering="geometricPrecision" y="1050px" fontFamily="Exo" fill="whitesmoke" fontSize="25px"
                                 transform="" textAnchor="end">ºC</text>
-                        </g>
-                    </g>
+                        </g>*/}
+                    </g> 
                 </g>
             </svg>
 

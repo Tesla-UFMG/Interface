@@ -88,15 +88,15 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./components/bateria.js":
-/*!*******************************!*\
-  !*** ./components/bateria.js ***!
-  \*******************************/
+/***/ "./components/acelerometro-xy.js":
+/*!***************************************!*\
+  !*** ./components/acelerometro-xy.js ***!
+  \***************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -109,8 +109,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var chroma_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! chroma-js */ "chroma-js");
-/* harmony import */ var chroma_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(chroma_js__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _components_countup_wrapper_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/countup-wrapper.js */ "./components/countup-wrapper.js");
+/* harmony import */ var _components_contexts_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/contexts.js */ "./components/contexts.js");
 
 
 
@@ -119,161 +119,232 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var Bateria =
+
+var AcelerometroXY =
 /*#__PURE__*/
 function (_Component) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(Bateria, _Component);
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(AcelerometroXY, _Component);
 
-  function Bateria() {
-    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, Bateria);
+  function AcelerometroXY(props) {
+    var _this;
 
-    return Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(Bateria).apply(this, arguments));
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, AcelerometroXY);
+
+    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(AcelerometroXY).call(this, props));
+    _this.svgRef = react__WEBPACK_IMPORTED_MODULE_5___default.a.createRef();
+    _this.setaRef = react__WEBPACK_IMPORTED_MODULE_5___default.a.createRef();
+    _this.caboRef = react__WEBPACK_IMPORTED_MODULE_5___default.a.createRef();
+    _this.pontaRef = react__WEBPACK_IMPORTED_MODULE_5___default.a.createRef();
+    _this.lastAngle = 0;
+    _this.lastGrow = 0;
+    return _this;
   }
 
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(Bateria, [{
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(AcelerometroXY, [{
     key: "render",
     value: function render() {
-      var colorScale = chroma_js__WEBPACK_IMPORTED_MODULE_6___default.a.scale(['#c5041a', '#d48633', '#008017']).domain([0, 35, 100]);
-      var color = colorScale(this.props.charge);
-      var tempoRestante = "---";
-      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("svg", {
-        version: "1.1",
-        baseProfile: "full",
-        viewBox: "0 0 500 400",
-        preserveAspectRatio: "xMidYMid meet",
-        id: "svg_document",
+      var setaRotate = "rotate(";
+      var x = this.props.x;
+      var y = this.props.y;
+      var lAngle = this.lastAngle;
+      var angle = Math.atan(y / x) * 180 / Math.PI + (x < 0 ? 270 : 90);
+      var finalAngle;
+      this.lastAngle = angle;
+      var complementaryAngle = angle < 0 ? angle + 360 : angle - 360; //busca pelo menor diferença de angulo que resulta na mesma rotação da seta
+
+      var dAc = lAngle - angle;
+      var dA = Math.abs(dAc);
+      var compAng = angle + 360 * dAc / dA;
+      var dC = Math.abs(lAngle - compAng);
+
+      if (dA <= dC) {
+        finalAngle = angle;
+      } else {
+        finalAngle = compAng;
+      } //debugger;
+
+
+      setaRotate += angle + ", 350, 250)";
+      var a = 170;
+      var b = 70;
+      var tanTheta = y / x;
+      var xe = x == 0 ? 0 : a * b / Math.sqrt(b * b + tanTheta * tanTheta * a * a);
+      var ye = x == 0 ? b : tanTheta * xe;
+      var grow = Math.sqrt(Math.pow(xe, 2) + Math.pow(ye, 2));
+      var maxg = 4;
+      var offset = 10;
+      var maxsize = 160 - 26 - offset;
+      var norma = Math.sqrt(x * x + y * y);
+      if (norma > maxg) norma = maxg;
+      var inc = norma / maxg * maxsize;
+      grow += offset + inc;
+      var lGrow = this.lastGrow;
+      this.lastGrow = grow;
+      console.log(grow); // if ()
+
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("svg", {
+        ref: this.svgRef,
         style: {
-          "zoom": "1",
-          marginBottom: "-20px"
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("link", {
-        href: "/static/styles.css",
-        rel: "stylesheet"
-      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("g", {
+          zoom: 1
+        },
+        cursor: "default",
+        version: "1.1",
+        viewBox: "0 0 700 500",
+        width: "100%",
+        id: "svg_document",
+        baseProfile: "full",
+        preserveAspectRatio: "xMidYMid meet"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("g", {
         id: "main_group"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("rect", {
-        x: "4px",
-        height: "400px",
-        y: "1px",
-        id: "background_rect",
-        width: "500px",
-        fill: "#000000",
-        visibility: "hidden"
-      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("g", {
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("g", {
+        ref: this.setaRef,
+        id: "seta",
+        transform: ""
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(BuildRotateAnimation, {
+        lastAngle: lAngle,
+        angle: finalAngle
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("rect", {
+        ref: this.caboRef,
+        stroke: "none",
+        height: "0px",
+        x: "345px",
+        y: "250px",
+        id: "seta-cabo",
+        strokeWidth: "3px",
+        width: "10px",
+        fill: "green",
+        transform: ""
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(BuildGrowthAnimation, {
+        lastHeight: lGrow,
+        height: grow
+      })), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("polygon", {
+        ref: this.pontaRef,
+        points: "330," + (250 + grow - 1) + " 370," + (250 + grow - 1) + " 350," + (250 + grow - 1 + 26),
+        stroke: "none",
+        id: "polygon1",
+        strokeWidth: "3px",
+        fill: "green",
+        transform: ""
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(BuildPointsAnimation, {
+        lastGrow: lGrow,
+        grow: grow
+      }))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("g", {
         id: "g1",
         transform: ""
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("text", {
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("ellipse", {
         stroke: "none",
-        style: {
-          outlineStyle: "none"
-        },
-        id: "text2",
-        strokeWidth: "1px",
-        x: "250px",
-        fontWeight: "bolder",
-        textRendering: "geometricPrecision",
-        fontFamily: "Exo",
-        fill: "whitesmoke",
-        fontSize: "20px",
-        y: "320px",
+        cx: "350px",
         transform: "",
-        textAnchor: "start"
-      }, "TEMPO RESTANTE"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("text", {
-        stroke: "none",
-        style: {
-          outlineStyle: "none"
-        },
-        id: "text3",
-        strokeWidth: "1px",
-        x: "253px",
-        textRendering: "geometricPrecision",
-        fontFamily: "Exo",
-        fill: "whitesmoke",
-        fontSize: "16px",
-        y: "344px",
-        transform: "",
-        textAnchor: "start"
-      }, tempoRestante)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("path", {
-        stroke: "whitesmoke",
-        strokeWidth: "10",
-        id: "path1",
-        d: "M20,40 l0,200 a20,20 0 0 0 20,20 l370,0 a20,20 0 0 0 20,-20 l0,-50 l0,-100 m0,100 a10,10 0 0 1 10,-10 l30,0 a10,10 0 0 0 10,-10 l0,-60 a10,10 0 0 0 -10,-10 l-30,0 a10,10 0 0 1 -10,-10 l0,-50 a20,20 0 0 0 -20,-20 l-370,0 a20,20 0 0 0 -20,20 ",
-        fill: "none",
-        strokeLinecap: "butt",
-        transform: "",
-        strokeLinejoin: "miter"
-      })), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("rect", {
-        stroke: "#000000",
-        x: "425px",
-        height: "88px",
-        y: "96px",
-        id: "rect1",
-        strokeWidth: "0px",
-        width: "50px",
-        fill: "whitesmoke",
+        id: "ellipse1",
+        cy: "250px",
+        fill: "black",
+        rx: a,
+        ry: b
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("image", {
+        x: "187px",
+        height: "147px",
+        y: "169px",
+        id: "image1",
+        xlinkHref: "/static/images/carro-lado-iconized.png",
+        xlinkRole: "/static/images/carro-lado-iconized.png",
+        width: "328px",
+        preserveAspectRatio: "xMidYMid meet",
         transform: ""
-      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("rect", {
-        stroke: "#000000",
-        x: "35px",
-        height: "210px",
-        y: "35px",
-        id: "rect2",
-        width: this.props.charge / 100 * 380,
-        fill: color,
-        transform: ""
-      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("text", {
+      })), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("text", {
         stroke: "none",
         style: {
-          fontWeight: "lighter",
           outlineStyle: "none"
         },
         id: "text1",
         strokeWidth: "1px",
-        x: "229px",
-        fontWeight: "bolder",
+        x: "380px",
         textRendering: "geometricPrecision",
         fontFamily: "Exo",
         fill: "whitesmoke",
-        fontSize: "80px",
-        y: "356px",
+        fontSize: "20px",
+        y: "308px",
         transform: "",
-        textAnchor: "end",
-        fontStretch: "normal"
-      }, this.props.charge, "%"));
+        fontWeight: "bold",
+        textAnchor: "end"
+      }, norma.toFixed(1), " G"))));
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      var svg = this.svgRef.current;
+
+      if (svg) {
+        svg.setCurrentTime(0);
+        var seta = this.setaRef.current; //seta.setAttribute("transform", "rotate("+this.lastAngle+", 350, 250)");
+      }
     }
   }]);
 
-  return Bateria;
+  return AcelerometroXY;
 }(react__WEBPACK_IMPORTED_MODULE_5__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (Bateria);
+function BuildRotateAnimation(props) {
+  return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("animateTransform", {
+    attributeName: "transform",
+    attributeType: "XML",
+    type: "rotate",
+    values: props.lastAngle + " 350 250;" + props.angle + " 350 250",
+    begin: "0s",
+    dur: (react__WEBPACK_IMPORTED_MODULE_5___default.a.useContext(_components_contexts_js__WEBPACK_IMPORTED_MODULE_7__["DelayContext"]) / 1000).toFixed(2) + "s",
+    repeatCount: "1",
+    additive: "replace",
+    accumulate: "none",
+    id: "animateTransform",
+    fill: "freeze"
+  });
+}
+
+function BuildGrowthAnimation(props) {
+  return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("animate", {
+    attributeName: "height",
+    from: props.lastHeight,
+    to: props.height,
+    dur: (react__WEBPACK_IMPORTED_MODULE_5___default.a.useContext(_components_contexts_js__WEBPACK_IMPORTED_MODULE_7__["DelayContext"]) / 1000).toFixed(2) + "s",
+    begin: "0s",
+    repeatCount: "1",
+    fill: "freeze"
+  });
+}
+
+function BuildPointsAnimation(props) {
+  return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("animate", {
+    attributeName: "points",
+    from: "330," + (250 + props.lastGrow - 1) + " 370," + (250 + props.lastGrow - 1) + " 350," + (250 + props.lastGrow - 1 + 26),
+    to: "330," + (250 + props.grow - 1) + " 370," + (250 + props.grow - 1) + " 350," + (250 + props.grow - 1 + 26),
+    dur: (react__WEBPACK_IMPORTED_MODULE_5___default.a.useContext(_components_contexts_js__WEBPACK_IMPORTED_MODULE_7__["DelayContext"]) / 1000).toFixed(2) + "s",
+    begin: "0s",
+    repeatCount: "1",
+    fill: "freeze"
+  });
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (AcelerometroXY);
 
 /***/ }),
 
-/***/ "./components/bms-information.js":
+/***/ "./components/acelerometro-yz.js":
 /*!***************************************!*\
-  !*** ./components/bms-information.js ***!
+  !*** ./components/acelerometro-yz.js ***!
   \***************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/parse-int */ "./node_modules/@babel/runtime-corejs2/core-js/parse-int.js");
-/* harmony import */ var _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "@fortawesome/react-fontawesome");
-/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var react_countup__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-countup */ "react-countup");
-/* harmony import */ var react_countup__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react_countup__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _countup_wrapper_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./countup-wrapper.js */ "./components/countup-wrapper.js");
-/* harmony import */ var _contexts_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./contexts.js */ "./components/contexts.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _components_countup_wrapper_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/countup-wrapper.js */ "./components/countup-wrapper.js");
+/* harmony import */ var _components_contexts_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/contexts.js */ "./components/contexts.js");
 
 
 
@@ -283,234 +354,1218 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-
-var BMSInformation =
+var AcelerometroYZ =
 /*#__PURE__*/
 function (_Component) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__["default"])(BMSInformation, _Component);
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(AcelerometroYZ, _Component);
 
-  function BMSInformation() {
-    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__["default"])(this, BMSInformation);
+  function AcelerometroYZ(props) {
+    var _this;
 
-    return Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__["default"])(BMSInformation).apply(this, arguments));
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, AcelerometroYZ);
+
+    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(AcelerometroYZ).call(this, props));
+    _this.svgRef = react__WEBPACK_IMPORTED_MODULE_5___default.a.createRef();
+    _this.lastGrow = 0;
+    _this.lastAngle = 0;
+    return _this;
   }
 
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(BMSInformation, [{
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(AcelerometroYZ, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "row mt-2 bordered-title-container",
+      var setaRotate = "rotate(";
+      var z = this.props.z;
+      var y = this.props.y; //ajusta o angulo dependendo do sinal de z
+
+      var angle = Math.atan(y / z) * 180 / Math.PI + (z < 0 ? 270 : 90);
+      var finalAngle;
+      var lAngle = this.lastAngle;
+      this.lastAngle = angle; //busca pelo menor diferença de angulo que resulta na mesma rotação da seta
+
+      var dAc = lAngle - angle;
+      var dA = Math.abs(dAc);
+      var compAng = angle + 360 * dAc / dA;
+      var dC = Math.abs(lAngle - compAng);
+
+      if (dA <= dC) {
+        finalAngle = angle;
+      } else {
+        finalAngle = compAng;
+      }
+
+      setaRotate += angle + ", 250, 250)";
+      var maxg = 4;
+      var radius = 90;
+      var offset = 10;
+      var maxsize = 160 - 26 - offset;
+      var grow = radius + offset;
+      var norma = Math.sqrt(z * z + y * y);
+      if (norma > maxg) norma = maxg;
+      var inc = norma / maxg * maxsize;
+      grow += offset + inc;
+      var lGrow = this.lastGrow;
+      this.lastGrow = grow;
+      console.log(grow);
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("svg", {
+        ref: this.svgRef,
+        version: "1.1",
+        baseProfile: "full",
+        width: "100%",
+        viewBox: "0 0 500 500",
+        preserveAspectRatio: "xMidYMid meet",
+        id: "svg_document",
         style: {
-          paddingBottom: "10px",
-          paddingRight: "10px"
+          zoom: 1
         }
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "col-12 d-flex justify-content-left"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
-        className: "bms-information-title bordered-title-text "
-      }, "DADOS GERAIS DO BMS")), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "col-4 d-flex align-items-center",
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("g", {
+        id: "main_group"
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("g", {
+        transform: "",
+        id: "seta"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(BuildRotateAnimation, {
+        lastAngle: lAngle,
+        angle: finalAngle
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("rect", {
+        stroke: "none",
+        x: "245px",
+        height: grow,
+        y: "250px",
+        id: "seta-cabo",
+        strokeWidth: "10px",
+        width: "10px",
+        fill: "green",
+        transform: ""
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(BuildGrowthAnimation, {
+        lastHeight: lGrow,
+        height: grow
+      })), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("polygon", {
+        points: "230," + (250 + grow - 1) + " 270," + (250 + grow - 1) + " 250," + (250 + grow + 26 - 1) + "",
+        stroke: "none",
+        id: "polygon1",
+        strokeWidth: "3px",
+        fill: "green",
+        transform: ""
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(BuildPointsAnimation, {
+        lastGrow: lGrow,
+        grow: grow
+      }))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("circle", {
+        stroke: "none",
+        transform: "",
+        id: "circle1",
+        strokeWidth: "3px",
+        cy: "250px",
+        fill: "black",
+        r: radius,
+        cx: "250px"
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("image", {
+        x: "166px",
+        height: "140px",
+        y: "163px",
+        id: "image1",
+        xlinkHref: "/static/images/carro-frente-iconized.png",
+        xlinkRole: "/static/images/carro-frente-iconized.png",
+        width: "171.111px",
+        preserveAspectRatio: "xMidYMid meet",
+        transform: ""
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("text", {
+        stroke: "none",
         style: {
-          padding: "0px",
-          margin: "5px -20px 5px -20px"
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("img", {
-        src: "static/SVGs/bolt.svg",
-        style: {
-          width: "100%",
-          height: "auto"
-        }
-      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "col "
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "row"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "col-lg-6 col-12"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(Information, {
-        title: "TEMPERATURA M\xC1XIMA",
-        value: this.props.maxtemperature,
-        unit: "\xBAC",
-        icon: react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("img", {
-          src: "static/icons/thermometer-full.png"
-        })
-      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "col-lg-6 col-12"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(Information, {
-        title: "TEMPERATURA M\xC9DIA",
-        value: this.props.meantemperature,
-        unit: "\xBAC",
-        icon: react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("img", {
-          src: "static/icons/thermometer.png"
-        })
-      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "col-lg-6 col-12"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(Information, {
-        title: "TENS\xC3O M\xCDNIMA",
-        value: this.props.minvoltage,
-        unit: "V",
-        icon: react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("img", {
-          src: "static/icons/low-voltage-warning.png"
-        })
-      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "col-lg-6 col-12"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(AIRStatus, {
-        value: _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0___default()(this.props.airstatus) === 1
-      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "col-lg-6 col-12"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(Information, {
-        title: "TENS\xC3O TOTAL",
-        value: this.props.totalvoltage,
-        unit: "V",
-        icon: react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("img", {
-          src: "static/icons/car-battery.png"
-        })
-      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "col-lg-6 col-12"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(Information, {
-        title: "TENS\xC3O DO GLV",
-        value: this.props.glvvoltage,
-        unit: "V",
-        icon: react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("img", {
-          src: "static/icons/electronics.png"
-        })
-      })))));
+          outlineStyle: "none"
+        },
+        id: "text1",
+        strokeWidth: "1px",
+        x: "278px",
+        textRendering: "geometricPrecision",
+        fontFamily: "Exo",
+        fontWeight: "bold",
+        fill: "whitesmoke",
+        fontSize: "20px",
+        y: "320px",
+        transform: "",
+        textAnchor: "end"
+      }, norma.toFixed(1), " G")));
     }
-  }]);
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      var svg = this.svgRef.current;
 
-  return BMSInformation;
-}(react__WEBPACK_IMPORTED_MODULE_6__["Component"]);
-
-function Information(props) {
-  var st = {};
-
-  for (a in props.filters) {
-    var style = a.assert(props.value);
-
-    if (style) {
-      st = style;
-      break;
-    }
-  }
-
-  return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-    className: "row"
-  }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-    className: "col-12 d-flex justify-content-center"
-  }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
-    className: "information-title"
-  }, props.title)), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-    className: "col-12"
-  }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-    className: "information-value-wrapper d-flex align-items-center"
-  }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-    className: "information-icon"
-  }, props.icon), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_countup_wrapper_js__WEBPACK_IMPORTED_MODULE_9__["default"], {
-    end: props.value
-  }, function (_ref) {
-    var countUpRef = _ref.countUpRef;
-    return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-      className: "information-value flex-fill",
-      style: st,
-      ref: countUpRef
-    });
-  }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-    className: "information-unit"
-  }, props.unit))));
-}
-
-function AIRStatus(props) {
-  return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-    className: "row"
-  }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-    className: "col-12 d-flex justify-content-center"
-  }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
-    className: "information-title"
-  }, "STATUS DO AIR")), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-    className: "col-12"
-  }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-    className: "information-value-wrapper d-flex align-items-center"
-  }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-    className: "information-icon"
-  }, props.value === true ? react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("img", {
-    src: "static/icons/connected.png"
-  }) : react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("img", {
-    src: "static/icons/disconnected.png"
-  })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-    className: "information-value flex-fill " + (props.value === true ? "air-fechado" : "air-aberto")
-  }, props.value === true ? "FECHADO" : "ABERTO"))));
-}
-
-var operators = {
-  EQUAL: 1,
-  LESSTHAN: 2,
-  GREATERTHAN: 3,
-  LESSOREQUAL: 4,
-  GREATEROREQUAL: 5
-};
-
-var Filter =
-/*#__PURE__*/
-function () {
-  function Filter(m, action) {
-    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__["default"])(this, Filter);
-
-    this.m = m;
-    this.action = action;
-  }
-
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(Filter, [{
-    key: "assert",
-    value: function assert(value) {
-      if (this.m.match(value)) return action;else return false;
-    }
-  }]);
-
-  return Filter;
-}();
-
-var Matcher =
-/*#__PURE__*/
-function () {
-  function Matcher(op, reference) {
-    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__["default"])(this, Matcher);
-
-    this.op = op;
-    this.reference = reference;
-  }
-
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(Matcher, [{
-    key: "match",
-    value: function match(value) {
-      switch (op) {
-        case operators.EQUAL:
-          return value == this.reference;
-          break;
-
-        case operators.LESSTHAN:
-          return value < this.reference;
-          break;
-
-        case operators.GREATERTHAN:
-          return value > this.reference;
-          break;
-
-        case operators.LESSOREQUAL:
-          return value <= this.reference;
-          break;
-
-        case operators.GREATEROREQUAL:
-          return value >= this.reference;
-          break;
+      if (svg) {
+        svg.setCurrentTime(0); //seta.setAttribute("transform", "rotate("+this.lastAngle+", 350, 250)");
       }
     }
   }]);
 
-  return Matcher;
-}();
+  return AcelerometroYZ;
+}(react__WEBPACK_IMPORTED_MODULE_5__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (BMSInformation);
+function BuildRotateAnimation(props) {
+  return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("animateTransform", {
+    attributeName: "transform",
+    attributeType: "XML",
+    type: "rotate",
+    values: props.lastAngle + " 250 250;" + props.angle + " 250 250",
+    begin: "0s",
+    dur: (react__WEBPACK_IMPORTED_MODULE_5___default.a.useContext(_components_contexts_js__WEBPACK_IMPORTED_MODULE_7__["DelayContext"]) / 1000).toFixed(2) + "s",
+    repeatCount: "1",
+    additive: "replace",
+    accumulate: "none",
+    id: "animateTransform",
+    fill: "freeze"
+  });
+}
+
+function BuildGrowthAnimation(props) {
+  return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("animate", {
+    attributeName: "height",
+    from: props.lastHeight,
+    to: props.height,
+    dur: (react__WEBPACK_IMPORTED_MODULE_5___default.a.useContext(_components_contexts_js__WEBPACK_IMPORTED_MODULE_7__["DelayContext"]) / 1000).toFixed(2) + "s",
+    begin: "0s",
+    repeatCount: "1",
+    fill: "freeze"
+  });
+}
+
+function BuildPointsAnimation(props) {
+  return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("animate", {
+    attributeName: "points",
+    from: "230," + (250 + props.lastGrow - 1) + " 270," + (250 + props.lastGrow - 1) + " 250," + (250 + props.lastGrow - 1 + 26),
+    to: "230," + (250 + props.grow - 1) + " 270," + (250 + props.grow - 1) + " 250," + (250 + props.grow - 1 + 26),
+    dur: (react__WEBPACK_IMPORTED_MODULE_5___default.a.useContext(_components_contexts_js__WEBPACK_IMPORTED_MODULE_7__["DelayContext"]) / 1000).toFixed(2) + "s",
+    begin: "0s",
+    repeatCount: "1",
+    fill: "freeze"
+  });
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (AcelerometroYZ);
+
+/***/ }),
+
+/***/ "./components/brake-bias.js":
+/*!**********************************!*\
+  !*** ./components/brake-bias.js ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+
+
+
+
+
+
+
+var BrakeBias =
+/*#__PURE__*/
+function (_Component) {
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(BrakeBias, _Component);
+
+  function BrakeBias(props) {
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, BrakeBias);
+
+    return Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(BrakeBias).call(this, props));
+  }
+
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(BrakeBias, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "default-container bordered-title-container"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "component-title bordered-title-text"
+      }, "BRAKE BIAS"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h2", null, this.props.value, " %"));
+    }
+  }]);
+
+  return BrakeBias;
+}(react__WEBPACK_IMPORTED_MODULE_5__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (BrakeBias);
+
+/***/ }),
+
+/***/ "./components/carro-overlay.js":
+/*!*************************************!*\
+  !*** ./components/carro-overlay.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _components_countup_wrapper_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/countup-wrapper.js */ "./components/countup-wrapper.js");
+/* harmony import */ var chroma_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! chroma-js */ "chroma-js");
+/* harmony import */ var chroma_js__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(chroma_js__WEBPACK_IMPORTED_MODULE_7__);
+
+
+
+
+
+
+
+
+
+var CarOverlay =
+/*#__PURE__*/
+function (_Component) {
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(CarOverlay, _Component);
+
+  function CarOverlay() {
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, CarOverlay);
+
+    return Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(CarOverlay).apply(this, arguments));
+  }
+
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(CarOverlay, [{
+    key: "render",
+    value: function render() {
+      var colorScale = chroma_js__WEBPACK_IMPORTED_MODULE_7___default.a.scale(['#000000', '#7f0f0c']).domain([80, 200]);
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("svg", {
+        version: "1.1",
+        baseProfile: "full",
+        viewBox: "0 0 1240 1080",
+        preserveAspectRatio: "xMidYMid meet",
+        id: "svg_document",
+        style: {
+          zoom: 1,
+          maxHeight: "100%"
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("g", {
+        id: "main_group"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("rect", {
+        id: "background_rect",
+        fill: "black",
+        x: "0px",
+        y: "0px",
+        width: "1240px",
+        height: "1080px",
+        visibility: "hidden"
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("image", {
+        x: "0px",
+        height: "1080px",
+        y: "0px",
+        id: "image1",
+        xlinkHref: "/static/images/carro-lowerresolution.png",
+        xlinkRole: "/static/images/carro-lowerresolution.png",
+        width: "1240px",
+        d: "",
+        preserveAspectRatio: "xMidYMid meet",
+        transform: ""
+      })), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("g", {
+        transform: "",
+        id: "IMD-INFO"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("path", {
+        stroke: "darkgreen",
+        strokeWidth: "2px",
+        id: "path12",
+        d: "M694,834 l100,0 a10,10 90 0 0 10,-10 l0,-250 a10,10 90 0 1 10,-10 l100,0 ",
+        fill: "none",
+        transform: ""
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("path", {
+        stroke: "darkgreen",
+        strokeWidth: "6",
+        id: "path11",
+        d: "M893,398 l0,350 a10,10 90 0 0 10,10 l300,0 a10,10 90 0 0 10,-10 l0,-350 a10,10 90 0 0 -10,-10 l-300,0 a10,10 90 0 0 -10,10 ",
+        fill: "black",
+        strokeLinecap: "butt",
+        transform: "",
+        strokeLinejoin: "miter"
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("g", {
+        id: "IMD",
+        transform: ""
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("g", {
+        transform: "",
+        id: "TORQUE-IMD"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("image", {
+        x: "918px",
+        height: "70px",
+        y: "502px",
+        id: "image13",
+        xlinkHref: "/static/SVGs/gears.svg",
+        xlinkRole: "/static/SVGs/gears.svg",
+        width: "70px",
+        preserveAspectRatio: "xMidYMid meet",
+        transform: ""
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_components_countup_wrapper_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        end: ((this.props.engine || {}).torque || {}).rightEngine / 10 || 0,
+        decimals: 0
+      }, function (_ref) {
+        var countUpRef = _ref.countUpRef;
+        return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("text", {
+          ref: countUpRef,
+          className: "carro-overlay-value",
+          stroke: "none",
+          id: "text45",
+          strokeWidth: "1px",
+          x: "1080px",
+          textRendering: "geometricPrecision",
+          y: "568px",
+          fontFamily: "Exo",
+          fill: "whitesmoke",
+          fontSize: "25px",
+          transform: "",
+          textAnchor: "end"
+        });
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("text", {
+        stroke: "none",
+        className: "carro-overlay-value",
+        id: "text46",
+        strokeWidth: "1px",
+        x: "1088px",
+        textRendering: "geometricPrecision",
+        y: "568px",
+        fontFamily: "Exo",
+        fill: "whitesmoke",
+        fontSize: "25px",
+        transform: "",
+        textAnchor: "start"
+      }, "%"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("text", {
+        stroke: "none",
+        id: "text47",
+        strokeWidth: "1px",
+        x: "995px",
+        fontWeight: "bold",
+        textRendering: "geometricPrecision",
+        fontFamily: "Exo",
+        fill: "whitesmoke",
+        fontSize: "30px",
+        y: "535px",
+        transform: "",
+        textAnchor: "start"
+      }, "TORQUE")), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("g", {
+        transform: "",
+        id: "IMD-TITLE"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("text", {
+        stroke: "none",
+        id: "text54",
+        strokeWidth: "1px",
+        x: "897px",
+        fontWeight: "bold",
+        textRendering: "geometricPrecision",
+        fontFamily: "Exo",
+        fill: "whitesmoke",
+        fontSize: "38px",
+        y: "436px",
+        transform: "",
+        textAnchor: "start"
+      }, "INVERSOR/MOTOR"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("text", {
+        stroke: "none",
+        id: "text55",
+        strokeWidth: "1px",
+        x: "1200px",
+        fontWeight: "bold",
+        textRendering: "geometricPrecision",
+        fontFamily: "Exo",
+        fill: "whitesmoke",
+        fontSize: "38px",
+        y: "474px",
+        transform: "",
+        textAnchor: "end"
+      }, "DIREITO")), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("line", {
+        stroke: "#858787",
+        y1: "491px",
+        strokeWidth: "3px",
+        x1: "906px",
+        id: "line7",
+        y2: "491px",
+        x2: "1201px",
+        transform: "",
+        visibility: "visible"
+      })), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("circle", {
+        stroke: "whitesmoke",
+        cx: "694px",
+        visibility: "visible",
+        strokeWidth: "3px",
+        id: "circle3",
+        cy: "833px",
+        fill: "darkgreen",
+        r: "21px",
+        transform: ""
+      })), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("g", {
+        transform: "",
+        id: "IME-INFO"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("path", {
+        stroke: "darkgreen",
+        transform: "",
+        strokeWidth: "6",
+        id: "path8",
+        d: "M23,400 l0,350 a10,10 90 0 0 10,10 l300,0 a10,10 90 0 0 10,-10 l0,-350 a10,10 90 0 0 -10,-10 l-300,0 a10,10 90 0 0 -10,10 ",
+        fill: "black",
+        strokeLinecap: "butt",
+        strokeLinejoin: "miter"
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("g", {
+        id: "IME",
+        transform: ""
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("g", {
+        transform: "",
+        id: "TORQUE-IME"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_components_countup_wrapper_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        end: ((this.props.engine || {}).torque || {}).leftEngine / 10 || 0,
+        decimals: 0
+      }, function (_ref2) {
+        var countUpRef = _ref2.countUpRef;
+        return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("text", {
+          ref: countUpRef,
+          className: "carro-overlay-value",
+          stroke: "none",
+          id: "text42",
+          strokeWidth: "1px",
+          x: "208px",
+          textRendering: "geometricPrecision",
+          y: "566px",
+          fontFamily: "Exo",
+          fill: "whitesmoke",
+          fontSize: "25px",
+          transform: "",
+          textAnchor: "end"
+        });
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("text", {
+        stroke: "none",
+        id: "text43",
+        strokeWidth: "1px",
+        x: "216px",
+        className: "carro-overlay-value",
+        textRendering: "geometricPrecision",
+        y: "566px",
+        fontFamily: "Exo",
+        fill: "whitesmoke",
+        fontSize: "25px",
+        transform: "",
+        textAnchor: "start"
+      }, "%"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("text", {
+        stroke: "none",
+        id: "text44",
+        strokeWidth: "1px",
+        x: "123px",
+        fontWeight: "bold",
+        textRendering: "geometricPrecision",
+        fontFamily: "Exo",
+        fill: "whitesmoke",
+        fontSize: "30px",
+        y: "533px",
+        transform: "",
+        textAnchor: "start"
+      }, "TORQUE"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("image", {
+        x: "42px",
+        height: "70",
+        y: "504px",
+        id: "image10",
+        xlinkHref: "/static/SVGs/gears.svg",
+        xlinkRole: "/static/SVGs/gears.svg",
+        width: "70",
+        preserveAspectRatio: "xMidYMid meet",
+        transform: ""
+      })), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("line", {
+        stroke: "#858787",
+        y1: "489px",
+        strokeWidth: "3px",
+        x1: "34px",
+        id: "line6",
+        y2: "489px",
+        x2: "329px",
+        transform: "",
+        visibility: "visible"
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("g", {
+        transform: "",
+        id: "IME-TITLE"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("text", {
+        stroke: "none",
+        id: "text33",
+        strokeWidth: "1px",
+        x: "25px",
+        fontWeight: "bold",
+        textRendering: "geometricPrecision",
+        fontFamily: "Exo",
+        fill: "whitesmoke",
+        fontSize: "38px",
+        y: "434px",
+        transform: "",
+        textAnchor: "start"
+      }, "INVERSOR/MOTOR"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("text", {
+        stroke: "none",
+        id: "text34",
+        strokeWidth: "1px",
+        x: "25px",
+        fontWeight: "bold",
+        textRendering: "geometricPrecision",
+        fontFamily: "Exo",
+        fill: "whitesmoke",
+        fontSize: "38px",
+        y: "472px",
+        transform: "",
+        textAnchor: "start"
+      }, "ESQUERDO"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("circle", {
+        stroke: "whitesmoke",
+        cx: "526px",
+        strokeWidth: "3px",
+        id: "circle2",
+        cy: "833px",
+        fill: "darkgreen",
+        r: "21px",
+        transform: ""
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("path", {
+        stroke: "darkgreen",
+        id: "path10",
+        strokeWidth: "2px",
+        d: "M524,834 l-80,0 a10,10 90 0 1 -10,-10 l0,-250 a10,10 90 0 0 -10,-10 l-80,0 ",
+        fill: "none",
+        transform: ""
+      })), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("g", {
+        transform: "",
+        id: "roda-bl"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("polygon", {
+        points: "436.552521,892.983032 436.552521,1070.48291 441.552521,1063.98291 441.552521,898.483032",
+        stroke: "none",
+        strokeWidth: "3px",
+        fill: colorScale(((this.props.tires || {}).temperature || {}).backLeft / 100),
+        transform: "rotate(-1 440 984.75)",
+        id: "polygon4"
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("polygon", {
+        points: "379.061279,891.979614 379.061279,1069.479614 384.061279,1062.979614 384.061279,897.479614",
+        stroke: "none",
+        strokeWidth: "3px",
+        id: "polygon7",
+        fill: colorScale(((this.props.tires || {}).temperature || {}).backLeft / 100),
+        transform: "rotate(179 382.043732 981.738159)"
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("rect", {
+        stroke: "none",
+        x: "387.5px",
+        height: "179.5px",
+        y: "893px",
+        strokeWidth: "3px",
+        width: "46px",
+        id: "rect4",
+        fill: colorScale(((this.props.tires || {}).temperature || {}).backLeft / 100),
+        transform: "rotate(-1 410.5 982.75)"
+      })), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("g", {
+        transform: "",
+        id: "roda-fl"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("polygon", {
+        points: "380,340.5 380,518 385,511.5 385,346",
+        stroke: "none",
+        strokeWidth: "3px",
+        fill: colorScale(((this.props.tires || {}).temperature || {}).frontLeft / 100),
+        transform: "rotate(180 383 427.25)",
+        id: "polygon8"
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("polygon", {
+        points: "437,337 437,514.5 442,508 442,342.5",
+        stroke: "none",
+        strokeWidth: "3px",
+        fill: colorScale(((this.props.tires || {}).temperature || {}).frontLeft / 100),
+        transform: "",
+        id: "polygon3"
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("rect", {
+        stroke: "none",
+        x: "388px",
+        height: "179.5px",
+        y: "336.5px",
+        id: "rect1",
+        strokeWidth: "3px",
+        width: "46px",
+        fill: colorScale(((this.props.tires || {}).temperature || {}).frontLeft / 100),
+        transform: ""
+      })), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("g", {
+        transform: "",
+        id: "roda-fr"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("polygon", {
+        points: "846.5,336.5 846.5,514 851.5,507.5 851.5,342",
+        stroke: "none",
+        strokeWidth: "3px",
+        fill: colorScale(((this.props.tires || {}).temperature || {}).frontRight / 100),
+        transform: "",
+        id: "polygon5"
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("rect", {
+        stroke: "none",
+        x: "797.5px",
+        height: "179px",
+        y: "337px",
+        strokeWidth: "3px",
+        id: "rect3",
+        width: "46px",
+        fill: colorScale(((this.props.tires || {}).temperature || {}).frontRight / 100),
+        transform: ""
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("polygon", {
+        points: "-29,339.5 -29,517 -24,510.5 -24,345",
+        stroke: "none",
+        id: "polygon1",
+        strokeWidth: "3px",
+        fill: colorScale(((this.props.tires || {}).temperature || {}).frontRight / 100),
+        transform: "rotate(180 383 427.25)"
+      })), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("g", {
+        transform: "",
+        id: "roda-br"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("polygon", {
+        points: "847,892 847,1069.5 852,1063 852,897.5",
+        stroke: "none",
+        strokeWidth: "3px",
+        id: "polygon2",
+        fill: colorScale(((this.props.tires || {}).temperature || {}).backRight / 100),
+        transform: ""
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("polygon", {
+        points: "-29.5,-216 -29.5,-38.5 -24.5,-45 -24.5,-210.5",
+        stroke: "none",
+        strokeWidth: "3px",
+        id: "polygon6",
+        fill: colorScale(((this.props.tires || {}).temperature || {}).backRight / 100),
+        transform: "rotate(180 383 427.25)"
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("rect", {
+        stroke: "none",
+        x: "798px",
+        height: "180.5px",
+        y: "891.5px",
+        strokeWidth: "3px",
+        id: "rect2",
+        width: "46px",
+        fill: colorScale(((this.props.tires || {}).temperature || {}).backRight / 100),
+        transform: ""
+      })), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("g", {
+        transform: "",
+        id: "PTE-INFO"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("path", {
+        stroke: "darkgreen",
+        strokeWidth: "6",
+        id: "path9",
+        d: "M25,808 l0,250 a10,10 90 0 0 10,10 l300,0 a10,10 90 0 0 10,-10 l0,-250 a10,10 90 0 0 -10,-10 l-300,0 a10,10 90 0 0 -10,10 ",
+        fill: "black",
+        strokeLinecap: "butt",
+        transform: "",
+        strokeLinejoin: "miter"
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("path", {
+        stroke: "darkgreen",
+        strokeWidth: "2px",
+        id: "path6",
+        d: "M412,919 l0,-80 a10,10 90 0 0 -10,-10 l-60,0 ",
+        fill: "none",
+        transform: ""
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("circle", {
+        stroke: "#000000",
+        transform: "",
+        strokeWidth: "0px",
+        id: "circle1",
+        cy: "915px",
+        fill: "darkgreen",
+        r: "11px",
+        cx: "412px"
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("g", {
+        id: "PTE",
+        transform: ""
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("line", {
+        stroke: "#858787",
+        y1: "900px",
+        strokeWidth: "3px",
+        x1: "37px",
+        id: "line4",
+        y2: "900px",
+        x2: "332px",
+        transform: ""
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("g", {
+        transform: "",
+        id: "VEL-TE"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("image", {
+        x: "44px",
+        height: "70px",
+        y: "916px",
+        id: "image7",
+        xlinkHref: "/static/SVGs/speedometer.svg",
+        xlinkRole: "/static/SVGs/speedometer.svg",
+        width: "70px",
+        preserveAspectRatio: "xMidYMid meet",
+        transform: ""
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_components_countup_wrapper_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        end: ((this.props.tires || {}).speed || {}).backLeft || 0,
+        decimals: 0
+      }, function (_ref3) {
+        var countUpRef = _ref3.countUpRef;
+        return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("text", {
+          ref: countUpRef,
+          className: "carro-overlay-value",
+          stroke: "none",
+          strokeWidth: "1px",
+          x: "231px",
+          textRendering: "geometricPrecision",
+          y: "975px",
+          fontFamily: "Exo",
+          fill: "whitesmoke",
+          fontSize: "25px",
+          transform: "",
+          textAnchor: "end",
+          id: "text25"
+        });
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("text", {
+        stroke: "none",
+        className: "carro-overlay-value",
+        strokeWidth: "1px",
+        x: "271px",
+        textRendering: "geometricPrecision",
+        y: "976px",
+        fontFamily: "Exo",
+        fill: "whitesmoke",
+        fontSize: "25px",
+        transform: "",
+        textAnchor: "middle",
+        id: "text26"
+      }, "RPM"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("text", {
+        stroke: "none",
+        id: "text27",
+        strokeWidth: "1px",
+        x: "210px",
+        fontWeight: "bold",
+        textRendering: "geometricPrecision",
+        fontFamily: "Exo",
+        fill: "whitesmoke",
+        fontSize: "30px",
+        y: "945px",
+        transform: "",
+        textAnchor: "middle"
+      }, "VELOCIDADE")), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("g", {
+        transform: "",
+        id: "PTE-TEXT"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("text", {
+        stroke: "none",
+        strokeWidth: "1px",
+        x: "39px",
+        fontWeight: "bold",
+        textRendering: "geometricPrecision",
+        fontFamily: "Exo",
+        fill: "whitesmoke",
+        fontSize: "40px",
+        y: "882px",
+        transform: "",
+        textAnchor: "start",
+        id: "text28"
+      }, "ESQUERDO"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("text", {
+        stroke: "none",
+        strokeWidth: "1px",
+        x: "39px",
+        fontWeight: "bold",
+        textRendering: "geometricPrecision",
+        fontFamily: "Exo",
+        fill: "whitesmoke",
+        fontSize: "40px",
+        y: "842px",
+        transform: "",
+        textAnchor: "start",
+        id: "text29"
+      }, "PNEU TRASEIRO")))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("g", {
+        transform: "",
+        id: "PDE-INFO"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("circle", {
+        stroke: "#000000",
+        cx: "412px",
+        strokeWidth: "0px",
+        id: "circle4",
+        cy: "353px",
+        fill: "darkgreen",
+        r: "11px",
+        transform: ""
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("path", {
+        stroke: "darkgreen",
+        id: "path1",
+        strokeWidth: "2px",
+        d: "M412,357 l0,-253 a10,10 90 0 0 -10,-10 l-60,0 ",
+        fill: "none",
+        transform: ""
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("path", {
+        stroke: "darkgreen",
+        strokeWidth: "6",
+        id: "path4",
+        d: "M21,88 l0,250 a10,10 90 0 0 10,10 l300,0 a10,10 90 0 0 10,-10 l0,-250 a10,10 90 0 0 -10,-10 l-300,0 a10,10 90 0 0 -10,10 ",
+        fill: "black",
+        strokeLinecap: "butt",
+        transform: "",
+        strokeLinejoin: "miter"
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("g", {
+        id: "PDE",
+        transform: ""
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("g", {
+        transform: "",
+        id: "PDE-TEXT"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("text", {
+        stroke: "none",
+        id: "text10",
+        strokeWidth: "1px",
+        x: "36px",
+        fontWeight: "bold",
+        textRendering: "geometricPrecision",
+        fontFamily: "Exo",
+        fill: "whitesmoke",
+        fontSize: "35px",
+        y: "162px",
+        transform: "",
+        textAnchor: "start"
+      }, "ESQUERDO"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("text", {
+        stroke: "none",
+        id: "text9",
+        strokeWidth: "1px",
+        x: "180px",
+        fontWeight: "bold",
+        textRendering: "geometricPrecision",
+        fontFamily: "Exo",
+        fill: "whitesmoke",
+        fontSize: "40px",
+        y: "122px",
+        transform: "",
+        textAnchor: "middle"
+      }, "PNEU DIANTEIRO")), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("line", {
+        stroke: "#858787",
+        y1: "175px",
+        strokeWidth: "3px",
+        x1: "32px",
+        id: "line2",
+        y2: "175px",
+        x2: "327px",
+        transform: ""
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("g", {
+        transform: "",
+        id: "VEL-DE"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("image", {
+        x: "40px",
+        height: "70px",
+        y: "186px",
+        id: "image4",
+        xlinkHref: "/static/SVGs/speedometer.svg",
+        xlinkRole: "/static/SVGs/speedometer.svg",
+        width: "70px",
+        preserveAspectRatio: "xMidYMid meet",
+        transform: ""
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_components_countup_wrapper_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        end: ((this.props.tires || {}).speed || {}).frontLeft / 10 / 3.6 / (52.07 / 100 * Math.PI) * 60 || 0,
+        decimals: 0
+      }, function (_ref4) {
+        var countUpRef = _ref4.countUpRef;
+        return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("text", {
+          ref: countUpRef,
+          className: "carro-overlay-value",
+          stroke: "none",
+          id: "text12",
+          strokeWidth: "1px",
+          x: "228px",
+          textRendering: "geometricPrecision",
+          y: "251px",
+          fontFamily: "Exo",
+          fill: "whitesmoke",
+          fontSize: "25px",
+          transform: "",
+          textAnchor: "end"
+        });
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("text", {
+        stroke: "none",
+        id: "text13",
+        className: "carro-overlay-value",
+        strokeWidth: "1px",
+        x: "268px",
+        textRendering: "geometricPrecision",
+        y: "252px",
+        fontFamily: "Exo",
+        fill: "whitesmoke",
+        fontSize: "25px",
+        transform: "",
+        textAnchor: "middle"
+      }, "RPM"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("text", {
+        stroke: "none",
+        id: "text11",
+        strokeWidth: "1px",
+        x: "207px",
+        fontWeight: "bold",
+        textRendering: "geometricPrecision",
+        fontFamily: "Exo",
+        fill: "whitesmoke",
+        fontSize: "30px",
+        y: "221px",
+        transform: "",
+        textAnchor: "middle"
+      }, "VELOCIDADE")))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("g", {
+        transform: "",
+        id: "PDD-INFO"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("path", {
+        stroke: "darkgreen",
+        strokeWidth: "2px",
+        id: "path5",
+        d: "M823,352 l0,-253 a10,10 90 0 1 10,-10 l60,0 ",
+        fill: "none",
+        transform: ""
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("path", {
+        stroke: "darkgreen",
+        strokeWidth: "6",
+        id: "path3",
+        d: "M894,88 l0,250 a10,10 90 0 0 10,10 l300,0 a10,10 90 0 0 10,-10 l0,-250 a10,10 90 0 0 -10,-10 l-300,0 a10,10 90 0 0 -10,10 ",
+        fill: "black",
+        strokeLinecap: "butt",
+        transform: "",
+        strokeLinejoin: "miter"
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("g", {
+        id: "PDD",
+        transform: ""
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("g", {
+        transform: "",
+        id: "VEL-DD"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("image", {
+        x: "907px",
+        height: "70",
+        y: "185px",
+        id: "image2",
+        xlinkHref: "/static/SVGs/speedometer.svg",
+        xlinkRole: "/static/SVGs/speedometer.svg",
+        width: "70",
+        preserveAspectRatio: "xMidYMid meet",
+        transform: ""
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("line", {
+        stroke: "#858787",
+        y1: "175px",
+        x1: "908px",
+        strokeWidth: "3px",
+        y2: "175px",
+        x2: "1203px",
+        transform: "",
+        id: "line3"
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("text", {
+        stroke: "none",
+        id: "text6",
+        strokeWidth: "1px",
+        x: "1073px",
+        fontWeight: "bold",
+        textRendering: "geometricPrecision",
+        fontFamily: "Exo",
+        fill: "whitesmoke",
+        fontSize: "30px",
+        y: "217px",
+        transform: "",
+        textAnchor: "middle"
+      }, "VELOCIDADE"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_components_countup_wrapper_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        end: ((this.props.tires || {}).speed || {}).frontRight / 10 || 0,
+        decimals: 0
+      }, function (_ref5) {
+        var countUpRef = _ref5.countUpRef;
+        return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("text", {
+          ref: countUpRef,
+          className: "carro-overlay-value",
+          stroke: "none",
+          id: "text7",
+          strokeWidth: "1px",
+          x: "1098px",
+          textRendering: "geometricPrecision",
+          y: "247px",
+          fontFamily: "Exo",
+          fill: "whitesmoke",
+          fontSize: "25px",
+          transform: "",
+          textAnchor: "end"
+        });
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("text", {
+        stroke: "none",
+        className: "carro-overlay-value",
+        id: "text8",
+        strokeWidth: "1px",
+        x: "1138px",
+        textRendering: "geometricPrecision",
+        y: "248px",
+        fontFamily: "Exo",
+        fill: "whitesmoke",
+        fontSize: "25px",
+        transform: "",
+        textAnchor: "middle"
+      }, "RPM")), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("g", {
+        transform: "",
+        id: "PDD-TEXT"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("text", {
+        stroke: "none",
+        id: "text1",
+        strokeWidth: "1px",
+        x: "1050px",
+        fontWeight: "bold",
+        textRendering: "geometricPrecision",
+        fontFamily: "Exo",
+        fill: "whitesmoke",
+        fontSize: "40px",
+        y: "122px",
+        transform: "",
+        textAnchor: "middle"
+      }, "PNEU DIANTEIRO"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("text", {
+        stroke: "none",
+        id: "text3",
+        strokeWidth: "1px",
+        x: "1124px",
+        fontWeight: "bold",
+        textRendering: "geometricPrecision",
+        fontFamily: "Exo",
+        fill: "whitesmoke",
+        fontSize: "40px",
+        y: "163px",
+        transform: "",
+        textAnchor: "middle"
+      }, "DIREITO")), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("line", {
+        stroke: "#858787",
+        y1: "175px",
+        id: "line1",
+        x1: "908px",
+        strokeWidth: "3px",
+        y2: "175px",
+        x2: "1203px",
+        transform: ""
+      })), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("circle", {
+        stroke: "#000000",
+        strokeWidth: "0px",
+        cy: "353px",
+        id: "circle5",
+        fill: "darkgreen",
+        r: "11px",
+        cx: "823px",
+        transform: ""
+      })), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("g", {
+        transform: "",
+        id: "PTD-INFO"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("path", {
+        stroke: "darkgreen",
+        strokeWidth: "2px",
+        id: "path7",
+        d: "M824,907 l0,-80 a10,10 90 0 1 10,-10 l60,0 ",
+        fill: "none",
+        transform: ""
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("path", {
+        stroke: "darkgreen",
+        strokeLinejoin: "miter",
+        strokeWidth: "6",
+        id: "path2",
+        d: "M893,804 l0,250 a10,10 90 0 0 10,10 l300,0 a10,10 90 0 0 10,-10 l0,-250 a10,10 90 0 0 -10,-10 l-300,0 a10,10 90 0 0 -10,10 ",
+        fill: "black",
+        strokeLinecap: "butt",
+        transform: ""
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("circle", {
+        stroke: "#000000",
+        cx: "824px",
+        strokeWidth: "0px",
+        id: "circle6",
+        cy: "911px",
+        fill: "darkgreen",
+        r: "11px",
+        transform: ""
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("g", {
+        transform: "",
+        id: "PTD"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("line", {
+        stroke: "#858787",
+        y1: "899px",
+        strokeWidth: "3px",
+        x1: "907px",
+        id: "line5",
+        y2: "899px",
+        x2: "1202px",
+        transform: ""
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("g", {
+        transform: "",
+        id: "VEL-TD"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("image", {
+        x: "914px",
+        height: "70px",
+        y: "912px",
+        id: "image5",
+        xlinkHref: "/static/SVGs/speedometer.svg",
+        xlinkRole: "/static/SVGs/speedometer.svg",
+        width: "70px",
+        preserveAspectRatio: "xMidYMid meet",
+        transform: ""
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_components_countup_wrapper_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        end: ((this.props.tires || {}).speed || {}).backRight || 0,
+        decimals: 0
+      }, function (_ref6) {
+        var countUpRef = _ref6.countUpRef;
+        return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("text", {
+          ref: countUpRef,
+          className: "carro-overlay-value",
+          stroke: "none",
+          id: "text19",
+          strokeWidth: "1px",
+          x: "1101px",
+          textRendering: "geometricPrecision",
+          y: "974px",
+          fontFamily: "Exo",
+          fill: "whitesmoke",
+          fontSize: "25px",
+          transform: "",
+          textAnchor: "end"
+        });
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("text", {
+        stroke: "none",
+        id: "text20",
+        className: "carro-overlay-value",
+        strokeWidth: "1px",
+        x: "1141px",
+        textRendering: "geometricPrecision",
+        y: "975px",
+        fontFamily: "Exo",
+        fill: "whitesmoke",
+        fontSize: "25px",
+        transform: "",
+        textAnchor: "middle"
+      }, "RPM"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("text", {
+        stroke: "none",
+        id: "text21",
+        strokeWidth: "1px",
+        x: "1080px",
+        fontWeight: "bold",
+        textRendering: "geometricPrecision",
+        fontFamily: "Exo",
+        fill: "whitesmoke",
+        fontSize: "30px",
+        y: "944px",
+        transform: "",
+        textAnchor: "middle"
+      }, "VELOCIDADE")), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("g", {
+        id: "PTD-TEXT",
+        transform: ""
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("text", {
+        stroke: "none",
+        id: "text17",
+        strokeWidth: "1px",
+        x: "1180px",
+        fontWeight: "bold",
+        textRendering: "geometricPrecision",
+        fontFamily: "Exo",
+        fill: "whitesmoke",
+        fontSize: "40px",
+        y: "881px",
+        transform: "",
+        textAnchor: "end"
+      }, "DIREITO"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("text", {
+        stroke: "none",
+        id: "text18",
+        strokeWidth: "1px",
+        x: "909px",
+        fontWeight: "bold",
+        textRendering: "geometricPrecision",
+        fontFamily: "Exo",
+        fill: "whitesmoke",
+        fontSize: "40px",
+        y: "841px",
+        transform: "",
+        textAnchor: "start"
+      }, "PNEU TRASEIRO")))));
+    }
+  }]);
+
+  return CarOverlay;
+}(react__WEBPACK_IMPORTED_MODULE_5__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (CarOverlay);
 
 /***/ }),
 
@@ -2261,6 +3316,58 @@ function (_Component) {
 
 /***/ }),
 
+/***/ "./components/ecu.js":
+/*!***************************!*\
+  !*** ./components/ecu.js ***!
+  \***************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+
+
+
+
+
+
+
+var ECU =
+/*#__PURE__*/
+function (_Component) {
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(ECU, _Component);
+
+  function ECU(props) {
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, ECU);
+
+    return Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(ECU).call(this, props));
+  }
+
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(ECU, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "default-container bordered-title-container"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "component-title bordered-title-text"
+      }, "ECU FLAG"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h2", null, this.props.value));
+    }
+  }]);
+
+  return ECU;
+}(react__WEBPACK_IMPORTED_MODULE_5__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (ECU);
+
+/***/ }),
+
 /***/ "./components/notifications-handler.js":
 /*!*********************************************!*\
   !*** ./components/notifications-handler.js ***!
@@ -2443,27 +3550,26 @@ function createOffLimitComponent(field) {
 
 /***/ }),
 
-/***/ "./components/velocimetro.js":
-/*!***********************************!*\
-  !*** ./components/velocimetro.js ***!
-  \***********************************/
+/***/ "./components/volante.js":
+/*!*******************************!*\
+  !*** ./components/volante.js ***!
+  \*******************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime-corejs2/helpers/esm/assertThisInitialized.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var react_countup__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-countup */ "react-countup");
-/* harmony import */ var react_countup__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_countup__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _contexts_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./contexts.js */ "./components/contexts.js");
-/* harmony import */ var _countup_wrapper_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./countup-wrapper.js */ "./components/countup-wrapper.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/parse-int */ "./node_modules/@babel/runtime-corejs2/core-js/parse-int.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime-corejs2/helpers/esm/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _components_countup_wrapper_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/countup-wrapper.js */ "./components/countup-wrapper.js");
 
 
 
@@ -2472,538 +3578,199 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- // import vel from '../static/SVGs/velocimentro.svg';
 
 
-
-var Velocimetro =
+var Volante =
 /*#__PURE__*/
 function (_Component) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__["default"])(Velocimetro, _Component);
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__["default"])(Volante, _Component);
 
-  function Velocimetro(props) {
+  function Volante(props) {
     var _this;
 
-    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, Velocimetro);
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__["default"])(this, Volante);
 
-    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(Velocimetro).call(this, props));
-    _this.pointerRef = react__WEBPACK_IMPORTED_MODULE_6___default.a.createRef();
-    _this.greenBarRef = react__WEBPACK_IMPORTED_MODULE_6___default.a.createRef();
-    _this.decimalRef = react__WEBPACK_IMPORTED_MODULE_6___default.a.createRef();
-    _this.lastValue = 0;
-    _this.updateSpeed = _this.updateSpeed.bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this));
-    _this.updateAndFormatValue = _this.updateAndFormatValue.bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this));
-    _this.state = {
-      speed: 0
-    };
+    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__["default"])(Volante).call(this, props));
+    _this.updateVolante = _this.updateVolante.bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this));
+    _this.rotateRef = react__WEBPACK_IMPORTED_MODULE_7___default.a.createRef();
     return _this;
   }
 
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(Velocimetro, [{
-    key: "updateSpeed",
-    value: function updateSpeed(newSpeed) {
-      this.setState({
-        speed: newSpeed
-      });
-    }
-  }, {
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(Volante, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("svg", {
+      console.log(this.props.value);
+      return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+        className: "volante-container default-container bordered-title-container"
+      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+        className: "component-title bordered-title-text"
+      }, "VOLANTE"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+        className: "volante-svg-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("svg", {
+        cursor: "default",
         style: {
           zoom: 1
         },
+        width: "100%",
         id: "svg_document",
         baseProfile: "full",
         version: "1.1",
         preserveAspectRatio: "xMidYMid meet",
-        viewBox: "0 0 100 100"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("link", {
-        href: "/static/styles.css",
-        rel: "stylesheet"
-      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("defs", {
+        viewBox: "0 0 500 350"
+      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("title", {
+        id: "svg_document_title"
+      }, "Untitled.svg"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("defs", {
         id: "svg_document_defs"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("linearGradient", {
-        x2: "0%",
-        id: "linearGradient1",
-        x1: "0%",
-        y2: "0%",
-        y1: "100%"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("stop", {
-        id: "stop1",
-        offset: "0%",
-        stopColor: "#5a5a5c"
-      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("stop", {
-        id: "stop2",
-        offset: "100%",
-        stopColor: "#00d927"
-      }))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("circle", {
-        stroke: "#000000",
-        id: "path-cover",
-        strokeWidth: "0px",
-        cy: "50px",
-        fill: "url(#radialGradient1)",
-        r: "43px",
-        cx: "50px",
+      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("g", {
+        id: "main_group"
+      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("g", {
+        ref: this.rotateRef,
         transform: "",
-        visibility: "visible"
-      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("circle", {
-        stroke: "#5b5b5c",
-        visibility: "visible",
-        id: "circle2",
-        strokeWidth: "3",
-        cy: "50px",
-        fill: "none",
-        r: "44",
-        cx: "50px",
+        id: "st-wheel"
+      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("path", {
+        stroke: "whitesmoke",
+        id: "path1",
+        strokeWidth: "3px",
+        d: "M100,100 l0,120 s0,45 80,45 l140,0 s80,0 80,-45 l0,-120 s0,-30 -80,-30 l-140,0 s-80,0 -80,30  z ",
+        fill: "whitesmoke",
         transform: ""
-      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("path", {
-        ref: this.greenBarRef,
-        stroke: "#00d927",
-        id: "speed-path",
-        strokeWidth: "3",
-        d: "M50,94 A44,44 0 0 1 50,6 ",
-        fill: "none",
-        strokeLinecap: "butt",
+      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("path", {
+        stroke: "whitesmoke",
         strokeLinejoin: "miter",
+        strokeWidth: "5",
+        id: "path2",
+        d: "M180,90 l-50,10 c-20,10 -20,30 0,40 l50,0 a10,10 90 0 0 10,-10 l0,-30 c0,-5 0,-10 -10,-10  z ",
+        fill: "black",
+        strokeLinecap: "butt",
         transform: ""
-      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("g", {
-        id: "speed-marker-texts",
-        style: {
-          "textShadow": "0px 1px 1px #6b6b6b"
-        },
+      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("path", {
+        stroke: "whitesmoke",
+        visibility: "visible",
+        id: "path3",
+        strokeWidth: "5",
+        d: "M320,90 l50,10 c20,10 20,30 0,40 l-50,0 a10,10 90 0 1 -10,-10 l0,-30 c0,-5 0,-10 10,-10  z ",
+        fill: "black",
+        strokeLinecap: "butt",
+        transform: "",
+        strokeLinejoin: "miter"
+      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("path", {
+        stroke: "whitesmoke",
+        strokeWidth: "5",
+        id: "path4",
+        d: "M365,169 a10,10 90 0 1 10,10 l0,40 c0,15 -35,29 -50,30 a10,10 90 0 1 -10,-10 l0,-30 s0,-40 45,-40  z ",
+        fill: "black",
+        strokeLinecap: "butt",
+        transform: "",
+        strokeLinejoin: "miter"
+      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("path", {
+        stroke: "whitesmoke",
+        strokeWidth: "5",
+        id: "path5",
+        d: "M135,170 a10,10 90 0 0 -10,10 l0,40 c0,15 35,29 50,30 a10,10 90 0 0 10,-10 l0,-30 s0,-40 -45,-40  z ",
+        fill: "black",
+        strokeLinecap: "butt",
+        transform: "",
+        strokeLinejoin: "miter"
+      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("image", {
+        x: "218px",
+        height: "49.417px",
+        y: "141px",
+        id: "image1",
+        xlinkHref: "/static/images/logo-fundo-branco.png",
+        xlinkRole: "/static/images/logo-fundo-branco.png",
+        width: "69px",
+        preserveAspectRatio: "xMidYMid meet",
         transform: ""
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("text", {
-        stroke: "none",
-        id: "text14",
-        strokeWidth: "1px",
-        x: "82.400002px",
-        textRendering: "geometricPrecision",
-        fontFamily: "Advent Pro",
-        y: "51.199997px",
-        fill: "white",
-        fontSize: "4px",
-        transform: "",
-        textAnchor: "middle"
-      }, "120"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("text", {
-        stroke: "none",
-        id: "text13",
-        strokeWidth: "1px",
-        x: "80.799995px",
-        textRendering: "geometricPrecision",
-        fontFamily: "Advent Pro",
-        y: "38.999996px",
-        fill: "white",
-        fontSize: "4px",
-        transform: "",
-        textAnchor: "middle"
-      }, "110"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("text", {
-        stroke: "none",
-        id: "text9",
-        strokeWidth: "1px",
-        x: "72.599998px",
-        textRendering: "geometricPrecision",
-        fontFamily: "Advent Pro",
-        y: "28.0799994px",
-        fill: "white",
-        fontSize: "4px",
-        transform: "",
-        textAnchor: "middle"
-      }, "100"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("text", {
-        stroke: "none",
-        id: "text10",
-        strokeWidth: "1px",
-        x: "63.799995px",
-        textRendering: "geometricPrecision",
-        fontFamily: "Advent Pro",
-        y: "21.399998px",
-        fill: "white",
-        fontSize: "4px",
-        transform: "",
-        textAnchor: "middle"
-      }, "90"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("text", {
-        stroke: "none",
-        id: "text8",
-        strokeWidth: "1px",
-        x: "50px",
-        textRendering: "geometricPrecision",
-        fontFamily: "Advent Pro",
-        y: "20.000002px",
-        fill: "white",
-        fontSize: "4px",
-        transform: "",
-        textAnchor: "middle"
-      }, "80"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("text", {
-        stroke: "none",
-        id: "text7",
-        strokeWidth: "1px",
-        x: "37.200001px",
-        textRendering: "geometricPrecision",
-        fontFamily: "Advent Pro",
-        y: "22.000006px",
-        fill: "white",
-        fontSize: "4px",
-        transform: "",
-        textAnchor: "middle"
-      }, "70"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("text", {
-        stroke: "none",
-        id: "text6",
-        strokeWidth: "1px",
-        x: "27.800001px",
-        textRendering: "geometricPrecision",
-        fontFamily: "Advent Pro",
-        y: "28.4px",
-        fill: "white",
-        fontSize: "4px",
-        transform: "",
-        textAnchor: "middle"
-      }, "60"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("text", {
-        stroke: "none",
-        id: "text5",
-        strokeWidth: "1px",
-        x: "20.800001px",
-        textRendering: "geometricPrecision",
-        fontFamily: "Advent Pro",
-        y: "39.199997px",
-        fill: "white",
-        fontSize: "4px",
-        transform: "",
-        textAnchor: "middle"
-      }, "50"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("text", {
-        stroke: "none",
-        id: "text4",
-        strokeWidth: "1px",
-        x: "17.800001px",
-        textRendering: "geometricPrecision",
-        fontFamily: "Advent Pro",
-        y: "51.399994px",
-        fill: "white",
-        fontSize: "4px",
-        transform: "",
-        textAnchor: "middle"
-      }, "40"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("text", {
-        stroke: "none",
-        id: "text3",
-        strokeWidth: "1px",
-        x: "20.600002px",
-        textRendering: "geometricPrecision",
-        fontFamily: "Advent Pro",
-        y: "64.799988px",
-        fill: "white",
-        fontSize: "4px",
-        transform: "",
-        textAnchor: "middle"
-      }, "30"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("text", {
-        stroke: "none",
-        id: "text1",
-        strokeWidth: "1px",
-        x: "27.400002px",
-        textRendering: "geometricPrecision",
-        fontFamily: "Advent Pro",
-        fill: "white",
-        fontSize: "4px",
-        y: "75px",
-        transform: "",
-        textAnchor: "middle"
-      }, "20"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("text", {
-        stroke: "none",
-        id: "text2",
-        strokeWidth: "1px",
-        x: "37.400002px",
-        textRendering: "geometricPrecision",
-        fontFamily: "Advent Pro",
-        y: "81.399994px",
-        fill: "white",
-        fontSize: "4px",
-        transform: "",
-        textAnchor: "middle"
-      }, "10"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("text", {
-        stroke: "none",
-        style: {
-          "outlineStyle": "none",
-          "color": "#ffffff"
-        },
-        strokeWidth: "1px",
-        x: "50px",
-        textRendering: "geometricPrecision",
-        fontFamily: "Advent Pro",
-        fill: "white",
-        fontSize: "4px",
-        y: "84px",
-        transform: "",
-        textAnchor: "middle",
-        id: "text11"
-      }, "0")), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("g", {
-        transform: "",
-        id: "circle-pointers"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("circle", {
-        stroke: "#008017",
-        id: "circle1",
-        strokeWidth: "1px",
-        cy: "50",
-        fill: "none",
-        r: "40",
-        cx: "50",
+      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("g", {
+        id: "g1",
         transform: ""
-      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("rect", {
+      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("circle", {
         stroke: "none",
-        x: "49.25px",
-        height: "9.7px",
-        y: "85.8px",
         strokeWidth: "3px",
-        id: "rect15",
-        width: "1.485px",
-        fill: "#008017",
-        transform: ""
-      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("rect", {
+        id: "circle2",
+        cy: "135px",
+        fill: "black",
+        r: "4px",
+        transform: "",
+        cx: "269px"
+      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("circle", {
         stroke: "none",
-        x: "49.25px",
-        height: "4px",
-        y: "10px",
-        id: "rect1",
         strokeWidth: "3px",
-        width: "1.5px",
-        fill: "#008017",
-        transform: ""
-      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("rect", {
-        stroke: "none",
-        x: "47.880721px",
-        height: "4px",
-        y: "51.816059px",
-        strokeWidth: "3px",
-        id: "rect14",
-        width: "1.5px",
-        fill: "#008017",
-        transform: "translate(36.95 -15.3) rotate(67.5 50.75 52)"
-      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("rect", {
-        stroke: "none",
-        x: "51.04525px",
-        height: "4px",
-        y: "50.432957px",
-        strokeWidth: "3px",
-        id: "rect13",
-        width: "1.5px",
-        fill: "#008017",
-        transform: "translate(-36.95 -15.3) rotate(-67.5 50.75 52)"
-      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("rect", {
-        stroke: "none",
-        x: "49.465641px",
-        height: "4px",
-        y: "50.126812px",
-        strokeWidth: "3px",
-        id: "rect12",
-        width: "1.5px",
-        fill: "#008017",
-        transform: "translate(-15.3 -36.95) rotate(-22.5 50 50)"
-      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("rect", {
-        stroke: "none",
-        x: "48.5px",
-        height: "4px",
-        y: "50px",
-        strokeWidth: "3px",
-        id: "rect10",
-        width: "1.5px",
-        fill: "#008017",
-        transform: "translate(15.30 -36.95) rotate(22.5 50.75 52)"
-      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("rect", {
-        stroke: "none",
-        x: "51.319698px",
-        height: "4px",
-        y: "53.618149px",
-        strokeWidth: "3px",
-        id: "rect9",
-        width: "1.5px",
-        fill: "#008017",
-        transform: "translate(-15.30 36.95) rotate(202.5 50.75 52)"
-      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("rect", {
-        stroke: "none",
-        x: "48.250771px",
-        height: "4px",
-        y: "47.965252px",
-        strokeWidth: "3px",
-        id: "rect8",
-        width: "1.5px",
-        fill: "#008017",
-        transform: "translate(-36.95 15.3) rotate(67.25 50.75 52)"
-      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("rect", {
-        stroke: "none",
-        x: "47.7px",
-        height: "4px",
-        y: "50px",
-        strokeWidth: "3px",
-        id: "rect7",
-        width: "1.5px",
-        fill: "#008017",
-        transform: "translate(27.88 -27.28) rotate(45 50.75 52)"
-      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("rect", {
-        stroke: "none",
-        x: "-2.262738px",
-        height: "4px",
-        y: "41.898335px",
-        strokeWidth: "3px",
-        id: "rect2",
-        width: "1.5px",
-        fill: "#008017",
-        transform: "rotate(135 15.174976 38.524326)"
-      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("rect", {
-        stroke: "none",
-        x: "48.585793px",
-        height: "4px",
-        y: "47.17157px",
-        strokeWidth: "3px",
-        id: "rect5",
-        width: "1.5px",
-        fill: "#008017",
-        transform: "translate(-28.28 28.28) rotate(45 50.75 52)"
-      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("rect", {
-        stroke: "none",
-        x: "59.850006px",
-        height: "4px",
-        y: "36.599998px",
-        strokeWidth: "3px",
-        width: "1.5px",
-        id: "rect4",
-        fill: "#008017",
-        transform: "rotate(90 68.800003 57.999996)"
-      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("rect", {
-        stroke: "none",
-        x: "49.25px",
-        height: "4px",
-        y: "86px",
-        strokeWidth: "3px",
-        id: "rect3",
-        width: "1.5px",
-        fill: "#008017",
-        transform: "rotate(90 50 50)"
-      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("rect", {
-        ref: this.pointerRef,
-        stroke: "#000000",
-        x: "49.6px",
-        height: "46px",
-        y: "50px",
-        id: "speed-pointer",
-        strokeWidth: "0px",
-        width: "0.8px",
-        fill: "#ffffff",
-        transform: "rotate(0 50 50)"
-      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("g", {
-        id: "speed-wrapper",
-        transform: ""
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("circle", {
-        stroke: "#000000",
         id: "circle3",
-        strokeWidth: "0px",
-        cy: "50px",
-        fill: "#1e1e1e",
-        r: "23.6px",
-        cx: "50px",
-        transform: ""
-      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("g", {
-        id: "speed-text",
+        cy: "197px",
+        fill: "black",
+        r: "4px",
         transform: "",
-        style: {
-          "outlineStyle": "none",
-          "textShadow": "0px 1px 1px #6b6b6b"
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_countup_wrapper_js__WEBPACK_IMPORTED_MODULE_9__["default"], {
-        end: this.props.speed,
-        suffix: ".",
-        useEasing: false,
-        formattingFn: this.updateAndFormatValue
+        cx: "230px"
+      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("circle", {
+        stroke: "none",
+        strokeWidth: "3px",
+        id: "circle4",
+        cy: "197px",
+        fill: "black",
+        r: "4px",
+        transform: "",
+        cx: "269px"
+      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("circle", {
+        stroke: "none",
+        strokeWidth: "3px",
+        id: "circle5",
+        cy: "135px",
+        fill: "black",
+        r: "4px",
+        transform: "",
+        cx: "230px"
+      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("circle", {
+        stroke: "none",
+        transform: "",
+        strokeWidth: "3px",
+        id: "circle1",
+        cy: "166px",
+        fill: "black",
+        r: "4px",
+        cx: "286px"
+      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("circle", {
+        stroke: "none",
+        transform: "",
+        strokeWidth: "3px",
+        id: "circle6",
+        cy: "167px",
+        fill: "black",
+        r: "4px",
+        cx: "213px"
+      }))))), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+        className: "volante-value-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("span", {
+        className: "volante-title"
+      }, "ROTA\xC7\xC3O:"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_components_countup_wrapper_js__WEBPACK_IMPORTED_MODULE_8__["default"], {
+        end: 280 / 4095 * (2502 - this.props.value),
+        decimals: 0,
+        formattingFn: this.updateVolante
       }, function (_ref) {
         var countUpRef = _ref.countUpRef;
-        return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("text", {
-          stroke: "none",
+        return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("span", {
           ref: countUpRef,
-          id: "speed-text-integer",
-          strokeWidth: "1px",
-          x: "50",
-          textRendering: "geometricPrecision",
-          fontFamily: "Exo",
-          fill: "white",
-          fontSize: "20px",
-          y: "55.599995px",
-          transform: "",
-          textAnchor: "middle"
+          className: "volante-value"
         });
-      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("text", {
-        stroke: "none",
-        id: "text17",
-        strokeWidth: "1px",
-        x: "50.000004px",
-        textRendering: "geometricPrecision",
-        fontFamily: "Exo",
-        y: "64.199997px",
-        fill: "white",
-        fontSize: "7px",
-        transform: "",
-        textAnchor: "middle"
-      }, "Km/h"))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("image", {
-        xlinkHref: "/static/images/logo-fundo-preto.png",
-        x: "42.600006px",
-        height: "8.800022px",
-        id: "image1",
-        y: "29px",
-        width: "14.999992px",
-        preserveAspectRatio: "xMidYMid meet",
-        transform: "",
-        macsvgid: "17B2C0EA-0066-4DF8-AFF4-6FE448389EE8-3383-0000225F808AEF38"
-      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("g", {
-        id: "main_group"
-      }));
+      })));
     }
   }, {
-    key: "updateAndFormatValue",
-    value: function updateAndFormatValue(value) {
-      // var decimalValue = Math.round((value - Math.floor(value)).toFixed(2)*100);
-      // var decimalValueFormated = (decimalValue < 10 ? "0"+decimalValue : decimalValue);
-      var integerValue = Math.floor(value);
-      var formattedIntegerValue = integerValue < 10 ? "0" + integerValue : integerValue; // formattedIntegerValue += ".";
-      // var decComponent = this.decimalRef.current;
-      // if (decComponent) {
-      //     decComponent.innerHTML = decimalValueFormated;
-      // }
+    key: "updateVolante",
+    value: function updateVolante(value) {
+      var rotateComponent = this.rotateRef.current;
 
-      var pointerComponent = this.pointerRef.current;
-
-      if (pointerComponent) {
-        var rotateValue = value * 180 / 80;
-        pointerComponent.setAttribute("transform", "rotate(" + rotateValue + ", 50, 50)");
+      if (rotateComponent) {
+        rotateComponent.setAttribute("transform", "rotate(" + value + ", 250, 167.5)");
       }
 
-      var greenBarComponent = this.greenBarRef.current;
-
-      if (greenBarComponent) {
-        var angle = value * 180 / 80;
-        var newAngle = angle - 270;
-        var x = 50 + Math.cos(newAngle * Math.PI / 180) * 44;
-        var y = 50 + Math.sin(newAngle * Math.PI / 180) * 44;
-        var pathDirectory = "M50,94 A44,44 0 " + (angle > 180 ? 1 : 0) + " 1 " + x + "," + y;
-        greenBarComponent.setAttribute("d", pathDirectory);
-      }
-
-      return formattedIntegerValue;
+      return _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0___default()(value) + "º";
     }
   }]);
 
-  return Velocimetro;
-}(react__WEBPACK_IMPORTED_MODULE_6__["Component"]);
+  return Volante;
+}(react__WEBPACK_IMPORTED_MODULE_7__["Component"]);
 
-function SpeedCountup(props) {
-  var delay = Object(react__WEBPACK_IMPORTED_MODULE_6__["useContext"])(_contexts_js__WEBPACK_IMPORTED_MODULE_8__["DelayContext"]) / 1000;
-  return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react_countup__WEBPACK_IMPORTED_MODULE_7___default.a, {
-    start: props.lastValue,
-    end: props.speed,
-    delay: 0,
-    suffix: ".",
-    useEasing: false,
-    decimals: 2,
-    duration: delay,
-    formattingFn: props.fmtFn
-  });
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (Velocimetro);
+/* harmony default export */ __webpack_exports__["default"] = (Volante);
 
 /***/ }),
 
@@ -4287,33 +5054,31 @@ module.exports = __webpack_require__(/*! regenerator-runtime */ "./node_modules/
 
 /***/ }),
 
-/***/ "./pages/index.js":
-/*!************************!*\
-  !*** ./pages/index.js ***!
-  \************************/
+/***/ "./pages/controle.js":
+/*!***************************!*\
+  !*** ./pages/controle.js ***!
+  \***************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/parse-int */ "./node_modules/@babel/runtime-corejs2/core-js/parse-int.js");
-/* harmony import */ var _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var next_server_head__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! next-server/head */ "next-server/head");
-/* harmony import */ var next_server_head__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(next_server_head__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _components_velocimetro_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/velocimetro.js */ "./components/velocimetro.js");
-/* harmony import */ var _components_bateria_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/bateria.js */ "./components/bateria.js");
-/* harmony import */ var _components_bms_information_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/bms-information.js */ "./components/bms-information.js");
-/* harmony import */ var _components_data_fetcher_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/data-fetcher.js */ "./components/data-fetcher.js");
-/* harmony import */ var _static_styles_styles_css__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../static/styles/styles.css */ "./static/styles/styles.css");
-/* harmony import */ var _static_styles_styles_css__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_static_styles_styles_css__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var _components_contexts_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../components/contexts.js */ "./components/contexts.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _components_data_fetcher_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/data-fetcher.js */ "./components/data-fetcher.js");
+/* harmony import */ var _components_countup_wrapper_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/countup-wrapper.js */ "./components/countup-wrapper.js");
+/* harmony import */ var _components_carro_overlay_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/carro-overlay.js */ "./components/carro-overlay.js");
+/* harmony import */ var _components_volante_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/volante.js */ "./components/volante.js");
+/* harmony import */ var _components_acelerometro_xy_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/acelerometro-xy.js */ "./components/acelerometro-xy.js");
+/* harmony import */ var _components_acelerometro_yz_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/acelerometro-yz.js */ "./components/acelerometro-yz.js");
+/* harmony import */ var _components_ecu_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/ecu.js */ "./components/ecu.js");
+/* harmony import */ var _components_brake_bias_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../components/brake-bias.js */ "./components/brake-bias.js");
+/* harmony import */ var _components_contexts_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../components/contexts.js */ "./components/contexts.js");
 
 
 
@@ -4328,100 +5093,162 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var DelayProvider = _components_contexts_js__WEBPACK_IMPORTED_MODULE_13__["DelayContext"].Provider;
 
-var Index =
+var DelayProvider = _components_contexts_js__WEBPACK_IMPORTED_MODULE_14__["DelayContext"].Provider;
+
+var Controle =
 /*#__PURE__*/
 function (_DataFetcher) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__["default"])(Index, _DataFetcher);
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(Controle, _DataFetcher);
 
-  function Index(props) {
+  function Controle(props) {
     var _this;
 
-    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__["default"])(this, Index);
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, Controle);
 
-    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__["default"])(Index).call(this, props));
-    _this.page = "geral";
+    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(Controle).call(this, props));
+    _this.page = "controle";
     _this.delay = 400;
     return _this;
   }
 
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(Index, [{
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(Controle, [{
     key: "render",
     value: function render() {
-      // debugger;
-      return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "container-fluid"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(DelayProvider, {
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(DelayProvider, {
         value: this.delay
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "row d-flex align-items-center index-section"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "col-lg-4 col-12 mt-2 mb-2"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_bms_information_js__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        maxtemperature: ((this.state.data || {}).bms || {}).maxTemperature / 10 || 0,
-        meantemperature: ((this.state.data || {}).bms || {}).mediaTemperature / 10 || 0,
-        minvoltage: ((this.state.data || {}).bms || {}).minVoltage / 10000 || 0,
-        airstatus: ((this.state.data || {}).bms || {}).airStatus || 0,
-        totalvoltage: ((this.state.data || {}).bms || {}).totalVoltage / 100 || 0,
-        glvvoltage: ((this.state.data || {}).bms || {}).glvVoltage / 1000 || 0
-      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "col-lg-4 col-12 mt-2 mb-2"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_velocimetro_js__WEBPACK_IMPORTED_MODULE_8__["default"], {
-        speed: ((this.state.data || {}).control || {}).mediaSpeed || 0
-      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "col bordered-title-container mt-2 mb-2",
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "col-md-6 col-12"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         style: {
-          margin: "0px 50px 0px 40px"
+          height: "78vh"
         }
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "d-flex justify-content-left"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
-        className: "component-title bordered-title-text "
-      }, "STATUS DE CARGA")), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_bateria_js__WEBPACK_IMPORTED_MODULE_9__["default"], {
-        charge: _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0___default()(((this.state.data || {}).bms || {}).charge) || 0
-      })))));
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_components_carro_overlay_js__WEBPACK_IMPORTED_MODULE_8__["default"], (this.state.data || {}).control || {}))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "col-md col-12 mr-4"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "col-5 mt-3"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_components_volante_js__WEBPACK_IMPORTED_MODULE_9__["default"], {
+        value: ((this.state.data || {}).control || {}).steeringWheel || 1810
+      })), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "offset-1"
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "col-6 mt-3 "
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "bordered-title-container default-container"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "component-title bordered-title-text"
+      }, "PEDAIS"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(Pedal, {
+        title: "ACELERADOR:",
+        icon: react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("img", {
+          src: "/static/SVGs/gas.svg"
+        }),
+        value: react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_components_countup_wrapper_js__WEBPACK_IMPORTED_MODULE_7__["default"], {
+          end: (((this.state.data || {}).control || {}).pedals || {}).throttle / 10 || 0,
+          decimals: 0,
+          suffix: " %"
+        })
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("hr", {
+        className: "gray-separator"
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(Pedal, {
+        title: "FREIO:",
+        icon: react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("img", {
+          src: "/static/SVGs/brake.svg"
+        }),
+        value: (((this.state.data || {}).control || {}).pedals || {}).brake == 1 ? react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
+          className: "brake-on"
+        }, "ATIVADO") : react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
+          className: "brake-off"
+        }, "DESATIVADO")
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "pedal-content"
+      })))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "row mt-1"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "col-12 mt-3"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "bordered-title-container default-container"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "component-title bordered-title-text"
+      }, "ACELER\xD4METRO"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: " row w-100"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "col-md-7"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "col-12 component-title subtitle"
+      }, "EIXO XY:"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "col-12"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_components_acelerometro_xy_js__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        x: (((this.state.data || {}).control || {}).accelerometer || {}).x / 1000,
+        y: (((this.state.data || {}).control || {}).accelerometer || {}).y / 1000
+      })))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "col-md-5"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "col-12 component-title subtitle"
+      }, "EIXO YZ:"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "col-12"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_components_acelerometro_yz_js__WEBPACK_IMPORTED_MODULE_11__["default"], {
+        z: (((this.state.data || {}).control || {}).accelerometer || {}).z / 1000,
+        y: (((this.state.data || {}).control || {}).accelerometer || {}).y / 1000
+      })))))))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "row mt-1 mb-1"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "col-6 mt-3"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_components_ecu_js__WEBPACK_IMPORTED_MODULE_12__["default"], {
+        value: ((this.state.data || {}).control || {}).ecuFlag || 0
+      })), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "col-6 mt-3"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_components_brake_bias_js__WEBPACK_IMPORTED_MODULE_13__["default"], {
+        value: 50
+      })))))));
     }
   }]);
 
-  return Index;
-}(_components_data_fetcher_js__WEBPACK_IMPORTED_MODULE_11__["default"]);
+  return Controle;
+}(_components_data_fetcher_js__WEBPACK_IMPORTED_MODULE_6__["default"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (Index);
+function Pedal(props) {
+  return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+    className: "col-12"
+  }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+    className: "row d-flex align-items-center"
+  }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+    className: "col no-padding-right pedal-icon"
+  }, props.icon), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+    className: "col-9"
+  }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+    className: "row"
+  }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+    className: "col-12 pedal-title"
+  }, props.title)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+    className: "row"
+  }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+    className: "col-12 pedal-value"
+  }, props.value)))));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Controle);
 
 /***/ }),
 
-/***/ "./static/styles/styles.css":
-/*!**********************************!*\
-  !*** ./static/styles/styles.css ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-
-
-/***/ }),
-
-/***/ 3:
-/*!******************************!*\
-  !*** multi ./pages/index.js ***!
-  \******************************/
+/***/ 4:
+/*!*********************************!*\
+  !*** multi ./pages/controle.js ***!
+  \*********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\luiza\OneDrive\Documentos\Tesla\JanelaDeDados\Interface\pages\index.js */"./pages/index.js");
+module.exports = __webpack_require__(/*! C:\Users\luiza\OneDrive\Documentos\Tesla\JanelaDeDados\Interface\pages\controle.js */"./pages/controle.js");
 
-
-/***/ }),
-
-/***/ "@fortawesome/react-fontawesome":
-/*!*************************************************!*\
-  !*** external "@fortawesome/react-fontawesome" ***!
-  \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("@fortawesome/react-fontawesome");
 
 /***/ }),
 
@@ -4590,17 +5417,6 @@ module.exports = require("isomorphic-unfetch");
 
 /***/ }),
 
-/***/ "next-server/head":
-/*!***********************************!*\
-  !*** external "next-server/head" ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("next-server/head");
-
-/***/ }),
-
 /***/ "path":
 /*!***********************!*\
   !*** external "path" ***!
@@ -4646,4 +5462,4 @@ module.exports = require("react-toastify");
 /***/ })
 
 /******/ });
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=controle.js.map
