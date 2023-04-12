@@ -10,6 +10,8 @@ import NProgress from 'nprogress'
 import Router from 'next/router'
 
 import CountUpWrapper from '../components/countup-wrapper.js'
+import ECU from "../components/ecu.js";
+
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../static/styles/styles.css'
@@ -187,12 +189,13 @@ class MyApp extends App {
               </div>
 
             </div>
+            </div>
+        <div class="alert alert-danger" role="alert" background-color='#dc3545'>
+        <ECU
+          value={((this.state.data || {}).control || {}).ecuFlag || 0}>
+        </ECU>
+        </div>
 
-        </div>
-        <div class="alert alert-danger" role="alert">
-        <div className={"menu-button"+(this.props.router.asPath == "/controle" ? " selected" : "" )}>
-        </div>
-</div>
         
         <script src='nprogress.js'></script>
         <link rel='stylesheet' href='nprogress.css'/>

@@ -58,7 +58,6 @@ class Index extends DataFetcher {
                   <ECU
                     value={((this.state.data || {}).control || {}).ecuFlag || 0}
                   >
-                    
                   </ECU>
                   
                 </div>
