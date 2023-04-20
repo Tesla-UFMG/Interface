@@ -171,6 +171,18 @@ class ObjectCreator {
         const accelZ = this.retrieveLastData(cFields.accelerometerZ.index)
 
         console.log("valor do volante: " + this.retrieveLastData(cFields.steeringWheel.index))
+        //console.log(cFields.pedalFreio); 
+        /* 
+{
+  index: 24,
+  name: 'pedalFreio',
+  id: 101,
+  pos: 3,
+  meta: { revision: 0, created: 1681391310397, version: 0 },
+  '$loki': 85
+}
+         */
+
 
         return {
             control: {
@@ -213,6 +225,7 @@ class ObjectCreator {
                     z: (accelZ > Math.pow(2, 15) ? (accelZ-Math.pow(2, 16)): accelZ)
                 },
                 ecuFlag: this.retrieveLastData(cFields.ecuFlag.index),
+                
             }
         }
     }

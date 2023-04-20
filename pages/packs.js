@@ -39,7 +39,7 @@ class Packs extends DataFetcher {
                     <div className="row">
                         <div className="col-12">
                             <div className="row">
-                                {(((this.state.data || {}).bms || {}).packs || []).map((pack, index) => <div className="col-12 col-lg-4 mt-3"><Pack key={index} packIndex={index+1} {...pack}/></div>)}
+                                {(((this.state.data || {}).bms || {}).packs || []).map((pack, index) => <div className="col-12 col-lg-6 mt-3"><Pack key={index} packIndex={index+1} {...pack}/></div>)}
                             </div>
                         </div>
                     </div>

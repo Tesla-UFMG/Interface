@@ -160,7 +160,7 @@ class MyApp extends App {
                     <img src="../static/images/batteries-black.png"></img>
                     <img className="top" src="../static/images/batteries-white.png"></img>
                   </div>
-                  <span className="menu-text">PACKS</span>
+                  <span className="menu-text">BATERIAS</span>
                 </div>
               </Link>
 

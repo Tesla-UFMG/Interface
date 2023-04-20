@@ -54,14 +54,7 @@ class Index extends DataFetcher {
             </div>
           </DelayProvider>
           <div className="row mt-1 mb-1">
-                <div className="col-6 mt-3">
-                  <ECU
-                    value={((this.state.data || {}).control || {}).ecuFlag || 0}
-                  >
-                  </ECU>
-                  
-                </div>
-                <div className="col-6 mt-3">
+                <div className="col-12 mt-8">
                   <BrakeBias value={50}></BrakeBias>
                 </div>
               </div>

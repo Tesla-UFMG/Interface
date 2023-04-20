@@ -7,6 +7,7 @@ class ECU extends Component {
 
   render() {
     return (
+      
       <div className="default-container bordered-title-container">
         <div className="component-title bordered-title-text">ECU FLAG</div>
         <h2>{this.props.value}</h2>

@@ -19330,11 +19330,7 @@ function (_DataFetcher) {
       })))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "row mt-1 mb-1"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "col-6 mt-3"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_ecu_js__WEBPACK_IMPORTED_MODULE_12__["default"], {
-        value: ((this.state.data || {}).control || {}).ecuFlag || 0
-      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "col-6 mt-3"
+        className: "col-12 mt-8"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_brake_bias_js__WEBPACK_IMPORTED_MODULE_13__["default"], {
         value: 50
       }))));

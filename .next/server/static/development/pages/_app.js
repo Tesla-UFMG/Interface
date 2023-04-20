@@ -2935,7 +2935,7 @@ function (_App) {
         src: "../static/images/batteries-white.png"
       })), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("span", {
         className: "menu-text"
-      }, "PACKS")))), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
+      }, "BATERIAS")))), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
         className: "additional-information"
       }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
         className: "signal-indicator"
