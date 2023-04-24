@@ -52,7 +52,7 @@ class Index extends DataFetcher {
                 </div>
                 <Bateria charge={parseInt(((this.state.data || {}).bms || {}).charge) || 0}></Bateria>
               </div>
-              <div class="col-xs-6 col-sm-4">
+              <div class="col-xs-6 col-sm-12"> {/* class="col-xs-6 col-sm-4" */}
                   <BrakeBias value={50}></BrakeBias>
                 </div>
             </div>

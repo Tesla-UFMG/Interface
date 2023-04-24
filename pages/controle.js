@@ -62,7 +62,6 @@ class Controle extends DataFetcher {
                             ).throttle / 10 || 0
                           }
                           decimals={0}
-                          suffix={" %"}
                         />
                       }
                     />
@@ -71,13 +70,12 @@ class Controle extends DataFetcher {
                       title={"FREIO:"}
                       icon={<img src="/static/SVGs/brake.svg"></img>}
                       value={
-                        (((this.state.data || {}).control || {}).pedals || {})
-                          .brake == 1 ? (
-                          <span className="brake-on">ATIVADO</span>
-                        ) : (
-                          <span className="brake-off">DESATIVADO</span>
-                        )
+                        (
+                          ((this.state.data || {}).control || {}).pedals ||
+                          {}
+                        ).brake / 10 || 0
                       }
+                      decimals={0}
                     />
 
                     <div className="pedal-content"></div>
@@ -142,16 +140,6 @@ class Controle extends DataFetcher {
                   </div>
                 </div>
               </div>
-              {/* <div className="row mt-1 mb-1">
-                <div className="col-6 mt-3">
-                  <ECU
-                    value={((this.state.data || {}).control || {}).ecuFlag || 0}
-                  ></ECU>
-                </div>
-                <div className="col-6 mt-3">
-                  <BrakeBias value={50}></BrakeBias>
-                </div>
-              </div> */}
             </div>
           </div>
         </DelayProvider>
@@ -170,7 +158,7 @@ function Pedal(props) {
             <div className="col-12 pedal-title">{props.title}</div>
           </div>
           <div className="row">
-            <div className="col-12 pedal-value">{props.value}</div>
+            <div className="col-12 pedal-value">{props.value} % </div>
           </div>
         </div>
       </div>

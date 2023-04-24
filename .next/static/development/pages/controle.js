@@ -15804,8 +15804,7 @@ function (_DataFetcher) {
         }),
         value: react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_components_countup_wrapper_js__WEBPACK_IMPORTED_MODULE_7__["default"], {
           end: (((this.state.data || {}).control || {}).pedals || {}).throttle / 10 || 0,
-          decimals: 0,
-          suffix: " %"
+          decimals: 0
         })
       }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("hr", {
         className: "gray-separator"
@@ -15814,11 +15813,8 @@ function (_DataFetcher) {
         icon: react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("img", {
           src: "/static/SVGs/brake.svg"
         }),
-        value: (((this.state.data || {}).control || {}).pedals || {}).brake == 1 ? react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
-          className: "brake-on"
-        }, "ATIVADO") : react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
-          className: "brake-off"
-        }, "DESATIVADO")
+        value: (((this.state.data || {}).control || {}).pedals || {}).brake / 10 || 0,
+        decimals: 0
       }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "pedal-content"
       })))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
@@ -15877,7 +15873,7 @@ function Pedal(props) {
     className: "row"
   }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
     className: "col-12 pedal-value"
-  }, props.value)))));
+  }, props.value, " % ")))));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Controle);
