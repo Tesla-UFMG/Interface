@@ -270,11 +270,54 @@ function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(ECU, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        className: "default-container bordered-title-container"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        className: "component-title bordered-title-text"
-      }, "ECU FLAG"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h2", null, this.props.value));
+      switch (this.props.value) {
+        case 0:
+          return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "default-container bordered-text-container"
+          }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "component-title bordered-title-text"
+          }, "ECU FLAG"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h4", null, "Erro de plausabilidade entre BSE e APPS"));
+          break;
+
+        case 1:
+          return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "default-container bordered-title-container"
+          }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "component-title bordered-title-text"
+          }, "ECU FLAG"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h4", null, "Erro de plausabilidade entre APPS"));
+          break;
+
+        case 8:
+          return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "default-container bordered-title-container"
+          }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "component-title bordered-title-text"
+          }, "ECU FLAG"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h4", null, "Erro de comunica\xE7\xE3o do inversor"));
+          break;
+
+        case 9:
+          return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "default-container bordered-title-container"
+          }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "component-title bordered-title-text"
+          }, "ECU FLAG"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h4", null, "Curto detectado na placa de freio"));
+          break;
+
+        case 10:
+          return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "default-container bordered-title-container"
+          }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "component-title bordered-title-text"
+          }, "ECU FLAG"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h4", null, "Erro de bus off na CAN do inversor"));
+
+        default:
+          return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "default-container bordered-title-container"
+          }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "component-title bordered-title-text"
+          }, "ECU FLAG"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h4", null, "Sem erros detectados"));
+          break;
+      }
     }
   }]);
 

@@ -555,7 +555,7 @@ function (_Component) {
         className: "default-container bordered-title-container"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "component-title bordered-title-text"
-      }, "BRAKE BIAS"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h2", null, this.props.value, " %"));
+      }, "BRAKE BIAS"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h3", null, this.props.value, " %"));
     }
   }]);
 
@@ -2350,11 +2350,54 @@ function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(ECU, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        className: "default-container bordered-title-container"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        className: "component-title bordered-title-text"
-      }, "ECU FLAG"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h2", null, this.props.value));
+      switch (this.props.value) {
+        case 0:
+          return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "default-container bordered-text-container"
+          }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "component-title bordered-title-text"
+          }, "ECU FLAG"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h4", null, "Erro de plausabilidade entre BSE e APPS"));
+          break;
+
+        case 1:
+          return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "default-container bordered-title-container"
+          }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "component-title bordered-title-text"
+          }, "ECU FLAG"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h4", null, "Erro de plausabilidade entre APPS"));
+          break;
+
+        case 8:
+          return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "default-container bordered-title-container"
+          }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "component-title bordered-title-text"
+          }, "ECU FLAG"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h4", null, "Erro de comunica\xE7\xE3o do inversor"));
+          break;
+
+        case 9:
+          return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "default-container bordered-title-container"
+          }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "component-title bordered-title-text"
+          }, "ECU FLAG"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h4", null, "Curto detectado na placa de freio"));
+          break;
+
+        case 10:
+          return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "default-container bordered-title-container"
+          }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "component-title bordered-title-text"
+          }, "ECU FLAG"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h4", null, "Erro de bus off na CAN do inversor"));
+
+        default:
+          return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "default-container bordered-title-container"
+          }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "component-title bordered-title-text"
+          }, "ECU FLAG"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h4", null, "Sem erros detectados"));
+          break;
+      }
     }
   }]);
 
@@ -4488,13 +4531,11 @@ function (_DataFetcher) {
         className: "component-title bordered-title-text "
       }, "STATUS DE CARGA")), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_bateria_js__WEBPACK_IMPORTED_MODULE_9__["default"], {
         charge: _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0___default()(((this.state.data || {}).bms || {}).charge) || 0
-      })))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "row mt-1 mb-1"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "col-12 mt-8"
+      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        class: "col-xs-6 col-sm-4"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_brake_bias_js__WEBPACK_IMPORTED_MODULE_13__["default"], {
         value: 50
-      }))));
+      })))));
     }
   }]);
 

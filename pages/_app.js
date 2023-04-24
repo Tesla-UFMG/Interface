@@ -196,7 +196,6 @@ class MyApp extends App {
         </ECU>
         </div>
 
-        
         <script src='nprogress.js'></script>
         <link rel='stylesheet' href='nprogress.css'/>
 

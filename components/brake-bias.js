@@ -9,7 +9,7 @@ class BrakeBias extends Component {
     return (
       <div className="default-container bordered-title-container">
         <div className="component-title bordered-title-text">BRAKE BIAS</div>
-        <h2>{this.props.value} %</h2>
+        <h3>{this.props.value} %</h3>
       </div>
     );
   }

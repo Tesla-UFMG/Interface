@@ -33,6 +33,7 @@ class Index extends DataFetcher {
           
           <DelayProvider value={this.delay}>
             <div className="row d-flex align-items-center index-section" >
+                
               <div className="col-lg-4 col-12 mt-2 mb-2">
                 <BMSInformation maxtemperature={((this.state.data || {}).bms || {}).maxTemperature/10 || 0}
                                 meantemperature={((this.state.data || {}).bms || {}).mediaTemperature/10 || 0}
@@ -51,13 +52,13 @@ class Index extends DataFetcher {
                 </div>
                 <Bateria charge={parseInt(((this.state.data || {}).bms || {}).charge) || 0}></Bateria>
               </div>
-            </div>
-          </DelayProvider>
-          <div className="row mt-1 mb-1">
-                <div className="col-12 mt-8">
+              <div class="col-xs-6 col-sm-4">
                   <BrakeBias value={50}></BrakeBias>
                 </div>
-              </div>
+            </div>
+             
+          </DelayProvider>
+              
 
         </div>
     )
