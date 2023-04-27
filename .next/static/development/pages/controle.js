@@ -15880,7 +15880,7 @@ function Pedal(props) {
 
 /***/ }),
 
-/***/ 8:
+/***/ 6:
 /*!*******************************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fcontrole&absolutePagePath=C%3A%5CUsers%5Cluiza%5COneDrive%5CDocumentos%5CTesla%5CJanelaDeDados%5CInterface%5Cpages%5Ccontrole.js ***!
   \*******************************************************************************************************************************************************************************/
@@ -15903,5 +15903,5 @@ module.exports = dll_7b9265c061e07b49bd43;
 
 /***/ })
 
-},[[8,"static/runtime/webpack.js"]]]));;
+},[[6,"static/runtime/webpack.js"]]]));;
 //# sourceMappingURL=controle.js.map
