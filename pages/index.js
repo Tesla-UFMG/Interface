@@ -18,11 +18,11 @@ class Index extends DataFetcher {
 
   constructor(props) {
     super(props)
-
     this.page = "geral"
     this.delay = 400;
+    
   }
-  
+
 
   render() {
     // debugger;
@@ -30,10 +30,14 @@ class Index extends DataFetcher {
       
 
         <div className="container-fluid">
-          
+          <br></br>
+          <ECU
+            value={parseInt(((this.state.data || {}).control || {}).ecuFlag) || 2}> 
+          </ECU>
+          <br></br>
           <DelayProvider value={this.delay}>
             <div className="row d-flex align-items-center index-section" >
-                
+            
               <div className="col-lg-4 col-12 mt-2 mb-2">
                 <BMSInformation maxtemperature={((this.state.data || {}).bms || {}).maxTemperature/10 || 0}
                                 meantemperature={((this.state.data || {}).bms || {}).mediaTemperature/10 || 0}
@@ -41,6 +45,8 @@ class Index extends DataFetcher {
                                 airstatus={((this.state.data || {}).bms || {}).airStatus || 0}
                                 totalvoltage={((this.state.data || {}).bms || {}).totalVoltage/100 || 0}
                                 glvvoltage={((this.state.data || {}).bms || {}).glvVoltage/1000 || 0}/>
+              <br></br>
+              <BrakeBias value={50}> </BrakeBias>
               </div>
               <div className="col-lg-4 col-12 mt-2 mb-2" >
                 <Velocimetro speed={((this.state.data || {}).control || {}).mediaSpeed || 0}></Velocimetro>
@@ -52,9 +58,6 @@ class Index extends DataFetcher {
                 </div>
                 <Bateria charge={parseInt(((this.state.data || {}).bms || {}).charge) || 0}></Bateria>
               </div>
-              <div class="col-xs-6 col-sm-12"> {/* class="col-xs-6 col-sm-4" */}
-                  <BrakeBias value={50}></BrakeBias>
-                </div>
             </div>
              
           </DelayProvider>
@@ -64,5 +67,8 @@ class Index extends DataFetcher {
     )
   }
 }
+{/* <div class="alert alert-danger" role="alert" background-color='#dc3545'>
+{         
+}        </div> */}
 
 export default Index

@@ -19,11 +19,11 @@
       "static/chunks/styles.js",
       "static/runtime/main.js"
     ],
-    "/controle": [
+    "/graficos": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/packs": [
+    "/next/dist/pages/_error": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],

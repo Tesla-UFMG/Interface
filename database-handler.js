@@ -49,12 +49,12 @@ class DatabaseHandler {
 
     insertLastData(fieldId, value) {
         var d = this.lastData.findOne({"field": fieldId});
-        console.log(fieldId)
+        if(fieldId == 103)
+            console.log(value)
         if(value){
             d.value = value;    
             this.lastData.update(d);
         }
-        
         
     }
 
@@ -72,8 +72,6 @@ class DatabaseHandler {
         return this.historyData.chain().find({field: fieldId}).data({removeMeta: true});
     }
 
-    
-    
 }
 
 module.exports = DatabaseHandler;

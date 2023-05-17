@@ -10,7 +10,8 @@ import NProgress from 'nprogress'
 import Router from 'next/router'
 
 import CountUpWrapper from '../components/countup-wrapper.js'
-import ECU from "../components/ecu.js";
+
+import DataFetcher from '../components/data-fetcher.js'
 
 
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -76,7 +77,6 @@ class MyApp extends App {
   render () {
     const { Component, pageProps } = this.props
 
-    
 
     return (
       <Container>
@@ -190,11 +190,6 @@ class MyApp extends App {
 
             </div>
             </div>
-        <div class="alert alert-danger" role="alert" background-color='#dc3545'>
-        <ECU
-          value={((this.state.data || {}).control || {}).ecuFlag || 0}>
-        </ECU>
-        </div>
 
         <script src='nprogress.js'></script>
         <link rel='stylesheet' href='nprogress.css'/>
@@ -205,6 +200,7 @@ class MyApp extends App {
       </Container>
     )
   }
+//<Bateria charge={parseInt(((this.state.data || {}).bms || {}).charge) || 0}></Bateria>
 
   
 }

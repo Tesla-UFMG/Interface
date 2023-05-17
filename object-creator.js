@@ -24,9 +24,9 @@ class ObjectCreator {
             {cells: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], temperatures: [0, 0, 0, 0]},
             {cells: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], temperatures: [0, 0, 0, 0]},
             {cells: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], temperatures: [0, 0, 0, 0]},
+            {cells: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], temperatures: [0, 0, 0, 0]},
+            {cells: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], temperatures: [0, 0, 0, 0]},
             {cells: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], temperatures: [0, 0, 0, 0]}
-           //{cells: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], temperatures: [0, 0, 0, 0]},
-           // {cells: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], temperatures: [0, 0, 0, 0]}
         ]
     }
 
@@ -35,6 +35,7 @@ class ObjectCreator {
     }
 
     async treatInfo(id, data) {
+
         if (this.isPackRelated(id)) {
             let packIndex = parseInt((id-260)/5);
             let packPart = (id-260)%5;
@@ -98,6 +99,7 @@ class ObjectCreator {
         
     }
 
+    
     isExtensometroRelated(id) {
         return (id == cFields.extensometro1.id ||
                 id == cFields.extensometro2.id ||
@@ -148,6 +150,8 @@ class ObjectCreator {
     }
 
     buildGeralInfo() {
+        //console.log("OO" + this.retrieveLastData(cFields.ecuFlag.index)) //retrieve ta certo
+
         return {
             bms: {
                 maxTemperature: this.retrieveLastData(cFields.maxTemperature.index),
@@ -160,7 +164,8 @@ class ObjectCreator {
             },
             control: {
                 // mediaSpeed: this.retrieveLastData(cFields.mediaSpeed.index)
-                mediaSpeed: ((parseInt(this.retrieveLastData(cFields.speedMotorLeft.index)) + parseInt(this.retrieveLastData(cFields.speedMotorRight.index))/9)*(0.0312*Math.PI))
+                mediaSpeed: ((parseInt(this.retrieveLastData(cFields.speedMotorLeft.index)) + parseInt(this.retrieveLastData(cFields.speedMotorRight.index))/9)*(0.0312*Math.PI)),
+                //ecuFlag: parseInt(this.retrieveLastData(cFields.ecuFlag.index))
             }
         }
     }
@@ -171,19 +176,10 @@ class ObjectCreator {
         const accelZ = this.retrieveLastData(cFields.accelerometerZ.index)
 
         console.log("valor do volante: " + this.retrieveLastData(cFields.steeringWheel.index))
-        //console.log(cFields.pedalFreio); 
-        /* 
-{
-  index: 24,
-  name: 'pedalFreio',
-  id: 101,
-  pos: 3,
-  meta: { revision: 0, created: 1681391310397, version: 0 },
-  '$loki': 85
-}
-         */
+        //console.log("OO" + this.retrieveLastData(cFields.ecuFlag.index)) //retrieve ta certo
 
 
+    
         return {
             control: {
                 engine: {
@@ -224,8 +220,8 @@ class ObjectCreator {
                     y: (accelY > Math.pow(2, 15) ? (accelY-Math.pow(2, 16)): accelY),
                     z: (accelZ > Math.pow(2, 15) ? (accelZ-Math.pow(2, 16)): accelZ)
                 },
-                ecuFlag: this.retrieveLastData(cFields.ecuFlag.index),
-                
+                //ecuFlag: this.retrieveLastData(cFields.ecuFlag.index)
+                ecuFlag: 2
             }
         }
     }
@@ -299,13 +295,12 @@ class ObjectCreator {
             datalogStr += (data ? data : 0);
             datalogStr += (index === constants.datalog.datalogOrder.length-1 ? "\r\n" : "\t");
         }, this);
-
+        
 
         return datalogStr;
     }
     
-    
-    
+
     setPortConnected(pc) {
         this.insertData(900, pc);
     }

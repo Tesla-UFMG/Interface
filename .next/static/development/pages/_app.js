@@ -1,5 +1,1431 @@
 ((window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static\\development\\pages\\_app.js"],{
 
+/***/ "./components/constants.js":
+/*!*********************************!*\
+  !*** ./components/constants.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process, __dirname) {
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime-corejs2/helpers/interopRequireDefault */ "./node_modules/@babel/runtime-corejs2/helpers/interopRequireDefault.js");
+
+var _values = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/core-js/object/values */ "./node_modules/@babel/runtime-corejs2/core-js/object/values.js"));
+
+var _parseInt2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/core-js/parse-int */ "./node_modules/@babel/runtime-corejs2/core-js/parse-int.js"));
+
+var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/typeof */ "./node_modules/@babel/runtime-corejs2/helpers/esm/typeof.js"));
+
+var _keys = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/core-js/object/keys */ "./node_modules/@babel/runtime-corejs2/core-js/object/keys.js"));
+
+//PARA REGISTRAR UM NOVO DADO:
+//primeiramente, em TypeFields, adicione mais uma linha, incrementando o índice em 1 e o nome do dado em camelCase
+//depois, adicione mais uma linha em availableField, com o index sendo o mesmo índice do TypeFields.
+//se for um dado que tenha possibilidade de ser plotado em tempo real, adicione-o em availablePlotOPtion.
+var isOnClient = !!(typeof (void 0) === "undefined" || typeof window !== "undefined" && window.document && window.document.createElement && (0, _keys.default)(process.env).length === 0 && process.env.constructor === Object);
+var fs = isOnClient ? null : __webpack_require__(/*! fs */ "./node_modules/node-libs-browser/mock/empty.js");
+if (typeof (void 0) !== "undefined") (void 0)[".properties"] = function (module, filename) {
+  module.exports = fs.readFileSync(filename, "utf8");
+};
+var configFileName = "config.properties";
+
+var pr = __webpack_require__(/*! ../config.properties */ "./config.properties");
+
+var file = (0, _typeof2.default)(pr) == "object" ? pr.default : pr; // let file = properties;
+
+if (!isOnClient) {
+  if (file === "") {
+    var configTemplate = "# TIPO DE OPERA\xC7\xC3O\n# Valores poss\xEDveis:\n# BYTES  - Recebimento por Xbee em formato de bytes\n# STRING - Recebimento por Xbee ou NRF em formato de string\n# API_BYTES  - Recebimento por Xbee em API mode por bytes\n# API_STRING - Recebimento por Xbee em API mode por string\n# [default = STRING]\noperationType = STRING\n\n# [string] [default = 0013A20041932DC6] Endere\xE7o 64bits do xbee transmissor.\nxbeeSourceAddress = 0013A20041932DC6\n\n# PORTA SERIAL\n\n# [string] [default = ] Nome da porta serial que o dispositivo receptor se encontra. Deixe vazio para identifica\xE7\xE3o autom\xE1tica.\nportName = \n# [string] [default = ignore-ports.txt] Nome do arquivo de texto, na pasta raiz, contendo nome de portas para serem ignoradas na identifica\xE7\xE3o autom\xE1tica de porta, separados por linha.\nignorePortsFile = ignore-ports.txt\n\n# NOTIFICA\xC7\xD5ES\n\n# [bool] [default = true] Ativar ou desativar notifica\xE7\xF5es\nshouldNotify = true\n# [number] [default = 10] Limite percentual para acionar a notifica\xE7\xE3o que alerta da proximidade do valor m\xEDnimo/m\xE1ximo\npercentageLimitTolerance = 10\n# [number] [default = 30000] Tempo de timeout em milissegundos para a notifica\xE7\xE3o ser reacionada caso a condi\xE7\xE3o n\xE3o mude\nnotificationExpirationTimeout = 30000\n\n# DATALOG\n\n# [string] [default = ./datalog/] Caminho para a escrita do datalog. O DIRET\xD3RIO N\xC3O \xC9 CRIADO, ENTA\xC3O DEVE, OBRIGATORIAMENTE, EXISTIR.\ndatalogFilePath = ./datalog/\n# [bool] [default = true] Ativar ou desativar o datalog\nshouldWrite = true\n# [number]  [default = 30000] Tempo, em milissegundos, de quanto esperar sem receber dados at\xE9 criar um novo arquivo de texto\ndatalogTimeout = 30000\n# [bool] [default = false] Incluir timestamp (quantidade de milissegundos desde 1/1/1970 00:00) como primeiro item de cada linha\nincludeTimestamp = false\n\n# PLOTAGEM EM TEMPO REAL\n\n# BANCO DE DADOS LOCAL\n# [number]  [default = 60000] Tempo, em milissegundos, de persist\xEAncia dos dados no banco de dados antes de serem eliminados. Altere esse valor para definir de quanto tempo atr\xE1s os dados devem ser exibidos.\npersistanceTimeout = 60000\n# [number] [default = 1000] Per\xEDodo, em milissegundos, para ser acionada a varredura do banco de dados local para eliminar dados antigos\ncleanUpTimeout = 1000\n\n#PLOTAGEM\n# [number] [default = 1] Quantidade desejada de pontos por segundo para serem exibidos no gr\xE1fico. VALORES ALTOS PODEM COMPROMETER A INTEGRIDADE DO SERVIDOR E DA REDE.\npointsPerSecond = 1\n        ";
+
+    var path = __webpack_require__(/*! path */ "./node_modules/node-libs-browser/node_modules/path-browserify/index.js");
+
+    var correctedPath = path.join(__dirname, "..", configFileName);
+    fs.writeFileSync(correctedPath, configTemplate);
+    file = configTemplate;
+  }
+}
+
+var config = file.split("\n").filter(function (value) {
+  return !value.startsWith("#") && !(value.trim() === "");
+}).reduce(function (previous, current) {
+  var opt = current.split("=").map(function (value) {
+    return value.trim();
+  });
+  var definition = opt[1];
+  var val;
+
+  if (definition == "") {
+    val = undefined;
+  } else if (definition == "true" || definition == "false") {
+    val = definition === "true";
+  } else if (isNaN(definition)) {
+    val = definition;
+  } else {
+    val = definition * 1;
+  }
+
+  previous[opt[0]] = val;
+  return previous;
+}, {});
+var percentageLimitTolerance = config.percentageLimitTolerance;
+var notificationExpirationTimeout = config.notificationExpirationTimeout;
+var shouldNotify = config.shouldNotify;
+var datalogFilePath = config.datalogFilePath;
+var shouldWrite = config.shouldWrite;
+var datalogTimeout = config.datalogTimeout;
+var includeTimestamp = config.includeTimestamp;
+var persistanceTimeout = config.persistanceTimeout;
+var cleanUpTimeout = config.cleanUpTimeout;
+var pointsPerSecond = config.pointsPerSecond;
+var portName = config.portName;
+var ignorePortsFile = config.ignorePortsFile;
+var OperationsType = {
+  BYTES: 0,
+  STRING: 1,
+  API_BYTES: 2,
+  API_STRING: 3
+};
+var operationType = OperationsType[config.operationType];
+var i;
+var xbeeSourceAddressArray = [];
+
+for (i = 0; i < config.xbeeSourceAddress.length; i += 2) {
+  var oct = config.xbeeSourceAddress.substring(i, i + 2);
+  var hex = (0, _parseInt2.default)(oct, 16);
+  xbeeSourceAddressArray.push(hex);
+}
+
+var xbeeSourceAddress = xbeeSourceAddressArray;
+var fields = {
+  /*baterias geral*/
+  airStatus: {
+    index: 0,
+    name: "airStatus",
+    id: 51,
+    pos: 3
+  },
+  current0: {
+    index: 2,
+    name: "current0",
+    id: 50,
+    pos: 0
+  },
+  current1: {
+    index: 3,
+    name: "current1",
+    id: 50,
+    pos: 1
+  },
+  current2: {
+    index: 4,
+    name: "current2",
+    id: 50,
+    pos: 2
+  },
+  current3: {
+    index: 5,
+    name: "current3",
+    id: 50,
+    pos: 3
+  },
+  glvVoltage: {
+    index: 6,
+    name: "glvVoltage",
+    id: 51,
+    pos: 0
+  },
+  chargePercent: {
+    index: 7,
+    name: "chargePercent",
+    id: 51,
+    pos: 1
+  },
+  totalVoltage: {
+    index: 11,
+    name: "totalVoltage",
+    id: 52,
+    pos: 1
+  },
+  maxTemperature: {
+    index: 13,
+    name: "maxTemperature",
+    id: 52,
+    pos: 3
+  },
+  minVoltage: {
+    index: 14,
+    name: "minVoltage",
+    id: 53,
+    pos: 0
+  },
+
+  /*pack 0*/
+  cell000: {
+    index: 40,
+    name: "cell000",
+    id: 281,
+    pos: 0
+  },
+  cell001: {
+    index: 41,
+    name: "cell001",
+    id: 281,
+    pos: 1
+  },
+  cell002: {
+    index: 42,
+    name: "cell002",
+    id: 281,
+    pos: 2
+  },
+  cell003: {
+    index: 43,
+    name: "cell003",
+    id: 281,
+    pos: 3
+  },
+  cell004: {
+    index: 44,
+    name: "cell004",
+    id: 282,
+    pos: 0
+  },
+  cell005: {
+    index: 45,
+    name: "cell005",
+    id: 282,
+    pos: 1
+  },
+  cell006: {
+    index: 46,
+    name: "cell006",
+    id: 282,
+    pos: 2
+  },
+  cell007: {
+    index: 47,
+    name: "cell007",
+    id: 282,
+    pos: 3
+  },
+  cell008: {
+    index: 48,
+    name: "cell008",
+    id: 283,
+    pos: 0
+  },
+  cell009: {
+    index: 49,
+    name: "cell009",
+    id: 283,
+    pos: 1
+  },
+  cell010: {
+    index: 50,
+    name: "cell010",
+    id: 283,
+    pos: 2
+  },
+  cell011: {
+    index: 51,
+    name: "cell011",
+    id: 283,
+    pos: 3
+  },
+  cell012: {
+    index: 52,
+    name: "cell012",
+    id: 284,
+    pos: 0
+  },
+  temp001: {
+    index: 53,
+    name: "temp001",
+    id: 284,
+    pos: 1
+  },
+  temp002: {
+    index: 54,
+    name: "temp002",
+    id: 284,
+    pos: 2
+  },
+  temp003: {
+    index: 55,
+    name: "temp003",
+    id: 284,
+    pos: 3
+  },
+  temp004: {
+    index: 56,
+    name: "temp004",
+    id: 285,
+    pos: 0
+  },
+  temp005: {
+    index: 57,
+    name: "temp005",
+    id: 285,
+    pos: 1
+  },
+
+  /*pack 1*/
+  cell100: {
+    index: 58,
+    name: "cell100",
+    id: 276,
+    pos: 0
+  },
+  cell101: {
+    index: 59,
+    name: "cell101",
+    id: 276,
+    pos: 1
+  },
+  cell102: {
+    index: 60,
+    name: "cell102",
+    id: 276,
+    pos: 2
+  },
+  cell103: {
+    index: 61,
+    name: "cell103",
+    id: 276,
+    pos: 3
+  },
+  cell104: {
+    index: 62,
+    name: "cell104",
+    id: 277,
+    pos: 0
+  },
+  cell105: {
+    index: 63,
+    name: "cell105",
+    id: 277,
+    pos: 1
+  },
+  cell106: {
+    index: 64,
+    name: "cell106",
+    id: 277,
+    pos: 2
+  },
+  cell107: {
+    index: 65,
+    name: "cell107",
+    id: 277,
+    pos: 3
+  },
+  cell108: {
+    index: 66,
+    name: "cell108",
+    id: 278,
+    pos: 0
+  },
+  cell109: {
+    index: 67,
+    name: "cell109",
+    id: 278,
+    pos: 1
+  },
+  cell110: {
+    index: 68,
+    name: "cell110",
+    id: 278,
+    pos: 2
+  },
+  cell111: {
+    index: 69,
+    name: "cell111",
+    id: 278,
+    pos: 3
+  },
+  cell112: {
+    index: 70,
+    name: "cell112",
+    id: 279,
+    pos: 0
+  },
+  temp101: {
+    index: 71,
+    name: "temp101",
+    id: 279,
+    pos: 1
+  },
+  temp102: {
+    index: 72,
+    name: "temp102",
+    id: 279,
+    pos: 2
+  },
+  temp103: {
+    index: 73,
+    name: "temp103",
+    id: 279,
+    pos: 3
+  },
+  temp104: {
+    index: 74,
+    name: "temp104",
+    id: 280,
+    pos: 0
+  },
+  temp105: {
+    index: 75,
+    name: "temp105",
+    id: 280,
+    pos: 1
+  },
+
+  /*pack 2*/
+  cell200: {
+    index: 76,
+    name: "cell200",
+    id: 271,
+    pos: 0
+  },
+  cell201: {
+    index: 77,
+    name: "cell201",
+    id: 271,
+    pos: 1
+  },
+  cell202: {
+    index: 78,
+    name: "cell202",
+    id: 271,
+    pos: 2
+  },
+  cell203: {
+    index: 79,
+    name: "cell203",
+    id: 271,
+    pos: 3
+  },
+  cell204: {
+    index: 80,
+    name: "cell204",
+    id: 272,
+    pos: 0
+  },
+  cell205: {
+    index: 81,
+    name: "cell205",
+    id: 272,
+    pos: 1
+  },
+  cell206: {
+    index: 82,
+    name: "cell206",
+    id: 272,
+    pos: 2
+  },
+  cell207: {
+    index: 83,
+    name: "cell207",
+    id: 272,
+    pos: 3
+  },
+  cell208: {
+    index: 84,
+    name: "cell208",
+    id: 273,
+    pos: 0
+  },
+  cell209: {
+    index: 85,
+    name: "cell209",
+    id: 273,
+    pos: 1
+  },
+  cell210: {
+    index: 86,
+    name: "cell210",
+    id: 273,
+    pos: 2
+  },
+  cell211: {
+    index: 87,
+    name: "cell211",
+    id: 273,
+    pos: 3
+  },
+  cell212: {
+    index: 88,
+    name: "cell212",
+    id: 274,
+    pos: 0
+  },
+  temp201: {
+    index: 89,
+    name: "temp201",
+    id: 274,
+    pos: 1
+  },
+  temp202: {
+    index: 90,
+    name: "temp202",
+    id: 274,
+    pos: 2
+  },
+  temp203: {
+    index: 91,
+    name: "temp203",
+    id: 274,
+    pos: 3
+  },
+  temp204: {
+    index: 92,
+    name: "temp204",
+    id: 275,
+    pos: 0
+  },
+  temp205: {
+    index: 93,
+    name: "temp205",
+    id: 275,
+    pos: 1
+  },
+
+  /*pack 3*/
+  cell300: {
+    index: 94,
+    name: "cell300",
+    id: 266,
+    pos: 0
+  },
+  cell301: {
+    index: 95,
+    name: "cell301",
+    id: 266,
+    pos: 1
+  },
+  cell302: {
+    index: 96,
+    name: "cell302",
+    id: 266,
+    pos: 2
+  },
+  cell303: {
+    index: 97,
+    name: "cell303",
+    id: 266,
+    pos: 3
+  },
+  cell304: {
+    index: 98,
+    name: "cell304",
+    id: 267,
+    pos: 0
+  },
+  cell305: {
+    index: 99,
+    name: "cell305",
+    id: 267,
+    pos: 1
+  },
+  cell306: {
+    index: 100,
+    name: "cell306",
+    id: 267,
+    pos: 2
+  },
+  cell307: {
+    index: 101,
+    name: "cell307",
+    id: 267,
+    pos: 3
+  },
+  cell308: {
+    index: 102,
+    name: "cell308",
+    id: 268,
+    pos: 0
+  },
+  cell309: {
+    index: 103,
+    name: "cell309",
+    id: 268,
+    pos: 1
+  },
+  cell310: {
+    index: 104,
+    name: "cell310",
+    id: 268,
+    pos: 2
+  },
+  cell311: {
+    index: 105,
+    name: "cell311",
+    id: 268,
+    pos: 3
+  },
+  cell312: {
+    index: 106,
+    name: "cell312",
+    id: 269,
+    pos: 0
+  },
+  temp301: {
+    index: 107,
+    name: "temp301",
+    id: 269,
+    pos: 1
+  },
+  temp302: {
+    index: 108,
+    name: "temp302",
+    id: 269,
+    pos: 2
+  },
+  temp303: {
+    index: 109,
+    name: "temp303",
+    id: 269,
+    pos: 3
+  },
+  temp304: {
+    index: 110,
+    name: "temp304",
+    id: 270,
+    pos: 0
+  },
+  temp305: {
+    index: 111,
+    name: "temp305",
+    id: 270,
+    pos: 1
+  },
+
+  /*controle geral*/
+  steeringWheel: {
+    index: 27,
+    name: "steeringWheel",
+    id: 101,
+    pos: 1
+  },
+  pedalAcelerador: {
+    index: 23,
+    name: "pedalAcelerador",
+    id: 101,
+    pos: 2
+  },
+  pedalFreio: {
+    index: 24,
+    name: "pedalFreio",
+    id: 101,
+    pos: 3
+  },
+  selectedMode: {
+    index: 167,
+    name: "selectedMode",
+    id: 102,
+    pos: 0
+  },
+  hodometroParcial: {
+    index: 169,
+    name: "hodometroParcial",
+    id: 102,
+    pos: 2
+  },
+  hodometroTotal: {
+    index: 170,
+    name: "hodometroTotal",
+    id: 102,
+    pos: 3
+  },
+  ecuFlag: {
+    index: 180,
+    name: "ecuFlag",
+    id: 103,
+    pos: 0
+  },
+  torqueReferenceRight: {
+    index: 21,
+    name: "torqueReferenceRight",
+    id: 103,
+    pos: 2
+  },
+  torqueReferenceLeft: {
+    index: 22,
+    name: "torqueReferenceLeft",
+    id: 103,
+    pos: 3
+  },
+  speedFL: {
+    index: 15,
+    name: "speedFL",
+    id: 104,
+    pos: 0
+  },
+  speedFR: {
+    index: 16,
+    name: "speedFR",
+    id: 104,
+    pos: 1
+  },
+  speedBL: {
+    index: 17,
+    name: "speedBL",
+    id: 104,
+    pos: 2
+  },
+  speedBR: {
+    index: 18,
+    name: "speedBR",
+    id: 104,
+    pos: 3
+  },
+  speedMotorLeft: {
+    index: 166,
+    name: "speedMotorLeft",
+    id: 110,
+    pos: 0
+  },
+  motorTorqueLeft: {
+    index: 20,
+    name: "motorTorqueLeft",
+    id: 110,
+    pos: 1
+  },
+  speedMotorRight: {
+    index: 165,
+    name: "speedMotorRight",
+    id: 120,
+    pos: 0
+  },
+  motorTorqueRight: {
+    index: 19,
+    name: "motorTorqueRight",
+    id: 120,
+    pos: 1
+  },
+  accelerometerX: {
+    index: 154,
+    name: "accelerometerX",
+    id: 130,
+    pos: 0
+  },
+  accelerometerY: {
+    index: 155,
+    name: "accelerometerY",
+    id: 130,
+    pos: 1
+  },
+  accelerometerZ: {
+    index: 156,
+    name: "accelerometerZ",
+    id: 130,
+    pos: 2
+  },
+  gyroscopeX: {
+    index: 157,
+    name: "gyroscopeX",
+    id: 131,
+    pos: 0
+  },
+  gyroscopeY: {
+    index: 158,
+    name: "gyroscopeY",
+    id: 131,
+    pos: 1
+  },
+  gyroscopeZ: {
+    index: 159,
+    name: "gyroscopeZ",
+    id: 131,
+    pos: 2
+  },
+  stoppedTime: {
+    index: 1,
+    name: "stoppedTime",
+    id: 0x100,
+    pos: 0
+  },
+  operationMode: {
+    index: 8,
+    name: "operationMode",
+    id: 1,
+    pos: 0
+  },
+  errorFlag: {
+    index: 9,
+    name: "errorFlag",
+    id: 0x001,
+    pos: 2
+  },
+  mediaCurrent: {
+    index: 10,
+    name: "mediaCurrent",
+    id: 53,
+    pos: 0
+  },
+  //não achei
+  mediaTemperature: {
+    index: 12,
+    name: "mediaTemperature",
+    id: 53,
+    pos: 2
+  },
+  //não achei
+  // mediaSpeed: {index: 25, name: "mediaSpeed", id: 0x304, pos: 0},
+  // mediaTorque: {index: 26, name: "mediaTorque", id: 0x304, pos: 1},
+  ECUTimer: {
+    index: 28,
+    name: "ECUTimer",
+    id: 101,
+    pos: 0
+  },
+  energiaInversorRight: {
+    index: 29,
+    name: "energiaInversorRight",
+    id: 106,
+    pos: 0
+  },
+  energiaInversorLeft: {
+    index: 30,
+    name: "energiaInversorLeft",
+    id: 106,
+    pos: 1
+  },
+  motorCurrentRight: {
+    index: 31,
+    name: "motorCurrentRight",
+    id: 106,
+    pos: 2
+  },
+  motorCurrentLeft: {
+    index: 32,
+    name: "motorCurrentLeft",
+    id: 106,
+    pos: 3
+  },
+  temperatureInversorR1: {
+    index: 33,
+    name: "temperatureInversorR1",
+    id: 107,
+    pos: 0
+  },
+  temperatureInversorR2: {
+    index: 34,
+    name: "temperatureInversorR2",
+    id: 107,
+    pos: 1
+  },
+  temperatureInversorL1: {
+    index: 35,
+    name: "temperatureInversorL1",
+    id: 107,
+    pos: 2
+  },
+  temperatureInversorL2: {
+    index: 36,
+    name: "temperatureInversorL2",
+    id: 107,
+    pos: 3
+  },
+  currentEvent: {
+    index: 37,
+    name: "currentEvent",
+    id: 100,
+    pos: 0
+  },
+  started: {
+    index: 38,
+    name: "started",
+    id: 100,
+    pos: 1
+  },
+  finished: {
+    index: 39,
+    name: "finished",
+    id: 100,
+    pos: 2
+  },
+  tireTempFL: {
+    index: 150,
+    name: "tireTempFL",
+    id: 0x700,
+    pos: 0
+  },
+  tireTempFR: {
+    index: 151,
+    name: "tireTempFR",
+    id: 0x700,
+    pos: 1
+  },
+  tireTempBL: {
+    index: 152,
+    name: "tireTempBL",
+    id: 0x700,
+    pos: 2
+  },
+  tireTempBR: {
+    index: 153,
+    name: "tireTempBR",
+    id: 0x700,
+    pos: 3
+  },
+  portConnected: {
+    index: 900,
+    name: "portConnected",
+    id: 900,
+    pos: 0
+  },
+  rssi: {
+    index: 901,
+    name: "rssi",
+    id: 901,
+    pos: 0
+  },
+  sensorPressaoDianteiro: {
+    index: 160,
+    name: "sensorPressaoDianteiro",
+    id: 170,
+    pos: 0
+  },
+  potenciometroBalancin: {
+    index: 161,
+    name: "potenciometroBalancin",
+    id: 170,
+    pos: 1
+  },
+  termoparFreioD: {
+    index: 162,
+    name: "termoparFreioD",
+    id: 170,
+    pos: 2
+  },
+  extensometro1: {
+    index: 163,
+    name: "extensometro1",
+    id: 171,
+    pos: 0
+  },
+  extensometro2: {
+    index: 164,
+    name: "extensometro2",
+    id: 171,
+    pos: 1
+  },
+  interfaceFlag: {
+    index: 168,
+    name: "interfaceFlag",
+    id: 102,
+    pos: 1
+  },
+  intensidadeFrenagem: {
+    index: 171,
+    name: "intensidadeFrenagem",
+    id: 108,
+    pos: 2
+  },
+  selecaoBotao: {
+    index: 172,
+    name: "selecaoBotao",
+    id: 108,
+    pos: 3
+  },
+  ganhoTorque: {
+    index: 173,
+    name: "ganhoTorque",
+    id: 106,
+    pos: 0
+  },
+  extensometro22: {
+    index: 174,
+    name: "extensometro22",
+    id: 173,
+    pos: 0
+  },
+  extensometro13: {
+    index: 175,
+    name: "extensometro13",
+    id: 178,
+    pos: 0
+  },
+  extensometro23: {
+    index: 176,
+    name: "extensometro23",
+    id: 178,
+    pos: 2
+  },
+  simHodometer: {
+    index: 177,
+    name: "simHodometer",
+    id: 901,
+    pos: 0
+  },
+  simCharge: {
+    index: 178,
+    name: "simCharge",
+    id: 901,
+    pos: 1
+  },
+  pressaoTraseiro: {
+    index: 179,
+    name: "pressaoTraseiro",
+    id: 200,
+    pos: 0
+  }
+};
+var nameFieldIdMap = (0, _values.default)(fields).reduce(function (last, field) {
+  return last[field.name] = field.index, last;
+}, {});
+var fieldIdNameMap = (0, _values.default)(fields).reduce(function (last, field) {
+  return last[field.index] = field.name, last;
+}, {}); //para plotar no gráfico
+
+var availablePlotOptions = [{
+  index: fields.current0.index,
+  name: "Corrente 0",
+  unidade: "A",
+  formatFn: function formatFn(current) {
+    return current > Math.pow(2, 15) ? (current - Math.pow(2, 16)) / 10 : current / 10;
+  }
+}, {
+  index: fields.current1.index,
+  name: "Corrente 1",
+  unidade: "A",
+  formatFn: function formatFn(current) {
+    return (current > Math.pow(2, 15) ? (current - Math.pow(2, 16)) / 100 : current) / 100;
+  }
+}, {
+  index: fields.current2.index,
+  name: "Corrente 2",
+  unidade: "A",
+  formatFn: function formatFn(current) {
+    return (current > Math.pow(2, 15) ? (current - Math.pow(2, 16)) / 10 : current) / 10;
+  }
+}, {
+  index: fields.current3.index,
+  name: "Corrente 3",
+  unidade: "A",
+  formatFn: function formatFn(current) {
+    return (current > Math.pow(2, 15) ? (current - Math.pow(2, 16)) / 10 : current) / 10;
+  }
+}, {
+  index: fields.glvVoltage.index,
+  name: "Tensão do GLV",
+  unidade: "V",
+  formatFn: function formatFn(a) {
+    return a / 1000;
+  }
+}, {
+  index: fields.chargePercent.index,
+  name: "Porcentagem de Carga",
+  unidade: "%",
+  formatFn: function formatFn(a) {
+    return a / 100;
+  }
+}, {
+  index: fields.mediaCurrent.index,
+  name: "Corrente Média",
+  unidade: "A",
+  formatFn: function formatFn(current) {
+    return current > Math.pow(2, 15) ? (current - Math.pow(2, 16)) / 100 : current / 100;
+  }
+}, {
+  index: fields.totalVoltage.index,
+  name: "Tensão Total",
+  unidade: "V",
+  formatFn: function formatFn(a) {
+    return a / 100;
+  }
+}, {
+  index: fields.mediaTemperature.index,
+  name: "Temperatura Média",
+  unidade: "ºC",
+  formatFn: function formatFn(a) {
+    return a / 1000;
+  }
+}, {
+  index: fields.maxTemperature.index,
+  name: "Temperatura Máxima",
+  unidade: "ºC",
+  formatFn: function formatFn(a) {
+    return a / 1000;
+  }
+}, {
+  index: fields.minVoltage.index,
+  name: "Tensão Mínima",
+  unidade: "V",
+  formatFn: function formatFn(a) {
+    return a / 10000;
+  }
+}, {
+  index: fields.mediaTemperature.index,
+  name: "Temperatura Média",
+  unidade: "ºC",
+  formatFn: function formatFn(a) {
+    return a / 1000;
+  }
+}, {
+  index: fields.motorTorqueRight.index,
+  name: "Torque Motor Direito",
+  unidade: "%",
+  formatFn: function formatFn(a) {
+    return a / 10;
+  }
+}, {
+  index: fields.motorTorqueLeft.index,
+  name: "Torque Motor Esquerdo",
+  unidade: "%",
+  formatFn: function formatFn(a) {
+    return a / 10;
+  }
+}, {
+  index: fields.torqueReferenceRight.index,
+  name: "Referência de Torque Direito",
+  unidade: "%",
+  formatFn: function formatFn(a) {
+    return a / 10;
+  }
+}, {
+  index: fields.torqueReferenceLeft.index,
+  name: "Referência de Torque Esquerdo",
+  unidade: "%",
+  formatFn: function formatFn(a) {
+    return a / 10;
+  }
+}, {
+  index: fields.pedalAcelerador.index,
+  name: "Pedal Acelerador",
+  unidade: "%",
+  formatFn: function formatFn(a) {
+    return a / 10;
+  }
+}, {
+  index: fields.pedalFreio.index,
+  name: "Pedal Freio",
+  unidade: "",
+  formatFn: function formatFn(a) {
+    return Math.round(a);
+  }
+}, // {index: fields.mediaSpeed.index, name: "Velocidade Média", unidade: "km/h", formatFn: ((a) => a)},
+// {index: fields.mediaTorque.index, name: "Torque Médio", unidade: "%", formatFn: ((a) => a/100)},
+{
+  index: fields.steeringWheel.index,
+  name: "Volante",
+  unidade: "º",
+  formatFn: function formatFn(a) {
+    return a * 300 / 4095 - 164.1025;
+  }
+}, {
+  index: fields.energiaInversorRight.index,
+  name: "Energia Inversor Direito",
+  unidade: "kWh",
+  formatFn: function formatFn(a) {
+    return a / 1000;
+  }
+}, {
+  index: fields.energiaInversorLeft.index,
+  name: "Energia Inversor Esquerdo",
+  unidade: "kWh",
+  formatFn: function formatFn(a) {
+    return a / 1000;
+  }
+}, {
+  index: fields.motorCurrentRight.index,
+  name: "Corrente Motor Direito",
+  unidade: "A",
+  formatFn: function formatFn(a) {
+    return a / 100;
+  }
+}, {
+  index: fields.motorCurrentLeft.index,
+  name: "Corrente Motor Esquerdo",
+  unidade: "A",
+  formatFn: function formatFn(a) {
+    return a / 100;
+  }
+}, {
+  index: fields.temperatureInversorR1.index,
+  name: "Temperatura Inversor Direito 1",
+  unidade: "ºC",
+  formatFn: function formatFn(a) {
+    return a / 100;
+  }
+}, {
+  index: fields.temperatureInversorR2.index,
+  name: "Temperatura Inversor Direito 2",
+  unidade: "ºC",
+  formatFn: function formatFn(a) {
+    return a / 100;
+  }
+}, {
+  index: fields.temperatureInversorL1.index,
+  name: "Temperatura Inversor Esquerdo 1",
+  unidade: "ºC",
+  formatFn: function formatFn(a) {
+    return a / 100;
+  }
+}, {
+  index: fields.temperatureInversorL2.index,
+  name: "Temperatura Inversor Esquerdo 2",
+  unidade: "ºC",
+  formatFn: function formatFn(a) {
+    return a / 100;
+  }
+}, {
+  index: fields.speedFL.index,
+  name: "Velocidade do Pneu Dianteiro Esquerdo",
+  unidade: "RPM",
+  formatFn: function formatFn(a) {
+    return a / 10 / 3.6 / (52.07 / 10 * Math.PI) * 60;
+  }
+}, {
+  index: fields.speedFR.index,
+  name: "Velocidade do Pneu Dianteiro Direito",
+  unidade: "RPM",
+  formatFn: function formatFn(a) {
+    return a / 10 / 3.6 / (52.07 / 10 * Math.PI) * 60;
+  }
+}, {
+  index: fields.speedBL.index,
+  name: "Velocidade do Pneu Traseiro Esquerdo",
+  unidade: "RPM",
+  formatFn: function formatFn(a) {
+    return a / 9;
+  }
+}, {
+  index: fields.speedBR.index,
+  name: "Velocidade do Pneu Traseiro Direito",
+  unidade: "RPM",
+  formatFn: function formatFn(a) {
+    return a / 9;
+  }
+}, {
+  index: fields.speedMotorLeft.index,
+  name: "Velocidade do Motor Esquerdo",
+  unidade: "RPM",
+  formatFn: function formatFn(a) {
+    return a / 9;
+  }
+}, {
+  index: fields.speedMotorRight.index,
+  name: "Velocidade do Motor Direito",
+  unidade: "RPM",
+  formatFn: function formatFn(a) {
+    return a / 9;
+  }
+}, {
+  index: fields.tireTempFL.index,
+  name: "Temperatura do Pneu Dianteiro Esquerdo",
+  unidade: "ºC",
+  formatFn: function formatFn(a) {
+    return a / 100;
+  }
+}, {
+  index: fields.tireTempFR.index,
+  name: "Temperatura do Pneu Dianteiro Direito",
+  unidade: "ºC",
+  formatFn: function formatFn(a) {
+    return a / 100;
+  }
+}, {
+  index: fields.tireTempBL.index,
+  name: "Temperatura do Pneu Traseiro Esquerdo",
+  unidade: "ºC",
+  formatFn: function formatFn(a) {
+    return a;
+  }
+}, {
+  index: fields.tireTempBR.index,
+  name: "Temperatura do Pneu Traseiro Direito",
+  unidade: "ºC",
+  formatFn: function formatFn(a) {
+    return a;
+  }
+}, {
+  index: fields.accelerometerX.index,
+  name: "Acelerômetro X",
+  unidade: "g",
+  formatFn: function formatFn(a) {
+    return a / 100;
+  }
+}, {
+  index: fields.accelerometerY.index,
+  name: "Acelerômetro Y",
+  unidade: "g",
+  formatFn: function formatFn(a) {
+    return a / 100;
+  }
+}, {
+  index: fields.accelerometerZ.index,
+  name: "Acelerômetro Z",
+  unidade: "g",
+  formatFn: function formatFn(a) {
+    return a / 100;
+  }
+}, {
+  index: fields.rssi.index,
+  name: "RSSI",
+  unidade: "dBm",
+  formatFn: function formatFn(a) {
+    return -a;
+  }
+}, {
+  index: fields.sensorPressaoDianteiro.index,
+  name: "Sensor de Pressão",
+  unidade: "bar",
+  formatFn: function formatFn(a) {
+    return a;
+  }
+}, {
+  index: fields.temp201.index,
+  name: "Temperatura 201",
+  unidade: "ºC",
+  formatFn: function formatFn(a) {
+    return a;
+  }
+}, {
+  index: fields.temp203.index,
+  name: "Temperatura 203",
+  unidade: "ºC",
+  formatFn: function formatFn(a) {
+    return a;
+  }
+}, {
+  index: fields.temp301.index,
+  name: "Temperatura 301",
+  unidade: "ºC",
+  formatFn: function formatFn(a) {
+    return a;
+  }
+}, {
+  index: fields.temp303.index,
+  name: "Temperatura 303",
+  unidade: "ºC",
+  formatFn: function formatFn(a) {
+    return a;
+  }
+}, {
+  index: fields.simCharge.index,
+  name: "Descarga recente",
+  unidade: "C",
+  formatFn: function formatFn(a) {
+    return a;
+  }
+}, {
+  index: fields.pressaoTraseiro.index,
+  name: "Pressão na linha de freio traseira",
+  unidade: "Pa",
+  formatFn: function formatFn(a) {
+    return a;
+  }
+}];
+var availablePlotIndexes = availablePlotOptions.map(function (option) {
+  return option.index;
+});
+var datalogOrder = [fields.ECUTimer.name, fields.hodometroTotal.name, fields.glvVoltage.name, fields.speedFL.name, fields.speedFR.name, fields.speedMotorLeft.name, fields.speedMotorRight.name, fields.pedalAcelerador.name, fields.pedalFreio.name, fields.steeringWheel.name, fields.motorCurrentRight.name, fields.motorCurrentLeft.name, fields.accelerometerX.name, fields.accelerometerY.name, fields.accelerometerZ.name, fields.sensorPressaoDianteiro.name, fields.potenciometroBalancin.name, fields.termoparFreioD.name, fields.extensometro1.name, fields.extensometro2.name, fields.speedMotorRight.name, fields.speedMotorLeft.name, fields.current0.name, fields.current1.name, fields.current2.name, fields.current3.name, fields.mediaTemperature.name, fields.maxTemperature.name, fields.motorCurrentRight.name, fields.motorCurrentLeft.name, fields.temp001.name, fields.temp002.name, fields.temp003.name, fields.temp004.name, fields.temp101.name, fields.temp102.name, fields.temp103.name, fields.temp104.name, fields.temp201.name, fields.temp202.name, fields.temp203.name, fields.temp204.name, fields.temp301.name, fields.temp302.name, fields.temp303.name, fields.temp304.name, fields.current3.name, fields.totalVoltage.name, fields.minVoltage.name, fields.pressaoTraseiro.name]; // let datalogOrder = [
+//     fields.current0.name,
+//     fields.current1.name,
+//     fields.current2.name,
+//     fields.current3.name,
+//     fields.motorCurrentRight.name,
+//     fields.motorCurrentLeft.name
+// ]
+
+var fieldsLimits = [{
+  name: fields.chargePercent.name,
+  formattedName: "Porcentagem de Carga",
+  min: 0,
+  maxReference: 100
+}, {
+  name: fields.glvVoltage.name,
+  formattedName: "Tensão do GLV",
+  min: 13000,
+  maxReference: 16000
+}, {
+  name: fields.maxTemperature.name,
+  formattedName: "Temperatura Máxima dos Packs",
+  max: 65500
+}, {
+  name: fields.minVoltage.name,
+  formattedName: "Tensão Mínima das Células",
+  min: 28000,
+  maxReference: 35500
+}, {
+  name: fields.temperatureInversorL1.name,
+  formattedName: "Temperatura do Inversor Esquerdo 1",
+  max: 50000
+}, {
+  name: fields.temperatureInversorL2.name,
+  formattedName: "Temperatura do Inversor Esquerdo 2",
+  max: 50000
+}, {
+  name: fields.temperatureInversorR1.name,
+  formattedName: "Temperatura do Inversor Direito 1",
+  max: 50000
+}, {
+  name: fields.temperatureInversorR2.name,
+  formattedName: "Temperatura do Inversor Direito 2",
+  max: 50000
+}, {
+  name: fields.tireTempBL.name,
+  formattedName: "Temperatura Pneu Traseiro Esquerdo",
+  max: 20000
+}, {
+  name: fields.tireTempBR.name,
+  formattedName: "Temperatura Pneu Traseiro Direito",
+  max: 20000
+}, {
+  name: fields.tireTempFL.name,
+  formattedName: "Temperatura Pneu Dianteiro Esquerdo",
+  max: 20000
+}, {
+  name: fields.tireTempFR.name,
+  formattedName: "Temperatura Pneu Dianteiro Direito",
+  max: 20000
+}];
+fieldsLimits = fieldsLimits.reduce(function (last, field) {
+  last[field.name] = {};
+  last[field.name].name = field.formattedName;
+  last[field.name][typeof field.max === "undefined" ? "min" : "max"] = typeof field.max === "undefined" ? field.min : field.max;
+  if (typeof field.maxReference !== "undefined") last[field.name].maxReference = field.maxReference;
+  return last;
+}, {});
+module.exports = {
+  availablePlotOptions: availablePlotOptions,
+  fields: fields,
+  mappings: {
+    nameFieldIdMap: nameFieldIdMap,
+    fieldIdNameMap: fieldIdNameMap,
+    availablePlotIndexes: availablePlotIndexes
+  },
+  persistanceTimeout: persistanceTimeout,
+  cleanUpTimeout: cleanUpTimeout,
+  pointsPerSecond: pointsPerSecond,
+  fieldsLimit: {
+    fieldsLimit: fieldsLimits,
+    percentageLimitTolerance: percentageLimitTolerance,
+    notificationExpirationTimeout: notificationExpirationTimeout,
+    shouldNotify: shouldNotify
+  },
+  port: {
+    portName: portName,
+    ignorePortsFile: ignorePortsFile,
+    operationType: operationType,
+    OperationsType: OperationsType,
+    xbeeSourceAddress: xbeeSourceAddress
+  },
+  datalog: {
+    datalogOrder: datalogOrder,
+    filepath: datalogFilePath,
+    shouldWrite: shouldWrite,
+    timeout: datalogTimeout,
+    includeTimestamp: includeTimestamp
+  }
+};
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node_modules/process/browser.js */ "./node_modules/process/browser.js"), "/"))
+
+/***/ }),
+
 /***/ "./components/contexts.js":
 /*!********************************!*\
   !*** ./components/contexts.js ***!
@@ -140,98 +1566,379 @@ function CountComponent(props) {
 
 /***/ }),
 
-/***/ "./components/ecu.js":
+/***/ "./components/data-fetcher.js":
+/*!************************************!*\
+  !*** ./components/data-fetcher.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/regenerator */ "./node_modules/@babel/runtime-corejs2/regenerator/index.js");
+/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/asyncToGenerator */ "./node_modules/@babel/runtime-corejs2/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime-corejs2/helpers/esm/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! isomorphic-unfetch */ "./node_modules/isomorphic-unfetch/browser.js");
+/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _notifications_handler_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./notifications-handler.js */ "./components/notifications-handler.js");
+
+
+
+
+
+
+
+
+
+
+
+
+
+var DataFetcher =
+/*#__PURE__*/
+function (_Component) {
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_7__["default"])(DataFetcher, _Component);
+
+  function DataFetcher(props) {
+    var _this;
+
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_2__["default"])(this, DataFetcher);
+
+    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(DataFetcher).call(this, props)); // debugger;
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__["default"])(_this), "updateField",
+    /*#__PURE__*/
+    Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
+    /*#__PURE__*/
+    _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      var response, body;
+      return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              if (!(_this.isFetching || !_this.shouldFetch)) {
+                _context.next = 2;
+                break;
+              }
+
+              return _context.abrupt("return", false);
+
+            case 2:
+              _this.isFetching = true;
+              _context.next = 5;
+              return isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_10___default()('/' + _this.rootPage + _this.page);
+
+            case 5:
+              response = _context.sent;
+              _context.next = 8;
+              return response.json();
+
+            case 8:
+              body = _context.sent;
+
+              if (!(response.status !== 200)) {
+                _context.next = 11;
+                break;
+              }
+
+              throw Error(body.message);
+
+            case 11:
+              // console.log(new Date().getMilliseconds()-lastLoaded);
+              // lastLoaded = new Date().getMilliseconds();
+              //console.log(body);
+              _this.isFetching = false;
+              return _context.abrupt("return", body);
+
+            case 13:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, this);
+    })));
+
+    _this.updateRSSI = props.updateRSSI;
+    _this.delay = 300;
+    props.setChildDelay(_this.delay);
+    _this.state = {};
+    _this.rootPage = "data/";
+    _this.isFetching = false;
+    _this.shouldFetch = true;
+    _this.timerID = null;
+    _this.doFetch = _this.doFetch.bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__["default"])(_this));
+    return _this;
+  }
+
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_3__["default"])(DataFetcher, [{
+    key: "doFetch",
+    value: function doFetch() {
+      var _this2 = this;
+
+      this.updateField().then(function (res) {
+        if (res.data) {
+          // debugger;
+          console.log("Informação não tratada: " + res.data);
+
+          var treatedData = _this2.treatData(res.data);
+
+          console.log("Informação tratada: " + treatedData);
+
+          _this2.setState({
+            data: treatedData
+          });
+
+          Object(_notifications_handler_js__WEBPACK_IMPORTED_MODULE_11__["default"])(res.data);
+
+          _this2.updateRSSI(res.data.rssi);
+        } else throw Error("fetched undefined object"); // 
+        // var data = this.state.data;
+        // // debugger;
+        // data.bms.charge = (data.bms.charge == null ? 10000 : data.bms.charge - 1 < 0 ? 10000 : data.bms.charge - 100);
+        // this.setState({data: data});
+
+      }).catch(function (err) {
+        return console.log(err);
+      });
+    }
+  }, {
+    key: "startFetching",
+    value: function startFetching() {
+      if (this.timerID != null) return;
+      this.doFetch();
+      this.timerID = setInterval(this.doFetch, this.delay);
+    }
+  }, {
+    key: "stopFetching",
+    value: function stopFetching() {
+      clearInterval(this.timerID);
+      this.timerID = null;
+    }
+  }, {
+    key: "treatData",
+    value: function treatData(data) {
+      return data;
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.startFetching();
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.stopFetching();
+    }
+  }]);
+
+  return DataFetcher;
+}(react__WEBPACK_IMPORTED_MODULE_9__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (DataFetcher);
+
+/***/ }),
+
+/***/ "./components/notifications-handler.js":
+/*!*********************************************!*\
+  !*** ./components/notifications-handler.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/parse-int */ "./node_modules/@babel/runtime-corejs2/core-js/parse-int.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/json/stringify */ "./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/lib/index.js");
+/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_toastify__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+
+
+var constants = __webpack_require__(/*! ./constants.js */ "./components/constants.js");
+
+function NotificationBasis(props) {
+  return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+    className: "d-flex notification-container align-items-center"
+  }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+    className: "notification-icon"
+  }, props.icon), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+    className: "flex-fill notification-text"
+  }, props.text));
+}
+
+var PortDisconnected = function PortDisconnected(_ref) {
+  var closeToast = _ref.closeToast;
+  return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(NotificationBasis, {
+    text: "Porta Serial desconectada!",
+    icon: react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("img", {
+      src: "/static/images/usb-unplugged.png"
+    })
+  });
+};
+
+var PortConnected = function PortConnected(_ref2) {
+  var closeToast = _ref2.closeToast;
+  return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(NotificationBasis, {
+    text: "Porta Serial conectada!",
+    icon: react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("img", {
+      src: "/static/images/usb-plugged.png"
+    })
+  });
+};
+
+var WarningValue = function WarningValue(_ref3) {
+  var closeToast = _ref3.closeToast,
+      text = _ref3.text;
+  return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(NotificationBasis, {
+    text: text,
+    icon: react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("img", {
+      src: "/static/icons/warning-red.png"
+    })
+  });
+};
+
+function handleNotifications(data) {
+  //CONEXAO SERIAL
+  // debugger;
+  if (!constants.fieldsLimit.shouldNotify) return;
+
+  if (!data.portConnected) {
+    if (!react_toastify__WEBPACK_IMPORTED_MODULE_3__["toast"].isActive(900)) Object(react_toastify__WEBPACK_IMPORTED_MODULE_3__["toast"])(react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(PortDisconnected, null), {
+      toastId: 900,
+      autoClose: false,
+      type: react_toastify__WEBPACK_IMPORTED_MODULE_3__["toast"].TYPE.WARNING,
+      closeButton: false,
+      draggable: false,
+      closeOnClick: false
+    });
+  } else if (react_toastify__WEBPACK_IMPORTED_MODULE_3__["toast"].isActive(900)) {
+    react_toastify__WEBPACK_IMPORTED_MODULE_3__["toast"].dismiss(900);
+    react_toastify__WEBPACK_IMPORTED_MODULE_3__["toast"].success(react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(PortConnected, null));
+  } // debugger;
+
+
+  var offLimited = JSON.parse(localStorage.getItem("offLimitFields")); // debugger;
+
+  if (offLimited == null) offLimited = [];
+
+  if (data.offLimitFields.length == 0) {
+    localStorage.clear();
+  } else {
+    var createOffLimitField = function createOffLimitField(fieldId, value, added) {
+      return {
+        fieldId: fieldId,
+        value: value,
+        added: added
+      };
+    }; //interseção entre os novos campos offlimit que chegaram e os que ja estavam registrados como offlimit
+
+
+    var finalOffLimited = offLimited.filter(function (previousOffLimited) {
+      return data.offLimitFields.some(function (newOffLimited) {
+        return newOffLimited.fieldId === previousOffLimited.fieldId;
+      });
+    });
+    data.offLimitFields.forEach(function (field) {
+      //debugger;
+      var fIndex = finalOffLimited.findIndex(function (value) {
+        return value.fieldId === field.fieldId;
+      }); //se, no armazenamento local, n tiver um aviso, cria um aviso novo
+
+      if (fIndex < 0) {
+        finalOffLimited.push(createOffLimitField(field.fieldId, field.value, new Date().getTime()));
+        var textComp = createOffLimitComponent(field);
+        Object(react_toastify__WEBPACK_IMPORTED_MODULE_3__["toast"])(react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(WarningValue, {
+          text: textComp
+        }), {
+          type: react_toastify__WEBPACK_IMPORTED_MODULE_3__["toast"].TYPE.ERROR
+        }); //se achou, verifica se ja passou o tempo de expiração. Se tiver passado, notifica novamente
+      } else {
+        if (new Date().getTime() - finalOffLimited[fIndex].added >= constants.fieldsLimit.notificationExpirationTimeout) {
+          finalOffLimited[fIndex] = createOffLimitField(field.fieldId, field.value, new Date().getTime()); // debugger;
+
+          var _textComp = createOffLimitComponent(field);
+
+          Object(react_toastify__WEBPACK_IMPORTED_MODULE_3__["toast"])(react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(WarningValue, {
+            text: _textComp
+          }), {
+            type: react_toastify__WEBPACK_IMPORTED_MODULE_3__["toast"].TYPE.ERROR
+          });
+        }
+      }
+    }, this);
+    localStorage.setItem('offLimitFields', _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_1___default()(finalOffLimited));
+  }
+}
+
+function createOffLimitComponent(field) {
+  var name = constants.mappings.fieldIdNameMap[field.fieldId];
+  var fieldName = constants.fieldsLimit.fieldsLimit[name].name;
+  var textComp;
+
+  if (typeof constants.fieldsLimit.fieldsLimit[name].max !== 'undefined' && constants.fieldsLimit.fieldsLimit[name].max * (1 - constants.fieldsLimit.percentageLimitTolerance / 100) <= field.value) {
+    // debugger;
+    // const intValue = parseInt(field.value);
+    // const maxValue = constants.fieldsLimit.fieldsLimit[name].max;
+    // const difference = (maxValue-intValue);
+    // const decimalPerc = difference/constants.fieldsLimit.fieldsLimit[name].max*100;
+    // const perc = parseInt(decimalPerc);
+    var perc = _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0___default()((constants.fieldsLimit.fieldsLimit[name].max - _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0___default()(field.value)) / constants.fieldsLimit.fieldsLimit[name].max * 100); // debugger;
+
+
+    textComp = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("span", null, "O campo ", react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("span", {
+      className: "notification-field-name"
+    }, fieldName), " est\xE1 ", react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("span", {
+      className: "notification-value"
+    }, perc <= 0 ? 'ACIMA' : +perc + '% distante'), " do valor m\xE1ximo!");
+  } else {
+    // debugger;
+    // let b1 = parseInt(field.value);
+    // let b2 = constants.fieldsLimit.fieldsLimit[name].min;
+    // let a1 = (b1-b2);
+    // let a2 = a1/constants.fieldsLimit.fieldsLimit[name].maxReference*100;
+    // let perc = parseInt(a2);
+    var _perc = _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0___default()((_babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0___default()(field.value) - constants.fieldsLimit.fieldsLimit[name].min) / constants.fieldsLimit.fieldsLimit[name].maxReference * 100); // debugger;
+
+
+    textComp = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("span", null, "O campo ", react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("span", {
+      className: "notification-field-name"
+    }, fieldName), " est\xE1 ", react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("span", {
+      className: "notification-value"
+    }, _perc <= 0 ? 'ABAIXO' : +_perc + '% distante'), " do valor m\xEDnimo!");
+  }
+
+  return textComp;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (handleNotifications);
+
+/***/ }),
+
+/***/ "./config.properties":
 /*!***************************!*\
-  !*** ./components/ecu.js ***!
+  !*** ./config.properties ***!
   \***************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
-
-
-
-
-
-
-
-var ECU =
-/*#__PURE__*/
-function (_Component) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(ECU, _Component);
-
-  function ECU(props) {
-    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, ECU);
-
-    return Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(ECU).call(this, props));
-  }
-
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(ECU, [{
-    key: "render",
-    value: function render() {
-      switch (this.props.value) {
-        case 0:
-          return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-            className: "default-container bordered-text-container"
-          }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-            className: "component-title bordered-title-text"
-          }, "ECU FLAG"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h4", null, "Erro de plausabilidade entre BSE e APPS"));
-          break;
-
-        case 1:
-          return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-            className: "default-container bordered-title-container"
-          }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-            className: "component-title bordered-title-text"
-          }, "ECU FLAG"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h4", null, "Erro de plausabilidade entre APPS"));
-          break;
-
-        case 8:
-          return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-            className: "default-container bordered-title-container"
-          }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-            className: "component-title bordered-title-text"
-          }, "ECU FLAG"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h4", null, "Erro de comunica\xE7\xE3o do inversor"));
-          break;
-
-        case 9:
-          return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-            className: "default-container bordered-title-container"
-          }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-            className: "component-title bordered-title-text"
-          }, "ECU FLAG"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h4", null, "Curto detectado na placa de freio"));
-          break;
-
-        case 10:
-          return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-            className: "default-container bordered-title-container"
-          }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-            className: "component-title bordered-title-text"
-          }, "ECU FLAG"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h4", null, "Erro de bus off na CAN do inversor"));
-
-        default:
-          return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-            className: "default-container bordered-title-container"
-          }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-            className: "component-title bordered-title-text"
-          }, "ECU FLAG"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h4", null, "Sem erros detectados"));
-          break;
-      }
-    }
-  }]);
-
-  return ECU;
-}(react__WEBPACK_IMPORTED_MODULE_5__["Component"]);
-
-/* harmony default export */ __webpack_exports__["default"] = (ECU);
+/* harmony default export */ __webpack_exports__["default"] = ("# TIPO DE OPERAÇÃO\r\n# Valores possíveis:\r\n# BYTES  - Recebimento por Xbee em formato de bytes\r\n# STRING - Recebimento por Xbee ou NRF em formato de string\r\n# API_BYTES  - Recebimento por Xbee em API mode por bytes\r\n# API_STRING - Recebimento por Xbee em API mode por string\r\n# [default = STRING]\r\noperationType = API_BYTES\r\n\r\n# [string] [default = 0013A20041932DC6] Endereço 64bits do xbee transmissor.\r\nxbeeSourceAddress = 0013A20041932DC6\r\n\r\n# PORTA SERIAL\r\n\r\n# [string] [default = ] Nome da porta serial que o dispositivo receptor se encontra. Deixe vazio para identificação automática.\r\nportName = \r\n# [string] [default = ignore-ports.txt] Nome do arquivo de texto, na pasta raiz, contendo nome de portas para serem ignoradas na identificação automática de porta, separados por linha.\r\nignorePortsFile = ignore-ports.txt\r\n\r\n\r\n# NOTIFICAÇÕES\r\n\r\n# [bool] [default = true] Ativar ou desativar notificações\r\nshouldNotify = false\r\n# [number] [default = 10] Limite percentual para acionar a notificação que alerta da proximidade do valor mínimo/máximo\r\npercentageLimitTolerance = 10\r\n# [number] [default = 30000] Tempo de timeout em milissegundos para a notificação ser reacionada caso a condição não mude\r\nnotificationExpirationTimeout = 30000\r\n\r\n\r\n# DATALOG\r\n\r\n# [string] [default = ./datalog/] Caminho para a escrita do datalog. O DIRETÓRIO NÃO É CRIADO, ENTAÃO DEVE, OBRIGATORIAMENTE, EXISTIR.\r\ndatalogFilePath = ./datalog/\r\n# [bool] [default = true] Ativar ou desativar o datalog\r\nshouldWrite = true\r\n# [number]  [default = 30000] Tempo, em milissegundos, de quanto esperar sem receber dados até criar um novo arquivo de texto\r\ndatalogTimeout = 10000\r\n# [bool] [default = false] Incluir timestamp (quantidade de milissegundos desde 1/1/1970 00:00) como primeiro item de cada linha\r\nincludeTimestamp = true\r\n\r\n\r\n# PLOTAGEM EM TEMPO REAL\r\n\r\n# BANCO DE DADOS LOCAL\r\n# [number]  [default = 60000] Tempo, em milissegundos, de persistência dos dados no banco de dados antes de serem eliminados. Altere esse valor para definir de quanto tempo atrás os dados devem ser exibidos.\r\npersistanceTimeout = 60000\r\n# [number] [default = 1000] Período, em milissegundos, para ser acionada a varredura do banco de dados local para eliminar dados antigos\r\ncleanUpTimeout = 1000\r\n\r\n#PLOTAGEM\r\n# [number] [default = 1] Quantidade desejada de pontos por segundo para serem exibidos no gráfico. VALORES ALTOS PODEM COMPROMETER A INTEGRIDADE DO SERVIDOR E DA REDE.\r\npointsPerSecond = 1\r\n\r\n        ");
 
 /***/ }),
 
@@ -312,6 +2019,17 @@ module.exports = __webpack_require__(/*! core-js/library/fn/object/get-prototype
 
 /***/ }),
 
+/***/ "./node_modules/@babel/runtime-corejs2/core-js/object/keys.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/core-js/object/keys.js ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! core-js/library/fn/object/keys */ "./node_modules/core-js/library/fn/object/keys.js");
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/object/set-prototype-of.js":
 /*!********************************************************************************!*\
   !*** ./node_modules/@babel/runtime-corejs2/core-js/object/set-prototype-of.js ***!
@@ -320,6 +2038,28 @@ module.exports = __webpack_require__(/*! core-js/library/fn/object/get-prototype
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(/*! core-js/library/fn/object/set-prototype-of */ "./node_modules/core-js/library/fn/object/set-prototype-of.js");
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime-corejs2/core-js/object/values.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/core-js/object/values.js ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! core-js/library/fn/object/values */ "./node_modules/core-js/library/fn/object/values.js");
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime-corejs2/core-js/parse-int.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/core-js/parse-int.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! core-js/library/fn/parse-int */ "./node_modules/core-js/library/fn/parse-int.js");
 
 /***/ }),
 
@@ -676,6 +2416,36 @@ function _createClass(Constructor, protoProps, staticProps) {
   if (protoProps) _defineProperties(Constructor.prototype, protoProps);
   if (staticProps) _defineProperties(Constructor, staticProps);
   return Constructor;
+}
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _defineProperty; });
+/* harmony import */ var _core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../core-js/object/define-property */ "./node_modules/@babel/runtime-corejs2/core-js/object/define-property.js");
+/* harmony import */ var _core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0__);
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    _core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0___default()(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
 }
 
 /***/ }),
@@ -11520,6 +13290,19 @@ module.exports = __webpack_require__(/*! ../../modules/_core */ "./node_modules/
 
 /***/ }),
 
+/***/ "./node_modules/core-js/library/fn/object/keys.js":
+/*!********************************************************!*\
+  !*** ./node_modules/core-js/library/fn/object/keys.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(/*! ../../modules/es6.object.keys */ "./node_modules/core-js/library/modules/es6.object.keys.js");
+module.exports = __webpack_require__(/*! ../../modules/_core */ "./node_modules/core-js/library/modules/_core.js").Object.keys;
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/library/fn/object/set-prototype-of.js":
 /*!********************************************************************!*\
   !*** ./node_modules/core-js/library/fn/object/set-prototype-of.js ***!
@@ -11529,6 +13312,32 @@ module.exports = __webpack_require__(/*! ../../modules/_core */ "./node_modules/
 
 __webpack_require__(/*! ../../modules/es6.object.set-prototype-of */ "./node_modules/core-js/library/modules/es6.object.set-prototype-of.js");
 module.exports = __webpack_require__(/*! ../../modules/_core */ "./node_modules/core-js/library/modules/_core.js").Object.setPrototypeOf;
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/library/fn/object/values.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/core-js/library/fn/object/values.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(/*! ../../modules/es7.object.values */ "./node_modules/core-js/library/modules/es7.object.values.js");
+module.exports = __webpack_require__(/*! ../../modules/_core */ "./node_modules/core-js/library/modules/_core.js").Object.values;
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/library/fn/parse-int.js":
+/*!******************************************************!*\
+  !*** ./node_modules/core-js/library/fn/parse-int.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(/*! ../modules/es6.parse-int */ "./node_modules/core-js/library/modules/es6.parse-int.js");
+module.exports = __webpack_require__(/*! ../modules/_core */ "./node_modules/core-js/library/modules/_core.js").parseInt;
 
 
 /***/ }),
@@ -13302,6 +15111,53 @@ module.exports = function (KEY, exec) {
 
 /***/ }),
 
+/***/ "./node_modules/core-js/library/modules/_object-to-array.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/core-js/library/modules/_object-to-array.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var getKeys = __webpack_require__(/*! ./_object-keys */ "./node_modules/core-js/library/modules/_object-keys.js");
+var toIObject = __webpack_require__(/*! ./_to-iobject */ "./node_modules/core-js/library/modules/_to-iobject.js");
+var isEnum = __webpack_require__(/*! ./_object-pie */ "./node_modules/core-js/library/modules/_object-pie.js").f;
+module.exports = function (isEntries) {
+  return function (it) {
+    var O = toIObject(it);
+    var keys = getKeys(O);
+    var length = keys.length;
+    var i = 0;
+    var result = [];
+    var key;
+    while (length > i) if (isEnum.call(O, key = keys[i++])) {
+      result.push(isEntries ? [key, O[key]] : O[key]);
+    } return result;
+  };
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/library/modules/_parse-int.js":
+/*!************************************************************!*\
+  !*** ./node_modules/core-js/library/modules/_parse-int.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var $parseInt = __webpack_require__(/*! ./_global */ "./node_modules/core-js/library/modules/_global.js").parseInt;
+var $trim = __webpack_require__(/*! ./_string-trim */ "./node_modules/core-js/library/modules/_string-trim.js").trim;
+var ws = __webpack_require__(/*! ./_string-ws */ "./node_modules/core-js/library/modules/_string-ws.js");
+var hex = /^[-+]?0[xX]/;
+
+module.exports = $parseInt(ws + '08') !== 8 || $parseInt(ws + '0x16') !== 22 ? function parseInt(str, radix) {
+  var string = $trim(String(str), 3);
+  return $parseInt(string, (radix >>> 0) || (hex.test(string) ? 16 : 10));
+} : $parseInt;
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/library/modules/_perform.js":
 /*!**********************************************************!*\
   !*** ./node_modules/core-js/library/modules/_perform.js ***!
@@ -13619,6 +15475,60 @@ module.exports = function (TO_STRING) {
       : TO_STRING ? s.slice(i, i + 2) : (a - 0xd800 << 10) + (b - 0xdc00) + 0x10000;
   };
 };
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/library/modules/_string-trim.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/core-js/library/modules/_string-trim.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var $export = __webpack_require__(/*! ./_export */ "./node_modules/core-js/library/modules/_export.js");
+var defined = __webpack_require__(/*! ./_defined */ "./node_modules/core-js/library/modules/_defined.js");
+var fails = __webpack_require__(/*! ./_fails */ "./node_modules/core-js/library/modules/_fails.js");
+var spaces = __webpack_require__(/*! ./_string-ws */ "./node_modules/core-js/library/modules/_string-ws.js");
+var space = '[' + spaces + ']';
+var non = '\u200b\u0085';
+var ltrim = RegExp('^' + space + space + '*');
+var rtrim = RegExp(space + space + '*$');
+
+var exporter = function (KEY, exec, ALIAS) {
+  var exp = {};
+  var FORCE = fails(function () {
+    return !!spaces[KEY]() || non[KEY]() != non;
+  });
+  var fn = exp[KEY] = FORCE ? exec(trim) : spaces[KEY];
+  if (ALIAS) exp[ALIAS] = fn;
+  $export($export.P + $export.F * FORCE, 'String', exp);
+};
+
+// 1 -> String#trimLeft
+// 2 -> String#trimRight
+// 3 -> String#trim
+var trim = exporter.trim = function (string, TYPE) {
+  string = String(defined(string));
+  if (TYPE & 1) string = string.replace(ltrim, '');
+  if (TYPE & 2) string = string.replace(rtrim, '');
+  return string;
+};
+
+module.exports = exporter;
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/library/modules/_string-ws.js":
+/*!************************************************************!*\
+  !*** ./node_modules/core-js/library/modules/_string-ws.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = '\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u2003' +
+  '\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF';
 
 
 /***/ }),
@@ -14088,6 +15998,26 @@ __webpack_require__(/*! ./_object-sap */ "./node_modules/core-js/library/modules
 
 /***/ }),
 
+/***/ "./node_modules/core-js/library/modules/es6.object.keys.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/core-js/library/modules/es6.object.keys.js ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// 19.1.2.14 Object.keys(O)
+var toObject = __webpack_require__(/*! ./_to-object */ "./node_modules/core-js/library/modules/_to-object.js");
+var $keys = __webpack_require__(/*! ./_object-keys */ "./node_modules/core-js/library/modules/_object-keys.js");
+
+__webpack_require__(/*! ./_object-sap */ "./node_modules/core-js/library/modules/_object-sap.js")('keys', function () {
+  return function keys(it) {
+    return $keys(toObject(it));
+  };
+});
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/library/modules/es6.object.set-prototype-of.js":
 /*!*****************************************************************************!*\
   !*** ./node_modules/core-js/library/modules/es6.object.set-prototype-of.js ***!
@@ -14109,6 +16039,21 @@ $export($export.S, 'Object', { setPrototypeOf: __webpack_require__(/*! ./_set-pr
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/library/modules/es6.parse-int.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/core-js/library/modules/es6.parse-int.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var $export = __webpack_require__(/*! ./_export */ "./node_modules/core-js/library/modules/_export.js");
+var $parseInt = __webpack_require__(/*! ./_parse-int */ "./node_modules/core-js/library/modules/_parse-int.js");
+// 18.2.5 parseInt(string, radix)
+$export($export.G + $export.F * (parseInt != $parseInt), { parseInt: $parseInt });
 
 
 /***/ }),
@@ -14770,6 +16715,26 @@ setToStringTag(global.JSON, 'JSON', true);
 
 /***/ }),
 
+/***/ "./node_modules/core-js/library/modules/es7.object.values.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/core-js/library/modules/es7.object.values.js ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// https://github.com/tc39/proposal-object-values-entries
+var $export = __webpack_require__(/*! ./_export */ "./node_modules/core-js/library/modules/_export.js");
+var $values = __webpack_require__(/*! ./_object-to-array */ "./node_modules/core-js/library/modules/_object-to-array.js")(false);
+
+$export($export.S, 'Object', {
+  values: function values(it) {
+    return $values(it);
+  }
+});
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/library/modules/es7.promise.finally.js":
 /*!*********************************************************************!*\
   !*** ./node_modules/core-js/library/modules/es7.promise.finally.js ***!
@@ -15250,6 +17215,33 @@ function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
 }
 
 module.exports = hoistNonReactStatics;
+
+
+/***/ }),
+
+/***/ "./node_modules/isomorphic-unfetch/browser.js":
+/*!****************************************************!*\
+  !*** ./node_modules/isomorphic-unfetch/browser.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = window.fetch || (window.fetch = __webpack_require__(/*! unfetch */ "./node_modules/isomorphic-unfetch/node_modules/unfetch/dist/unfetch.mjs").default || __webpack_require__(/*! unfetch */ "./node_modules/isomorphic-unfetch/node_modules/unfetch/dist/unfetch.mjs"));
+
+
+/***/ }),
+
+/***/ "./node_modules/isomorphic-unfetch/node_modules/unfetch/dist/unfetch.mjs":
+/*!*******************************************************************************!*\
+  !*** ./node_modules/isomorphic-unfetch/node_modules/unfetch/dist/unfetch.mjs ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (function(e,n){return n=n||{},new Promise(function(t,r){var s=new XMLHttpRequest;for(var o in s.open(n.method||"get",e,!0),n.headers)s.setRequestHeader(o,n.headers[o]);function u(){var e,n=[],t=[],r={};return s.getAllResponseHeaders().replace(/^(.*?):[^\S\n]*([\s\S]*?)$/gm,function(s,o,u){n.push(o=o.toLowerCase()),t.push([o,u]),r[o]=(e=r[o])?e+","+u:u}),{ok:2==(s.status/100|0),status:s.status,statusText:s.statusText,url:s.responseURL,clone:u,text:function(){return Promise.resolve(s.responseText)},json:function(){return Promise.resolve(s.responseText).then(JSON.parse)},blob:function(){return Promise.resolve(new Blob([s.response]))},headers:{keys:function(){return n},entries:function(){return t},get:function(e){return r[e.toLowerCase()]},has:function(e){return e.toLowerCase()in r}}}}s.withCredentials="include"==n.credentials,s.onload=function(){t(u())},s.onerror=r,s.send(n.body||null)})});;
+//# sourceMappingURL=unfetch.mjs.map
 
 
 /***/ }),
@@ -17223,6 +19215,253 @@ module.exports = function(module) {
 
 module.exports = __webpack_require__(/*! ./dist/client/router */ "./node_modules/next/dist/client/router.js")
 
+
+/***/ }),
+
+/***/ "./node_modules/node-libs-browser/mock/empty.js":
+/*!******************************************************!*\
+  !*** ./node_modules/node-libs-browser/mock/empty.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./node_modules/node-libs-browser/node_modules/path-browserify/index.js":
+/*!******************************************************************************!*\
+  !*** ./node_modules/node-libs-browser/node_modules/path-browserify/index.js ***!
+  \******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(process) {// Copyright Joyent, Inc. and other Node contributors.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+// USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+// resolves . and .. elements in a path array with directory names there
+// must be no slashes, empty elements, or device names (c:\) in the array
+// (so also no leading and trailing slashes - it does not distinguish
+// relative and absolute paths)
+function normalizeArray(parts, allowAboveRoot) {
+  // if the path tries to go above the root, `up` ends up > 0
+  var up = 0;
+  for (var i = parts.length - 1; i >= 0; i--) {
+    var last = parts[i];
+    if (last === '.') {
+      parts.splice(i, 1);
+    } else if (last === '..') {
+      parts.splice(i, 1);
+      up++;
+    } else if (up) {
+      parts.splice(i, 1);
+      up--;
+    }
+  }
+
+  // if the path is allowed to go above the root, restore leading ..s
+  if (allowAboveRoot) {
+    for (; up--; up) {
+      parts.unshift('..');
+    }
+  }
+
+  return parts;
+}
+
+// Split a filename into [root, dir, basename, ext], unix version
+// 'root' is just a slash, or nothing.
+var splitPathRe =
+    /^(\/?|)([\s\S]*?)((?:\.{1,2}|[^\/]+?|)(\.[^.\/]*|))(?:[\/]*)$/;
+var splitPath = function(filename) {
+  return splitPathRe.exec(filename).slice(1);
+};
+
+// path.resolve([from ...], to)
+// posix version
+exports.resolve = function() {
+  var resolvedPath = '',
+      resolvedAbsolute = false;
+
+  for (var i = arguments.length - 1; i >= -1 && !resolvedAbsolute; i--) {
+    var path = (i >= 0) ? arguments[i] : process.cwd();
+
+    // Skip empty and invalid entries
+    if (typeof path !== 'string') {
+      throw new TypeError('Arguments to path.resolve must be strings');
+    } else if (!path) {
+      continue;
+    }
+
+    resolvedPath = path + '/' + resolvedPath;
+    resolvedAbsolute = path.charAt(0) === '/';
+  }
+
+  // At this point the path should be resolved to a full absolute path, but
+  // handle relative paths to be safe (might happen when process.cwd() fails)
+
+  // Normalize the path
+  resolvedPath = normalizeArray(filter(resolvedPath.split('/'), function(p) {
+    return !!p;
+  }), !resolvedAbsolute).join('/');
+
+  return ((resolvedAbsolute ? '/' : '') + resolvedPath) || '.';
+};
+
+// path.normalize(path)
+// posix version
+exports.normalize = function(path) {
+  var isAbsolute = exports.isAbsolute(path),
+      trailingSlash = substr(path, -1) === '/';
+
+  // Normalize the path
+  path = normalizeArray(filter(path.split('/'), function(p) {
+    return !!p;
+  }), !isAbsolute).join('/');
+
+  if (!path && !isAbsolute) {
+    path = '.';
+  }
+  if (path && trailingSlash) {
+    path += '/';
+  }
+
+  return (isAbsolute ? '/' : '') + path;
+};
+
+// posix version
+exports.isAbsolute = function(path) {
+  return path.charAt(0) === '/';
+};
+
+// posix version
+exports.join = function() {
+  var paths = Array.prototype.slice.call(arguments, 0);
+  return exports.normalize(filter(paths, function(p, index) {
+    if (typeof p !== 'string') {
+      throw new TypeError('Arguments to path.join must be strings');
+    }
+    return p;
+  }).join('/'));
+};
+
+
+// path.relative(from, to)
+// posix version
+exports.relative = function(from, to) {
+  from = exports.resolve(from).substr(1);
+  to = exports.resolve(to).substr(1);
+
+  function trim(arr) {
+    var start = 0;
+    for (; start < arr.length; start++) {
+      if (arr[start] !== '') break;
+    }
+
+    var end = arr.length - 1;
+    for (; end >= 0; end--) {
+      if (arr[end] !== '') break;
+    }
+
+    if (start > end) return [];
+    return arr.slice(start, end - start + 1);
+  }
+
+  var fromParts = trim(from.split('/'));
+  var toParts = trim(to.split('/'));
+
+  var length = Math.min(fromParts.length, toParts.length);
+  var samePartsLength = length;
+  for (var i = 0; i < length; i++) {
+    if (fromParts[i] !== toParts[i]) {
+      samePartsLength = i;
+      break;
+    }
+  }
+
+  var outputParts = [];
+  for (var i = samePartsLength; i < fromParts.length; i++) {
+    outputParts.push('..');
+  }
+
+  outputParts = outputParts.concat(toParts.slice(samePartsLength));
+
+  return outputParts.join('/');
+};
+
+exports.sep = '/';
+exports.delimiter = ':';
+
+exports.dirname = function(path) {
+  var result = splitPath(path),
+      root = result[0],
+      dir = result[1];
+
+  if (!root && !dir) {
+    // No dirname whatsoever
+    return '.';
+  }
+
+  if (dir) {
+    // It has a dirname, strip trailing slash
+    dir = dir.substr(0, dir.length - 1);
+  }
+
+  return root + dir;
+};
+
+
+exports.basename = function(path, ext) {
+  var f = splitPath(path)[2];
+  // TODO: make this comparison case-insensitive on windows?
+  if (ext && f.substr(-1 * ext.length) === ext) {
+    f = f.substr(0, f.length - ext.length);
+  }
+  return f;
+};
+
+
+exports.extname = function(path) {
+  return splitPath(path)[3];
+};
+
+function filter (xs, f) {
+    if (xs.filter) return xs.filter(f);
+    var res = [];
+    for (var i = 0; i < xs.length; i++) {
+        if (f(xs[i], i, xs)) res.push(xs[i]);
+    }
+    return res;
+}
+
+// String.prototype.substr - negative index don't work in IE8
+var substr = 'ab'.substr(-1) === 'b'
+    ? function (str, start, len) { return str.substr(start, len) }
+    : function (str, start, len) {
+        if (start < 0) start = str.length + start;
+        return str.substr(start, len);
+    }
+;
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../process/browser.js */ "./node_modules/process/browser.js")))
 
 /***/ }),
 
@@ -24269,7 +26508,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! next/router */ "./node_modules/next/router.js");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_16__);
 /* harmony import */ var _components_countup_wrapper_js__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../components/countup-wrapper.js */ "./components/countup-wrapper.js");
-/* harmony import */ var _components_ecu_js__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../components/ecu.js */ "./components/ecu.js");
+/* harmony import */ var _components_data_fetcher_js__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../components/data-fetcher.js */ "./components/data-fetcher.js");
 /* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ "./node_modules/bootstrap/dist/css/bootstrap.min.css");
 /* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_19__);
 /* harmony import */ var _static_styles_styles_css__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../static/styles/styles.css */ "./static/styles/styles.css");
@@ -24499,13 +26738,7 @@ function (_App) {
       }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("img", {
         ref: this.issuesIconComponent,
         src: "../static/SVGs/ok.svg"
-      })))), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
-        class: "alert alert-danger",
-        role: "alert",
-        "background-color": "#dc3545"
-      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_ecu_js__WEBPACK_IMPORTED_MODULE_18__["default"], {
-        value: ((this.state.data || {}).control || {}).ecuFlag || 0
-      })), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("script", {
+      })))), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("script", {
         src: "nprogress.js"
       }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("link", {
         rel: "stylesheet",
@@ -24514,7 +26747,8 @@ function (_App) {
         position: react_toastify__WEBPACK_IMPORTED_MODULE_11__["toast"].POSITION.BOTTOM_RIGHT,
         transition: react_toastify__WEBPACK_IMPORTED_MODULE_11__["Slide"]
       }));
-    }
+    } //<Bateria charge={parseInt(((this.state.data || {}).bms || {}).charge) || 0}></Bateria>
+
   }]);
 
   return MyApp;

@@ -7,6 +7,7 @@ import { LineChart, Line, CartesianGrid, XAxis, YAxis, Legend, ResponsiveContain
 
 import {DelayContext} from '../components/contexts.js';
 import {availablePlotOptions, persistanceTimeout, pointsPerSecond} from '../components/constants.js';
+import ECU from "../components/ecu.js";
 
 
 const DelayProvider = DelayContext.Provider;
@@ -411,6 +412,11 @@ class Graficos extends DataFetcher {
         return(
             <div className="container-fluid">
                 <DelayProvider value={this.delay}>
+                <br></br>
+                <ECU
+                value={parseInt(((this.state.data || {}).control || {}).ecuFlag) || 2}> 
+                </ECU>
+                <br></br>
                     <form>
                         <div className="row">
                             <div className="col-6">

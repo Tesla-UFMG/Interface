@@ -26,6 +26,11 @@ class Controle extends DataFetcher {
     return (
       <div className="container-fluid">
         <DelayProvider value={this.delay}>
+        <br></br>
+        <ECU
+          value={parseInt(((this.state.data || {}).control || {}).ecuFlag) || 2}> 
+        </ECU>
+        <br></br>
           <div className="row">
             <div className="col-md-6 col-12">
               <div style={{ height: "78vh" }}>

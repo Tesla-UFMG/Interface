@@ -5,8 +5,10 @@ class ECU extends Component {
     super(props);
   }
 
+
   render() { 
     switch (this.props.value) {
+
       case 0:
         return (<div className="default-container bordered-text-container">
           <div className="component-title bordered-title-text">ECU FLAG</div>

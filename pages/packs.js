@@ -4,6 +4,7 @@ import DataFetcher from '../components/data-fetcher.js'
 import CountUpWrapper from '../components/countup-wrapper.js'
 
 import {DelayContext} from '../components/contexts.js'
+import ECU from "../components/ecu.js";
 
 
 const DelayProvider = DelayContext.Provider;
@@ -21,6 +22,11 @@ class Packs extends DataFetcher {
         return (
             <div className="container-fluid">
                 <DelayProvider value={this.delay}>
+                <br></br>
+                <ECU
+                value={parseInt(((this.state.data || {}).control || {}).ecuFlag) || 2}> 
+                </ECU>
+                <br></br>
                     <div className="row">
                         <div className="col-lg-3 col-6">
                             <PacksInformation title={"TENSÃO TOTAL"} value={((this.state.data || {}).bms || {}).totalVoltage/100 || 0} unit={"V"}></PacksInformation>

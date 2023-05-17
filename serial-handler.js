@@ -305,8 +305,8 @@ class SerialHandler {
 
     async invokeWritting(fileDestination, datalogData) {
         fs.appendFile(fileDestination, datalogData, err => {
-            if(err)
-                console.error('Erro ao fazer datalog: '+err);
+            //if(err)
+                //console.error('Erro ao fazer datalog: '+err);
         });
     }
 

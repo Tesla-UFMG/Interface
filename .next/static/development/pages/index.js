@@ -458,7 +458,11 @@ function (_Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        className: "default-container bordered-title-container"
+        className: "default-container bordered-title-container",
+        style: {
+          padding: "10px",
+          marginRight: "15px"
+        }
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "component-title bordered-title-text"
       }, "BRAKE BIAS"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h3", null, this.props.value, " %"));
@@ -19342,7 +19346,9 @@ function (_DataFetcher) {
       // debugger;
       return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "container-fluid"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(DelayProvider, {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_ecu_js__WEBPACK_IMPORTED_MODULE_12__["default"], {
+        value: _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0___default()(((this.state.data || {}).control || {}).ecuFlag) || 2
+      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(DelayProvider, {
         value: this.delay
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "row d-flex align-items-center index-section"
@@ -19355,7 +19361,9 @@ function (_DataFetcher) {
         airstatus: ((this.state.data || {}).bms || {}).airStatus || 0,
         totalvoltage: ((this.state.data || {}).bms || {}).totalVoltage / 100 || 0,
         glvvoltage: ((this.state.data || {}).bms || {}).glvVoltage / 1000 || 0
-      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_brake_bias_js__WEBPACK_IMPORTED_MODULE_13__["default"], {
+        value: 50
+      }, " ")), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "col-lg-4 col-12 mt-2 mb-2"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_velocimetro_js__WEBPACK_IMPORTED_MODULE_8__["default"], {
         speed: ((this.state.data || {}).control || {}).mediaSpeed || 0
@@ -19370,10 +19378,6 @@ function (_DataFetcher) {
         className: "component-title bordered-title-text "
       }, "STATUS DE CARGA")), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_bateria_js__WEBPACK_IMPORTED_MODULE_9__["default"], {
         charge: _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0___default()(((this.state.data || {}).bms || {}).charge) || 0
-      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        class: "col-xs-6 col-sm-12"
-      }, " ", react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_brake_bias_js__WEBPACK_IMPORTED_MODULE_13__["default"], {
-        value: 50
       })))));
     }
   }]);
@@ -19381,6 +19385,11 @@ function (_DataFetcher) {
   return Index;
 }(_components_data_fetcher_js__WEBPACK_IMPORTED_MODULE_11__["default"]);
 
+{
+  /* <div class="alert alert-danger" role="alert" background-color='#dc3545'>
+  {         
+  }        </div> */
+}
 /* harmony default export */ __webpack_exports__["default"] = (Index);
 
 /***/ }),

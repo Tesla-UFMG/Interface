@@ -243,6 +243,8 @@ let fields = {
   hodometroTotal: { index: 170, name: "hodometroTotal", id: 102, pos: 3 },
 
   ecuFlag: { index: 180, name: "ecuFlag", id: 103, pos: 0 },
+
+
   torqueReferenceRight: {
     index: 21,
     name: "torqueReferenceRight",
