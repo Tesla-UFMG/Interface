@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -247,6 +247,86 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_5__["Component"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (Bateria);
+
+/***/ }),
+
+/***/ "./components/bms-flag.js":
+/*!********************************!*\
+  !*** ./components/bms-flag.js ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+
+
+
+
+
+
+
+var BMS =
+/*#__PURE__*/
+function (_Component) {
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(BMS, _Component);
+
+  function BMS(props) {
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, BMS);
+
+    return Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(BMS).call(this, props));
+  }
+
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(BMS, [{
+    key: "render",
+    value: function render() {
+      switch (this.props.value) {
+        case 0:
+          return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "default-container bordered-text-container"
+          }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "component-title bordered-title-text"
+          }, "BMS FLAG"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h4", null, "Over voltage error"));
+          break;
+
+        case 1:
+          return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "default-container bordered-title-container"
+          }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "component-title bordered-title-text"
+          }, "BMS FLAG"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h4", null, "Under voltage error"));
+          break;
+
+        case 2:
+          return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "default-container bordered-title-container"
+          }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "component-title bordered-title-text"
+          }, "BMS FLAG"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h4", null, "Over temperature error"));
+          break;
+
+        default:
+          return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "default-container bordered-title-container"
+          }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "component-title bordered-title-text"
+          }, "BMS FLAG"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h4", null, "Sem erros detectados"));
+          break;
+      }
+    }
+  }]);
+
+  return BMS;
+}(react__WEBPACK_IMPORTED_MODULE_5__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (BMS);
 
 /***/ }),
 
@@ -1214,6 +1294,15 @@ var fields = {
     id: 103,
     pos: 0
   },
+  bmsFlag: {
+    index: 181,
+    name: "bmsFlag",
+    id: 227,
+    pos: 1
+  },
+
+  /* 
+  inversorFlag: { index: 182, name: "inversorFlag", id: , pos: 0 }, */
   torqueReferenceRight: {
     index: 21,
     name: "torqueReferenceRight",
@@ -2317,10 +2406,10 @@ function (_Component) {
 
 /***/ }),
 
-/***/ "./components/ecu.js":
-/*!***************************!*\
-  !*** ./components/ecu.js ***!
-  \***************************/
+/***/ "./components/ecu-flag.js":
+/*!********************************!*\
+  !*** ./components/ecu-flag.js ***!
+  \********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2409,6 +2498,86 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_5__["Component"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (ECU);
+
+/***/ }),
+
+/***/ "./components/inversor-flag.js":
+/*!*************************************!*\
+  !*** ./components/inversor-flag.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+
+
+
+
+
+
+
+var Inversor =
+/*#__PURE__*/
+function (_Component) {
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(Inversor, _Component);
+
+  function Inversor(props) {
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, Inversor);
+
+    return Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(Inversor).call(this, props));
+  }
+
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(Inversor, [{
+    key: "render",
+    value: function render() {
+      switch (this.props.value) {
+        case 0:
+          return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "default-container bordered-text-container"
+          }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "component-title bordered-title-text"
+          }, "Inversor FLAG"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h4", null, "Over voltage error"));
+          break;
+
+        case 1:
+          return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "default-container bordered-title-container"
+          }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "component-title bordered-title-text"
+          }, "Inversor FLAG"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h4", null, "Under voltage error"));
+          break;
+
+        case 2:
+          return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "default-container bordered-title-container"
+          }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "component-title bordered-title-text"
+          }, "Inversor FLAG"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h4", null, "Over temperature error"));
+          break;
+
+        default:
+          return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "default-container bordered-title-container"
+          }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "component-title bordered-title-text"
+          }, "Inversor FLAG"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h4", null, "Sem erros detectados"));
+          break;
+      }
+    }
+  }]);
+
+  return Inversor;
+}(react__WEBPACK_IMPORTED_MODULE_5__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (Inversor);
 
 /***/ }),
 
@@ -4462,11 +4631,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_bateria_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/bateria.js */ "./components/bateria.js");
 /* harmony import */ var _components_bms_information_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/bms-information.js */ "./components/bms-information.js");
 /* harmony import */ var _components_data_fetcher_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/data-fetcher.js */ "./components/data-fetcher.js");
-/* harmony import */ var _components_ecu_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/ecu.js */ "./components/ecu.js");
-/* harmony import */ var _components_brake_bias_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../components/brake-bias.js */ "./components/brake-bias.js");
-/* harmony import */ var _static_styles_styles_css__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../static/styles/styles.css */ "./static/styles/styles.css");
-/* harmony import */ var _static_styles_styles_css__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_static_styles_styles_css__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony import */ var _components_contexts_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../components/contexts.js */ "./components/contexts.js");
+/* harmony import */ var _components_ecu_flag_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/ecu-flag.js */ "./components/ecu-flag.js");
+/* harmony import */ var _components_bms_flag_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../components/bms-flag.js */ "./components/bms-flag.js");
+/* harmony import */ var _components_inversor_flag_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../components/inversor-flag.js */ "./components/inversor-flag.js");
+/* harmony import */ var _components_brake_bias_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../components/brake-bias.js */ "./components/brake-bias.js");
+/* harmony import */ var _static_styles_styles_css__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../static/styles/styles.css */ "./static/styles/styles.css");
+/* harmony import */ var _static_styles_styles_css__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(_static_styles_styles_css__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var _components_contexts_js__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../components/contexts.js */ "./components/contexts.js");
 
 
 
@@ -4483,7 +4654,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var DelayProvider = _components_contexts_js__WEBPACK_IMPORTED_MODULE_15__["DelayContext"].Provider;
+/* 
+import SerialHandler from  "../serial-handler.js" */
+
+
+
+var DelayProvider = _components_contexts_js__WEBPACK_IMPORTED_MODULE_17__["DelayContext"].Provider;
 
 var Index =
 /*#__PURE__*/
@@ -4505,11 +4681,24 @@ function (_DataFetcher) {
     key: "render",
     value: function render() {
       // debugger;
+      console.log(this.state.data);
       return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "container-fluid"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_ecu_js__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        class: "row justify-content-between"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        class: "col-4"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_ecu_flag_js__WEBPACK_IMPORTED_MODULE_12__["default"], {
         value: _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0___default()(((this.state.data || {}).control || {}).ecuFlag) || 2
-      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(DelayProvider, {
+      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        class: "col-4"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_bms_flag_js__WEBPACK_IMPORTED_MODULE_13__["default"], {
+        value: _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0___default()(((this.state.data || {}).bms || {}).bmsFlag) || 2
+      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        class: "col-4"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_inversor_flag_js__WEBPACK_IMPORTED_MODULE_14__["default"], {
+        value: _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0___default()(((this.state.data || {}).control || {}).inversorFlag) || 2
+      }))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(DelayProvider, {
         value: this.delay
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "row d-flex align-items-center index-section"
@@ -4522,9 +4711,11 @@ function (_DataFetcher) {
         airstatus: ((this.state.data || {}).bms || {}).airStatus || 0,
         totalvoltage: ((this.state.data || {}).bms || {}).totalVoltage / 100 || 0,
         glvvoltage: ((this.state.data || {}).bms || {}).glvVoltage / 1000 || 0
-      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_brake_bias_js__WEBPACK_IMPORTED_MODULE_13__["default"], {
+      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "col-12"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_brake_bias_js__WEBPACK_IMPORTED_MODULE_15__["default"], {
         value: 50
-      }, " ")), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+      }, " "))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "col-lg-4 col-12 mt-2 mb-2"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_velocimetro_js__WEBPACK_IMPORTED_MODULE_8__["default"], {
         speed: ((this.state.data || {}).control || {}).mediaSpeed || 0
@@ -4548,8 +4739,7 @@ function (_DataFetcher) {
 
 {
   /* <div class="alert alert-danger" role="alert" background-color='#dc3545'>
-  {         
-  }        </div> */
+      </div> */
 }
 /* harmony default export */ __webpack_exports__["default"] = (Index);
 
@@ -4566,7 +4756,7 @@ function (_DataFetcher) {
 
 /***/ }),
 
-/***/ 3:
+/***/ 6:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/

@@ -21,6 +21,7 @@
     "bonjour": "^3.5.0",
     "bootstrap": "^4.3.1",
     "bootstrap-icons": "^1.10.4",
+    "child_process": "^1.0.2",
     "chroma-js": "^2.0.3",
     "express": "^4.16.4",
     "i": "^0.3.6",

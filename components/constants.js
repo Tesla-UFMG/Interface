@@ -243,6 +243,8 @@ let fields = {
   hodometroTotal: { index: 170, name: "hodometroTotal", id: 102, pos: 3 },
 
   ecuFlag: { index: 180, name: "ecuFlag", id: 103, pos: 0 },
+  bmsFlag: { index: 181, name: "bmsFlag", id: 227, pos: 1 },/* 
+  inversorFlag: { index: 182, name: "inversorFlag", id: , pos: 0 }, */
 
 
   torqueReferenceRight: {

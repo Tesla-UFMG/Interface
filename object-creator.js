@@ -160,12 +160,14 @@ class ObjectCreator {
                 airStatus: this.retrieveLastData(cFields.airStatus.index),
                 totalVoltage: this.retrieveLastData(cFields.totalVoltage.index),
                 glvVoltage: this.retrieveLastData(cFields.glvVoltage.index),
-                charge: this.retrieveLastData(cFields.chargePercent.index)
+                charge: this.retrieveLastData(cFields.chargePercent.index),
+                bmsFlag: parseInt(this.retrieveLastData(cFields.bmsFlag.index)),
             },
             control: {
                 // mediaSpeed: this.retrieveLastData(cFields.mediaSpeed.index)
                 mediaSpeed: ((parseInt(this.retrieveLastData(cFields.speedMotorLeft.index)) + parseInt(this.retrieveLastData(cFields.speedMotorRight.index))/9)*(0.0312*Math.PI)),
-                //ecuFlag: parseInt(this.retrieveLastData(cFields.ecuFlag.index))
+                ecuFlag: parseInt(this.retrieveLastData(cFields.ecuFlag.index)),
+                inversorFlag: parseInt(this.retrieveLastData(cFields.inversorFlag.index))
             }
         }
     }
@@ -194,6 +196,9 @@ class ObjectCreator {
                         right2: this.retrieveLastData(cFields.temperatureInversorR2.index),
                         left1:  this.retrieveLastData(cFields.temperatureInversorL1.index),
                         left2:  this.retrieveLastData(cFields.temperatureInversorL2.index)
+                    },
+                    flag: {
+                        inversorFlag: parseInt(this.retrieveLastData(cFields.inversorFlag.index))
                     }
                 },
                 tires: {
@@ -220,8 +225,8 @@ class ObjectCreator {
                     y: (accelY > Math.pow(2, 15) ? (accelY-Math.pow(2, 16)): accelY),
                     z: (accelZ > Math.pow(2, 15) ? (accelZ-Math.pow(2, 16)): accelZ)
                 },
-                //ecuFlag: this.retrieveLastData(cFields.ecuFlag.index)
-                ecuFlag: 2
+                ecuFlag: this.retrieveLastData(cFields.ecuFlag.index),
+                bmsFlag: parseInt(this.retrieveLastData(cFields.bmsFlag.index))
             }
         }
     }
@@ -233,7 +238,13 @@ class ObjectCreator {
                 mediaCurrent: this.retrieveLastData(cFields.mediaCurrent.index),
                 maxTemperature: this.retrieveLastData(cFields.maxTemperature.index),
                 minVoltage: this.retrieveLastData(cFields.minVoltage.index),
-                packs: this.packs
+                packs: this.packs,
+                bmsFlag: parseInt(this.retrieveLastData(cFields.bmsFlag.index))
+
+            },
+            control: {
+                ecuFlag: parseInt(this.retrieveLastData(cFields.ecuFlag.index)),
+                inversorFlag: parseInt(this.retrieveLastData(cFields.inversorFlag.index))
             }
         }
     }

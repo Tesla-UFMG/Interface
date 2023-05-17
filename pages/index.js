@@ -4,8 +4,11 @@ import Velocimetro from '../components/velocimetro.js'
 import Bateria from '../components/bateria.js'
 import BMSInformation from '../components/bms-information.js'
 import DataFetcher from '../components/data-fetcher.js'
-import ECU from "../components/ecu.js";
-import BrakeBias from "../components/brake-bias.js";
+import ECU from "../components/ecu-flag.js";
+import BMS from "../components/bms-flag.js";
+import Inversor from "../components/inversor-flag.js";
+import BrakeBias from "../components/brake-bias.js";/* 
+import SerialHandler from  "../serial-handler.js" */
 
 import '../static/styles/styles.css'
 
@@ -26,15 +29,31 @@ class Index extends DataFetcher {
 
   render() {
     // debugger;
+    console.log(this.state.data)
     return(
-      
-
         <div className="container-fluid">
           <br></br>
-          <ECU
-            value={parseInt(((this.state.data || {}).control || {}).ecuFlag) || 2}> 
-          </ECU>
+          <div class="row justify-content-between">
+            <div class="col-4">
+              <ECU
+                value={parseInt(((this.state.data || {}).control || {}).ecuFlag) || 2}> 
+              </ECU>
+            </div>
+            <div class="col-4">
+              <BMS
+                value={parseInt(((this.state.data || {}).bms || {}).bmsFlag) || 2}> 
+              </BMS>
+            </div>
+            <div class="col-4">
+              <Inversor
+                value={parseInt(((this.state.data || {}).control || {}).inversorFlag) || 2}> 
+              </Inversor>
+            </div>
+          </div>
+          
           <br></br>
+          
+          {/* <button onClick={(()=>{SerialHandler.rssiRequestMessage})}> ok </button> */}
           <DelayProvider value={this.delay}>
             <div className="row d-flex align-items-center index-section" >
             
@@ -46,7 +65,8 @@ class Index extends DataFetcher {
                                 totalvoltage={((this.state.data || {}).bms || {}).totalVoltage/100 || 0}
                                 glvvoltage={((this.state.data || {}).bms || {}).glvVoltage/1000 || 0}/>
               <br></br>
-              <BrakeBias value={50}> </BrakeBias>
+              <div className="col-12">
+              <BrakeBias value={50}> </BrakeBias></div>
               </div>
               <div className="col-lg-4 col-12 mt-2 mb-2" >
                 <Velocimetro speed={((this.state.data || {}).control || {}).mediaSpeed || 0}></Velocimetro>
@@ -68,7 +88,6 @@ class Index extends DataFetcher {
   }
 }
 {/* <div class="alert alert-danger" role="alert" background-color='#dc3545'>
-{         
-}        </div> */}
+     </div> */}
 
 export default Index

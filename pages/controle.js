@@ -7,8 +7,10 @@ import CarOverlay from "../components/carro-overlay.js";
 import Volante from "../components/volante.js";
 import AcelerometroXY from "../components/acelerometro-xy.js";
 import AcelerometroYZ from "../components/acelerometro-yz.js";
-import ECU from "../components/ecu.js";
-import BrakeBias from "../components/brake-bias.js";
+import ECU from "../components/ecu-flag.js";
+
+import BMS from "../components/bms-flag.js";
+import Inversor from "../components/inversor-flag.js";
 
 import { DelayContext } from "../components/contexts.js";
 
@@ -23,13 +25,30 @@ class Controle extends DataFetcher {
   }
 
   render() {
+    console.log(this.state.data)
+
     return (
       <div className="container-fluid">
         <DelayProvider value={this.delay}>
         <br></br>
-        <ECU
-          value={parseInt(((this.state.data || {}).control || {}).ecuFlag) || 2}> 
-        </ECU>
+        <div class="row justify-content-between">
+          <div class="col-4">
+            <ECU
+              value={parseInt(((this.state.data || {}).control || {}).ecuFlag) || 2}> 
+            </ECU>
+            </div>
+            <div class="col-4">
+            <BMS
+              value={parseInt(((this.state.data || {}).control || {}).bmsFlag) || 2}> 
+            </BMS>
+            </div>
+            <div class="col-4">
+            <Inversor
+              value={parseInt(((((this.state.data || {}).control|| {}).inversor|| {}).flag || {}).inversorFlag) || 2}> 
+            </Inversor>
+            </div>
+          </div>
+        
         <br></br>
           <div className="row">
             <div className="col-md-6 col-12">

@@ -4,7 +4,9 @@ import DataFetcher from '../components/data-fetcher.js'
 import CountUpWrapper from '../components/countup-wrapper.js'
 
 import {DelayContext} from '../components/contexts.js'
-import ECU from "../components/ecu.js";
+import ECU from "../components/ecu-flag.js";
+import BMS from "../components/bms-flag.js";
+import Inversor from "../components/inversor-flag.js";
 
 
 const DelayProvider = DelayContext.Provider;
@@ -23,11 +25,27 @@ class Packs extends DataFetcher {
             <div className="container-fluid">
                 <DelayProvider value={this.delay}>
                 <br></br>
-                <ECU
-                value={parseInt(((this.state.data || {}).control || {}).ecuFlag) || 2}> 
-                </ECU>
+
+                <div class="row justify-content-between">
+                    <div class="col-4">
+                    <ECU
+                        value={parseInt(((this.state.data || {}).control || {}).ecuFlag) || 2}> 
+                    </ECU>
+                    </div>
+                    <div class="col-4">
+                    <BMS
+                        value={parseInt(((this.state.data || {}).bms || {}).bmsFlag) || 2}> 
+                    </BMS>
+                    </div>
+                    <div class="col-4">
+                    <Inversor
+                        value={parseInt(((this.state.data || {}).control || {}).inversorFlag) || 2}> 
+                    </Inversor>
+                    </div>
+                </div>
+
                 <br></br>
-                    <div className="row">
+                    <div className="row justify-content-between">
                         <div className="col-lg-3 col-6">
                             <PacksInformation title={"TENSÃO TOTAL"} value={((this.state.data || {}).bms || {}).totalVoltage/100 || 0} unit={"V"}></PacksInformation>
                         </div>

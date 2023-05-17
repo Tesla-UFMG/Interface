@@ -737,6 +737,15 @@ var fields = {
     id: 103,
     pos: 0
   },
+  bmsFlag: {
+    index: 181,
+    name: "bmsFlag",
+    id: 227,
+    pos: 1
+  },
+
+  /* 
+  inversorFlag: { index: 182, name: "inversorFlag", id: , pos: 0 }, */
   torqueReferenceRight: {
     index: 21,
     name: "torqueReferenceRight",
