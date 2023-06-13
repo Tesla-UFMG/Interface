@@ -1,13 +1,17 @@
 import React, { Component } from 'react'
 import DataFetcher from '../components/data-fetcher.js'
 
-
+ 
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Legend, ResponsiveContainer, Label } from 'recharts';
 
 
 import {DelayContext} from '../components/contexts.js';
 import {availablePlotOptions, persistanceTimeout, pointsPerSecond} from '../components/constants.js';
-import ECU from "../components/ecu.js";
+
+import ECU from "../components/ecu-flag.js";
+
+import BMS from "../components/bms-flag.js";
+import Inversor from "../components/inversor-flag.js";
 
 
 const DelayProvider = DelayContext.Provider;
@@ -413,9 +417,23 @@ class Graficos extends DataFetcher {
             <div className="container-fluid">
                 <DelayProvider value={this.delay}>
                 <br></br>
-                <ECU
-                value={parseInt(((this.state.data || {}).control || {}).ecuFlag) || 2}> 
-                </ECU>
+                <div class="row justify-content-between">
+                <div class="col-4">
+                    <ECU
+                    value={parseInt(((this.state.data || {}).control || {}).ecuFlag) || 2}> 
+                    </ECU>
+                    </div>
+                    <div class="col-4">
+                    <BMS
+                    value={parseInt(((this.state.data || {}).control || {}).bmsFlag) || 2}> 
+                    </BMS>
+                    </div>
+                    <div class="col-4">
+                    <Inversor
+                    value={parseInt(((((this.state.data || {}).control|| {}).inversor|| {}).flag || {}).inversorFlag) || 2}> 
+                    </Inversor>
+                    </div>
+                </div>
                 <br></br>
                     <form>
                         <div className="row">
