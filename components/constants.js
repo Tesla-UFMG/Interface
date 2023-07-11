@@ -234,49 +234,99 @@ let fields = {
 
   /*controle geral*/
 
-  steeringWheel: { index: 27, name: "steeringWheel", id: 101, pos: 1 },
-  pedalAcelerador: { index: 23, name: "pedalAcelerador", id: 101, pos: 2 },
-  pedalFreio: { index: 24, name: "pedalFreio", id: 101, pos: 3 },
+  //76
+  steeringWheel: { index: 27, name: "steeringWheel", id: 76, pos: 1 },
+  pedalAcelerador: { index: 23, name: "pedalAcelerador", id: 76, pos: 2 },
+  pedalFreio: { index: 24, name: "pedalFreio", id: 76, pos: 3 },
 
-  selectedMode: { index: 167, name: "selectedMode", id: 102, pos: 0 },
-  hodometroParcial: { index: 169, name: "hodometroParcial", id: 102, pos: 2 },
-  hodometroTotal: { index: 170, name: "hodometroTotal", id: 102, pos: 3 },
+  //77
+  selectedMode: { index: 167, name: "selectedMode", id: 77, pos: 0 },
+  ganhoTorque: { index: 173, name: "ganhoTorque", id: 77, pos: 1 },
+  hodometroParcial: { index: 169, name: "hodometroParcial", id: 77, pos: 2 },
+  hodometroTotal: { index: 170, name: "hodometroTotal", id: 77, pos: 3 },
 
+  //78
   ecuFlag: { index: 180, name: "ecuFlag", id: 103, pos: 0 },
-  bmsFlag: { index: 181, name: "bmsFlag", id: 227, pos: 1 },/* 
-  inversorFlag: { index: 182, name: "inversorFlag", id: , pos: 0 }, */
-
-
+  bmsFlag: { index: 181, name: "bmsFlag", id: 227, pos: 1 },
+  inversorFlag: { index: 182, name: "inversorFlag", id: 228, pos: 0 },
   torqueReferenceRight: {
     index: 21,
     name: "torqueReferenceRight",
-    id: 103,
+    id: 78,
     pos: 2,
   },
   torqueReferenceLeft: {
     index: 22,
     name: "torqueReferenceLeft",
-    id: 103,
+    id: 78,
     pos: 3,
   },
 
-  speedFL: { index: 15, name: "speedFL", id: 104, pos: 0 },
-  speedFR: { index: 16, name: "speedFR", id: 104, pos: 1 },
-  speedBL: { index: 17, name: "speedBL", id: 104, pos: 2 },
-  speedBR: { index: 18, name: "speedBR", id: 104, pos: 3 },
+  //79
 
-  speedMotorLeft: { index: 166, name: "speedMotorLeft", id: 110, pos: 0 },
-  motorTorqueLeft: { index: 20, name: "motorTorqueLeft", id: 110, pos: 1 },
+  speedFL: { index: 15, name: "speedFL", id: 79, pos: 0 },
+  speedFR: { index: 16, name: "speedFR", id: 79, pos: 1 },
+  speedBL: { index: 17, name: "speedBL", id: 79, pos: 2 },
+  speedBR: { index: 18, name: "speedBR", id: 79, pos: 3 },
 
-  speedMotorRight: { index: 165, name: "speedMotorRight", id: 120, pos: 0 },
-  motorTorqueRight: { index: 19, name: "motorTorqueRight", id: 120, pos: 1 },
+  //85
+  speedMotorLeft: { index: 166, name: "speedMotorLeft", id: 85, pos: 0 },
+  motorTorqueLeft: { index: 20, name: "motorTorqueLeft", id: 85, pos: 1 },
 
-  accelerometerX: { index: 154, name: "accelerometerX", id: 130, pos: 0 },
-  accelerometerY: { index: 155, name: "accelerometerY", id: 130, pos: 1 },
-  accelerometerZ: { index: 156, name: "accelerometerZ", id: 130, pos: 2 },
-  gyroscopeX: { index: 157, name: "gyroscopeX", id: 131, pos: 0 },
-  gyroscopeY: { index: 158, name: "gyroscopeY", id: 131, pos: 1 },
-  gyroscopeZ: { index: 159, name: "gyroscopeZ", id: 131, pos: 2 },
+  //86
+  energiaInversorLeft: {
+    index: 30,
+    name: "energiaInversorLeft",
+    id: 86,
+    pos: 0,
+  },
+  temperatureInversorL1: {
+    index: 35,
+    name: "temperatureInversorL1",
+    id: 86,
+    pos: 2,
+  },
+  temperatureInversorL2: {
+    index: 36,
+    name: "temperatureInversorL2",
+    id: 86,
+    pos: 3,
+  },
+
+  //95
+  speedMotorRight: { index: 165, name: "speedMotorRight", id: 95, pos: 0 },
+  motorTorqueRight: { index: 19, name: "motorTorqueRight", id: 95, pos: 1 },
+
+  //96
+
+  energiaInversorRight: {
+    index: 29,
+    name: "energiaInversorRight",
+    id: 96,
+    pos: 0,
+  },
+  temperatureInversorR1: {
+    index: 33,
+    name: "temperatureInversorR1",
+    id: 96,
+    pos: 2,
+  },
+  temperatureInversorR2: {
+    index: 34,
+    name: "temperatureInversorR2",
+    id: 96,
+    pos: 3,
+  },
+
+  //105
+  accelerometerX: { index: 154, name: "accelerometerX", id: 105, pos: 0 },
+  accelerometerY: { index: 155, name: "accelerometerY", id: 105, pos: 1 },
+  accelerometerZ: { index: 156, name: "accelerometerZ", id: 105, pos: 2 },
+
+  //106
+  gyroscopeX: { index: 157, name: "gyroscopeX", id: 106, pos: 0 },
+  gyroscopeY: { index: 158, name: "gyroscopeY", id: 106, pos: 1 },
+  gyroscopeZ: { index: 159, name: "gyroscopeZ", id: 106, pos: 2 },
 
   stoppedTime: { index: 1, name: "stoppedTime", id: 0x100, pos: 0 },
   operationMode: { index: 8, name: "operationMode", id: 1, pos: 0 },
@@ -288,44 +338,10 @@ let fields = {
   // mediaTorque: {index: 26, name: "mediaTorque", id: 0x304, pos: 1},
 
   ECUTimer: { index: 28, name: "ECUTimer", id: 101, pos: 0 },
-  energiaInversorRight: {
-    index: 29,
-    name: "energiaInversorRight",
-    id: 106,
-    pos: 0,
-  },
-  energiaInversorLeft: {
-    index: 30,
-    name: "energiaInversorLeft",
-    id: 106,
-    pos: 1,
-  },
+
   motorCurrentRight: { index: 31, name: "motorCurrentRight", id: 106, pos: 2 },
   motorCurrentLeft: { index: 32, name: "motorCurrentLeft", id: 106, pos: 3 },
-  temperatureInversorR1: {
-    index: 33,
-    name: "temperatureInversorR1",
-    id: 107,
-    pos: 0,
-  },
-  temperatureInversorR2: {
-    index: 34,
-    name: "temperatureInversorR2",
-    id: 107,
-    pos: 1,
-  },
-  temperatureInversorL1: {
-    index: 35,
-    name: "temperatureInversorL1",
-    id: 107,
-    pos: 2,
-  },
-  temperatureInversorL2: {
-    index: 36,
-    name: "temperatureInversorL2",
-    id: 107,
-    pos: 3,
-  },
+
   currentEvent: { index: 37, name: "currentEvent", id: 100, pos: 0 },
   started: { index: 38, name: "started", id: 100, pos: 1 },
   finished: { index: 39, name: "finished", id: 100, pos: 2 },
@@ -358,7 +374,7 @@ let fields = {
     pos: 2,
   },
   selecaoBotao: { index: 172, name: "selecaoBotao", id: 108, pos: 3 },
-  ganhoTorque: { index: 173, name: "ganhoTorque", id: 106, pos: 0 },
+
   extensometro22: { index: 174, name: "extensometro22", id: 173, pos: 0 },
   extensometro13: { index: 175, name: "extensometro13", id: 178, pos: 0 },
   extensometro23: { index: 176, name: "extensometro23", id: 178, pos: 2 },
