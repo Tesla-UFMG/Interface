@@ -25,31 +25,42 @@ class Controle extends DataFetcher {
   }
 
   render() {
-    console.log(this.state.data)
+    console.log(this.state.data);
 
     return (
       <div className="container-fluid">
         <DelayProvider value={this.delay}>
-        <br></br>
-        <div class="row justify-content-between">
-          <div class="col-4">
-            <ECU
-              value={parseInt(((this.state.data || {}).control || {}).ecuFlag) || 2}> 
-            </ECU>
+          <br></br>
+          <div class="row justify-content-between">
+            <div class="col-4">
+              <ECU
+                value={
+                  parseInt(((this.state.data || {}).control || {}).ecuFlag) || 2
+                }
+              ></ECU>
             </div>
             <div class="col-4">
-            <BMS
-              value={parseInt(((this.state.data || {}).control || {}).bmsFlag) || 2}> 
-            </BMS>
+              <BMS
+                value={
+                  parseInt(((this.state.data || {}).control || {}).bmsFlag) || 2
+                }
+              ></BMS>
             </div>
             <div class="col-4">
-            <Inversor
-              value={parseInt(((((this.state.data || {}).control|| {}).inversor|| {}).flag || {}).inversorFlag) || 2}> 
-            </Inversor>
+              <Inversor
+                value={
+                  parseInt(
+                    (
+                      (((this.state.data || {}).control || {}).inversor || {})
+                        .flag || {}
+                    ).inversorFlag
+                  ) || 2
+                }
+              ></Inversor>
             </div>
           </div>
-        
-        <br></br>
+
+          <br></br>
           <div className="row">
             <div className="col-md-6 col-12">
               <div style={{ height: "78vh" }}>
@@ -91,13 +102,10 @@ class Controle extends DataFetcher {
                     />
                     <hr className="gray-separator"></hr>
                     <Pedal
-                      title={"FREIO:"}
+                      title={"HODÔMETRO:"}
                       icon={<img src="/static/SVGs/brake.svg"></img>}
                       value={
-                        (
-                          ((this.state.data || {}).control || {}).pedals ||
-                          {}
-                        ).brake / 10 || 0
+                        ((this.state.data || {}).control || {}).hodometro || 0
                       }
                       decimals={0}
                     />

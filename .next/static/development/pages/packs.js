@@ -160,8 +160,8 @@ var fields = {
   airStatus: {
     index: 0,
     name: "airStatus",
-    id: 51,
-    pos: 3
+    id: 227,
+    pos: 2
   },
   current0: {
     index: 2,
@@ -196,26 +196,32 @@ var fields = {
   chargePercent: {
     index: 7,
     name: "chargePercent",
-    id: 51,
-    pos: 1
+    id: 231,
+    pos: 0
   },
   totalVoltage: {
     index: 11,
     name: "totalVoltage",
-    id: 52,
-    pos: 1
+    id: 227,
+    pos: 3
   },
   maxTemperature: {
     index: 13,
     name: "maxTemperature",
-    id: 52,
+    id: 226,
     pos: 3
   },
   minVoltage: {
     index: 14,
     name: "minVoltage",
-    id: 53,
-    pos: 0
+    id: 226,
+    pos: 1
+  },
+  mediaTemperature: {
+    index: 12,
+    name: "mediaTemperature",
+    id: 231,
+    pos: 3
   },
   /*pack 0*/
 
@@ -884,18 +890,10 @@ var fields = {
   mediaCurrent: {
     index: 10,
     name: "mediaCurrent",
-    id: 53,
-    pos: 0
+    id: 230,
+    pos: 1
   },
   //não achei
-  mediaTemperature: {
-    index: 12,
-    name: "mediaTemperature",
-    id: 53,
-    pos: 2
-  },
-  //não achei
-
   // mediaSpeed: {index: 25, name: "mediaSpeed", id: 0x304, pos: 0},
   // mediaTorque: {index: 26, name: "mediaTorque", id: 0x304, pos: 1},
 
@@ -11214,7 +11212,7 @@ function Pack(props) {
 
 /***/ }),
 
-/***/ 9:
+/***/ 8:
 /*!***************************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fpacks&absolutePagePath=C%3A%5CUsers%5Ccaiol%5CDesktop%5CTESLA%5CJanelas%5CJanela%20de%20Dados%5CInterface%5Cpages%5Cpacks.js ***!
   \***************************************************************************************************************************************************************************/
@@ -11237,5 +11235,5 @@ module.exports = dll_7b9265c061e07b49bd43;
 
 /***/ })
 
-},[[9,"static/runtime/webpack.js"]]]));;
+},[[8,"static/runtime/webpack.js"]]]));;
 //# sourceMappingURL=packs.js.map

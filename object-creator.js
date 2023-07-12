@@ -249,6 +249,7 @@ class ObjectCreator {
           },
         },
         steeringWheel: this.retrieveLastData(cFields.steeringWheel.index),
+        hodometro: this.retrieveLastData(cFields.hodometroTotal.index),
         pedals: {
           throttle: this.retrieveLastData(cFields.pedalAcelerador.index),
           brake: this.retrieveLastData(cFields.pedalFreio.index),

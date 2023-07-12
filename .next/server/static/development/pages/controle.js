@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1677,8 +1677,8 @@ var fields = {
   airStatus: {
     index: 0,
     name: "airStatus",
-    id: 51,
-    pos: 3
+    id: 227,
+    pos: 2
   },
   current0: {
     index: 2,
@@ -1713,26 +1713,32 @@ var fields = {
   chargePercent: {
     index: 7,
     name: "chargePercent",
-    id: 51,
-    pos: 1
+    id: 231,
+    pos: 0
   },
   totalVoltage: {
     index: 11,
     name: "totalVoltage",
-    id: 52,
-    pos: 1
+    id: 227,
+    pos: 3
   },
   maxTemperature: {
     index: 13,
     name: "maxTemperature",
-    id: 52,
+    id: 226,
     pos: 3
   },
   minVoltage: {
     index: 14,
     name: "minVoltage",
-    id: 53,
-    pos: 0
+    id: 226,
+    pos: 1
+  },
+  mediaTemperature: {
+    index: 12,
+    name: "mediaTemperature",
+    id: 231,
+    pos: 3
   },
   /*pack 0*/
 
@@ -2401,18 +2407,10 @@ var fields = {
   mediaCurrent: {
     index: 10,
     name: "mediaCurrent",
-    id: 53,
-    pos: 0
+    id: 230,
+    pos: 1
   },
   //não achei
-  mediaTemperature: {
-    index: 12,
-    name: "mediaTemperature",
-    id: 53,
-    pos: 2
-  },
-  //não achei
-
   // mediaSpeed: {index: 25, name: "mediaSpeed", id: 0x304, pos: 0},
   // mediaTorque: {index: 26, name: "mediaTorque", id: 0x304, pos: 1},
 
@@ -5302,11 +5300,11 @@ var Controle = /*#__PURE__*/function (_DataFetcher) {
       }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("hr", {
         className: "gray-separator"
       }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(Pedal, {
-        title: "FREIO:",
+        title: "HODÔMETRO:",
         icon: react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("img", {
           src: "/static/SVGs/brake.svg"
         }),
-        value: (((this.state.data || {}).control || {}).pedals || {}).brake / 10 || 0,
+        value: ((this.state.data || {}).control || {}).hodometro || 0,
         decimals: 0
       }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "pedal-content"
@@ -5370,7 +5368,7 @@ function Pedal(props) {
 
 /***/ }),
 
-/***/ 6:
+/***/ 5:
 /*!*********************************!*\
   !*** multi ./pages/controle.js ***!
   \*********************************/
