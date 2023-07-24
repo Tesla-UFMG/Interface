@@ -97,7 +97,7 @@ function AIRStatus(props) {
                         {props.value === true ? <img src="static/icons/connected.png"></img> : <img src="static/icons/disconnected.png"></img>}
                     </div>
                     <div className={"information-value flex-fill "+(props.value===true ? "air-fechado": "air-aberto")}> 
-                        {props.value === true ? "FECHADO" : "ABERTO"}
+                        {props.value === true ? "ABERTO" : "FECHADO"}
                     </div>
                 </div>
             </div>

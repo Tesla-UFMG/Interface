@@ -324,7 +324,7 @@ class CarOverlay extends Component {
                                 xlinkHref="/static/SVGs/speedometer.svg"
                                 xlinkRole="/static/SVGs/speedometer.svg"
                                 width="70px" preserveAspectRatio="xMidYMid meet" transform=""></image>
-                                <CountUpWrapper end={((this.props.tires || {}).speed || {}).frontLeft/10/3.6/(52.07/100*Math.PI)*60 || 0}
+                                <CountUpWrapper end={((this.props.tires || {}).speed || {}).frontLeft || 0}
                                                 decimals={0}>
                                     {
                                         ({countUpRef}) => (
@@ -406,7 +406,7 @@ class CarOverlay extends Component {
                                 x="1073px" fontWeight="bold" textRendering="geometricPrecision" fontFamily="Exo"
                                 fill="whitesmoke" fontSize="30px" y="217px" transform=""
                                 textAnchor="middle">VELOCIDADE</text>
-                                <CountUpWrapper end={((this.props.tires || {}).speed || {}).frontRight/10 || 0}
+                                <CountUpWrapper end={((this.props.tires || {}).speed || {}).frontRight || 0}
                                                 decimals={0}>
                                     {
                                         ({countUpRef}) => (

@@ -14,10 +14,6 @@ class Volante extends Component {
     }
 
     render() {
-        console.log(this.props.value);
-        
-
-        
 
         return (
             <div className="volante-container default-container bordered-title-container">
@@ -73,7 +69,7 @@ class Volante extends Component {
                     <span className="volante-title">
                         ROTAÇÃO:
                     </span>
-                    <CountUpWrapper end={280/4095*(2502-this.props.value)}
+                    <CountUpWrapper end={this.props.value - 180}
                                     decimals={0}
                                     formattingFn={this.updateVolante}>
                         {
@@ -98,7 +94,7 @@ class Volante extends Component {
             rotateComponent.setAttribute("transform","rotate("+value+", 250, 167.5)");
         }
 
-        return parseInt(value)+"º";
+        return parseInt(value)+"°";
     }
 }
 

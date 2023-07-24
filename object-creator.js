@@ -136,7 +136,7 @@ class ObjectCreator {
   }
 
   isPackRelated(id) {
-    return id >= 260 && id <= 293;
+    return id >= 301 && id <= 320;
   }
 
   insertData(fieldId, value) {
@@ -191,10 +191,9 @@ class ObjectCreator {
       control: {
         // mediaSpeed: this.retrieveLastData(cFields.mediaSpeed.index)
         mediaSpeed:
-          (parseInt(this.retrieveLastData(cFields.speedMotorLeft.index)) +
-            parseInt(this.retrieveLastData(cFields.speedMotorRight.index)) /
-              9) *
-          (0.0312 * Math.PI),
+          ((parseInt(this.retrieveLastData(cFields.speedMotorLeft.index)) +
+            parseInt(this.retrieveLastData(cFields.speedMotorRight.index))) /(8.89*2)
+              )*(0.1885*0.52),
         ecuFlag: parseInt(this.retrieveLastData(cFields.ecuFlag.index)),
         inversorFlag: parseInt(
           this.retrieveLastData(cFields.inversorFlag.index)
@@ -207,11 +206,8 @@ class ObjectCreator {
     const accelX = this.retrieveLastData(cFields.accelerometerX.index);
     const accelY = this.retrieveLastData(cFields.accelerometerY.index);
     const accelZ = this.retrieveLastData(cFields.accelerometerZ.index);
-
-    console.log(
-      "valor do volante: " + this.retrieveLastData(cFields.steeringWheel.index)
-    );
-    //console.log("OO" + this.retrieveLastData(cFields.ecuFlag.index)) //retrieve ta certo
+    
+    console.log(this.retrieveLastData(cFields.cell107.index));
 
     return {
       control: {
@@ -266,6 +262,7 @@ class ObjectCreator {
   }
 
   buildPacksInfo() {
+    
     return {
       bms: {
         totalVoltage: this.retrieveLastData(cFields.totalVoltage.index),
@@ -302,7 +299,7 @@ class ObjectCreator {
   }
 
   retrievePackCells(pack) {
-    let num = 0x600 + 0x010 * pack;
+    let num = 301;
     let quanCells = 12;
 
     var cells = [];
@@ -317,6 +314,7 @@ class ObjectCreator {
   }
 
   retrievePackTemperatures(pack) {
+    
     let num = 0x603 + 0x010 * pack;
     let quanTemps = 4;
 
@@ -324,6 +322,7 @@ class ObjectCreator {
 
     for (var i = 0; i < quanTemps; i++) {
       const fieldId = this.mapId(num, i);
+     
       temps.push(this.databaseHandler.retrieveLastData(fieldId));
     }
 
