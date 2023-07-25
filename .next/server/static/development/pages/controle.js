@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -640,18 +640,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-var CarOverlay =
-/*#__PURE__*/
-function (_Component) {
+var CarOverlay = /*#__PURE__*/function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(CarOverlay, _Component);
-
   function CarOverlay() {
     Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, CarOverlay);
-
     return Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(CarOverlay).apply(this, arguments));
   }
-
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(CarOverlay, [{
     key: "render",
     value: function render() {
@@ -1265,7 +1259,7 @@ function (_Component) {
         preserveAspectRatio: "xMidYMid meet",
         transform: ""
       }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_components_countup_wrapper_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
-        end: ((this.props.tires || {}).speed || {}).frontLeft / 10 / 3.6 / (52.07 / 100 * Math.PI) * 60 || 0,
+        end: ((this.props.tires || {}).speed || {}).frontLeft || 0,
         decimals: 0
       }, function (_ref4) {
         var countUpRef = _ref4.countUpRef;
@@ -1368,7 +1362,7 @@ function (_Component) {
         transform: "",
         textAnchor: "middle"
       }, "VELOCIDADE"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_components_countup_wrapper_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
-        end: ((this.props.tires || {}).speed || {}).frontRight / 10 || 0,
+        end: ((this.props.tires || {}).speed || {}).frontRight || 0,
         decimals: 0
       }, function (_ref5) {
         var countUpRef = _ref5.countUpRef;
@@ -1578,10 +1572,8 @@ function (_Component) {
       }, "PNEU TRASEIRO")))));
     }
   }]);
-
   return CarOverlay;
 }(react__WEBPACK_IMPORTED_MODULE_5__["Component"]);
-
 /* harmony default export */ __webpack_exports__["default"] = (CarOverlay);
 
 /***/ }),
@@ -1683,25 +1675,25 @@ var fields = {
   current0: {
     index: 2,
     name: "current0",
-    id: 50,
+    id: 230,
     pos: 0
   },
   current1: {
     index: 3,
     name: "current1",
-    id: 50,
+    id: 230,
     pos: 1
   },
   current2: {
     index: 4,
     name: "current2",
-    id: 50,
+    id: 230,
     pos: 2
   },
   current3: {
     index: 5,
     name: "current3",
-    id: 50,
+    id: 230,
     pos: 3
   },
   glvVoltage: {
@@ -1740,445 +1732,421 @@ var fields = {
     id: 231,
     pos: 3
   },
-  /*pack 0*/
-
-  cell000: {
-    index: 40,
-    name: "cell000",
-    id: 281,
-    pos: 0
-  },
-  cell001: {
-    index: 41,
-    name: "cell001",
-    id: 281,
-    pos: 1
-  },
-  cell002: {
-    index: 42,
-    name: "cell002",
-    id: 281,
-    pos: 2
-  },
-  cell003: {
-    index: 43,
-    name: "cell003",
-    id: 281,
-    pos: 3
-  },
-  cell004: {
-    index: 44,
-    name: "cell004",
-    id: 282,
-    pos: 0
-  },
-  cell005: {
-    index: 45,
-    name: "cell005",
-    id: 282,
-    pos: 1
-  },
-  cell006: {
-    index: 46,
-    name: "cell006",
-    id: 282,
-    pos: 2
-  },
-  cell007: {
-    index: 47,
-    name: "cell007",
-    id: 282,
-    pos: 3
-  },
-  cell008: {
-    index: 48,
-    name: "cell008",
-    id: 283,
-    pos: 0
-  },
-  cell009: {
-    index: 49,
-    name: "cell009",
-    id: 283,
-    pos: 1
-  },
-  cell010: {
-    index: 50,
-    name: "cell010",
-    id: 283,
-    pos: 2
-  },
-  cell011: {
-    index: 51,
-    name: "cell011",
-    id: 283,
-    pos: 3
-  },
-  cell012: {
-    index: 52,
-    name: "cell012",
-    id: 284,
-    pos: 0
-  },
-  temp001: {
-    index: 53,
-    name: "temp001",
-    id: 284,
-    pos: 1
-  },
-  temp002: {
-    index: 54,
-    name: "temp002",
-    id: 284,
-    pos: 2
-  },
-  temp003: {
-    index: 55,
-    name: "temp003",
-    id: 284,
-    pos: 3
-  },
-  temp004: {
-    index: 56,
-    name: "temp004",
-    id: 285,
-    pos: 0
-  },
-  temp005: {
-    index: 57,
-    name: "temp005",
-    id: 285,
-    pos: 1
-  },
   /*pack 1*/
 
-  cell100: {
-    index: 58,
-    name: "cell100",
-    id: 276,
-    pos: 0
-  },
   cell101: {
-    index: 59,
+    index: 40,
     name: "cell101",
-    id: 276,
-    pos: 1
+    id: 301,
+    pos: 0
   },
   cell102: {
-    index: 60,
+    index: 41,
     name: "cell102",
-    id: 276,
-    pos: 2
+    id: 301,
+    pos: 1
   },
   cell103: {
-    index: 61,
+    index: 42,
     name: "cell103",
-    id: 276,
-    pos: 3
+    id: 301,
+    pos: 2
   },
   cell104: {
-    index: 62,
+    index: 43,
     name: "cell104",
-    id: 277,
-    pos: 0
+    id: 301,
+    pos: 3
   },
   cell105: {
-    index: 63,
+    index: 44,
     name: "cell105",
-    id: 277,
-    pos: 1
+    id: 302,
+    pos: 0
   },
   cell106: {
-    index: 64,
+    index: 45,
     name: "cell106",
-    id: 277,
-    pos: 2
+    id: 302,
+    pos: 1
   },
   cell107: {
-    index: 65,
+    index: 46,
     name: "cell107",
-    id: 277,
-    pos: 3
+    id: 302,
+    pos: 2
   },
   cell108: {
-    index: 66,
+    index: 47,
     name: "cell108",
-    id: 278,
-    pos: 0
+    id: 302,
+    pos: 3
   },
   cell109: {
-    index: 67,
+    index: 48,
     name: "cell109",
-    id: 278,
-    pos: 1
+    id: 303,
+    pos: 0
   },
   cell110: {
-    index: 68,
+    index: 49,
     name: "cell110",
-    id: 278,
-    pos: 2
+    id: 303,
+    pos: 1
   },
   cell111: {
-    index: 69,
+    index: 50,
     name: "cell111",
-    id: 278,
-    pos: 3
-  },
-  cell112: {
-    index: 70,
-    name: "cell112",
-    id: 279,
-    pos: 0
-  },
-  temp101: {
-    index: 71,
-    name: "temp101",
-    id: 279,
-    pos: 1
-  },
-  temp102: {
-    index: 72,
-    name: "temp102",
-    id: 279,
+    id: 303,
     pos: 2
   },
-  temp103: {
-    index: 73,
-    name: "temp103",
-    id: 279,
+  cell112: {
+    index: 51,
+    name: "cell112",
+    id: 303,
     pos: 3
   },
-  temp104: {
-    index: 74,
-    name: "temp104",
-    id: 280,
+  temp101: {
+    index: 52,
+    name: "temp101",
+    id: 304,
     pos: 0
   },
-  temp105: {
-    index: 75,
-    name: "temp105",
-    id: 280,
+  temp102: {
+    index: 53,
+    name: "temp102",
+    id: 304,
     pos: 1
+  },
+  temp103: {
+    index: 54,
+    name: "temp103",
+    id: 304,
+    pos: 2
+  },
+  temp104: {
+    index: 55,
+    name: "temp104",
+    id: 304,
+    pos: 3
+  },
+  temp105: {
+    index: 56,
+    name: "temp105",
+    id: 305,
+    pos: 0
   },
   /*pack 2*/
 
-  cell200: {
-    index: 76,
-    name: "cell200",
-    id: 271,
-    pos: 0
-  },
   cell201: {
-    index: 77,
+    index: 57,
     name: "cell201",
-    id: 271,
-    pos: 1
+    id: 306,
+    pos: 0
   },
   cell202: {
-    index: 78,
+    index: 58,
     name: "cell202",
-    id: 271,
-    pos: 2
+    id: 306,
+    pos: 1
   },
   cell203: {
-    index: 79,
+    index: 59,
     name: "cell203",
-    id: 271,
-    pos: 3
+    id: 306,
+    pos: 2
   },
   cell204: {
-    index: 80,
+    index: 60,
     name: "cell204",
-    id: 272,
-    pos: 0
+    id: 306,
+    pos: 3
   },
   cell205: {
-    index: 81,
+    index: 61,
     name: "cell205",
-    id: 272,
-    pos: 1
+    id: 307,
+    pos: 0
   },
   cell206: {
-    index: 82,
+    index: 62,
     name: "cell206",
-    id: 272,
-    pos: 2
+    id: 307,
+    pos: 1
   },
   cell207: {
-    index: 83,
+    index: 63,
     name: "cell207",
-    id: 272,
-    pos: 3
+    id: 307,
+    pos: 2
   },
   cell208: {
-    index: 84,
+    index: 64,
     name: "cell208",
-    id: 273,
-    pos: 0
+    id: 307,
+    pos: 3
   },
   cell209: {
-    index: 85,
+    index: 65,
     name: "cell209",
-    id: 273,
-    pos: 1
+    id: 308,
+    pos: 0
   },
   cell210: {
-    index: 86,
+    index: 66,
     name: "cell210",
-    id: 273,
-    pos: 2
+    id: 308,
+    pos: 1
   },
   cell211: {
-    index: 87,
+    index: 67,
     name: "cell211",
-    id: 273,
-    pos: 3
-  },
-  cell212: {
-    index: 88,
-    name: "cell212",
-    id: 274,
-    pos: 0
-  },
-  temp201: {
-    index: 89,
-    name: "temp201",
-    id: 274,
-    pos: 1
-  },
-  temp202: {
-    index: 90,
-    name: "temp202",
-    id: 274,
+    id: 308,
     pos: 2
   },
-  temp203: {
-    index: 91,
-    name: "temp203",
-    id: 274,
+  cell212: {
+    index: 68,
+    name: "cell212",
+    id: 308,
     pos: 3
   },
-  temp204: {
-    index: 92,
-    name: "temp204",
-    id: 275,
+  temp201: {
+    index: 69,
+    name: "temp201",
+    id: 309,
     pos: 0
   },
-  temp205: {
-    index: 93,
-    name: "temp205",
-    id: 275,
+  temp202: {
+    index: 70,
+    name: "temp202",
+    id: 309,
     pos: 1
+  },
+  temp203: {
+    index: 71,
+    name: "temp203",
+    id: 309,
+    pos: 2
+  },
+  temp204: {
+    index: 72,
+    name: "temp204",
+    id: 309,
+    pos: 3
+  },
+  temp205: {
+    index: 73,
+    name: "temp205",
+    id: 310,
+    pos: 0
   },
   /*pack 3*/
 
-  cell300: {
-    index: 94,
-    name: "cell300",
-    id: 266,
-    pos: 0
-  },
   cell301: {
-    index: 95,
+    index: 74,
     name: "cell301",
-    id: 266,
-    pos: 1
+    id: 311,
+    pos: 0
   },
   cell302: {
-    index: 96,
+    index: 75,
     name: "cell302",
-    id: 266,
-    pos: 2
+    id: 311,
+    pos: 1
   },
   cell303: {
-    index: 97,
+    index: 76,
     name: "cell303",
-    id: 266,
-    pos: 3
+    id: 311,
+    pos: 2
   },
   cell304: {
-    index: 98,
+    index: 77,
     name: "cell304",
-    id: 267,
-    pos: 0
+    id: 311,
+    pos: 3
   },
   cell305: {
-    index: 99,
+    index: 78,
     name: "cell305",
-    id: 267,
-    pos: 1
+    id: 312,
+    pos: 0
   },
   cell306: {
-    index: 100,
+    index: 79,
     name: "cell306",
-    id: 267,
-    pos: 2
+    id: 312,
+    pos: 1
   },
   cell307: {
-    index: 101,
+    index: 80,
     name: "cell307",
-    id: 267,
-    pos: 3
+    id: 312,
+    pos: 2
   },
   cell308: {
-    index: 102,
+    index: 81,
     name: "cell308",
-    id: 268,
-    pos: 0
+    id: 312,
+    pos: 3
   },
   cell309: {
-    index: 103,
+    index: 82,
     name: "cell309",
-    id: 268,
-    pos: 1
+    id: 313,
+    pos: 0
   },
   cell310: {
-    index: 104,
+    index: 83,
     name: "cell310",
-    id: 268,
-    pos: 2
+    id: 313,
+    pos: 1
   },
   cell311: {
-    index: 105,
+    index: 84,
     name: "cell311",
-    id: 268,
-    pos: 3
-  },
-  cell312: {
-    index: 106,
-    name: "cell312",
-    id: 269,
-    pos: 0
-  },
-  temp301: {
-    index: 107,
-    name: "temp301",
-    id: 269,
-    pos: 1
-  },
-  temp302: {
-    index: 108,
-    name: "temp302",
-    id: 269,
+    id: 313,
     pos: 2
   },
-  temp303: {
-    index: 109,
-    name: "temp303",
-    id: 269,
+  cell312: {
+    index: 85,
+    name: "cell312",
+    id: 313,
     pos: 3
   },
-  temp304: {
-    index: 110,
-    name: "temp304",
-    id: 270,
+  temp301: {
+    index: 86,
+    name: "temp301",
+    id: 314,
     pos: 0
   },
-  temp305: {
-    index: 111,
-    name: "temp305",
-    id: 270,
+  temp302: {
+    index: 87,
+    name: "temp302",
+    id: 314,
     pos: 1
+  },
+  temp303: {
+    index: 88,
+    name: "temp303",
+    id: 314,
+    pos: 2
+  },
+  temp304: {
+    index: 89,
+    name: "temp304",
+    id: 314,
+    pos: 3
+  },
+  temp305: {
+    index: 90,
+    name: "temp305",
+    id: 315,
+    pos: 0
+  },
+  /*pack 4*/
+
+  cell401: {
+    index: 91,
+    name: "cell401",
+    id: 316,
+    pos: 0
+  },
+  cell402: {
+    index: 92,
+    name: "cell402",
+    id: 316,
+    pos: 1
+  },
+  cell403: {
+    index: 93,
+    name: "cell403",
+    id: 316,
+    pos: 2
+  },
+  cell404: {
+    index: 94,
+    name: "cell404",
+    id: 316,
+    pos: 3
+  },
+  cell405: {
+    index: 95,
+    name: "cell405",
+    id: 317,
+    pos: 0
+  },
+  cell406: {
+    index: 96,
+    name: "cell406",
+    id: 317,
+    pos: 1
+  },
+  cell407: {
+    index: 97,
+    name: "cell407",
+    id: 317,
+    pos: 2
+  },
+  cell408: {
+    index: 98,
+    name: "cell408",
+    id: 317,
+    pos: 3
+  },
+  cell409: {
+    index: 99,
+    name: "cell409",
+    id: 318,
+    pos: 0
+  },
+  cell410: {
+    index: 100,
+    name: "cell410",
+    id: 318,
+    pos: 1
+  },
+  cell411: {
+    index: 101,
+    name: "cell411",
+    id: 318,
+    pos: 2
+  },
+  cell412: {
+    index: 102,
+    name: "cell412",
+    id: 318,
+    pos: 3
+  },
+  temp401: {
+    index: 103,
+    name: "temp401",
+    id: 319,
+    pos: 0
+  },
+  temp402: {
+    index: 104,
+    name: "temp402",
+    id: 319,
+    pos: 1
+  },
+  temp403: {
+    index: 105,
+    name: "temp403",
+    id: 319,
+    pos: 2
+  },
+  temp404: {
+    index: 106,
+    name: "temp404",
+    id: 319,
+    pos: 3
+  },
+  temp405: {
+    index: 107,
+    name: "temp405",
+    id: 320,
+    pos: 0
   },
   /*controle geral*/
 
@@ -2230,20 +2198,14 @@ var fields = {
   ecuFlag: {
     index: 180,
     name: "ecuFlag",
-    id: 103,
+    id: 78,
     pos: 0
-  },
-  bmsFlag: {
-    index: 181,
-    name: "bmsFlag",
-    id: 227,
-    pos: 1
   },
   inversorFlag: {
     index: 182,
     name: "inversorFlag",
-    id: 228,
-    pos: 0
+    id: 78,
+    pos: 1
   },
   torqueReferenceRight: {
     index: 21,
@@ -2257,8 +2219,13 @@ var fields = {
     id: 78,
     pos: 3
   },
+  bmsFlag: {
+    index: 181,
+    name: "bmsFlag",
+    id: 227,
+    pos: 1
+  },
   //79
-
   speedFL: {
     index: 15,
     name: "speedFL",
@@ -2329,7 +2296,6 @@ var fields = {
     pos: 1
   },
   //96
-
   energiaInversorRight: {
     index: 29,
     name: "energiaInversorRight",
@@ -2352,39 +2318,53 @@ var fields = {
   accelerometerX: {
     index: 154,
     name: "accelerometerX",
-    id: 105,
+    id: 291,
     pos: 0
   },
   accelerometerY: {
     index: 155,
     name: "accelerometerY",
-    id: 105,
+    id: 291,
     pos: 1
   },
   accelerometerZ: {
     index: 156,
     name: "accelerometerZ",
-    id: 105,
+    id: 291,
     pos: 2
   },
   //106
   gyroscopeX: {
     index: 157,
     name: "gyroscopeX",
-    id: 106,
+    id: 292,
     pos: 0
   },
   gyroscopeY: {
     index: 158,
     name: "gyroscopeY",
-    id: 106,
+    id: 292,
     pos: 1
   },
   gyroscopeZ: {
     index: 159,
     name: "gyroscopeZ",
-    id: 106,
+    id: 292,
     pos: 2
+  },
+  //152
+
+  pressaoDianteiro: {
+    index: 183,
+    name: "pressaoDianteiro",
+    id: 152,
+    pos: 0
+  },
+  pressaoTraseiro: {
+    index: 179,
+    name: "pressaoTraseiro",
+    id: 152,
+    pos: 1
   },
   stoppedTime: {
     index: 1,
@@ -2563,12 +2543,6 @@ var fields = {
     name: "simCharge",
     id: 901,
     pos: 1
-  },
-  pressaoTraseiro: {
-    index: 179,
-    name: "pressaoTraseiro",
-    id: 200,
-    pos: 0
   }
 };
 var nameFieldIdMap = (0, _values.default)(fields).reduce(function (last, field) {
@@ -2922,7 +2896,7 @@ var availablePlotOptions = [{
 var availablePlotIndexes = availablePlotOptions.map(function (option) {
   return option.index;
 });
-var datalogOrder = [fields.ECUTimer.name, fields.hodometroTotal.name, fields.glvVoltage.name, fields.speedFL.name, fields.speedFR.name, fields.speedMotorLeft.name, fields.speedMotorRight.name, fields.pedalAcelerador.name, fields.pedalFreio.name, fields.steeringWheel.name, fields.motorCurrentRight.name, fields.motorCurrentLeft.name, fields.accelerometerX.name, fields.accelerometerY.name, fields.accelerometerZ.name, fields.sensorPressaoDianteiro.name, fields.potenciometroBalancin.name, fields.termoparFreioD.name, fields.extensometro1.name, fields.extensometro2.name, fields.speedMotorRight.name, fields.speedMotorLeft.name, fields.current0.name, fields.current1.name, fields.current2.name, fields.current3.name, fields.mediaTemperature.name, fields.maxTemperature.name, fields.motorCurrentRight.name, fields.motorCurrentLeft.name, fields.temp001.name, fields.temp002.name, fields.temp003.name, fields.temp004.name, fields.temp101.name, fields.temp102.name, fields.temp103.name, fields.temp104.name, fields.temp201.name, fields.temp202.name, fields.temp203.name, fields.temp204.name, fields.temp301.name, fields.temp302.name, fields.temp303.name, fields.temp304.name, fields.current3.name, fields.totalVoltage.name, fields.minVoltage.name, fields.pressaoTraseiro.name];
+var datalogOrder = [fields.ECUTimer.name, fields.hodometroTotal.name, fields.glvVoltage.name, fields.speedFL.name, fields.speedFR.name, fields.speedMotorLeft.name, fields.speedMotorRight.name, fields.pedalAcelerador.name, fields.pedalFreio.name, fields.steeringWheel.name, fields.motorCurrentRight.name, fields.motorCurrentLeft.name, fields.accelerometerX.name, fields.accelerometerY.name, fields.accelerometerZ.name, fields.sensorPressaoDianteiro.name, fields.potenciometroBalancin.name, fields.termoparFreioD.name, fields.extensometro1.name, fields.extensometro2.name, fields.speedMotorRight.name, fields.speedMotorLeft.name, fields.current0.name, fields.current1.name, fields.current2.name, fields.current3.name, fields.mediaTemperature.name, fields.maxTemperature.name, fields.motorCurrentRight.name, fields.motorCurrentLeft.name, fields.temp101.name, fields.temp102.name, fields.temp103.name, fields.temp104.name, fields.temp105.name, fields.temp201.name, fields.temp202.name, fields.temp203.name, fields.temp204.name, fields.temp205.name, fields.temp301.name, fields.temp302.name, fields.temp303.name, fields.temp304.name, fields.temp305.name, fields.temp401.name, fields.temp402.name, fields.temp403.name, fields.temp404.name, fields.temp405.name, fields.current3.name, fields.totalVoltage.name, fields.minVoltage.name, fields.pressaoTraseiro.name];
 
 // let datalogOrder = [
 //     fields.current0.name,
@@ -3711,27 +3685,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-var Volante =
-/*#__PURE__*/
-function (_Component) {
+var Volante = /*#__PURE__*/function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__["default"])(Volante, _Component);
-
   function Volante(props) {
     var _this;
-
     Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__["default"])(this, Volante);
-
     _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__["default"])(Volante).call(this, props));
     _this.updateVolante = _this.updateVolante.bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this));
     _this.rotateRef = react__WEBPACK_IMPORTED_MODULE_7___default.a.createRef();
     return _this;
   }
-
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(Volante, [{
     key: "render",
     value: function render() {
-      console.log(this.props.value);
       return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
         className: "volante-container default-container bordered-title-container"
       }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
@@ -3875,7 +3841,7 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("span", {
         className: "volante-title"
       }, "ROTA\xC7\xC3O:"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_components_countup_wrapper_js__WEBPACK_IMPORTED_MODULE_8__["default"], {
-        end: 280 / 4095 * (2502 - this.props.value),
+        end: this.props.value - 180,
         decimals: 0,
         formattingFn: this.updateVolante
       }, function (_ref) {
@@ -3890,18 +3856,14 @@ function (_Component) {
     key: "updateVolante",
     value: function updateVolante(value) {
       var rotateComponent = this.rotateRef.current;
-
       if (rotateComponent) {
         rotateComponent.setAttribute("transform", "rotate(" + value + ", 250, 167.5)");
       }
-
-      return _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0___default()(value) + "º";
+      return _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0___default()(value) + "°";
     }
   }]);
-
   return Volante;
 }(react__WEBPACK_IMPORTED_MODULE_7__["Component"]);
-
 /* harmony default export */ __webpack_exports__["default"] = (Volante);
 
 /***/ }),
@@ -5279,7 +5241,7 @@ var Controle = /*#__PURE__*/function (_DataFetcher) {
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "col-5 mt-3"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_volante_js__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        value: ((this.state.data || {}).control || {}).steeringWheel || 1810
+        value: ((this.state.data || {}).control || {}).steeringWheel || 180
       })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "offset-1"
       }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
@@ -5300,11 +5262,11 @@ var Controle = /*#__PURE__*/function (_DataFetcher) {
       }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("hr", {
         className: "gray-separator"
       }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(Pedal, {
-        title: "HODÔMETRO:",
+        title: "FREIO:",
         icon: react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("img", {
           src: "/static/SVGs/brake.svg"
         }),
-        value: ((this.state.data || {}).control || {}).hodometro || 0,
+        value: (((this.state.data || {}).control || {}).pedals || {}).brake / 10 || 0,
         decimals: 0
       }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "pedal-content"
@@ -5340,7 +5302,55 @@ var Controle = /*#__PURE__*/function (_DataFetcher) {
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_acelerometro_yz_js__WEBPACK_IMPORTED_MODULE_12__["default"], {
         z: (((this.state.data || {}).control || {}).accelerometer || {}).z / 1000,
         y: (((this.state.data || {}).control || {}).accelerometer || {}).y / 1000
-      }))))))))))));
+      })))))))))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "row mt-4 mb-4"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "col-4 mt-3"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "bordered-title-container default-container"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "component-title bordered-title-text"
+      }, "PRESS\xC3O FREIO"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: ""
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", null, "Press\xE3o dianteira:", " ", (((this.state.data || {}).control || {}).brakes || {}).frontTires || 0, " ", "kPa"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", null, "Press\xE3o traseira:", " ", (((this.state.data || {}).control || {}).brakes || {}).backTires || 0, " ", "kPa")))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "col-4 mt-3"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "bordered-title-container default-container"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "component-title bordered-title-text"
+      }, "GIROSC\xD3PIO"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: " row w-100"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "col-md-7"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "col-12 component-title subtitle"
+      }, "EIXO XY:"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "col-12"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_acelerometro_xy_js__WEBPACK_IMPORTED_MODULE_11__["default"], {
+        x: (((this.state.data || {}).control || {}).accelerometer || {}).x / 1000,
+        y: (((this.state.data || {}).control || {}).accelerometer || {}).y / 1000
+      })))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "col-md-5"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "col-12 component-title subtitle"
+      }, "EIXO YZ:"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "col-12"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_acelerometro_yz_js__WEBPACK_IMPORTED_MODULE_12__["default"], {
+        z: (((this.state.data || {}).control || {}).accelerometer || {}).z / 1000,
+        y: (((this.state.data || {}).control || {}).accelerometer || {}).y / 1000
+      }))))))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "col-4 mt-3"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "bordered-title-container default-container"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "component-title bordered-title-text"
+      }, "HOD\xD4METRO"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: ""
+      }, ((this.state.data || {}).control || {}).hodometro || 0, " km"))))));
     }
   }]);
   return Controle;
@@ -5368,7 +5378,7 @@ function Pedal(props) {
 
 /***/ }),
 
-/***/ 5:
+/***/ 6:
 /*!*********************************!*\
   !*** multi ./pages/controle.js ***!
   \*********************************/

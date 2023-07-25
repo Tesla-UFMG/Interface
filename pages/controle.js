@@ -75,7 +75,7 @@ class Controle extends DataFetcher {
                   <Volante
                     value={
                       ((this.state.data || {}).control || {}).steeringWheel ||
-                      1810
+                      180
                     }
                   ></Volante>
                 </div>
@@ -102,10 +102,11 @@ class Controle extends DataFetcher {
                     />
                     <hr className="gray-separator"></hr>
                     <Pedal
-                      title={"HODÔMETRO:"}
+                      title={"FREIO:"}
                       icon={<img src="/static/SVGs/brake.svg"></img>}
                       value={
-                        ((this.state.data || {}).control || {}).hodometro || 0
+                        (((this.state.data || {}).control || {}).pedals || {})
+                          .brake / 10 || 0
                       }
                       decimals={0}
                     />
@@ -170,6 +171,97 @@ class Controle extends DataFetcher {
                       </div>
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="row mt-4 mb-4">
+            <div className="col-4 mt-3">
+              <div className="bordered-title-container default-container">
+                <div className="component-title bordered-title-text">
+                  PRESSÃO FREIO
+                </div>
+                <div className="">
+                  <div>
+                    Pressão dianteira:{" "}
+                    {(((this.state.data || {}).control || {}).brakes || {})
+                      .frontTires || 0}{" "}
+                    kPa
+                  </div>
+                  <div>
+                    Pressão traseira:{" "}
+                    {(((this.state.data || {}).control || {}).brakes || {})
+                      .backTires || 0}{" "}
+                    kPa
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-4 mt-3">
+              <div className="bordered-title-container default-container">
+                <div className="component-title bordered-title-text">
+                  GIROSCÓPIO
+                </div>
+                <div className=" row w-100">
+                  <div className="col-md-7">
+                    <div className="row">
+                      <div className="col-12 component-title subtitle">
+                        EIXO XY:
+                      </div>
+                      <div className="col-12">
+                        <AcelerometroXY
+                          x={
+                            (
+                              ((this.state.data || {}).control || {})
+                                .accelerometer || {}
+                            ).x / 1000
+                          }
+                          y={
+                            (
+                              ((this.state.data || {}).control || {})
+                                .accelerometer || {}
+                            ).y / 1000
+                          }
+                        ></AcelerometroXY>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="col-md-5">
+                    <div className="row">
+                      <div className="col-12 component-title subtitle">
+                        EIXO YZ:
+                      </div>
+                      <div className="col-12">
+                        <AcelerometroYZ
+                          z={
+                            (
+                              ((this.state.data || {}).control || {})
+                                .accelerometer || {}
+                            ).z / 1000
+                          }
+                          y={
+                            (
+                              ((this.state.data || {}).control || {})
+                                .accelerometer || {}
+                            ).y / 1000
+                          }
+                        ></AcelerometroYZ>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-4 mt-3">
+              <div className="bordered-title-container default-container">
+                <div className="component-title bordered-title-text">
+                  HODÔMETRO
+                </div>
+                <div className="">
+                  {((this.state.data || {}).control || {}).hodometro || 0} km
                 </div>
               </div>
             </div>

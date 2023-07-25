@@ -245,8 +245,18 @@ let fields = {
   //78
   ecuFlag: { index: 180, name: "ecuFlag", id: 78, pos: 0 },
   inversorFlag: { index: 182, name: "inversorFlag", id: 78, pos: 1 },
-  torqueReferenceRight: { index: 21, name: "torqueReferenceRight", id: 78, pos: 2, },
-  torqueReferenceLeft: { index: 22, name: "torqueReferenceLeft", id: 78, pos: 3, },
+  torqueReferenceRight: {
+    index: 21,
+    name: "torqueReferenceRight",
+    id: 78,
+    pos: 2,
+  },
+  torqueReferenceLeft: {
+    index: 22,
+    name: "torqueReferenceLeft",
+    id: 78,
+    pos: 3,
+  },
 
   bmsFlag: { index: 181, name: "bmsFlag", id: 227, pos: 1 },
 
@@ -261,18 +271,48 @@ let fields = {
   motorTorqueLeft: { index: 20, name: "motorTorqueLeft", id: 85, pos: 1 },
 
   //86
-  energiaInversorLeft: { index: 30, name: "energiaInversorLeft", id: 86, pos: 0, },
-  temperatureInversorL1: { index: 35, name: "temperatureInversorL1", id: 86, pos: 2, },
-  temperatureInversorL2: { index: 36, name: "temperatureInversorL2", id: 86, pos: 3, },
+  energiaInversorLeft: {
+    index: 30,
+    name: "energiaInversorLeft",
+    id: 86,
+    pos: 0,
+  },
+  temperatureInversorL1: {
+    index: 35,
+    name: "temperatureInversorL1",
+    id: 86,
+    pos: 2,
+  },
+  temperatureInversorL2: {
+    index: 36,
+    name: "temperatureInversorL2",
+    id: 86,
+    pos: 3,
+  },
 
   //95
   speedMotorRight: { index: 165, name: "speedMotorRight", id: 95, pos: 0 },
   motorTorqueRight: { index: 19, name: "motorTorqueRight", id: 95, pos: 1 },
 
   //96
-  energiaInversorRight: { index: 29, name: "energiaInversorRight", id: 96, pos: 0, },
-  temperatureInversorR1: { index: 33, name: "temperatureInversorR1", id: 96, pos: 2, },
-  temperatureInversorR2: { index: 34, name: "temperatureInversorR2", id: 96, pos: 3, },
+  energiaInversorRight: {
+    index: 29,
+    name: "energiaInversorRight",
+    id: 96,
+    pos: 0,
+  },
+  temperatureInversorR1: {
+    index: 33,
+    name: "temperatureInversorR1",
+    id: 96,
+    pos: 2,
+  },
+  temperatureInversorR2: {
+    index: 34,
+    name: "temperatureInversorR2",
+    id: 96,
+    pos: 3,
+  },
 
   //105
   accelerometerX: { index: 154, name: "accelerometerX", id: 291, pos: 0 },
@@ -283,6 +323,11 @@ let fields = {
   gyroscopeX: { index: 157, name: "gyroscopeX", id: 292, pos: 0 },
   gyroscopeY: { index: 158, name: "gyroscopeY", id: 292, pos: 1 },
   gyroscopeZ: { index: 159, name: "gyroscopeZ", id: 292, pos: 2 },
+
+  //152
+
+  pressaoDianteiro: { index: 183, name: "pressaoDianteiro", id: 152, pos: 0 },
+  pressaoTraseiro: { index: 179, name: "pressaoTraseiro", id: 152, pos: 1 },
 
   stoppedTime: { index: 1, name: "stoppedTime", id: 0x100, pos: 0 },
   operationMode: { index: 8, name: "operationMode", id: 1, pos: 0 },
@@ -334,7 +379,6 @@ let fields = {
   extensometro23: { index: 176, name: "extensometro23", id: 178, pos: 2 },
   simHodometer: { index: 177, name: "simHodometer", id: 901, pos: 0 },
   simCharge: { index: 178, name: "simCharge", id: 901, pos: 1 },
-  pressaoTraseiro: { index: 179, name: "pressaoTraseiro", id: 200, pos: 0 },
 };
 
 const nameFieldIdMap = Object.values(fields).reduce(
